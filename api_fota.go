@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.7 only-deshaun
+ * API version: 4.1.7 prized-adelbert
  * Contact: dev@lab5e.com
  */
 
@@ -36,7 +36,7 @@ type ApiSpanClearFirmwareErrorRequest struct {
 }
 
 
-func (r ApiSpanClearFirmwareErrorRequest) Execute() (map[string]interface{}, *_nethttp.Response, error) {
+func (r ApiSpanClearFirmwareErrorRequest) Execute() (ClearFirmwareErrorResponse, *_nethttp.Response, error) {
 	return r.ApiService.SpanClearFirmwareErrorExecute(r)
 }
 
@@ -58,16 +58,16 @@ func (a *FotaApiService) SpanClearFirmwareError(ctx _context.Context, collection
 
 /*
  * Execute executes the request
- * @return map[string]interface{}
+ * @return ClearFirmwareErrorResponse
  */
-func (a *FotaApiService) SpanClearFirmwareErrorExecute(r ApiSpanClearFirmwareErrorRequest) (map[string]interface{}, *_nethttp.Response, error) {
+func (a *FotaApiService) SpanClearFirmwareErrorExecute(r ApiSpanClearFirmwareErrorRequest) (ClearFirmwareErrorResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  ClearFirmwareErrorResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FotaApiService.SpanClearFirmwareError")

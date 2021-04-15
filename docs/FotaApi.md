@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## SpanClearFirmwareError
 
-> map[string]interface{} SpanClearFirmwareError(ctx, collectionId, deviceId).Execute()
+> ClearFirmwareErrorResponse SpanClearFirmwareError(ctx, collectionId, deviceId).Execute()
 
 Clear FOTA error
 
@@ -43,7 +43,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.SpanClearFirmwareError``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanClearFirmwareError`: map[string]interface{}
+    // response from `SpanClearFirmwareError`: ClearFirmwareErrorResponse
     fmt.Fprintf(os.Stdout, "Response from `FotaApi.SpanClearFirmwareError`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**ClearFirmwareErrorResponse**](ClearFirmwareErrorResponse.md)
 
 ### Authorization
 

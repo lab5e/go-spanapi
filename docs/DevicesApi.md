@@ -381,7 +381,7 @@ Name | Type | Description  | Notes
 
 ## SpanSendMessage
 
-> map[string]interface{} SpanSendMessage(ctx, collectionId, deviceId).Body(body).Execute()
+> SendMessageResponse SpanSendMessage(ctx, collectionId, deviceId).Body(body).Execute()
 
 Send message
 
@@ -411,7 +411,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DevicesApi.SpanSendMessage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanSendMessage`: map[string]interface{}
+    // response from `SpanSendMessage`: SendMessageResponse
     fmt.Fprintf(os.Stdout, "Response from `DevicesApi.SpanSendMessage`: %v\n", resp)
 }
 ```
@@ -438,7 +438,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**SendMessageResponse**](SendMessageResponse.md)
 
 ### Authorization
 

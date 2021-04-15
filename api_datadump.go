@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.7 only-deshaun
+ * API version: 4.1.7 prized-adelbert
  * Contact: dev@lab5e.com
  */
 
@@ -30,10 +30,10 @@ type DatadumpApiService service
 type ApiSpanDataDumpRequest struct {
 	ctx _context.Context
 	ApiService *DatadumpApiService
-	body *map[string]interface{}
+	body *DataDumpRequest
 }
 
-func (r ApiSpanDataDumpRequest) Body(body map[string]interface{}) ApiSpanDataDumpRequest {
+func (r ApiSpanDataDumpRequest) Body(body DataDumpRequest) ApiSpanDataDumpRequest {
 	r.body = &body
 	return r
 }

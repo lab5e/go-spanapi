@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.7 only-deshaun
+ * API version: 4.1.7 prized-adelbert
  * Contact: dev@lab5e.com
  */
 
@@ -978,7 +978,7 @@ func (r ApiSpanSendMessageRequest) Body(body SendMessageRequest) ApiSpanSendMess
 	return r
 }
 
-func (r ApiSpanSendMessageRequest) Execute() (map[string]interface{}, *_nethttp.Response, error) {
+func (r ApiSpanSendMessageRequest) Execute() (SendMessageResponse, *_nethttp.Response, error) {
 	return r.ApiService.SpanSendMessageExecute(r)
 }
 
@@ -1001,16 +1001,16 @@ func (a *DevicesApiService) SpanSendMessage(ctx _context.Context, collectionId s
 
 /*
  * Execute executes the request
- * @return map[string]interface{}
+ * @return SendMessageResponse
  */
-func (a *DevicesApiService) SpanSendMessageExecute(r ApiSpanSendMessageRequest) (map[string]interface{}, *_nethttp.Response, error) {
+func (a *DevicesApiService) SpanSendMessageExecute(r ApiSpanSendMessageRequest) (SendMessageResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  SendMessageResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.SpanSendMessage")

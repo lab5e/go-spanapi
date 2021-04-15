@@ -29,7 +29,7 @@ import (
 )
 
 func main() {
-    body := map[string]interface{}(Object) // map[string]interface{} | 
+    body := *openapiclient.NewDataDumpRequest() // DataDumpRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -54,7 +54,7 @@ Other parameters are passed through a pointer to a apiSpanDataDumpRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **map[string]interface{}** |  | 
+ **body** | [**DataDumpRequest**](DataDumpRequest.md) |  | 
 
 ### Return type
 

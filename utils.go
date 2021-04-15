@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.7 only-deshaun
+ * API version: 4.1.7 prized-adelbert
  * Contact: dev@lab5e.com
  */
 

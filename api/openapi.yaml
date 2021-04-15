@@ -6,7 +6,7 @@ info:
     url: https://lab5e.com/span
   description: API for device, collection, output and firmware management
   title: The Span API
-  version: 4.1.7 only-deshaun
+  version: 4.1.7 prized-adelbert
 servers:
 - url: https://api.lab5e.com/span
 security:
@@ -2138,6 +2138,11 @@ components:
       title: Broadcast message to all devices in a collection
       type: object
     ClearFirmwareErrorResponse:
+      example:
+        result: result
+      properties:
+        result:
+          type: string
       title: Clear firmware error response object
       type: object
     CoAPMetadata:
@@ -2232,6 +2237,11 @@ components:
       title: Create a new firmware image
       type: object
     DataDumpRequest:
+      example:
+        comment: comment
+      properties:
+        comment:
+          type: string
       title: Request a data dump
       type: object
     DataDumpResponse:
@@ -3343,6 +3353,18 @@ components:
       title: Send a message to a single device
       type: object
     SendMessageResponse:
+      example:
+        bytesSent: 0
+        collectionId: collectionId
+        deviceId: deviceId
+      properties:
+        collectionId:
+          type: string
+        deviceId:
+          type: string
+        bytesSent:
+          format: int32
+          type: integer
       title: Response to the SendMessage call
       type: object
     SystemInfoResponse:

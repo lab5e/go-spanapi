@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -12,12 +11,14 @@ api_system.go
 client.go
 configuration.go
 docs/BroadcastMessageRequest.md
+docs/ClearFirmwareErrorResponse.md
 docs/CoAPMetadata.md
 docs/Collection.md
 docs/CollectionFirmware.md
 docs/CollectionFirmwareFirmwareManagement.md
 docs/CollectionsApi.md
 docs/CreateFirmwareRequest.md
+docs/DataDumpRequest.md
 docs/DataDumpResponse.md
 docs/DatadumpApi.md
 docs/Device.md
@@ -49,6 +50,7 @@ docs/OutputsApi.md
 docs/ProtobufAny.md
 docs/RpcStatus.md
 docs/SendMessageRequest.md
+docs/SendMessageResponse.md
 docs/SystemApi.md
 docs/SystemInfoResponse.md
 docs/UDPMetadata.md
@@ -57,11 +59,13 @@ git_push.sh
 go.mod
 go.sum
 model_broadcast_message_request.go
+model_clear_firmware_error_response.go
 model_co_ap_metadata.go
 model_collection.go
 model_collection_firmware.go
 model_collection_firmware_firmware_management.go
 model_create_firmware_request.go
+model_data_dump_request.go
 model_data_dump_response.go
 model_device.go
 model_dumped_collection.go
@@ -89,6 +93,7 @@ model_output_type.go
 model_protobuf_any.go
 model_rpc_status.go
 model_send_message_request.go
+model_send_message_response.go
 model_system_info_response.go
 model_udp_metadata.go
 model_update_device_request.go
