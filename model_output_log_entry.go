@@ -17,9 +17,9 @@ import (
 
 // OutputLogEntry struct for OutputLogEntry
 type OutputLogEntry struct {
-	Time     *string `json:"time,omitempty"`
-	Message  *string `json:"message,omitempty"`
-	Repeated *int32  `json:"repeated,omitempty"`
+	Time *string `json:"time,omitempty"`
+	Message *string `json:"message,omitempty"`
+	Repeated *int32 `json:"repeated,omitempty"`
 }
 
 // NewOutputLogEntry instantiates a new OutputLogEntry object
@@ -184,3 +184,5 @@ func (v *NullableOutputLogEntry) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
