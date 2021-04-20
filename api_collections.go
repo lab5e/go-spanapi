@@ -28,33 +28,33 @@ var (
 // CollectionsApiService CollectionsApi service
 type CollectionsApiService service
 
-type ApiSpanBroadcastMessageRequest struct {
-	ctx          _context.Context
-	ApiService   *CollectionsApiService
+type ApiBroadcastMessageRequest struct {
+	ctx _context.Context
+	ApiService *CollectionsApiService
 	collectionId string
-	body         *BroadcastMessageRequest
+	body *BroadcastMessageRequest
 }
 
-func (r ApiSpanBroadcastMessageRequest) Body(body BroadcastMessageRequest) ApiSpanBroadcastMessageRequest {
+func (r ApiBroadcastMessageRequest) Body(body BroadcastMessageRequest) ApiBroadcastMessageRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiSpanBroadcastMessageRequest) Execute() (MultiSendMessageResponse, *_nethttp.Response, error) {
-	return r.ApiService.SpanBroadcastMessageExecute(r)
+func (r ApiBroadcastMessageRequest) Execute() (MultiSendMessageResponse, *_nethttp.Response, error) {
+	return r.ApiService.BroadcastMessageExecute(r)
 }
 
 /*
- * SpanBroadcastMessage Broadcast message
+ * BroadcastMessage Broadcast message
  * Broadcast a message to all devices in the collection. This request will always succeed if the collection exists, even if there are one or more send errors. Individual errors are returned as an array of error messages in the response. Use equivalent to resource for devices to send a message to single device.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId
- * @return ApiSpanBroadcastMessageRequest
+ * @return ApiBroadcastMessageRequest
  */
-func (a *CollectionsApiService) SpanBroadcastMessage(ctx _context.Context, collectionId string) ApiSpanBroadcastMessageRequest {
-	return ApiSpanBroadcastMessageRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *CollectionsApiService) BroadcastMessage(ctx _context.Context, collectionId string) ApiBroadcastMessageRequest {
+	return ApiBroadcastMessageRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -63,7 +63,7 @@ func (a *CollectionsApiService) SpanBroadcastMessage(ctx _context.Context, colle
  * Execute executes the request
  * @return MultiSendMessageResponse
  */
-func (a *CollectionsApiService) SpanBroadcastMessageExecute(r ApiSpanBroadcastMessageRequest) (MultiSendMessageResponse, *_nethttp.Response, error) {
+func (a *CollectionsApiService) BroadcastMessageExecute(r ApiBroadcastMessageRequest) (MultiSendMessageResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -73,7 +73,7 @@ func (a *CollectionsApiService) SpanBroadcastMessageExecute(r ApiSpanBroadcastMe
 		localVarReturnValue  MultiSendMessageResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.SpanBroadcastMessage")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.BroadcastMessage")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -193,13 +193,13 @@ func (a *CollectionsApiService) SpanBroadcastMessageExecute(r ApiSpanBroadcastMe
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -215,31 +215,31 @@ func (a *CollectionsApiService) SpanBroadcastMessageExecute(r ApiSpanBroadcastMe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanCreateCollectionRequest struct {
-	ctx        _context.Context
+type ApiCreateCollectionRequest struct {
+	ctx _context.Context
 	ApiService *CollectionsApiService
-	body       *Collection
+	body *Collection
 }
 
-func (r ApiSpanCreateCollectionRequest) Body(body Collection) ApiSpanCreateCollectionRequest {
+func (r ApiCreateCollectionRequest) Body(body Collection) ApiCreateCollectionRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiSpanCreateCollectionRequest) Execute() (Collection, *_nethttp.Response, error) {
-	return r.ApiService.SpanCreateCollectionExecute(r)
+func (r ApiCreateCollectionRequest) Execute() (Collection, *_nethttp.Response, error) {
+	return r.ApiService.CreateCollectionExecute(r)
 }
 
 /*
- * SpanCreateCollection Create collection
+ * CreateCollection Create collection
  * The returned collection is the collection stored in the backend. Defaults have been set. There are no required fields in a collection
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiSpanCreateCollectionRequest
+ * @return ApiCreateCollectionRequest
  */
-func (a *CollectionsApiService) SpanCreateCollection(ctx _context.Context) ApiSpanCreateCollectionRequest {
-	return ApiSpanCreateCollectionRequest{
+func (a *CollectionsApiService) CreateCollection(ctx _context.Context) ApiCreateCollectionRequest {
+	return ApiCreateCollectionRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
@@ -247,7 +247,7 @@ func (a *CollectionsApiService) SpanCreateCollection(ctx _context.Context) ApiSp
  * Execute executes the request
  * @return Collection
  */
-func (a *CollectionsApiService) SpanCreateCollectionExecute(r ApiSpanCreateCollectionRequest) (Collection, *_nethttp.Response, error) {
+func (a *CollectionsApiService) CreateCollectionExecute(r ApiCreateCollectionRequest) (Collection, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -257,7 +257,7 @@ func (a *CollectionsApiService) SpanCreateCollectionExecute(r ApiSpanCreateColle
 		localVarReturnValue  Collection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.SpanCreateCollection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.CreateCollection")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -376,13 +376,13 @@ func (a *CollectionsApiService) SpanCreateCollectionExecute(r ApiSpanCreateColle
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -398,27 +398,28 @@ func (a *CollectionsApiService) SpanCreateCollectionExecute(r ApiSpanCreateColle
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanDeleteCollectionRequest struct {
-	ctx          _context.Context
-	ApiService   *CollectionsApiService
+type ApiDeleteCollectionRequest struct {
+	ctx _context.Context
+	ApiService *CollectionsApiService
 	collectionId string
 }
 
-func (r ApiSpanDeleteCollectionRequest) Execute() (Collection, *_nethttp.Response, error) {
-	return r.ApiService.SpanDeleteCollectionExecute(r)
+
+func (r ApiDeleteCollectionRequest) Execute() (Collection, *_nethttp.Response, error) {
+	return r.ApiService.DeleteCollectionExecute(r)
 }
 
 /*
- * SpanDeleteCollection Delete collection
+ * DeleteCollection Delete collection
  * You must have write access to the collection
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId The ID of the collection you want to delete
- * @return ApiSpanDeleteCollectionRequest
+ * @return ApiDeleteCollectionRequest
  */
-func (a *CollectionsApiService) SpanDeleteCollection(ctx _context.Context, collectionId string) ApiSpanDeleteCollectionRequest {
-	return ApiSpanDeleteCollectionRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *CollectionsApiService) DeleteCollection(ctx _context.Context, collectionId string) ApiDeleteCollectionRequest {
+	return ApiDeleteCollectionRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -427,7 +428,7 @@ func (a *CollectionsApiService) SpanDeleteCollection(ctx _context.Context, colle
  * Execute executes the request
  * @return Collection
  */
-func (a *CollectionsApiService) SpanDeleteCollectionExecute(r ApiSpanDeleteCollectionRequest) (Collection, *_nethttp.Response, error) {
+func (a *CollectionsApiService) DeleteCollectionExecute(r ApiDeleteCollectionRequest) (Collection, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -437,7 +438,7 @@ func (a *CollectionsApiService) SpanDeleteCollectionExecute(r ApiSpanDeleteColle
 		localVarReturnValue  Collection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.SpanDeleteCollection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.DeleteCollection")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -552,13 +553,13 @@ func (a *CollectionsApiService) SpanDeleteCollectionExecute(r ApiSpanDeleteColle
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -574,48 +575,48 @@ func (a *CollectionsApiService) SpanDeleteCollectionExecute(r ApiSpanDeleteColle
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanListCollectionDataRequest struct {
-	ctx          _context.Context
-	ApiService   *CollectionsApiService
+type ApiListCollectionDataRequest struct {
+	ctx _context.Context
+	ApiService *CollectionsApiService
 	collectionId string
-	limit        *int32
-	start        *string
-	end          *string
-	offset       *string
+	limit *int32
+	start *string
+	end *string
+	offset *string
 }
 
-func (r ApiSpanListCollectionDataRequest) Limit(limit int32) ApiSpanListCollectionDataRequest {
+func (r ApiListCollectionDataRequest) Limit(limit int32) ApiListCollectionDataRequest {
 	r.limit = &limit
 	return r
 }
-func (r ApiSpanListCollectionDataRequest) Start(start string) ApiSpanListCollectionDataRequest {
+func (r ApiListCollectionDataRequest) Start(start string) ApiListCollectionDataRequest {
 	r.start = &start
 	return r
 }
-func (r ApiSpanListCollectionDataRequest) End(end string) ApiSpanListCollectionDataRequest {
+func (r ApiListCollectionDataRequest) End(end string) ApiListCollectionDataRequest {
 	r.end = &end
 	return r
 }
-func (r ApiSpanListCollectionDataRequest) Offset(offset string) ApiSpanListCollectionDataRequest {
+func (r ApiListCollectionDataRequest) Offset(offset string) ApiListCollectionDataRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiSpanListCollectionDataRequest) Execute() (ListDataResponse, *_nethttp.Response, error) {
-	return r.ApiService.SpanListCollectionDataExecute(r)
+func (r ApiListCollectionDataRequest) Execute() (ListDataResponse, *_nethttp.Response, error) {
+	return r.ApiService.ListCollectionDataExecute(r)
 }
 
 /*
- * SpanListCollectionData Get payloads
+ * ListCollectionData Get payloads
  * List the data received from all the devices in the collection.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId The collection ID requested. This is included in the request path.
- * @return ApiSpanListCollectionDataRequest
+ * @return ApiListCollectionDataRequest
  */
-func (a *CollectionsApiService) SpanListCollectionData(ctx _context.Context, collectionId string) ApiSpanListCollectionDataRequest {
-	return ApiSpanListCollectionDataRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *CollectionsApiService) ListCollectionData(ctx _context.Context, collectionId string) ApiListCollectionDataRequest {
+	return ApiListCollectionDataRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -624,7 +625,7 @@ func (a *CollectionsApiService) SpanListCollectionData(ctx _context.Context, col
  * Execute executes the request
  * @return ListDataResponse
  */
-func (a *CollectionsApiService) SpanListCollectionDataExecute(r ApiSpanListCollectionDataRequest) (ListDataResponse, *_nethttp.Response, error) {
+func (a *CollectionsApiService) ListCollectionDataExecute(r ApiListCollectionDataRequest) (ListDataResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -634,7 +635,7 @@ func (a *CollectionsApiService) SpanListCollectionDataExecute(r ApiSpanListColle
 		localVarReturnValue  ListDataResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.SpanListCollectionData")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.ListCollectionData")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -761,13 +762,13 @@ func (a *CollectionsApiService) SpanListCollectionDataExecute(r ApiSpanListColle
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -783,25 +784,26 @@ func (a *CollectionsApiService) SpanListCollectionDataExecute(r ApiSpanListColle
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanListCollectionsRequest struct {
-	ctx        _context.Context
+type ApiListCollectionsRequest struct {
+	ctx _context.Context
 	ApiService *CollectionsApiService
 }
 
-func (r ApiSpanListCollectionsRequest) Execute() (ListCollectionResponse, *_nethttp.Response, error) {
-	return r.ApiService.SpanListCollectionsExecute(r)
+
+func (r ApiListCollectionsRequest) Execute() (ListCollectionResponse, *_nethttp.Response, error) {
+	return r.ApiService.ListCollectionsExecute(r)
 }
 
 /*
- * SpanListCollections List collections
+ * ListCollections List collections
  * Lists all the collections that one of your teams owns.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiSpanListCollectionsRequest
+ * @return ApiListCollectionsRequest
  */
-func (a *CollectionsApiService) SpanListCollections(ctx _context.Context) ApiSpanListCollectionsRequest {
-	return ApiSpanListCollectionsRequest{
+func (a *CollectionsApiService) ListCollections(ctx _context.Context) ApiListCollectionsRequest {
+	return ApiListCollectionsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
@@ -809,7 +811,7 @@ func (a *CollectionsApiService) SpanListCollections(ctx _context.Context) ApiSpa
  * Execute executes the request
  * @return ListCollectionResponse
  */
-func (a *CollectionsApiService) SpanListCollectionsExecute(r ApiSpanListCollectionsRequest) (ListCollectionResponse, *_nethttp.Response, error) {
+func (a *CollectionsApiService) ListCollectionsExecute(r ApiListCollectionsRequest) (ListCollectionResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -819,7 +821,7 @@ func (a *CollectionsApiService) SpanListCollectionsExecute(r ApiSpanListCollecti
 		localVarReturnValue  ListCollectionResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.SpanListCollections")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.ListCollections")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -933,13 +935,13 @@ func (a *CollectionsApiService) SpanListCollectionsExecute(r ApiSpanListCollecti
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -955,26 +957,27 @@ func (a *CollectionsApiService) SpanListCollectionsExecute(r ApiSpanListCollecti
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanRetrieveCollectionRequest struct {
-	ctx          _context.Context
-	ApiService   *CollectionsApiService
+type ApiRetrieveCollectionRequest struct {
+	ctx _context.Context
+	ApiService *CollectionsApiService
 	collectionId string
 }
 
-func (r ApiSpanRetrieveCollectionRequest) Execute() (Collection, *_nethttp.Response, error) {
-	return r.ApiService.SpanRetrieveCollectionExecute(r)
+
+func (r ApiRetrieveCollectionRequest) Execute() (Collection, *_nethttp.Response, error) {
+	return r.ApiService.RetrieveCollectionExecute(r)
 }
 
 /*
- * SpanRetrieveCollection Retrieve collection
+ * RetrieveCollection Retrieve collection
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId The collection ID of the collection you are requesting
- * @return ApiSpanRetrieveCollectionRequest
+ * @return ApiRetrieveCollectionRequest
  */
-func (a *CollectionsApiService) SpanRetrieveCollection(ctx _context.Context, collectionId string) ApiSpanRetrieveCollectionRequest {
-	return ApiSpanRetrieveCollectionRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *CollectionsApiService) RetrieveCollection(ctx _context.Context, collectionId string) ApiRetrieveCollectionRequest {
+	return ApiRetrieveCollectionRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -983,7 +986,7 @@ func (a *CollectionsApiService) SpanRetrieveCollection(ctx _context.Context, col
  * Execute executes the request
  * @return Collection
  */
-func (a *CollectionsApiService) SpanRetrieveCollectionExecute(r ApiSpanRetrieveCollectionRequest) (Collection, *_nethttp.Response, error) {
+func (a *CollectionsApiService) RetrieveCollectionExecute(r ApiRetrieveCollectionRequest) (Collection, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -993,7 +996,7 @@ func (a *CollectionsApiService) SpanRetrieveCollectionExecute(r ApiSpanRetrieveC
 		localVarReturnValue  Collection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.SpanRetrieveCollection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.RetrieveCollection")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -1108,13 +1111,13 @@ func (a *CollectionsApiService) SpanRetrieveCollectionExecute(r ApiSpanRetrieveC
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1130,33 +1133,33 @@ func (a *CollectionsApiService) SpanRetrieveCollectionExecute(r ApiSpanRetrieveC
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanUpdateCollectionRequest struct {
-	ctx          _context.Context
-	ApiService   *CollectionsApiService
+type ApiUpdateCollectionRequest struct {
+	ctx _context.Context
+	ApiService *CollectionsApiService
 	collectionId string
-	body         *Collection
+	body *Collection
 }
 
-func (r ApiSpanUpdateCollectionRequest) Body(body Collection) ApiSpanUpdateCollectionRequest {
+func (r ApiUpdateCollectionRequest) Body(body Collection) ApiUpdateCollectionRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiSpanUpdateCollectionRequest) Execute() (Collection, *_nethttp.Response, error) {
-	return r.ApiService.SpanUpdateCollectionExecute(r)
+func (r ApiUpdateCollectionRequest) Execute() (Collection, *_nethttp.Response, error) {
+	return r.ApiService.UpdateCollectionExecute(r)
 }
 
 /*
- * SpanUpdateCollection Update collection
+ * UpdateCollection Update collection
  * You must have write access to the collection, ie. you must administer it
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId The ID of the collection. This is assigned by the backend.
- * @return ApiSpanUpdateCollectionRequest
+ * @return ApiUpdateCollectionRequest
  */
-func (a *CollectionsApiService) SpanUpdateCollection(ctx _context.Context, collectionId string) ApiSpanUpdateCollectionRequest {
-	return ApiSpanUpdateCollectionRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *CollectionsApiService) UpdateCollection(ctx _context.Context, collectionId string) ApiUpdateCollectionRequest {
+	return ApiUpdateCollectionRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -1165,7 +1168,7 @@ func (a *CollectionsApiService) SpanUpdateCollection(ctx _context.Context, colle
  * Execute executes the request
  * @return Collection
  */
-func (a *CollectionsApiService) SpanUpdateCollectionExecute(r ApiSpanUpdateCollectionRequest) (Collection, *_nethttp.Response, error) {
+func (a *CollectionsApiService) UpdateCollectionExecute(r ApiUpdateCollectionRequest) (Collection, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
@@ -1175,7 +1178,7 @@ func (a *CollectionsApiService) SpanUpdateCollectionExecute(r ApiSpanUpdateColle
 		localVarReturnValue  Collection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.SpanUpdateCollection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.UpdateCollection")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -1295,13 +1298,13 @@ func (a *CollectionsApiService) SpanUpdateCollectionExecute(r ApiSpanUpdateColle
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

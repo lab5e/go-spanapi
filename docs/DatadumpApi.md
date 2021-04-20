@@ -4,13 +4,13 @@ All URIs are relative to *https://api.lab5e.com/span*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SpanDataDump**](DatadumpApi.md#SpanDataDump) | **Post** /datadump | Data dump
+[**DataDump**](DatadumpApi.md#DataDump) | **Post** /datadump | Data dump
 
 
 
-## SpanDataDump
+## DataDump
 
-> DataDumpResponse SpanDataDump(ctx).Body(body).Execute()
+> DataDumpResponse DataDump(ctx).Body(body).Execute()
 
 Data dump
 
@@ -33,13 +33,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DatadumpApi.SpanDataDump(context.Background()).Body(body).Execute()
+    resp, r, err := api_client.DatadumpApi.DataDump(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatadumpApi.SpanDataDump``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DatadumpApi.DataDump``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanDataDump`: DataDumpResponse
-    fmt.Fprintf(os.Stdout, "Response from `DatadumpApi.SpanDataDump`: %v\n", resp)
+    // response from `DataDump`: DataDumpResponse
+    fmt.Fprintf(os.Stdout, "Response from `DatadumpApi.DataDump`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanDataDumpRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDataDumpRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

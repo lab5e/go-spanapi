@@ -28,32 +28,32 @@ var (
 // OutputsApiService OutputsApi service
 type OutputsApiService service
 
-type ApiSpanCreateOutputRequest struct {
-	ctx          _context.Context
-	ApiService   *OutputsApiService
+type ApiCreateOutputRequest struct {
+	ctx _context.Context
+	ApiService *OutputsApiService
 	collectionId string
-	body         *Output
+	body *Output
 }
 
-func (r ApiSpanCreateOutputRequest) Body(body Output) ApiSpanCreateOutputRequest {
+func (r ApiCreateOutputRequest) Body(body Output) ApiCreateOutputRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiSpanCreateOutputRequest) Execute() (Output, *_nethttp.Response, error) {
-	return r.ApiService.SpanCreateOutputExecute(r)
+func (r ApiCreateOutputRequest) Execute() (Output, *_nethttp.Response, error) {
+	return r.ApiService.CreateOutputExecute(r)
 }
 
 /*
- * SpanCreateOutput Create output
+ * CreateOutput Create output
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId
- * @return ApiSpanCreateOutputRequest
+ * @return ApiCreateOutputRequest
  */
-func (a *OutputsApiService) SpanCreateOutput(ctx _context.Context, collectionId string) ApiSpanCreateOutputRequest {
-	return ApiSpanCreateOutputRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *OutputsApiService) CreateOutput(ctx _context.Context, collectionId string) ApiCreateOutputRequest {
+	return ApiCreateOutputRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -62,7 +62,7 @@ func (a *OutputsApiService) SpanCreateOutput(ctx _context.Context, collectionId 
  * Execute executes the request
  * @return Output
  */
-func (a *OutputsApiService) SpanCreateOutputExecute(r ApiSpanCreateOutputRequest) (Output, *_nethttp.Response, error) {
+func (a *OutputsApiService) CreateOutputExecute(r ApiCreateOutputRequest) (Output, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -72,7 +72,7 @@ func (a *OutputsApiService) SpanCreateOutputExecute(r ApiSpanCreateOutputRequest
 		localVarReturnValue  Output
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutputsApiService.SpanCreateOutput")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutputsApiService.CreateOutput")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -192,13 +192,13 @@ func (a *OutputsApiService) SpanCreateOutputExecute(r ApiSpanCreateOutputRequest
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -214,30 +214,31 @@ func (a *OutputsApiService) SpanCreateOutputExecute(r ApiSpanCreateOutputRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanDeleteOutputRequest struct {
-	ctx          _context.Context
-	ApiService   *OutputsApiService
+type ApiDeleteOutputRequest struct {
+	ctx _context.Context
+	ApiService *OutputsApiService
 	collectionId string
-	outputId     string
+	outputId string
 }
 
-func (r ApiSpanDeleteOutputRequest) Execute() (Output, *_nethttp.Response, error) {
-	return r.ApiService.SpanDeleteOutputExecute(r)
+
+func (r ApiDeleteOutputRequest) Execute() (Output, *_nethttp.Response, error) {
+	return r.ApiService.DeleteOutputExecute(r)
 }
 
 /*
- * SpanDeleteOutput Delete output
+ * DeleteOutput Delete output
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId
  * @param outputId
- * @return ApiSpanDeleteOutputRequest
+ * @return ApiDeleteOutputRequest
  */
-func (a *OutputsApiService) SpanDeleteOutput(ctx _context.Context, collectionId string, outputId string) ApiSpanDeleteOutputRequest {
-	return ApiSpanDeleteOutputRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *OutputsApiService) DeleteOutput(ctx _context.Context, collectionId string, outputId string) ApiDeleteOutputRequest {
+	return ApiDeleteOutputRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		outputId:     outputId,
+		outputId: outputId,
 	}
 }
 
@@ -245,7 +246,7 @@ func (a *OutputsApiService) SpanDeleteOutput(ctx _context.Context, collectionId 
  * Execute executes the request
  * @return Output
  */
-func (a *OutputsApiService) SpanDeleteOutputExecute(r ApiSpanDeleteOutputRequest) (Output, *_nethttp.Response, error) {
+func (a *OutputsApiService) DeleteOutputExecute(r ApiDeleteOutputRequest) (Output, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -255,7 +256,7 @@ func (a *OutputsApiService) SpanDeleteOutputExecute(r ApiSpanDeleteOutputRequest
 		localVarReturnValue  Output
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutputsApiService.SpanDeleteOutput")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutputsApiService.DeleteOutput")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -371,13 +372,13 @@ func (a *OutputsApiService) SpanDeleteOutputExecute(r ApiSpanDeleteOutputRequest
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -393,26 +394,27 @@ func (a *OutputsApiService) SpanDeleteOutputExecute(r ApiSpanDeleteOutputRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanListOutputsRequest struct {
-	ctx          _context.Context
-	ApiService   *OutputsApiService
+type ApiListOutputsRequest struct {
+	ctx _context.Context
+	ApiService *OutputsApiService
 	collectionId string
 }
 
-func (r ApiSpanListOutputsRequest) Execute() (ListOutputResponse, *_nethttp.Response, error) {
-	return r.ApiService.SpanListOutputsExecute(r)
+
+func (r ApiListOutputsRequest) Execute() (ListOutputResponse, *_nethttp.Response, error) {
+	return r.ApiService.ListOutputsExecute(r)
 }
 
 /*
- * SpanListOutputs List outputs
+ * ListOutputs List outputs
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId
- * @return ApiSpanListOutputsRequest
+ * @return ApiListOutputsRequest
  */
-func (a *OutputsApiService) SpanListOutputs(ctx _context.Context, collectionId string) ApiSpanListOutputsRequest {
-	return ApiSpanListOutputsRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *OutputsApiService) ListOutputs(ctx _context.Context, collectionId string) ApiListOutputsRequest {
+	return ApiListOutputsRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -421,7 +423,7 @@ func (a *OutputsApiService) SpanListOutputs(ctx _context.Context, collectionId s
  * Execute executes the request
  * @return ListOutputResponse
  */
-func (a *OutputsApiService) SpanListOutputsExecute(r ApiSpanListOutputsRequest) (ListOutputResponse, *_nethttp.Response, error) {
+func (a *OutputsApiService) ListOutputsExecute(r ApiListOutputsRequest) (ListOutputResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -431,7 +433,7 @@ func (a *OutputsApiService) SpanListOutputsExecute(r ApiSpanListOutputsRequest) 
 		localVarReturnValue  ListOutputResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutputsApiService.SpanListOutputs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutputsApiService.ListOutputs")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -546,13 +548,13 @@ func (a *OutputsApiService) SpanListOutputsExecute(r ApiSpanListOutputsRequest) 
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -568,30 +570,31 @@ func (a *OutputsApiService) SpanListOutputsExecute(r ApiSpanListOutputsRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanLogsRequest struct {
-	ctx          _context.Context
-	ApiService   *OutputsApiService
+type ApiLogsRequest struct {
+	ctx _context.Context
+	ApiService *OutputsApiService
 	collectionId string
-	outputId     string
+	outputId string
 }
 
-func (r ApiSpanLogsRequest) Execute() (OutputLogResponse, *_nethttp.Response, error) {
-	return r.ApiService.SpanLogsExecute(r)
+
+func (r ApiLogsRequest) Execute() (OutputLogResponse, *_nethttp.Response, error) {
+	return r.ApiService.LogsExecute(r)
 }
 
 /*
- * SpanLogs Output logs
+ * Logs Output logs
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId
  * @param outputId
- * @return ApiSpanLogsRequest
+ * @return ApiLogsRequest
  */
-func (a *OutputsApiService) SpanLogs(ctx _context.Context, collectionId string, outputId string) ApiSpanLogsRequest {
-	return ApiSpanLogsRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *OutputsApiService) Logs(ctx _context.Context, collectionId string, outputId string) ApiLogsRequest {
+	return ApiLogsRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		outputId:     outputId,
+		outputId: outputId,
 	}
 }
 
@@ -599,7 +602,7 @@ func (a *OutputsApiService) SpanLogs(ctx _context.Context, collectionId string, 
  * Execute executes the request
  * @return OutputLogResponse
  */
-func (a *OutputsApiService) SpanLogsExecute(r ApiSpanLogsRequest) (OutputLogResponse, *_nethttp.Response, error) {
+func (a *OutputsApiService) LogsExecute(r ApiLogsRequest) (OutputLogResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -609,7 +612,7 @@ func (a *OutputsApiService) SpanLogsExecute(r ApiSpanLogsRequest) (OutputLogResp
 		localVarReturnValue  OutputLogResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutputsApiService.SpanLogs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutputsApiService.Logs")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -725,13 +728,13 @@ func (a *OutputsApiService) SpanLogsExecute(r ApiSpanLogsRequest) (OutputLogResp
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -747,30 +750,31 @@ func (a *OutputsApiService) SpanLogsExecute(r ApiSpanLogsRequest) (OutputLogResp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanRetrieveOutputRequest struct {
-	ctx          _context.Context
-	ApiService   *OutputsApiService
+type ApiRetrieveOutputRequest struct {
+	ctx _context.Context
+	ApiService *OutputsApiService
 	collectionId string
-	outputId     string
+	outputId string
 }
 
-func (r ApiSpanRetrieveOutputRequest) Execute() (Output, *_nethttp.Response, error) {
-	return r.ApiService.SpanRetrieveOutputExecute(r)
+
+func (r ApiRetrieveOutputRequest) Execute() (Output, *_nethttp.Response, error) {
+	return r.ApiService.RetrieveOutputExecute(r)
 }
 
 /*
- * SpanRetrieveOutput Retrieve output
+ * RetrieveOutput Retrieve output
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId
  * @param outputId
- * @return ApiSpanRetrieveOutputRequest
+ * @return ApiRetrieveOutputRequest
  */
-func (a *OutputsApiService) SpanRetrieveOutput(ctx _context.Context, collectionId string, outputId string) ApiSpanRetrieveOutputRequest {
-	return ApiSpanRetrieveOutputRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *OutputsApiService) RetrieveOutput(ctx _context.Context, collectionId string, outputId string) ApiRetrieveOutputRequest {
+	return ApiRetrieveOutputRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		outputId:     outputId,
+		outputId: outputId,
 	}
 }
 
@@ -778,7 +782,7 @@ func (a *OutputsApiService) SpanRetrieveOutput(ctx _context.Context, collectionI
  * Execute executes the request
  * @return Output
  */
-func (a *OutputsApiService) SpanRetrieveOutputExecute(r ApiSpanRetrieveOutputRequest) (Output, *_nethttp.Response, error) {
+func (a *OutputsApiService) RetrieveOutputExecute(r ApiRetrieveOutputRequest) (Output, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -788,7 +792,7 @@ func (a *OutputsApiService) SpanRetrieveOutputExecute(r ApiSpanRetrieveOutputReq
 		localVarReturnValue  Output
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutputsApiService.SpanRetrieveOutput")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutputsApiService.RetrieveOutput")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -904,13 +908,13 @@ func (a *OutputsApiService) SpanRetrieveOutputExecute(r ApiSpanRetrieveOutputReq
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -926,30 +930,31 @@ func (a *OutputsApiService) SpanRetrieveOutputExecute(r ApiSpanRetrieveOutputReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanStatusRequest struct {
-	ctx          _context.Context
-	ApiService   *OutputsApiService
+type ApiStatusRequest struct {
+	ctx _context.Context
+	ApiService *OutputsApiService
 	collectionId string
-	outputId     string
+	outputId string
 }
 
-func (r ApiSpanStatusRequest) Execute() (OutputStatusResponse, *_nethttp.Response, error) {
-	return r.ApiService.SpanStatusExecute(r)
+
+func (r ApiStatusRequest) Execute() (OutputStatusResponse, *_nethttp.Response, error) {
+	return r.ApiService.StatusExecute(r)
 }
 
 /*
- * SpanStatus Output status
+ * Status Output status
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId
  * @param outputId
- * @return ApiSpanStatusRequest
+ * @return ApiStatusRequest
  */
-func (a *OutputsApiService) SpanStatus(ctx _context.Context, collectionId string, outputId string) ApiSpanStatusRequest {
-	return ApiSpanStatusRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *OutputsApiService) Status(ctx _context.Context, collectionId string, outputId string) ApiStatusRequest {
+	return ApiStatusRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		outputId:     outputId,
+		outputId: outputId,
 	}
 }
 
@@ -957,7 +962,7 @@ func (a *OutputsApiService) SpanStatus(ctx _context.Context, collectionId string
  * Execute executes the request
  * @return OutputStatusResponse
  */
-func (a *OutputsApiService) SpanStatusExecute(r ApiSpanStatusRequest) (OutputStatusResponse, *_nethttp.Response, error) {
+func (a *OutputsApiService) StatusExecute(r ApiStatusRequest) (OutputStatusResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -967,7 +972,7 @@ func (a *OutputsApiService) SpanStatusExecute(r ApiSpanStatusRequest) (OutputSta
 		localVarReturnValue  OutputStatusResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutputsApiService.SpanStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutputsApiService.Status")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -1083,13 +1088,13 @@ func (a *OutputsApiService) SpanStatusExecute(r ApiSpanStatusRequest) (OutputSta
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1105,37 +1110,37 @@ func (a *OutputsApiService) SpanStatusExecute(r ApiSpanStatusRequest) (OutputSta
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanUpdateOutputRequest struct {
-	ctx          _context.Context
-	ApiService   *OutputsApiService
+type ApiUpdateOutputRequest struct {
+	ctx _context.Context
+	ApiService *OutputsApiService
 	collectionId string
-	outputId     string
-	body         *Output
+	outputId string
+	body *Output
 }
 
-func (r ApiSpanUpdateOutputRequest) Body(body Output) ApiSpanUpdateOutputRequest {
+func (r ApiUpdateOutputRequest) Body(body Output) ApiUpdateOutputRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiSpanUpdateOutputRequest) Execute() (Output, *_nethttp.Response, error) {
-	return r.ApiService.SpanUpdateOutputExecute(r)
+func (r ApiUpdateOutputRequest) Execute() (Output, *_nethttp.Response, error) {
+	return r.ApiService.UpdateOutputExecute(r)
 }
 
 /*
- * SpanUpdateOutput Update output
+ * UpdateOutput Update output
  * Running outputs will be restarted if required. Note that the collection ID can't be changed on an existing output.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId
  * @param outputId
- * @return ApiSpanUpdateOutputRequest
+ * @return ApiUpdateOutputRequest
  */
-func (a *OutputsApiService) SpanUpdateOutput(ctx _context.Context, collectionId string, outputId string) ApiSpanUpdateOutputRequest {
-	return ApiSpanUpdateOutputRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *OutputsApiService) UpdateOutput(ctx _context.Context, collectionId string, outputId string) ApiUpdateOutputRequest {
+	return ApiUpdateOutputRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		outputId:     outputId,
+		outputId: outputId,
 	}
 }
 
@@ -1143,7 +1148,7 @@ func (a *OutputsApiService) SpanUpdateOutput(ctx _context.Context, collectionId 
  * Execute executes the request
  * @return Output
  */
-func (a *OutputsApiService) SpanUpdateOutputExecute(r ApiSpanUpdateOutputRequest) (Output, *_nethttp.Response, error) {
+func (a *OutputsApiService) UpdateOutputExecute(r ApiUpdateOutputRequest) (Output, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
@@ -1153,7 +1158,7 @@ func (a *OutputsApiService) SpanUpdateOutputExecute(r ApiSpanUpdateOutputRequest
 		localVarReturnValue  Output
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutputsApiService.SpanUpdateOutput")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutputsApiService.UpdateOutput")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -1274,13 +1279,13 @@ func (a *OutputsApiService) SpanUpdateOutputExecute(r ApiSpanUpdateOutputRequest
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

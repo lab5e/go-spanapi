@@ -17,9 +17,9 @@ import (
 
 // DumpedCollection struct for DumpedCollection
 type DumpedCollection struct {
-	Collection *Collection     `json:"collection,omitempty"`
-	Devices    *[]DumpedDevice `json:"devices,omitempty"`
-	Outputs    *[]Output       `json:"outputs,omitempty"`
+	Collection *Collection `json:"collection,omitempty"`
+	Devices *[]DumpedDevice `json:"devices,omitempty"`
+	Outputs *[]Output `json:"outputs,omitempty"`
 }
 
 // NewDumpedCollection instantiates a new DumpedCollection object
@@ -184,3 +184,5 @@ func (v *NullableDumpedCollection) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

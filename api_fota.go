@@ -28,30 +28,31 @@ var (
 // FotaApiService FotaApi service
 type FotaApiService service
 
-type ApiSpanClearFirmwareErrorRequest struct {
-	ctx          _context.Context
-	ApiService   *FotaApiService
+type ApiClearFirmwareErrorRequest struct {
+	ctx _context.Context
+	ApiService *FotaApiService
 	collectionId string
-	deviceId     string
+	deviceId string
 }
 
-func (r ApiSpanClearFirmwareErrorRequest) Execute() (ClearFirmwareErrorResponse, *_nethttp.Response, error) {
-	return r.ApiService.SpanClearFirmwareErrorExecute(r)
+
+func (r ApiClearFirmwareErrorRequest) Execute() (ClearFirmwareErrorResponse, *_nethttp.Response, error) {
+	return r.ApiService.ClearFirmwareErrorExecute(r)
 }
 
 /*
- * SpanClearFirmwareError Clear FOTA error
+ * ClearFirmwareError Clear FOTA error
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId
  * @param deviceId
- * @return ApiSpanClearFirmwareErrorRequest
+ * @return ApiClearFirmwareErrorRequest
  */
-func (a *FotaApiService) SpanClearFirmwareError(ctx _context.Context, collectionId string, deviceId string) ApiSpanClearFirmwareErrorRequest {
-	return ApiSpanClearFirmwareErrorRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *FotaApiService) ClearFirmwareError(ctx _context.Context, collectionId string, deviceId string) ApiClearFirmwareErrorRequest {
+	return ApiClearFirmwareErrorRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		deviceId:     deviceId,
+		deviceId: deviceId,
 	}
 }
 
@@ -59,7 +60,7 @@ func (a *FotaApiService) SpanClearFirmwareError(ctx _context.Context, collection
  * Execute executes the request
  * @return ClearFirmwareErrorResponse
  */
-func (a *FotaApiService) SpanClearFirmwareErrorExecute(r ApiSpanClearFirmwareErrorRequest) (ClearFirmwareErrorResponse, *_nethttp.Response, error) {
+func (a *FotaApiService) ClearFirmwareErrorExecute(r ApiClearFirmwareErrorRequest) (ClearFirmwareErrorResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -69,7 +70,7 @@ func (a *FotaApiService) SpanClearFirmwareErrorExecute(r ApiSpanClearFirmwareErr
 		localVarReturnValue  ClearFirmwareErrorResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FotaApiService.SpanClearFirmwareError")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FotaApiService.ClearFirmwareError")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -185,13 +186,13 @@ func (a *FotaApiService) SpanClearFirmwareErrorExecute(r ApiSpanClearFirmwareErr
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -207,33 +208,33 @@ func (a *FotaApiService) SpanClearFirmwareErrorExecute(r ApiSpanClearFirmwareErr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanCreateFirmwareRequest struct {
-	ctx          _context.Context
-	ApiService   *FotaApiService
+type ApiCreateFirmwareRequest struct {
+	ctx _context.Context
+	ApiService *FotaApiService
 	collectionId string
-	body         *CreateFirmwareRequest
+	body *CreateFirmwareRequest
 }
 
-func (r ApiSpanCreateFirmwareRequest) Body(body CreateFirmwareRequest) ApiSpanCreateFirmwareRequest {
+func (r ApiCreateFirmwareRequest) Body(body CreateFirmwareRequest) ApiCreateFirmwareRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiSpanCreateFirmwareRequest) Execute() (Firmware, *_nethttp.Response, error) {
-	return r.ApiService.SpanCreateFirmwareExecute(r)
+func (r ApiCreateFirmwareRequest) Execute() (Firmware, *_nethttp.Response, error) {
+	return r.ApiService.CreateFirmwareExecute(r)
 }
 
 /*
- * SpanCreateFirmware Create firmware
+ * CreateFirmware Create firmware
  * Create a new firmware image. This is also invoked by the custom HTTP uploader if the POST uses multipart/formdata for the request.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId
- * @return ApiSpanCreateFirmwareRequest
+ * @return ApiCreateFirmwareRequest
  */
-func (a *FotaApiService) SpanCreateFirmware(ctx _context.Context, collectionId string) ApiSpanCreateFirmwareRequest {
-	return ApiSpanCreateFirmwareRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *FotaApiService) CreateFirmware(ctx _context.Context, collectionId string) ApiCreateFirmwareRequest {
+	return ApiCreateFirmwareRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -242,7 +243,7 @@ func (a *FotaApiService) SpanCreateFirmware(ctx _context.Context, collectionId s
  * Execute executes the request
  * @return Firmware
  */
-func (a *FotaApiService) SpanCreateFirmwareExecute(r ApiSpanCreateFirmwareRequest) (Firmware, *_nethttp.Response, error) {
+func (a *FotaApiService) CreateFirmwareExecute(r ApiCreateFirmwareRequest) (Firmware, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -252,7 +253,7 @@ func (a *FotaApiService) SpanCreateFirmwareExecute(r ApiSpanCreateFirmwareReques
 		localVarReturnValue  Firmware
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FotaApiService.SpanCreateFirmware")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FotaApiService.CreateFirmware")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -372,13 +373,13 @@ func (a *FotaApiService) SpanCreateFirmwareExecute(r ApiSpanCreateFirmwareReques
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -394,30 +395,31 @@ func (a *FotaApiService) SpanCreateFirmwareExecute(r ApiSpanCreateFirmwareReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanDeleteFirmwareRequest struct {
-	ctx          _context.Context
-	ApiService   *FotaApiService
+type ApiDeleteFirmwareRequest struct {
+	ctx _context.Context
+	ApiService *FotaApiService
 	collectionId string
-	imageId      string
+	imageId string
 }
 
-func (r ApiSpanDeleteFirmwareRequest) Execute() (Firmware, *_nethttp.Response, error) {
-	return r.ApiService.SpanDeleteFirmwareExecute(r)
+
+func (r ApiDeleteFirmwareRequest) Execute() (Firmware, *_nethttp.Response, error) {
+	return r.ApiService.DeleteFirmwareExecute(r)
 }
 
 /*
- * SpanDeleteFirmware Delete firmware
+ * DeleteFirmware Delete firmware
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId
  * @param imageId
- * @return ApiSpanDeleteFirmwareRequest
+ * @return ApiDeleteFirmwareRequest
  */
-func (a *FotaApiService) SpanDeleteFirmware(ctx _context.Context, collectionId string, imageId string) ApiSpanDeleteFirmwareRequest {
-	return ApiSpanDeleteFirmwareRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *FotaApiService) DeleteFirmware(ctx _context.Context, collectionId string, imageId string) ApiDeleteFirmwareRequest {
+	return ApiDeleteFirmwareRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		imageId:      imageId,
+		imageId: imageId,
 	}
 }
 
@@ -425,7 +427,7 @@ func (a *FotaApiService) SpanDeleteFirmware(ctx _context.Context, collectionId s
  * Execute executes the request
  * @return Firmware
  */
-func (a *FotaApiService) SpanDeleteFirmwareExecute(r ApiSpanDeleteFirmwareRequest) (Firmware, *_nethttp.Response, error) {
+func (a *FotaApiService) DeleteFirmwareExecute(r ApiDeleteFirmwareRequest) (Firmware, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -435,7 +437,7 @@ func (a *FotaApiService) SpanDeleteFirmwareExecute(r ApiSpanDeleteFirmwareReques
 		localVarReturnValue  Firmware
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FotaApiService.SpanDeleteFirmware")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FotaApiService.DeleteFirmware")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -551,13 +553,13 @@ func (a *FotaApiService) SpanDeleteFirmwareExecute(r ApiSpanDeleteFirmwareReques
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -573,31 +575,32 @@ func (a *FotaApiService) SpanDeleteFirmwareExecute(r ApiSpanDeleteFirmwareReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanFirmwareUsageRequest struct {
-	ctx          _context.Context
-	ApiService   *FotaApiService
+type ApiFirmwareUsageRequest struct {
+	ctx _context.Context
+	ApiService *FotaApiService
 	collectionId string
-	imageId      string
+	imageId string
 }
 
-func (r ApiSpanFirmwareUsageRequest) Execute() (FirmwareUsageResponse, *_nethttp.Response, error) {
-	return r.ApiService.SpanFirmwareUsageExecute(r)
+
+func (r ApiFirmwareUsageRequest) Execute() (FirmwareUsageResponse, *_nethttp.Response, error) {
+	return r.ApiService.FirmwareUsageExecute(r)
 }
 
 /*
- * SpanFirmwareUsage Firmware usage
+ * FirmwareUsage Firmware usage
  * Shows the firmware usage for devices in the collection
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId
  * @param imageId
- * @return ApiSpanFirmwareUsageRequest
+ * @return ApiFirmwareUsageRequest
  */
-func (a *FotaApiService) SpanFirmwareUsage(ctx _context.Context, collectionId string, imageId string) ApiSpanFirmwareUsageRequest {
-	return ApiSpanFirmwareUsageRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *FotaApiService) FirmwareUsage(ctx _context.Context, collectionId string, imageId string) ApiFirmwareUsageRequest {
+	return ApiFirmwareUsageRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		imageId:      imageId,
+		imageId: imageId,
 	}
 }
 
@@ -605,7 +608,7 @@ func (a *FotaApiService) SpanFirmwareUsage(ctx _context.Context, collectionId st
  * Execute executes the request
  * @return FirmwareUsageResponse
  */
-func (a *FotaApiService) SpanFirmwareUsageExecute(r ApiSpanFirmwareUsageRequest) (FirmwareUsageResponse, *_nethttp.Response, error) {
+func (a *FotaApiService) FirmwareUsageExecute(r ApiFirmwareUsageRequest) (FirmwareUsageResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
@@ -615,7 +618,7 @@ func (a *FotaApiService) SpanFirmwareUsageExecute(r ApiSpanFirmwareUsageRequest)
 		localVarReturnValue  FirmwareUsageResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FotaApiService.SpanFirmwareUsage")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FotaApiService.FirmwareUsage")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -731,13 +734,13 @@ func (a *FotaApiService) SpanFirmwareUsageExecute(r ApiSpanFirmwareUsageRequest)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -753,27 +756,28 @@ func (a *FotaApiService) SpanFirmwareUsageExecute(r ApiSpanFirmwareUsageRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanListFirmwareRequest struct {
-	ctx          _context.Context
-	ApiService   *FotaApiService
+type ApiListFirmwareRequest struct {
+	ctx _context.Context
+	ApiService *FotaApiService
 	collectionId string
 }
 
-func (r ApiSpanListFirmwareRequest) Execute() (ListFirmwareResponse, *_nethttp.Response, error) {
-	return r.ApiService.SpanListFirmwareExecute(r)
+
+func (r ApiListFirmwareRequest) Execute() (ListFirmwareResponse, *_nethttp.Response, error) {
+	return r.ApiService.ListFirmwareExecute(r)
 }
 
 /*
- * SpanListFirmware List firmware
+ * ListFirmware List firmware
  * Lists available firmware images in collection
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId
- * @return ApiSpanListFirmwareRequest
+ * @return ApiListFirmwareRequest
  */
-func (a *FotaApiService) SpanListFirmware(ctx _context.Context, collectionId string) ApiSpanListFirmwareRequest {
-	return ApiSpanListFirmwareRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *FotaApiService) ListFirmware(ctx _context.Context, collectionId string) ApiListFirmwareRequest {
+	return ApiListFirmwareRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -782,7 +786,7 @@ func (a *FotaApiService) SpanListFirmware(ctx _context.Context, collectionId str
  * Execute executes the request
  * @return ListFirmwareResponse
  */
-func (a *FotaApiService) SpanListFirmwareExecute(r ApiSpanListFirmwareRequest) (ListFirmwareResponse, *_nethttp.Response, error) {
+func (a *FotaApiService) ListFirmwareExecute(r ApiListFirmwareRequest) (ListFirmwareResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -792,7 +796,7 @@ func (a *FotaApiService) SpanListFirmwareExecute(r ApiSpanListFirmwareRequest) (
 		localVarReturnValue  ListFirmwareResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FotaApiService.SpanListFirmware")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FotaApiService.ListFirmware")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -907,13 +911,13 @@ func (a *FotaApiService) SpanListFirmwareExecute(r ApiSpanListFirmwareRequest) (
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -929,31 +933,32 @@ func (a *FotaApiService) SpanListFirmwareExecute(r ApiSpanListFirmwareRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanRetrieveFirmwareRequest struct {
-	ctx          _context.Context
-	ApiService   *FotaApiService
+type ApiRetrieveFirmwareRequest struct {
+	ctx _context.Context
+	ApiService *FotaApiService
 	collectionId string
-	imageId      string
+	imageId string
 }
 
-func (r ApiSpanRetrieveFirmwareRequest) Execute() (Firmware, *_nethttp.Response, error) {
-	return r.ApiService.SpanRetrieveFirmwareExecute(r)
+
+func (r ApiRetrieveFirmwareRequest) Execute() (Firmware, *_nethttp.Response, error) {
+	return r.ApiService.RetrieveFirmwareExecute(r)
 }
 
 /*
- * SpanRetrieveFirmware Retrieve firmware
+ * RetrieveFirmware Retrieve firmware
  * Retrieve information on a firmware image
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId
  * @param imageId
- * @return ApiSpanRetrieveFirmwareRequest
+ * @return ApiRetrieveFirmwareRequest
  */
-func (a *FotaApiService) SpanRetrieveFirmware(ctx _context.Context, collectionId string, imageId string) ApiSpanRetrieveFirmwareRequest {
-	return ApiSpanRetrieveFirmwareRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *FotaApiService) RetrieveFirmware(ctx _context.Context, collectionId string, imageId string) ApiRetrieveFirmwareRequest {
+	return ApiRetrieveFirmwareRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		imageId:      imageId,
+		imageId: imageId,
 	}
 }
 
@@ -961,7 +966,7 @@ func (a *FotaApiService) SpanRetrieveFirmware(ctx _context.Context, collectionId
  * Execute executes the request
  * @return Firmware
  */
-func (a *FotaApiService) SpanRetrieveFirmwareExecute(r ApiSpanRetrieveFirmwareRequest) (Firmware, *_nethttp.Response, error) {
+func (a *FotaApiService) RetrieveFirmwareExecute(r ApiRetrieveFirmwareRequest) (Firmware, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -971,7 +976,7 @@ func (a *FotaApiService) SpanRetrieveFirmwareExecute(r ApiSpanRetrieveFirmwareRe
 		localVarReturnValue  Firmware
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FotaApiService.SpanRetrieveFirmware")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FotaApiService.RetrieveFirmware")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -1087,13 +1092,13 @@ func (a *FotaApiService) SpanRetrieveFirmwareExecute(r ApiSpanRetrieveFirmwareRe
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1109,36 +1114,36 @@ func (a *FotaApiService) SpanRetrieveFirmwareExecute(r ApiSpanRetrieveFirmwareRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanUpdateFirmwareRequest struct {
-	ctx          _context.Context
-	ApiService   *FotaApiService
+type ApiUpdateFirmwareRequest struct {
+	ctx _context.Context
+	ApiService *FotaApiService
 	collectionId string
-	imageId      string
-	body         *Firmware
+	imageId string
+	body *Firmware
 }
 
-func (r ApiSpanUpdateFirmwareRequest) Body(body Firmware) ApiSpanUpdateFirmwareRequest {
+func (r ApiUpdateFirmwareRequest) Body(body Firmware) ApiUpdateFirmwareRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiSpanUpdateFirmwareRequest) Execute() (Firmware, *_nethttp.Response, error) {
-	return r.ApiService.SpanUpdateFirmwareExecute(r)
+func (r ApiUpdateFirmwareRequest) Execute() (Firmware, *_nethttp.Response, error) {
+	return r.ApiService.UpdateFirmwareExecute(r)
 }
 
 /*
- * SpanUpdateFirmware Update firmware
+ * UpdateFirmware Update firmware
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId Collection ID  Collection ID for the collection owning the firmware image.
  * @param imageId Firmware image ID
- * @return ApiSpanUpdateFirmwareRequest
+ * @return ApiUpdateFirmwareRequest
  */
-func (a *FotaApiService) SpanUpdateFirmware(ctx _context.Context, collectionId string, imageId string) ApiSpanUpdateFirmwareRequest {
-	return ApiSpanUpdateFirmwareRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *FotaApiService) UpdateFirmware(ctx _context.Context, collectionId string, imageId string) ApiUpdateFirmwareRequest {
+	return ApiUpdateFirmwareRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		imageId:      imageId,
+		imageId: imageId,
 	}
 }
 
@@ -1146,7 +1151,7 @@ func (a *FotaApiService) SpanUpdateFirmware(ctx _context.Context, collectionId s
  * Execute executes the request
  * @return Firmware
  */
-func (a *FotaApiService) SpanUpdateFirmwareExecute(r ApiSpanUpdateFirmwareRequest) (Firmware, *_nethttp.Response, error) {
+func (a *FotaApiService) UpdateFirmwareExecute(r ApiUpdateFirmwareRequest) (Firmware, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
@@ -1156,7 +1161,7 @@ func (a *FotaApiService) SpanUpdateFirmwareExecute(r ApiSpanUpdateFirmwareReques
 		localVarReturnValue  Firmware
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FotaApiService.SpanUpdateFirmware")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FotaApiService.UpdateFirmware")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -1277,13 +1282,13 @@ func (a *FotaApiService) SpanUpdateFirmwareExecute(r ApiSpanUpdateFirmwareReques
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

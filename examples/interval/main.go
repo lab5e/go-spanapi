@@ -50,7 +50,7 @@ func main() {
 	ctx, done := apitools.ContextWithAuth(token, time.Second*60)
 	defer done()
 
-	collection, _, err := client.CollectionsApi.SpanRetrieveCollection(ctx, collectionID).Execute()
+	collection, _, err := client.CollectionsApi.RetrieveCollection(ctx, collectionID).Execute()
 	if err != nil {
 		fmt.Println("Error retrieving collection: ", err.Error())
 		return
@@ -72,7 +72,7 @@ func main() {
 		}
 
 		req := client.CollectionsApi.
-			SpanListCollectionData(ctx, *collection.CollectionId).
+			ListCollectionData(ctx, *collection.CollectionId).
 			Limit(10)
 		if rows == 0 {
 			// The first time we request data we use the start and end parameters

@@ -4,19 +4,19 @@ All URIs are relative to *https://api.lab5e.com/span*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SpanBroadcastMessage**](CollectionsApi.md#SpanBroadcastMessage) | **Post** /collections/{collectionId}/to | Broadcast message
-[**SpanCreateCollection**](CollectionsApi.md#SpanCreateCollection) | **Post** /collections | Create collection
-[**SpanDeleteCollection**](CollectionsApi.md#SpanDeleteCollection) | **Delete** /collections/{collectionId} | Delete collection
-[**SpanListCollectionData**](CollectionsApi.md#SpanListCollectionData) | **Get** /collections/{collectionId}/data | Get payloads
-[**SpanListCollections**](CollectionsApi.md#SpanListCollections) | **Get** /collections | List collections
-[**SpanRetrieveCollection**](CollectionsApi.md#SpanRetrieveCollection) | **Get** /collections/{collectionId} | Retrieve collection
-[**SpanUpdateCollection**](CollectionsApi.md#SpanUpdateCollection) | **Patch** /collections/{collectionId} | Update collection
+[**BroadcastMessage**](CollectionsApi.md#BroadcastMessage) | **Post** /collections/{collectionId}/to | Broadcast message
+[**CreateCollection**](CollectionsApi.md#CreateCollection) | **Post** /collections | Create collection
+[**DeleteCollection**](CollectionsApi.md#DeleteCollection) | **Delete** /collections/{collectionId} | Delete collection
+[**ListCollectionData**](CollectionsApi.md#ListCollectionData) | **Get** /collections/{collectionId}/data | Get payloads
+[**ListCollections**](CollectionsApi.md#ListCollections) | **Get** /collections | List collections
+[**RetrieveCollection**](CollectionsApi.md#RetrieveCollection) | **Get** /collections/{collectionId} | Retrieve collection
+[**UpdateCollection**](CollectionsApi.md#UpdateCollection) | **Patch** /collections/{collectionId} | Update collection
 
 
 
-## SpanBroadcastMessage
+## BroadcastMessage
 
-> MultiSendMessageResponse SpanBroadcastMessage(ctx, collectionId).Body(body).Execute()
+> MultiSendMessageResponse BroadcastMessage(ctx, collectionId).Body(body).Execute()
 
 Broadcast message
 
@@ -40,13 +40,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CollectionsApi.SpanBroadcastMessage(context.Background(), collectionId).Body(body).Execute()
+    resp, r, err := api_client.CollectionsApi.BroadcastMessage(context.Background(), collectionId).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.SpanBroadcastMessage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.BroadcastMessage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanBroadcastMessage`: MultiSendMessageResponse
-    fmt.Fprintf(os.Stdout, "Response from `CollectionsApi.SpanBroadcastMessage`: %v\n", resp)
+    // response from `BroadcastMessage`: MultiSendMessageResponse
+    fmt.Fprintf(os.Stdout, "Response from `CollectionsApi.BroadcastMessage`: %v\n", resp)
 }
 ```
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanBroadcastMessageRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiBroadcastMessageRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -86,9 +86,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanCreateCollection
+## CreateCollection
 
-> Collection SpanCreateCollection(ctx).Body(body).Execute()
+> Collection CreateCollection(ctx).Body(body).Execute()
 
 Create collection
 
@@ -111,13 +111,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CollectionsApi.SpanCreateCollection(context.Background()).Body(body).Execute()
+    resp, r, err := api_client.CollectionsApi.CreateCollection(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.SpanCreateCollection``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.CreateCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanCreateCollection`: Collection
-    fmt.Fprintf(os.Stdout, "Response from `CollectionsApi.SpanCreateCollection`: %v\n", resp)
+    // response from `CreateCollection`: Collection
+    fmt.Fprintf(os.Stdout, "Response from `CollectionsApi.CreateCollection`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanCreateCollectionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateCollectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -152,9 +152,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanDeleteCollection
+## DeleteCollection
 
-> Collection SpanDeleteCollection(ctx, collectionId).Execute()
+> Collection DeleteCollection(ctx, collectionId).Execute()
 
 Delete collection
 
@@ -177,13 +177,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CollectionsApi.SpanDeleteCollection(context.Background(), collectionId).Execute()
+    resp, r, err := api_client.CollectionsApi.DeleteCollection(context.Background(), collectionId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.SpanDeleteCollection``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.DeleteCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanDeleteCollection`: Collection
-    fmt.Fprintf(os.Stdout, "Response from `CollectionsApi.SpanDeleteCollection`: %v\n", resp)
+    // response from `DeleteCollection`: Collection
+    fmt.Fprintf(os.Stdout, "Response from `CollectionsApi.DeleteCollection`: %v\n", resp)
 }
 ```
 
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanDeleteCollectionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteCollectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -222,9 +222,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanListCollectionData
+## ListCollectionData
 
-> ListDataResponse SpanListCollectionData(ctx, collectionId).Limit(limit).Start(start).End(end).Offset(offset).Execute()
+> ListDataResponse ListCollectionData(ctx, collectionId).Limit(limit).Start(start).End(end).Offset(offset).Execute()
 
 Get payloads
 
@@ -251,13 +251,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CollectionsApi.SpanListCollectionData(context.Background(), collectionId).Limit(limit).Start(start).End(end).Offset(offset).Execute()
+    resp, r, err := api_client.CollectionsApi.ListCollectionData(context.Background(), collectionId).Limit(limit).Start(start).End(end).Offset(offset).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.SpanListCollectionData``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.ListCollectionData``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanListCollectionData`: ListDataResponse
-    fmt.Fprintf(os.Stdout, "Response from `CollectionsApi.SpanListCollectionData`: %v\n", resp)
+    // response from `ListCollectionData`: ListDataResponse
+    fmt.Fprintf(os.Stdout, "Response from `CollectionsApi.ListCollectionData`: %v\n", resp)
 }
 ```
 
@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanListCollectionDataRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListCollectionDataRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -300,9 +300,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanListCollections
+## ListCollections
 
-> ListCollectionResponse SpanListCollections(ctx).Execute()
+> ListCollectionResponse ListCollections(ctx).Execute()
 
 List collections
 
@@ -324,13 +324,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CollectionsApi.SpanListCollections(context.Background()).Execute()
+    resp, r, err := api_client.CollectionsApi.ListCollections(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.SpanListCollections``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.ListCollections``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanListCollections`: ListCollectionResponse
-    fmt.Fprintf(os.Stdout, "Response from `CollectionsApi.SpanListCollections`: %v\n", resp)
+    // response from `ListCollections`: ListCollectionResponse
+    fmt.Fprintf(os.Stdout, "Response from `CollectionsApi.ListCollections`: %v\n", resp)
 }
 ```
 
@@ -340,7 +340,7 @@ This endpoint does not need any parameter.
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanListCollectionsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListCollectionsRequest struct via the builder pattern
 
 
 ### Return type
@@ -361,9 +361,9 @@ Other parameters are passed through a pointer to a apiSpanListCollectionsRequest
 [[Back to README]](../README.md)
 
 
-## SpanRetrieveCollection
+## RetrieveCollection
 
-> Collection SpanRetrieveCollection(ctx, collectionId).Execute()
+> Collection RetrieveCollection(ctx, collectionId).Execute()
 
 Retrieve collection
 
@@ -384,13 +384,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CollectionsApi.SpanRetrieveCollection(context.Background(), collectionId).Execute()
+    resp, r, err := api_client.CollectionsApi.RetrieveCollection(context.Background(), collectionId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.SpanRetrieveCollection``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.RetrieveCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanRetrieveCollection`: Collection
-    fmt.Fprintf(os.Stdout, "Response from `CollectionsApi.SpanRetrieveCollection`: %v\n", resp)
+    // response from `RetrieveCollection`: Collection
+    fmt.Fprintf(os.Stdout, "Response from `CollectionsApi.RetrieveCollection`: %v\n", resp)
 }
 ```
 
@@ -404,7 +404,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanRetrieveCollectionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRetrieveCollectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -429,9 +429,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanUpdateCollection
+## UpdateCollection
 
-> Collection SpanUpdateCollection(ctx, collectionId).Body(body).Execute()
+> Collection UpdateCollection(ctx, collectionId).Body(body).Execute()
 
 Update collection
 
@@ -455,13 +455,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CollectionsApi.SpanUpdateCollection(context.Background(), collectionId).Body(body).Execute()
+    resp, r, err := api_client.CollectionsApi.UpdateCollection(context.Background(), collectionId).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.SpanUpdateCollection``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.UpdateCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanUpdateCollection`: Collection
-    fmt.Fprintf(os.Stdout, "Response from `CollectionsApi.SpanUpdateCollection`: %v\n", resp)
+    // response from `UpdateCollection`: Collection
+    fmt.Fprintf(os.Stdout, "Response from `CollectionsApi.UpdateCollection`: %v\n", resp)
 }
 ```
 
@@ -475,7 +475,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanUpdateCollectionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateCollectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

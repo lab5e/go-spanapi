@@ -4,13 +4,13 @@ All URIs are relative to *https://api.lab5e.com/span*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SpanGetSystemInfo**](SystemApi.md#SpanGetSystemInfo) | **Get** /system | System information
+[**GetSystemInfo**](SystemApi.md#GetSystemInfo) | **Get** /system | System information
 
 
 
-## SpanGetSystemInfo
+## GetSystemInfo
 
-> SystemInfoResponse SpanGetSystemInfo(ctx).Execute()
+> SystemInfoResponse GetSystemInfo(ctx).Execute()
 
 System information
 
@@ -30,13 +30,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SystemApi.SpanGetSystemInfo(context.Background()).Execute()
+    resp, r, err := api_client.SystemApi.GetSystemInfo(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SystemApi.SpanGetSystemInfo``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SystemApi.GetSystemInfo``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanGetSystemInfo`: SystemInfoResponse
-    fmt.Fprintf(os.Stdout, "Response from `SystemApi.SpanGetSystemInfo`: %v\n", resp)
+    // response from `GetSystemInfo`: SystemInfoResponse
+    fmt.Fprintf(os.Stdout, "Response from `SystemApi.GetSystemInfo`: %v\n", resp)
 }
 ```
 
@@ -46,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanGetSystemInfoRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetSystemInfoRequest struct via the builder pattern
 
 
 ### Return type

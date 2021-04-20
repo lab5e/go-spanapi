@@ -27,24 +27,25 @@ var (
 // SystemApiService SystemApi service
 type SystemApiService service
 
-type ApiSpanGetSystemInfoRequest struct {
-	ctx        _context.Context
+type ApiGetSystemInfoRequest struct {
+	ctx _context.Context
 	ApiService *SystemApiService
 }
 
-func (r ApiSpanGetSystemInfoRequest) Execute() (SystemInfoResponse, *_nethttp.Response, error) {
-	return r.ApiService.SpanGetSystemInfoExecute(r)
+
+func (r ApiGetSystemInfoRequest) Execute() (SystemInfoResponse, *_nethttp.Response, error) {
+	return r.ApiService.GetSystemInfoExecute(r)
 }
 
 /*
- * SpanGetSystemInfo System information
+ * GetSystemInfo System information
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiSpanGetSystemInfoRequest
+ * @return ApiGetSystemInfoRequest
  */
-func (a *SystemApiService) SpanGetSystemInfo(ctx _context.Context) ApiSpanGetSystemInfoRequest {
-	return ApiSpanGetSystemInfoRequest{
+func (a *SystemApiService) GetSystemInfo(ctx _context.Context) ApiGetSystemInfoRequest {
+	return ApiGetSystemInfoRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
@@ -52,7 +53,7 @@ func (a *SystemApiService) SpanGetSystemInfo(ctx _context.Context) ApiSpanGetSys
  * Execute executes the request
  * @return SystemInfoResponse
  */
-func (a *SystemApiService) SpanGetSystemInfoExecute(r ApiSpanGetSystemInfoRequest) (SystemInfoResponse, *_nethttp.Response, error) {
+func (a *SystemApiService) GetSystemInfoExecute(r ApiGetSystemInfoRequest) (SystemInfoResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -62,7 +63,7 @@ func (a *SystemApiService) SpanGetSystemInfoExecute(r ApiSpanGetSystemInfoReques
 		localVarReturnValue  SystemInfoResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemApiService.SpanGetSystemInfo")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemApiService.GetSystemInfo")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -176,13 +177,13 @@ func (a *SystemApiService) SpanGetSystemInfoExecute(r ApiSpanGetSystemInfoReques
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

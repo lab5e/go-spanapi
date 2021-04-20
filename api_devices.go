@@ -28,33 +28,33 @@ var (
 // DevicesApiService DevicesApi service
 type DevicesApiService service
 
-type ApiSpanCreateDeviceRequest struct {
-	ctx          _context.Context
-	ApiService   *DevicesApiService
+type ApiCreateDeviceRequest struct {
+	ctx _context.Context
+	ApiService *DevicesApiService
 	collectionId string
-	body         *Device
+	body *Device
 }
 
-func (r ApiSpanCreateDeviceRequest) Body(body Device) ApiSpanCreateDeviceRequest {
+func (r ApiCreateDeviceRequest) Body(body Device) ApiCreateDeviceRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiSpanCreateDeviceRequest) Execute() (Device, *_nethttp.Response, error) {
-	return r.ApiService.SpanCreateDeviceExecute(r)
+func (r ApiCreateDeviceRequest) Execute() (Device, *_nethttp.Response, error) {
+	return r.ApiService.CreateDeviceExecute(r)
 }
 
 /*
- * SpanCreateDevice Create device
+ * CreateDevice Create device
  * Create a new device. This will add a device to the collection. You must have write access to the collection.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId This is the containing collection
- * @return ApiSpanCreateDeviceRequest
+ * @return ApiCreateDeviceRequest
  */
-func (a *DevicesApiService) SpanCreateDevice(ctx _context.Context, collectionId string) ApiSpanCreateDeviceRequest {
-	return ApiSpanCreateDeviceRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *DevicesApiService) CreateDevice(ctx _context.Context, collectionId string) ApiCreateDeviceRequest {
+	return ApiCreateDeviceRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -63,7 +63,7 @@ func (a *DevicesApiService) SpanCreateDevice(ctx _context.Context, collectionId 
  * Execute executes the request
  * @return Device
  */
-func (a *DevicesApiService) SpanCreateDeviceExecute(r ApiSpanCreateDeviceRequest) (Device, *_nethttp.Response, error) {
+func (a *DevicesApiService) CreateDeviceExecute(r ApiCreateDeviceRequest) (Device, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -73,7 +73,7 @@ func (a *DevicesApiService) SpanCreateDeviceExecute(r ApiSpanCreateDeviceRequest
 		localVarReturnValue  Device
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.SpanCreateDevice")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.CreateDevice")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -193,13 +193,13 @@ func (a *DevicesApiService) SpanCreateDeviceExecute(r ApiSpanCreateDeviceRequest
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -215,30 +215,31 @@ func (a *DevicesApiService) SpanCreateDeviceExecute(r ApiSpanCreateDeviceRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanDeleteDeviceRequest struct {
-	ctx          _context.Context
-	ApiService   *DevicesApiService
+type ApiDeleteDeviceRequest struct {
+	ctx _context.Context
+	ApiService *DevicesApiService
 	collectionId string
-	deviceId     string
+	deviceId string
 }
 
-func (r ApiSpanDeleteDeviceRequest) Execute() (Device, *_nethttp.Response, error) {
-	return r.ApiService.SpanDeleteDeviceExecute(r)
+
+func (r ApiDeleteDeviceRequest) Execute() (Device, *_nethttp.Response, error) {
+	return r.ApiService.DeleteDeviceExecute(r)
 }
 
 /*
- * SpanDeleteDevice Remove device
+ * DeleteDevice Remove device
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId
  * @param deviceId
- * @return ApiSpanDeleteDeviceRequest
+ * @return ApiDeleteDeviceRequest
  */
-func (a *DevicesApiService) SpanDeleteDevice(ctx _context.Context, collectionId string, deviceId string) ApiSpanDeleteDeviceRequest {
-	return ApiSpanDeleteDeviceRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *DevicesApiService) DeleteDevice(ctx _context.Context, collectionId string, deviceId string) ApiDeleteDeviceRequest {
+	return ApiDeleteDeviceRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		deviceId:     deviceId,
+		deviceId: deviceId,
 	}
 }
 
@@ -246,7 +247,7 @@ func (a *DevicesApiService) SpanDeleteDevice(ctx _context.Context, collectionId 
  * Execute executes the request
  * @return Device
  */
-func (a *DevicesApiService) SpanDeleteDeviceExecute(r ApiSpanDeleteDeviceRequest) (Device, *_nethttp.Response, error) {
+func (a *DevicesApiService) DeleteDeviceExecute(r ApiDeleteDeviceRequest) (Device, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -256,7 +257,7 @@ func (a *DevicesApiService) SpanDeleteDeviceExecute(r ApiSpanDeleteDeviceRequest
 		localVarReturnValue  Device
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.SpanDeleteDevice")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.DeleteDevice")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -372,13 +373,13 @@ func (a *DevicesApiService) SpanDeleteDeviceExecute(r ApiSpanDeleteDeviceRequest
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -394,52 +395,52 @@ func (a *DevicesApiService) SpanDeleteDeviceExecute(r ApiSpanDeleteDeviceRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanListDeviceDataRequest struct {
-	ctx          _context.Context
-	ApiService   *DevicesApiService
+type ApiListDeviceDataRequest struct {
+	ctx _context.Context
+	ApiService *DevicesApiService
 	collectionId string
-	deviceId     string
-	limit        *int32
-	start        *string
-	end          *string
-	offset       *string
+	deviceId string
+	limit *int32
+	start *string
+	end *string
+	offset *string
 }
 
-func (r ApiSpanListDeviceDataRequest) Limit(limit int32) ApiSpanListDeviceDataRequest {
+func (r ApiListDeviceDataRequest) Limit(limit int32) ApiListDeviceDataRequest {
 	r.limit = &limit
 	return r
 }
-func (r ApiSpanListDeviceDataRequest) Start(start string) ApiSpanListDeviceDataRequest {
+func (r ApiListDeviceDataRequest) Start(start string) ApiListDeviceDataRequest {
 	r.start = &start
 	return r
 }
-func (r ApiSpanListDeviceDataRequest) End(end string) ApiSpanListDeviceDataRequest {
+func (r ApiListDeviceDataRequest) End(end string) ApiListDeviceDataRequest {
 	r.end = &end
 	return r
 }
-func (r ApiSpanListDeviceDataRequest) Offset(offset string) ApiSpanListDeviceDataRequest {
+func (r ApiListDeviceDataRequest) Offset(offset string) ApiListDeviceDataRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiSpanListDeviceDataRequest) Execute() (ListDataResponse, *_nethttp.Response, error) {
-	return r.ApiService.SpanListDeviceDataExecute(r)
+func (r ApiListDeviceDataRequest) Execute() (ListDataResponse, *_nethttp.Response, error) {
+	return r.ApiService.ListDeviceDataExecute(r)
 }
 
 /*
- * SpanListDeviceData Get payloads
+ * ListDeviceData Get payloads
  * List the data received from the device. Use the query parameters to control what data you retrieve.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId The collection ID. This is included in the request path.
  * @param deviceId The device ID. This is included in the request path.
- * @return ApiSpanListDeviceDataRequest
+ * @return ApiListDeviceDataRequest
  */
-func (a *DevicesApiService) SpanListDeviceData(ctx _context.Context, collectionId string, deviceId string) ApiSpanListDeviceDataRequest {
-	return ApiSpanListDeviceDataRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *DevicesApiService) ListDeviceData(ctx _context.Context, collectionId string, deviceId string) ApiListDeviceDataRequest {
+	return ApiListDeviceDataRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		deviceId:     deviceId,
+		deviceId: deviceId,
 	}
 }
 
@@ -447,7 +448,7 @@ func (a *DevicesApiService) SpanListDeviceData(ctx _context.Context, collectionI
  * Execute executes the request
  * @return ListDataResponse
  */
-func (a *DevicesApiService) SpanListDeviceDataExecute(r ApiSpanListDeviceDataRequest) (ListDataResponse, *_nethttp.Response, error) {
+func (a *DevicesApiService) ListDeviceDataExecute(r ApiListDeviceDataRequest) (ListDataResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -457,7 +458,7 @@ func (a *DevicesApiService) SpanListDeviceDataExecute(r ApiSpanListDeviceDataReq
 		localVarReturnValue  ListDataResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.SpanListDeviceData")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.ListDeviceData")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -585,13 +586,13 @@ func (a *DevicesApiService) SpanListDeviceDataExecute(r ApiSpanListDeviceDataReq
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -607,26 +608,27 @@ func (a *DevicesApiService) SpanListDeviceDataExecute(r ApiSpanListDeviceDataReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanListDevicesRequest struct {
-	ctx          _context.Context
-	ApiService   *DevicesApiService
+type ApiListDevicesRequest struct {
+	ctx _context.Context
+	ApiService *DevicesApiService
 	collectionId string
 }
 
-func (r ApiSpanListDevicesRequest) Execute() (ListDevicesResponse, *_nethttp.Response, error) {
-	return r.ApiService.SpanListDevicesExecute(r)
+
+func (r ApiListDevicesRequest) Execute() (ListDevicesResponse, *_nethttp.Response, error) {
+	return r.ApiService.ListDevicesExecute(r)
 }
 
 /*
- * SpanListDevices List devices
+ * ListDevices List devices
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId
- * @return ApiSpanListDevicesRequest
+ * @return ApiListDevicesRequest
  */
-func (a *DevicesApiService) SpanListDevices(ctx _context.Context, collectionId string) ApiSpanListDevicesRequest {
-	return ApiSpanListDevicesRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *DevicesApiService) ListDevices(ctx _context.Context, collectionId string) ApiListDevicesRequest {
+	return ApiListDevicesRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -635,7 +637,7 @@ func (a *DevicesApiService) SpanListDevices(ctx _context.Context, collectionId s
  * Execute executes the request
  * @return ListDevicesResponse
  */
-func (a *DevicesApiService) SpanListDevicesExecute(r ApiSpanListDevicesRequest) (ListDevicesResponse, *_nethttp.Response, error) {
+func (a *DevicesApiService) ListDevicesExecute(r ApiListDevicesRequest) (ListDevicesResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -645,7 +647,7 @@ func (a *DevicesApiService) SpanListDevicesExecute(r ApiSpanListDevicesRequest) 
 		localVarReturnValue  ListDevicesResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.SpanListDevices")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.ListDevices")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -760,13 +762,13 @@ func (a *DevicesApiService) SpanListDevicesExecute(r ApiSpanListDevicesRequest) 
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -782,31 +784,32 @@ func (a *DevicesApiService) SpanListDevicesExecute(r ApiSpanListDevicesRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanRetrieveDeviceRequest struct {
-	ctx          _context.Context
-	ApiService   *DevicesApiService
+type ApiRetrieveDeviceRequest struct {
+	ctx _context.Context
+	ApiService *DevicesApiService
 	collectionId string
-	deviceId     string
+	deviceId string
 }
 
-func (r ApiSpanRetrieveDeviceRequest) Execute() (Device, *_nethttp.Response, error) {
-	return r.ApiService.SpanRetrieveDeviceExecute(r)
+
+func (r ApiRetrieveDeviceRequest) Execute() (Device, *_nethttp.Response, error) {
+	return r.ApiService.RetrieveDeviceExecute(r)
 }
 
 /*
- * SpanRetrieveDevice Retrieve device
+ * RetrieveDevice Retrieve device
  * Retrieve a single device
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId
  * @param deviceId
- * @return ApiSpanRetrieveDeviceRequest
+ * @return ApiRetrieveDeviceRequest
  */
-func (a *DevicesApiService) SpanRetrieveDevice(ctx _context.Context, collectionId string, deviceId string) ApiSpanRetrieveDeviceRequest {
-	return ApiSpanRetrieveDeviceRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *DevicesApiService) RetrieveDevice(ctx _context.Context, collectionId string, deviceId string) ApiRetrieveDeviceRequest {
+	return ApiRetrieveDeviceRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		deviceId:     deviceId,
+		deviceId: deviceId,
 	}
 }
 
@@ -814,7 +817,7 @@ func (a *DevicesApiService) SpanRetrieveDevice(ctx _context.Context, collectionI
  * Execute executes the request
  * @return Device
  */
-func (a *DevicesApiService) SpanRetrieveDeviceExecute(r ApiSpanRetrieveDeviceRequest) (Device, *_nethttp.Response, error) {
+func (a *DevicesApiService) RetrieveDeviceExecute(r ApiRetrieveDeviceRequest) (Device, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -824,7 +827,7 @@ func (a *DevicesApiService) SpanRetrieveDeviceExecute(r ApiSpanRetrieveDeviceReq
 		localVarReturnValue  Device
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.SpanRetrieveDevice")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.RetrieveDevice")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -940,13 +943,13 @@ func (a *DevicesApiService) SpanRetrieveDeviceExecute(r ApiSpanRetrieveDeviceReq
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -962,37 +965,37 @@ func (a *DevicesApiService) SpanRetrieveDeviceExecute(r ApiSpanRetrieveDeviceReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanSendMessageRequest struct {
-	ctx          _context.Context
-	ApiService   *DevicesApiService
+type ApiSendMessageRequest struct {
+	ctx _context.Context
+	ApiService *DevicesApiService
 	collectionId string
-	deviceId     string
-	body         *SendMessageRequest
+	deviceId string
+	body *SendMessageRequest
 }
 
-func (r ApiSpanSendMessageRequest) Body(body SendMessageRequest) ApiSpanSendMessageRequest {
+func (r ApiSendMessageRequest) Body(body SendMessageRequest) ApiSendMessageRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiSpanSendMessageRequest) Execute() (SendMessageResponse, *_nethttp.Response, error) {
-	return r.ApiService.SpanSendMessageExecute(r)
+func (r ApiSendMessageRequest) Execute() (SendMessageResponse, *_nethttp.Response, error) {
+	return r.ApiService.SendMessageExecute(r)
 }
 
 /*
- * SpanSendMessage Send message
+ * SendMessage Send message
  * Send a message to the device
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param collectionId
  * @param deviceId
- * @return ApiSpanSendMessageRequest
+ * @return ApiSendMessageRequest
  */
-func (a *DevicesApiService) SpanSendMessage(ctx _context.Context, collectionId string, deviceId string) ApiSpanSendMessageRequest {
-	return ApiSpanSendMessageRequest{
-		ApiService:   a,
-		ctx:          ctx,
+func (a *DevicesApiService) SendMessage(ctx _context.Context, collectionId string, deviceId string) ApiSendMessageRequest {
+	return ApiSendMessageRequest{
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		deviceId:     deviceId,
+		deviceId: deviceId,
 	}
 }
 
@@ -1000,7 +1003,7 @@ func (a *DevicesApiService) SpanSendMessage(ctx _context.Context, collectionId s
  * Execute executes the request
  * @return SendMessageResponse
  */
-func (a *DevicesApiService) SpanSendMessageExecute(r ApiSpanSendMessageRequest) (SendMessageResponse, *_nethttp.Response, error) {
+func (a *DevicesApiService) SendMessageExecute(r ApiSendMessageRequest) (SendMessageResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -1010,7 +1013,7 @@ func (a *DevicesApiService) SpanSendMessageExecute(r ApiSpanSendMessageRequest) 
 		localVarReturnValue  SendMessageResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.SpanSendMessage")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.SendMessage")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -1131,13 +1134,13 @@ func (a *DevicesApiService) SpanSendMessageExecute(r ApiSpanSendMessageRequest) 
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1153,36 +1156,36 @@ func (a *DevicesApiService) SpanSendMessageExecute(r ApiSpanSendMessageRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSpanUpdateDeviceRequest struct {
-	ctx                  _context.Context
-	ApiService           *DevicesApiService
+type ApiUpdateDeviceRequest struct {
+	ctx _context.Context
+	ApiService *DevicesApiService
 	existingCollectionId string
-	deviceId             string
-	body                 *UpdateDeviceRequest
+	deviceId string
+	body *UpdateDeviceRequest
 }
 
-func (r ApiSpanUpdateDeviceRequest) Body(body UpdateDeviceRequest) ApiSpanUpdateDeviceRequest {
+func (r ApiUpdateDeviceRequest) Body(body UpdateDeviceRequest) ApiUpdateDeviceRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiSpanUpdateDeviceRequest) Execute() (Device, *_nethttp.Response, error) {
-	return r.ApiService.SpanUpdateDeviceExecute(r)
+func (r ApiUpdateDeviceRequest) Execute() (Device, *_nethttp.Response, error) {
+	return r.ApiService.UpdateDeviceExecute(r)
 }
 
 /*
- * SpanUpdateDevice Update device
+ * UpdateDevice Update device
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param existingCollectionId
  * @param deviceId
- * @return ApiSpanUpdateDeviceRequest
+ * @return ApiUpdateDeviceRequest
  */
-func (a *DevicesApiService) SpanUpdateDevice(ctx _context.Context, existingCollectionId string, deviceId string) ApiSpanUpdateDeviceRequest {
-	return ApiSpanUpdateDeviceRequest{
-		ApiService:           a,
-		ctx:                  ctx,
+func (a *DevicesApiService) UpdateDevice(ctx _context.Context, existingCollectionId string, deviceId string) ApiUpdateDeviceRequest {
+	return ApiUpdateDeviceRequest{
+		ApiService: a,
+		ctx: ctx,
 		existingCollectionId: existingCollectionId,
-		deviceId:             deviceId,
+		deviceId: deviceId,
 	}
 }
 
@@ -1190,7 +1193,7 @@ func (a *DevicesApiService) SpanUpdateDevice(ctx _context.Context, existingColle
  * Execute executes the request
  * @return Device
  */
-func (a *DevicesApiService) SpanUpdateDeviceExecute(r ApiSpanUpdateDeviceRequest) (Device, *_nethttp.Response, error) {
+func (a *DevicesApiService) UpdateDeviceExecute(r ApiUpdateDeviceRequest) (Device, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
@@ -1200,7 +1203,7 @@ func (a *DevicesApiService) SpanUpdateDeviceExecute(r ApiSpanUpdateDeviceRequest
 		localVarReturnValue  Device
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.SpanUpdateDevice")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.UpdateDevice")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -1321,13 +1324,13 @@ func (a *DevicesApiService) SpanUpdateDeviceExecute(r ApiSpanUpdateDeviceRequest
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

@@ -27,31 +27,31 @@ var (
 // DatadumpApiService DatadumpApi service
 type DatadumpApiService service
 
-type ApiSpanDataDumpRequest struct {
-	ctx        _context.Context
+type ApiDataDumpRequest struct {
+	ctx _context.Context
 	ApiService *DatadumpApiService
-	body       *DataDumpRequest
+	body *DataDumpRequest
 }
 
-func (r ApiSpanDataDumpRequest) Body(body DataDumpRequest) ApiSpanDataDumpRequest {
+func (r ApiDataDumpRequest) Body(body DataDumpRequest) ApiDataDumpRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiSpanDataDumpRequest) Execute() (DataDumpResponse, *_nethttp.Response, error) {
-	return r.ApiService.SpanDataDumpExecute(r)
+func (r ApiDataDumpRequest) Execute() (DataDumpResponse, *_nethttp.Response, error) {
+	return r.ApiService.DataDumpExecute(r)
 }
 
 /*
- * SpanDataDump Data dump
+ * DataDump Data dump
  * Do a complete data dump of your data, devices, outputs and collections.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiSpanDataDumpRequest
+ * @return ApiDataDumpRequest
  */
-func (a *DatadumpApiService) SpanDataDump(ctx _context.Context) ApiSpanDataDumpRequest {
-	return ApiSpanDataDumpRequest{
+func (a *DatadumpApiService) DataDump(ctx _context.Context) ApiDataDumpRequest {
+	return ApiDataDumpRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
@@ -59,7 +59,7 @@ func (a *DatadumpApiService) SpanDataDump(ctx _context.Context) ApiSpanDataDumpR
  * Execute executes the request
  * @return DataDumpResponse
  */
-func (a *DatadumpApiService) SpanDataDumpExecute(r ApiSpanDataDumpRequest) (DataDumpResponse, *_nethttp.Response, error) {
+func (a *DatadumpApiService) DataDumpExecute(r ApiDataDumpRequest) (DataDumpResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -69,7 +69,7 @@ func (a *DatadumpApiService) SpanDataDumpExecute(r ApiSpanDataDumpRequest) (Data
 		localVarReturnValue  DataDumpResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatadumpApiService.SpanDataDump")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatadumpApiService.DataDump")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -188,13 +188,13 @@ func (a *DatadumpApiService) SpanDataDumpExecute(r ApiSpanDataDumpRequest) (Data
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

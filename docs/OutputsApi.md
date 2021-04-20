@@ -4,19 +4,19 @@ All URIs are relative to *https://api.lab5e.com/span*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SpanCreateOutput**](OutputsApi.md#SpanCreateOutput) | **Post** /collections/{collectionId}/outputs | Create output
-[**SpanDeleteOutput**](OutputsApi.md#SpanDeleteOutput) | **Delete** /collections/{collectionId}/outputs/{outputId} | Delete output
-[**SpanListOutputs**](OutputsApi.md#SpanListOutputs) | **Get** /collections/{collectionId}/outputs | List outputs
-[**SpanLogs**](OutputsApi.md#SpanLogs) | **Get** /collections/{collectionId}/outputs/{outputId}/logs | Output logs
-[**SpanRetrieveOutput**](OutputsApi.md#SpanRetrieveOutput) | **Get** /collections/{collectionId}/outputs/{outputId} | Retrieve output
-[**SpanStatus**](OutputsApi.md#SpanStatus) | **Get** /collections/{collectionId}/outputs/{outputId}/status | Output status
-[**SpanUpdateOutput**](OutputsApi.md#SpanUpdateOutput) | **Patch** /collections/{collectionId}/outputs/{outputId} | Update output
+[**CreateOutput**](OutputsApi.md#CreateOutput) | **Post** /collections/{collectionId}/outputs | Create output
+[**DeleteOutput**](OutputsApi.md#DeleteOutput) | **Delete** /collections/{collectionId}/outputs/{outputId} | Delete output
+[**ListOutputs**](OutputsApi.md#ListOutputs) | **Get** /collections/{collectionId}/outputs | List outputs
+[**Logs**](OutputsApi.md#Logs) | **Get** /collections/{collectionId}/outputs/{outputId}/logs | Output logs
+[**RetrieveOutput**](OutputsApi.md#RetrieveOutput) | **Get** /collections/{collectionId}/outputs/{outputId} | Retrieve output
+[**Status**](OutputsApi.md#Status) | **Get** /collections/{collectionId}/outputs/{outputId}/status | Output status
+[**UpdateOutput**](OutputsApi.md#UpdateOutput) | **Patch** /collections/{collectionId}/outputs/{outputId} | Update output
 
 
 
-## SpanCreateOutput
+## CreateOutput
 
-> Output SpanCreateOutput(ctx, collectionId).Body(body).Execute()
+> Output CreateOutput(ctx, collectionId).Body(body).Execute()
 
 Create output
 
@@ -38,13 +38,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutputsApi.SpanCreateOutput(context.Background(), collectionId).Body(body).Execute()
+    resp, r, err := api_client.OutputsApi.CreateOutput(context.Background(), collectionId).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.SpanCreateOutput``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.CreateOutput``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanCreateOutput`: Output
-    fmt.Fprintf(os.Stdout, "Response from `OutputsApi.SpanCreateOutput`: %v\n", resp)
+    // response from `CreateOutput`: Output
+    fmt.Fprintf(os.Stdout, "Response from `OutputsApi.CreateOutput`: %v\n", resp)
 }
 ```
 
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanCreateOutputRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateOutputRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanDeleteOutput
+## DeleteOutput
 
-> Output SpanDeleteOutput(ctx, collectionId, outputId).Execute()
+> Output DeleteOutput(ctx, collectionId, outputId).Execute()
 
 Delete output
 
@@ -108,13 +108,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutputsApi.SpanDeleteOutput(context.Background(), collectionId, outputId).Execute()
+    resp, r, err := api_client.OutputsApi.DeleteOutput(context.Background(), collectionId, outputId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.SpanDeleteOutput``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.DeleteOutput``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanDeleteOutput`: Output
-    fmt.Fprintf(os.Stdout, "Response from `OutputsApi.SpanDeleteOutput`: %v\n", resp)
+    // response from `DeleteOutput`: Output
+    fmt.Fprintf(os.Stdout, "Response from `OutputsApi.DeleteOutput`: %v\n", resp)
 }
 ```
 
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanDeleteOutputRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteOutputRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -155,9 +155,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanListOutputs
+## ListOutputs
 
-> ListOutputResponse SpanListOutputs(ctx, collectionId).Execute()
+> ListOutputResponse ListOutputs(ctx, collectionId).Execute()
 
 List outputs
 
@@ -178,13 +178,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutputsApi.SpanListOutputs(context.Background(), collectionId).Execute()
+    resp, r, err := api_client.OutputsApi.ListOutputs(context.Background(), collectionId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.SpanListOutputs``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.ListOutputs``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanListOutputs`: ListOutputResponse
-    fmt.Fprintf(os.Stdout, "Response from `OutputsApi.SpanListOutputs`: %v\n", resp)
+    // response from `ListOutputs`: ListOutputResponse
+    fmt.Fprintf(os.Stdout, "Response from `OutputsApi.ListOutputs`: %v\n", resp)
 }
 ```
 
@@ -198,7 +198,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanListOutputsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListOutputsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -223,9 +223,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanLogs
+## Logs
 
-> OutputLogResponse SpanLogs(ctx, collectionId, outputId).Execute()
+> OutputLogResponse Logs(ctx, collectionId, outputId).Execute()
 
 Output logs
 
@@ -247,13 +247,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutputsApi.SpanLogs(context.Background(), collectionId, outputId).Execute()
+    resp, r, err := api_client.OutputsApi.Logs(context.Background(), collectionId, outputId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.SpanLogs``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.Logs``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanLogs`: OutputLogResponse
-    fmt.Fprintf(os.Stdout, "Response from `OutputsApi.SpanLogs`: %v\n", resp)
+    // response from `Logs`: OutputLogResponse
+    fmt.Fprintf(os.Stdout, "Response from `OutputsApi.Logs`: %v\n", resp)
 }
 ```
 
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanLogsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiLogsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -294,9 +294,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanRetrieveOutput
+## RetrieveOutput
 
-> Output SpanRetrieveOutput(ctx, collectionId, outputId).Execute()
+> Output RetrieveOutput(ctx, collectionId, outputId).Execute()
 
 Retrieve output
 
@@ -318,13 +318,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutputsApi.SpanRetrieveOutput(context.Background(), collectionId, outputId).Execute()
+    resp, r, err := api_client.OutputsApi.RetrieveOutput(context.Background(), collectionId, outputId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.SpanRetrieveOutput``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.RetrieveOutput``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanRetrieveOutput`: Output
-    fmt.Fprintf(os.Stdout, "Response from `OutputsApi.SpanRetrieveOutput`: %v\n", resp)
+    // response from `RetrieveOutput`: Output
+    fmt.Fprintf(os.Stdout, "Response from `OutputsApi.RetrieveOutput`: %v\n", resp)
 }
 ```
 
@@ -339,7 +339,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanRetrieveOutputRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRetrieveOutputRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -365,9 +365,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanStatus
+## Status
 
-> OutputStatusResponse SpanStatus(ctx, collectionId, outputId).Execute()
+> OutputStatusResponse Status(ctx, collectionId, outputId).Execute()
 
 Output status
 
@@ -389,13 +389,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutputsApi.SpanStatus(context.Background(), collectionId, outputId).Execute()
+    resp, r, err := api_client.OutputsApi.Status(context.Background(), collectionId, outputId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.SpanStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.Status``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanStatus`: OutputStatusResponse
-    fmt.Fprintf(os.Stdout, "Response from `OutputsApi.SpanStatus`: %v\n", resp)
+    // response from `Status`: OutputStatusResponse
+    fmt.Fprintf(os.Stdout, "Response from `OutputsApi.Status`: %v\n", resp)
 }
 ```
 
@@ -410,7 +410,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanStatusRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiStatusRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -436,9 +436,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanUpdateOutput
+## UpdateOutput
 
-> Output SpanUpdateOutput(ctx, collectionId, outputId).Body(body).Execute()
+> Output UpdateOutput(ctx, collectionId, outputId).Body(body).Execute()
 
 Update output
 
@@ -463,13 +463,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutputsApi.SpanUpdateOutput(context.Background(), collectionId, outputId).Body(body).Execute()
+    resp, r, err := api_client.OutputsApi.UpdateOutput(context.Background(), collectionId, outputId).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.SpanUpdateOutput``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.UpdateOutput``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanUpdateOutput`: Output
-    fmt.Fprintf(os.Stdout, "Response from `OutputsApi.SpanUpdateOutput`: %v\n", resp)
+    // response from `UpdateOutput`: Output
+    fmt.Fprintf(os.Stdout, "Response from `OutputsApi.UpdateOutput`: %v\n", resp)
 }
 ```
 
@@ -484,7 +484,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanUpdateOutputRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateOutputRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

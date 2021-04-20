@@ -4,19 +4,19 @@ All URIs are relative to *https://api.lab5e.com/span*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SpanCreateDevice**](DevicesApi.md#SpanCreateDevice) | **Post** /collections/{collectionId}/devices | Create device
-[**SpanDeleteDevice**](DevicesApi.md#SpanDeleteDevice) | **Delete** /collections/{collectionId}/devices/{deviceId} | Remove device
-[**SpanListDeviceData**](DevicesApi.md#SpanListDeviceData) | **Get** /collections/{collectionId}/devices/{deviceId}/data | Get payloads
-[**SpanListDevices**](DevicesApi.md#SpanListDevices) | **Get** /collections/{collectionId}/devices | List devices
-[**SpanRetrieveDevice**](DevicesApi.md#SpanRetrieveDevice) | **Get** /collections/{collectionId}/devices/{deviceId} | Retrieve device
-[**SpanSendMessage**](DevicesApi.md#SpanSendMessage) | **Post** /collections/{collectionId}/devices/{deviceId}/to | Send message
-[**SpanUpdateDevice**](DevicesApi.md#SpanUpdateDevice) | **Patch** /collections/{existingCollectionId}/devices/{deviceId} | Update device
+[**CreateDevice**](DevicesApi.md#CreateDevice) | **Post** /collections/{collectionId}/devices | Create device
+[**DeleteDevice**](DevicesApi.md#DeleteDevice) | **Delete** /collections/{collectionId}/devices/{deviceId} | Remove device
+[**ListDeviceData**](DevicesApi.md#ListDeviceData) | **Get** /collections/{collectionId}/devices/{deviceId}/data | Get payloads
+[**ListDevices**](DevicesApi.md#ListDevices) | **Get** /collections/{collectionId}/devices | List devices
+[**RetrieveDevice**](DevicesApi.md#RetrieveDevice) | **Get** /collections/{collectionId}/devices/{deviceId} | Retrieve device
+[**SendMessage**](DevicesApi.md#SendMessage) | **Post** /collections/{collectionId}/devices/{deviceId}/to | Send message
+[**UpdateDevice**](DevicesApi.md#UpdateDevice) | **Patch** /collections/{existingCollectionId}/devices/{deviceId} | Update device
 
 
 
-## SpanCreateDevice
+## CreateDevice
 
-> Device SpanCreateDevice(ctx, collectionId).Body(body).Execute()
+> Device CreateDevice(ctx, collectionId).Body(body).Execute()
 
 Create device
 
@@ -40,13 +40,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DevicesApi.SpanCreateDevice(context.Background(), collectionId).Body(body).Execute()
+    resp, r, err := api_client.DevicesApi.CreateDevice(context.Background(), collectionId).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DevicesApi.SpanCreateDevice``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DevicesApi.CreateDevice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanCreateDevice`: Device
-    fmt.Fprintf(os.Stdout, "Response from `DevicesApi.SpanCreateDevice`: %v\n", resp)
+    // response from `CreateDevice`: Device
+    fmt.Fprintf(os.Stdout, "Response from `DevicesApi.CreateDevice`: %v\n", resp)
 }
 ```
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanCreateDeviceRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateDeviceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -86,9 +86,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanDeleteDevice
+## DeleteDevice
 
-> Device SpanDeleteDevice(ctx, collectionId, deviceId).Execute()
+> Device DeleteDevice(ctx, collectionId, deviceId).Execute()
 
 Remove device
 
@@ -110,13 +110,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DevicesApi.SpanDeleteDevice(context.Background(), collectionId, deviceId).Execute()
+    resp, r, err := api_client.DevicesApi.DeleteDevice(context.Background(), collectionId, deviceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DevicesApi.SpanDeleteDevice``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DevicesApi.DeleteDevice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanDeleteDevice`: Device
-    fmt.Fprintf(os.Stdout, "Response from `DevicesApi.SpanDeleteDevice`: %v\n", resp)
+    // response from `DeleteDevice`: Device
+    fmt.Fprintf(os.Stdout, "Response from `DevicesApi.DeleteDevice`: %v\n", resp)
 }
 ```
 
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanDeleteDeviceRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteDeviceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -157,9 +157,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanListDeviceData
+## ListDeviceData
 
-> ListDataResponse SpanListDeviceData(ctx, collectionId, deviceId).Limit(limit).Start(start).End(end).Offset(offset).Execute()
+> ListDataResponse ListDeviceData(ctx, collectionId, deviceId).Limit(limit).Start(start).End(end).Offset(offset).Execute()
 
 Get payloads
 
@@ -187,13 +187,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DevicesApi.SpanListDeviceData(context.Background(), collectionId, deviceId).Limit(limit).Start(start).End(end).Offset(offset).Execute()
+    resp, r, err := api_client.DevicesApi.ListDeviceData(context.Background(), collectionId, deviceId).Limit(limit).Start(start).End(end).Offset(offset).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DevicesApi.SpanListDeviceData``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DevicesApi.ListDeviceData``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanListDeviceData`: ListDataResponse
-    fmt.Fprintf(os.Stdout, "Response from `DevicesApi.SpanListDeviceData`: %v\n", resp)
+    // response from `ListDeviceData`: ListDataResponse
+    fmt.Fprintf(os.Stdout, "Response from `DevicesApi.ListDeviceData`: %v\n", resp)
 }
 ```
 
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanListDeviceDataRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListDeviceDataRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -238,9 +238,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanListDevices
+## ListDevices
 
-> ListDevicesResponse SpanListDevices(ctx, collectionId).Execute()
+> ListDevicesResponse ListDevices(ctx, collectionId).Execute()
 
 List devices
 
@@ -261,13 +261,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DevicesApi.SpanListDevices(context.Background(), collectionId).Execute()
+    resp, r, err := api_client.DevicesApi.ListDevices(context.Background(), collectionId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DevicesApi.SpanListDevices``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DevicesApi.ListDevices``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanListDevices`: ListDevicesResponse
-    fmt.Fprintf(os.Stdout, "Response from `DevicesApi.SpanListDevices`: %v\n", resp)
+    // response from `ListDevices`: ListDevicesResponse
+    fmt.Fprintf(os.Stdout, "Response from `DevicesApi.ListDevices`: %v\n", resp)
 }
 ```
 
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanListDevicesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListDevicesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -306,9 +306,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanRetrieveDevice
+## RetrieveDevice
 
-> Device SpanRetrieveDevice(ctx, collectionId, deviceId).Execute()
+> Device RetrieveDevice(ctx, collectionId, deviceId).Execute()
 
 Retrieve device
 
@@ -332,13 +332,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DevicesApi.SpanRetrieveDevice(context.Background(), collectionId, deviceId).Execute()
+    resp, r, err := api_client.DevicesApi.RetrieveDevice(context.Background(), collectionId, deviceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DevicesApi.SpanRetrieveDevice``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DevicesApi.RetrieveDevice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanRetrieveDevice`: Device
-    fmt.Fprintf(os.Stdout, "Response from `DevicesApi.SpanRetrieveDevice`: %v\n", resp)
+    // response from `RetrieveDevice`: Device
+    fmt.Fprintf(os.Stdout, "Response from `DevicesApi.RetrieveDevice`: %v\n", resp)
 }
 ```
 
@@ -353,7 +353,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanRetrieveDeviceRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRetrieveDeviceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -379,9 +379,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanSendMessage
+## SendMessage
 
-> SendMessageResponse SpanSendMessage(ctx, collectionId, deviceId).Body(body).Execute()
+> SendMessageResponse SendMessage(ctx, collectionId, deviceId).Body(body).Execute()
 
 Send message
 
@@ -406,13 +406,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DevicesApi.SpanSendMessage(context.Background(), collectionId, deviceId).Body(body).Execute()
+    resp, r, err := api_client.DevicesApi.SendMessage(context.Background(), collectionId, deviceId).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DevicesApi.SpanSendMessage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DevicesApi.SendMessage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanSendMessage`: SendMessageResponse
-    fmt.Fprintf(os.Stdout, "Response from `DevicesApi.SpanSendMessage`: %v\n", resp)
+    // response from `SendMessage`: SendMessageResponse
+    fmt.Fprintf(os.Stdout, "Response from `DevicesApi.SendMessage`: %v\n", resp)
 }
 ```
 
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanSendMessageRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiSendMessageRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -454,9 +454,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanUpdateDevice
+## UpdateDevice
 
-> Device SpanUpdateDevice(ctx, existingCollectionId, deviceId).Body(body).Execute()
+> Device UpdateDevice(ctx, existingCollectionId, deviceId).Body(body).Execute()
 
 Update device
 
@@ -479,13 +479,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DevicesApi.SpanUpdateDevice(context.Background(), existingCollectionId, deviceId).Body(body).Execute()
+    resp, r, err := api_client.DevicesApi.UpdateDevice(context.Background(), existingCollectionId, deviceId).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DevicesApi.SpanUpdateDevice``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DevicesApi.UpdateDevice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanUpdateDevice`: Device
-    fmt.Fprintf(os.Stdout, "Response from `DevicesApi.SpanUpdateDevice`: %v\n", resp)
+    // response from `UpdateDevice`: Device
+    fmt.Fprintf(os.Stdout, "Response from `DevicesApi.UpdateDevice`: %v\n", resp)
 }
 ```
 
@@ -500,7 +500,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanUpdateDeviceRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateDeviceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

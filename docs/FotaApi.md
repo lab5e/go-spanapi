@@ -4,19 +4,19 @@ All URIs are relative to *https://api.lab5e.com/span*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SpanClearFirmwareError**](FotaApi.md#SpanClearFirmwareError) | **Delete** /collections/{collectionId}/devices/{deviceId}/fwerror | Clear FOTA error
-[**SpanCreateFirmware**](FotaApi.md#SpanCreateFirmware) | **Post** /collections/{collectionId}/firmware | Create firmware
-[**SpanDeleteFirmware**](FotaApi.md#SpanDeleteFirmware) | **Delete** /collections/{collectionId}/firmware/{imageId} | Delete firmware
-[**SpanFirmwareUsage**](FotaApi.md#SpanFirmwareUsage) | **Patch** /collections/{collectionId}/firmware/{imageId}/usage | Firmware usage
-[**SpanListFirmware**](FotaApi.md#SpanListFirmware) | **Get** /collections/{collectionId}/firmware | List firmware
-[**SpanRetrieveFirmware**](FotaApi.md#SpanRetrieveFirmware) | **Get** /collections/{collectionId}/firmware/{imageId} | Retrieve firmware
-[**SpanUpdateFirmware**](FotaApi.md#SpanUpdateFirmware) | **Patch** /collections/{collectionId}/firmware/{imageId} | Update firmware
+[**ClearFirmwareError**](FotaApi.md#ClearFirmwareError) | **Delete** /collections/{collectionId}/devices/{deviceId}/fwerror | Clear FOTA error
+[**CreateFirmware**](FotaApi.md#CreateFirmware) | **Post** /collections/{collectionId}/firmware | Create firmware
+[**DeleteFirmware**](FotaApi.md#DeleteFirmware) | **Delete** /collections/{collectionId}/firmware/{imageId} | Delete firmware
+[**FirmwareUsage**](FotaApi.md#FirmwareUsage) | **Patch** /collections/{collectionId}/firmware/{imageId}/usage | Firmware usage
+[**ListFirmware**](FotaApi.md#ListFirmware) | **Get** /collections/{collectionId}/firmware | List firmware
+[**RetrieveFirmware**](FotaApi.md#RetrieveFirmware) | **Get** /collections/{collectionId}/firmware/{imageId} | Retrieve firmware
+[**UpdateFirmware**](FotaApi.md#UpdateFirmware) | **Patch** /collections/{collectionId}/firmware/{imageId} | Update firmware
 
 
 
-## SpanClearFirmwareError
+## ClearFirmwareError
 
-> ClearFirmwareErrorResponse SpanClearFirmwareError(ctx, collectionId, deviceId).Execute()
+> ClearFirmwareErrorResponse ClearFirmwareError(ctx, collectionId, deviceId).Execute()
 
 Clear FOTA error
 
@@ -38,13 +38,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FotaApi.SpanClearFirmwareError(context.Background(), collectionId, deviceId).Execute()
+    resp, r, err := api_client.FotaApi.ClearFirmwareError(context.Background(), collectionId, deviceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.SpanClearFirmwareError``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.ClearFirmwareError``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanClearFirmwareError`: ClearFirmwareErrorResponse
-    fmt.Fprintf(os.Stdout, "Response from `FotaApi.SpanClearFirmwareError`: %v\n", resp)
+    // response from `ClearFirmwareError`: ClearFirmwareErrorResponse
+    fmt.Fprintf(os.Stdout, "Response from `FotaApi.ClearFirmwareError`: %v\n", resp)
 }
 ```
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanClearFirmwareErrorRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiClearFirmwareErrorRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -85,9 +85,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanCreateFirmware
+## CreateFirmware
 
-> Firmware SpanCreateFirmware(ctx, collectionId).Body(body).Execute()
+> Firmware CreateFirmware(ctx, collectionId).Body(body).Execute()
 
 Create firmware
 
@@ -111,13 +111,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FotaApi.SpanCreateFirmware(context.Background(), collectionId).Body(body).Execute()
+    resp, r, err := api_client.FotaApi.CreateFirmware(context.Background(), collectionId).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.SpanCreateFirmware``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.CreateFirmware``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanCreateFirmware`: Firmware
-    fmt.Fprintf(os.Stdout, "Response from `FotaApi.SpanCreateFirmware`: %v\n", resp)
+    // response from `CreateFirmware`: Firmware
+    fmt.Fprintf(os.Stdout, "Response from `FotaApi.CreateFirmware`: %v\n", resp)
 }
 ```
 
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanCreateFirmwareRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateFirmwareRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -157,9 +157,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanDeleteFirmware
+## DeleteFirmware
 
-> Firmware SpanDeleteFirmware(ctx, collectionId, imageId).Execute()
+> Firmware DeleteFirmware(ctx, collectionId, imageId).Execute()
 
 Delete firmware
 
@@ -181,13 +181,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FotaApi.SpanDeleteFirmware(context.Background(), collectionId, imageId).Execute()
+    resp, r, err := api_client.FotaApi.DeleteFirmware(context.Background(), collectionId, imageId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.SpanDeleteFirmware``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.DeleteFirmware``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanDeleteFirmware`: Firmware
-    fmt.Fprintf(os.Stdout, "Response from `FotaApi.SpanDeleteFirmware`: %v\n", resp)
+    // response from `DeleteFirmware`: Firmware
+    fmt.Fprintf(os.Stdout, "Response from `FotaApi.DeleteFirmware`: %v\n", resp)
 }
 ```
 
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanDeleteFirmwareRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteFirmwareRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -228,9 +228,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanFirmwareUsage
+## FirmwareUsage
 
-> FirmwareUsageResponse SpanFirmwareUsage(ctx, collectionId, imageId).Execute()
+> FirmwareUsageResponse FirmwareUsage(ctx, collectionId, imageId).Execute()
 
 Firmware usage
 
@@ -254,13 +254,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FotaApi.SpanFirmwareUsage(context.Background(), collectionId, imageId).Execute()
+    resp, r, err := api_client.FotaApi.FirmwareUsage(context.Background(), collectionId, imageId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.SpanFirmwareUsage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.FirmwareUsage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanFirmwareUsage`: FirmwareUsageResponse
-    fmt.Fprintf(os.Stdout, "Response from `FotaApi.SpanFirmwareUsage`: %v\n", resp)
+    // response from `FirmwareUsage`: FirmwareUsageResponse
+    fmt.Fprintf(os.Stdout, "Response from `FotaApi.FirmwareUsage`: %v\n", resp)
 }
 ```
 
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanFirmwareUsageRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiFirmwareUsageRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -301,9 +301,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanListFirmware
+## ListFirmware
 
-> ListFirmwareResponse SpanListFirmware(ctx, collectionId).Execute()
+> ListFirmwareResponse ListFirmware(ctx, collectionId).Execute()
 
 List firmware
 
@@ -326,13 +326,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FotaApi.SpanListFirmware(context.Background(), collectionId).Execute()
+    resp, r, err := api_client.FotaApi.ListFirmware(context.Background(), collectionId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.SpanListFirmware``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.ListFirmware``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanListFirmware`: ListFirmwareResponse
-    fmt.Fprintf(os.Stdout, "Response from `FotaApi.SpanListFirmware`: %v\n", resp)
+    // response from `ListFirmware`: ListFirmwareResponse
+    fmt.Fprintf(os.Stdout, "Response from `FotaApi.ListFirmware`: %v\n", resp)
 }
 ```
 
@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanListFirmwareRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListFirmwareRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -371,9 +371,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanRetrieveFirmware
+## RetrieveFirmware
 
-> Firmware SpanRetrieveFirmware(ctx, collectionId, imageId).Execute()
+> Firmware RetrieveFirmware(ctx, collectionId, imageId).Execute()
 
 Retrieve firmware
 
@@ -397,13 +397,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FotaApi.SpanRetrieveFirmware(context.Background(), collectionId, imageId).Execute()
+    resp, r, err := api_client.FotaApi.RetrieveFirmware(context.Background(), collectionId, imageId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.SpanRetrieveFirmware``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.RetrieveFirmware``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanRetrieveFirmware`: Firmware
-    fmt.Fprintf(os.Stdout, "Response from `FotaApi.SpanRetrieveFirmware`: %v\n", resp)
+    // response from `RetrieveFirmware`: Firmware
+    fmt.Fprintf(os.Stdout, "Response from `FotaApi.RetrieveFirmware`: %v\n", resp)
 }
 ```
 
@@ -418,7 +418,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanRetrieveFirmwareRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRetrieveFirmwareRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -444,9 +444,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpanUpdateFirmware
+## UpdateFirmware
 
-> Firmware SpanUpdateFirmware(ctx, collectionId, imageId).Body(body).Execute()
+> Firmware UpdateFirmware(ctx, collectionId, imageId).Body(body).Execute()
 
 Update firmware
 
@@ -469,13 +469,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FotaApi.SpanUpdateFirmware(context.Background(), collectionId, imageId).Body(body).Execute()
+    resp, r, err := api_client.FotaApi.UpdateFirmware(context.Background(), collectionId, imageId).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.SpanUpdateFirmware``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.UpdateFirmware``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpanUpdateFirmware`: Firmware
-    fmt.Fprintf(os.Stdout, "Response from `FotaApi.SpanUpdateFirmware`: %v\n", resp)
+    // response from `UpdateFirmware`: Firmware
+    fmt.Fprintf(os.Stdout, "Response from `FotaApi.UpdateFirmware`: %v\n", resp)
 }
 ```
 
@@ -490,7 +490,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpanUpdateFirmwareRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateFirmwareRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

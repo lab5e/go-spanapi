@@ -40,7 +40,7 @@ func main() {
 	keys["APIToken"] = spanapi.APIKey{Key: token, Prefix: ""}
 	ctx := context.WithValue(reqCtx, spanapi.ContextAPIKeys, keys)
 
-	collections, _, err := client.CollectionsApi.SpanListCollections(ctx).Execute()
+	collections, _, err := client.CollectionsApi.ListCollections(ctx).Execute()
 	if err != nil {
 		fmt.Println("Error listing collections: ", err.Error())
 		return
@@ -52,7 +52,7 @@ func main() {
 	for _, collection := range *collections.Collections {
 		fmt.Printf("Collection ID = %s\n", *collection.CollectionId)
 
-		devices, _, err := client.DevicesApi.SpanListDevices(ctx, *collection.CollectionId).Execute()
+		devices, _, err := client.DevicesApi.ListDevices(ctx, *collection.CollectionId).Execute()
 		if err != nil {
 			fmt.Println("Error listing devices: ", err.Error())
 			continue

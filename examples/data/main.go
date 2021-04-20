@@ -38,7 +38,7 @@ func main() {
 	ctx, done := apitools.ContextWithAuth(token, 30*time.Second)
 	defer done()
 
-	req := client.CollectionsApi.SpanRetrieveCollection(ctx, collectionID)
+	req := client.CollectionsApi.RetrieveCollection(ctx, collectionID)
 
 	collection, _, err := req.Execute()
 	if err != nil {
@@ -51,7 +51,7 @@ func main() {
 
 	// This will retrieve the last 10 payloads from the service.
 	items, _, err := client.CollectionsApi.
-		SpanListCollectionData(ctx, *collection.CollectionId).
+		ListCollectionData(ctx, *collection.CollectionId).
 		Limit(10).
 		Execute()
 	if err != nil {
