@@ -28,10 +28,9 @@ var (
 type SystemApiService service
 
 type ApiSpanGetSystemInfoRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SystemApiService
 }
-
 
 func (r ApiSpanGetSystemInfoRequest) Execute() (SystemInfoResponse, *_nethttp.Response, error) {
 	return r.ApiService.SpanGetSystemInfoExecute(r)
@@ -45,7 +44,7 @@ func (r ApiSpanGetSystemInfoRequest) Execute() (SystemInfoResponse, *_nethttp.Re
 func (a *SystemApiService) SpanGetSystemInfo(ctx _context.Context) ApiSpanGetSystemInfoRequest {
 	return ApiSpanGetSystemInfoRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -177,13 +176,13 @@ func (a *SystemApiService) SpanGetSystemInfoExecute(r ApiSpanGetSystemInfoReques
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

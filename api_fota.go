@@ -29,12 +29,11 @@ var (
 type FotaApiService service
 
 type ApiSpanClearFirmwareErrorRequest struct {
-	ctx _context.Context
-	ApiService *FotaApiService
+	ctx          _context.Context
+	ApiService   *FotaApiService
 	collectionId string
-	deviceId string
+	deviceId     string
 }
-
 
 func (r ApiSpanClearFirmwareErrorRequest) Execute() (ClearFirmwareErrorResponse, *_nethttp.Response, error) {
 	return r.ApiService.SpanClearFirmwareErrorExecute(r)
@@ -49,10 +48,10 @@ func (r ApiSpanClearFirmwareErrorRequest) Execute() (ClearFirmwareErrorResponse,
  */
 func (a *FotaApiService) SpanClearFirmwareError(ctx _context.Context, collectionId string, deviceId string) ApiSpanClearFirmwareErrorRequest {
 	return ApiSpanClearFirmwareErrorRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
-		deviceId: deviceId,
+		deviceId:     deviceId,
 	}
 }
 
@@ -186,13 +185,13 @@ func (a *FotaApiService) SpanClearFirmwareErrorExecute(r ApiSpanClearFirmwareErr
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -209,10 +208,10 @@ func (a *FotaApiService) SpanClearFirmwareErrorExecute(r ApiSpanClearFirmwareErr
 }
 
 type ApiSpanCreateFirmwareRequest struct {
-	ctx _context.Context
-	ApiService *FotaApiService
+	ctx          _context.Context
+	ApiService   *FotaApiService
 	collectionId string
-	body *CreateFirmwareRequest
+	body         *CreateFirmwareRequest
 }
 
 func (r ApiSpanCreateFirmwareRequest) Body(body CreateFirmwareRequest) ApiSpanCreateFirmwareRequest {
@@ -233,8 +232,8 @@ func (r ApiSpanCreateFirmwareRequest) Execute() (Firmware, *_nethttp.Response, e
  */
 func (a *FotaApiService) SpanCreateFirmware(ctx _context.Context, collectionId string) ApiSpanCreateFirmwareRequest {
 	return ApiSpanCreateFirmwareRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
 	}
 }
@@ -373,13 +372,13 @@ func (a *FotaApiService) SpanCreateFirmwareExecute(r ApiSpanCreateFirmwareReques
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -396,12 +395,11 @@ func (a *FotaApiService) SpanCreateFirmwareExecute(r ApiSpanCreateFirmwareReques
 }
 
 type ApiSpanDeleteFirmwareRequest struct {
-	ctx _context.Context
-	ApiService *FotaApiService
+	ctx          _context.Context
+	ApiService   *FotaApiService
 	collectionId string
-	imageId string
+	imageId      string
 }
-
 
 func (r ApiSpanDeleteFirmwareRequest) Execute() (Firmware, *_nethttp.Response, error) {
 	return r.ApiService.SpanDeleteFirmwareExecute(r)
@@ -416,10 +414,10 @@ func (r ApiSpanDeleteFirmwareRequest) Execute() (Firmware, *_nethttp.Response, e
  */
 func (a *FotaApiService) SpanDeleteFirmware(ctx _context.Context, collectionId string, imageId string) ApiSpanDeleteFirmwareRequest {
 	return ApiSpanDeleteFirmwareRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
-		imageId: imageId,
+		imageId:      imageId,
 	}
 }
 
@@ -553,13 +551,13 @@ func (a *FotaApiService) SpanDeleteFirmwareExecute(r ApiSpanDeleteFirmwareReques
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -576,12 +574,11 @@ func (a *FotaApiService) SpanDeleteFirmwareExecute(r ApiSpanDeleteFirmwareReques
 }
 
 type ApiSpanFirmwareUsageRequest struct {
-	ctx _context.Context
-	ApiService *FotaApiService
+	ctx          _context.Context
+	ApiService   *FotaApiService
 	collectionId string
-	imageId string
+	imageId      string
 }
-
 
 func (r ApiSpanFirmwareUsageRequest) Execute() (FirmwareUsageResponse, *_nethttp.Response, error) {
 	return r.ApiService.SpanFirmwareUsageExecute(r)
@@ -597,10 +594,10 @@ func (r ApiSpanFirmwareUsageRequest) Execute() (FirmwareUsageResponse, *_nethttp
  */
 func (a *FotaApiService) SpanFirmwareUsage(ctx _context.Context, collectionId string, imageId string) ApiSpanFirmwareUsageRequest {
 	return ApiSpanFirmwareUsageRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
-		imageId: imageId,
+		imageId:      imageId,
 	}
 }
 
@@ -734,13 +731,13 @@ func (a *FotaApiService) SpanFirmwareUsageExecute(r ApiSpanFirmwareUsageRequest)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -757,11 +754,10 @@ func (a *FotaApiService) SpanFirmwareUsageExecute(r ApiSpanFirmwareUsageRequest)
 }
 
 type ApiSpanListFirmwareRequest struct {
-	ctx _context.Context
-	ApiService *FotaApiService
+	ctx          _context.Context
+	ApiService   *FotaApiService
 	collectionId string
 }
-
 
 func (r ApiSpanListFirmwareRequest) Execute() (ListFirmwareResponse, *_nethttp.Response, error) {
 	return r.ApiService.SpanListFirmwareExecute(r)
@@ -776,8 +772,8 @@ func (r ApiSpanListFirmwareRequest) Execute() (ListFirmwareResponse, *_nethttp.R
  */
 func (a *FotaApiService) SpanListFirmware(ctx _context.Context, collectionId string) ApiSpanListFirmwareRequest {
 	return ApiSpanListFirmwareRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
 	}
 }
@@ -911,13 +907,13 @@ func (a *FotaApiService) SpanListFirmwareExecute(r ApiSpanListFirmwareRequest) (
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -934,12 +930,11 @@ func (a *FotaApiService) SpanListFirmwareExecute(r ApiSpanListFirmwareRequest) (
 }
 
 type ApiSpanRetrieveFirmwareRequest struct {
-	ctx _context.Context
-	ApiService *FotaApiService
+	ctx          _context.Context
+	ApiService   *FotaApiService
 	collectionId string
-	imageId string
+	imageId      string
 }
-
 
 func (r ApiSpanRetrieveFirmwareRequest) Execute() (Firmware, *_nethttp.Response, error) {
 	return r.ApiService.SpanRetrieveFirmwareExecute(r)
@@ -955,10 +950,10 @@ func (r ApiSpanRetrieveFirmwareRequest) Execute() (Firmware, *_nethttp.Response,
  */
 func (a *FotaApiService) SpanRetrieveFirmware(ctx _context.Context, collectionId string, imageId string) ApiSpanRetrieveFirmwareRequest {
 	return ApiSpanRetrieveFirmwareRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
-		imageId: imageId,
+		imageId:      imageId,
 	}
 }
 
@@ -1092,13 +1087,13 @@ func (a *FotaApiService) SpanRetrieveFirmwareExecute(r ApiSpanRetrieveFirmwareRe
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1115,11 +1110,11 @@ func (a *FotaApiService) SpanRetrieveFirmwareExecute(r ApiSpanRetrieveFirmwareRe
 }
 
 type ApiSpanUpdateFirmwareRequest struct {
-	ctx _context.Context
-	ApiService *FotaApiService
+	ctx          _context.Context
+	ApiService   *FotaApiService
 	collectionId string
-	imageId string
-	body *Firmware
+	imageId      string
+	body         *Firmware
 }
 
 func (r ApiSpanUpdateFirmwareRequest) Body(body Firmware) ApiSpanUpdateFirmwareRequest {
@@ -1140,10 +1135,10 @@ func (r ApiSpanUpdateFirmwareRequest) Execute() (Firmware, *_nethttp.Response, e
  */
 func (a *FotaApiService) SpanUpdateFirmware(ctx _context.Context, collectionId string, imageId string) ApiSpanUpdateFirmwareRequest {
 	return ApiSpanUpdateFirmwareRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
-		imageId: imageId,
+		imageId:      imageId,
 	}
 }
 
@@ -1282,13 +1277,13 @@ func (a *FotaApiService) SpanUpdateFirmwareExecute(r ApiSpanUpdateFirmwareReques
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

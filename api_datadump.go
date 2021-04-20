@@ -28,9 +28,9 @@ var (
 type DatadumpApiService service
 
 type ApiSpanDataDumpRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *DatadumpApiService
-	body *DataDumpRequest
+	body       *DataDumpRequest
 }
 
 func (r ApiSpanDataDumpRequest) Body(body DataDumpRequest) ApiSpanDataDumpRequest {
@@ -51,7 +51,7 @@ func (r ApiSpanDataDumpRequest) Execute() (DataDumpResponse, *_nethttp.Response,
 func (a *DatadumpApiService) SpanDataDump(ctx _context.Context) ApiSpanDataDumpRequest {
 	return ApiSpanDataDumpRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -188,13 +188,13 @@ func (a *DatadumpApiService) SpanDataDumpExecute(r ApiSpanDataDumpRequest) (Data
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

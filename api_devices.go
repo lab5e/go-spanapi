@@ -29,10 +29,10 @@ var (
 type DevicesApiService service
 
 type ApiSpanCreateDeviceRequest struct {
-	ctx _context.Context
-	ApiService *DevicesApiService
+	ctx          _context.Context
+	ApiService   *DevicesApiService
 	collectionId string
-	body *Device
+	body         *Device
 }
 
 func (r ApiSpanCreateDeviceRequest) Body(body Device) ApiSpanCreateDeviceRequest {
@@ -53,8 +53,8 @@ func (r ApiSpanCreateDeviceRequest) Execute() (Device, *_nethttp.Response, error
  */
 func (a *DevicesApiService) SpanCreateDevice(ctx _context.Context, collectionId string) ApiSpanCreateDeviceRequest {
 	return ApiSpanCreateDeviceRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
 	}
 }
@@ -193,13 +193,13 @@ func (a *DevicesApiService) SpanCreateDeviceExecute(r ApiSpanCreateDeviceRequest
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -216,12 +216,11 @@ func (a *DevicesApiService) SpanCreateDeviceExecute(r ApiSpanCreateDeviceRequest
 }
 
 type ApiSpanDeleteDeviceRequest struct {
-	ctx _context.Context
-	ApiService *DevicesApiService
+	ctx          _context.Context
+	ApiService   *DevicesApiService
 	collectionId string
-	deviceId string
+	deviceId     string
 }
-
 
 func (r ApiSpanDeleteDeviceRequest) Execute() (Device, *_nethttp.Response, error) {
 	return r.ApiService.SpanDeleteDeviceExecute(r)
@@ -236,10 +235,10 @@ func (r ApiSpanDeleteDeviceRequest) Execute() (Device, *_nethttp.Response, error
  */
 func (a *DevicesApiService) SpanDeleteDevice(ctx _context.Context, collectionId string, deviceId string) ApiSpanDeleteDeviceRequest {
 	return ApiSpanDeleteDeviceRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
-		deviceId: deviceId,
+		deviceId:     deviceId,
 	}
 }
 
@@ -373,13 +372,13 @@ func (a *DevicesApiService) SpanDeleteDeviceExecute(r ApiSpanDeleteDeviceRequest
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -396,14 +395,14 @@ func (a *DevicesApiService) SpanDeleteDeviceExecute(r ApiSpanDeleteDeviceRequest
 }
 
 type ApiSpanListDeviceDataRequest struct {
-	ctx _context.Context
-	ApiService *DevicesApiService
+	ctx          _context.Context
+	ApiService   *DevicesApiService
 	collectionId string
-	deviceId string
-	limit *int32
-	start *string
-	end *string
-	offset *string
+	deviceId     string
+	limit        *int32
+	start        *string
+	end          *string
+	offset       *string
 }
 
 func (r ApiSpanListDeviceDataRequest) Limit(limit int32) ApiSpanListDeviceDataRequest {
@@ -437,10 +436,10 @@ func (r ApiSpanListDeviceDataRequest) Execute() (ListDataResponse, *_nethttp.Res
  */
 func (a *DevicesApiService) SpanListDeviceData(ctx _context.Context, collectionId string, deviceId string) ApiSpanListDeviceDataRequest {
 	return ApiSpanListDeviceDataRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
-		deviceId: deviceId,
+		deviceId:     deviceId,
 	}
 }
 
@@ -586,13 +585,13 @@ func (a *DevicesApiService) SpanListDeviceDataExecute(r ApiSpanListDeviceDataReq
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -609,11 +608,10 @@ func (a *DevicesApiService) SpanListDeviceDataExecute(r ApiSpanListDeviceDataReq
 }
 
 type ApiSpanListDevicesRequest struct {
-	ctx _context.Context
-	ApiService *DevicesApiService
+	ctx          _context.Context
+	ApiService   *DevicesApiService
 	collectionId string
 }
-
 
 func (r ApiSpanListDevicesRequest) Execute() (ListDevicesResponse, *_nethttp.Response, error) {
 	return r.ApiService.SpanListDevicesExecute(r)
@@ -627,8 +625,8 @@ func (r ApiSpanListDevicesRequest) Execute() (ListDevicesResponse, *_nethttp.Res
  */
 func (a *DevicesApiService) SpanListDevices(ctx _context.Context, collectionId string) ApiSpanListDevicesRequest {
 	return ApiSpanListDevicesRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
 	}
 }
@@ -762,13 +760,13 @@ func (a *DevicesApiService) SpanListDevicesExecute(r ApiSpanListDevicesRequest) 
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -785,12 +783,11 @@ func (a *DevicesApiService) SpanListDevicesExecute(r ApiSpanListDevicesRequest) 
 }
 
 type ApiSpanRetrieveDeviceRequest struct {
-	ctx _context.Context
-	ApiService *DevicesApiService
+	ctx          _context.Context
+	ApiService   *DevicesApiService
 	collectionId string
-	deviceId string
+	deviceId     string
 }
-
 
 func (r ApiSpanRetrieveDeviceRequest) Execute() (Device, *_nethttp.Response, error) {
 	return r.ApiService.SpanRetrieveDeviceExecute(r)
@@ -806,10 +803,10 @@ func (r ApiSpanRetrieveDeviceRequest) Execute() (Device, *_nethttp.Response, err
  */
 func (a *DevicesApiService) SpanRetrieveDevice(ctx _context.Context, collectionId string, deviceId string) ApiSpanRetrieveDeviceRequest {
 	return ApiSpanRetrieveDeviceRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
-		deviceId: deviceId,
+		deviceId:     deviceId,
 	}
 }
 
@@ -943,13 +940,13 @@ func (a *DevicesApiService) SpanRetrieveDeviceExecute(r ApiSpanRetrieveDeviceReq
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -966,11 +963,11 @@ func (a *DevicesApiService) SpanRetrieveDeviceExecute(r ApiSpanRetrieveDeviceReq
 }
 
 type ApiSpanSendMessageRequest struct {
-	ctx _context.Context
-	ApiService *DevicesApiService
+	ctx          _context.Context
+	ApiService   *DevicesApiService
 	collectionId string
-	deviceId string
-	body *SendMessageRequest
+	deviceId     string
+	body         *SendMessageRequest
 }
 
 func (r ApiSpanSendMessageRequest) Body(body SendMessageRequest) ApiSpanSendMessageRequest {
@@ -992,10 +989,10 @@ func (r ApiSpanSendMessageRequest) Execute() (SendMessageResponse, *_nethttp.Res
  */
 func (a *DevicesApiService) SpanSendMessage(ctx _context.Context, collectionId string, deviceId string) ApiSpanSendMessageRequest {
 	return ApiSpanSendMessageRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
-		deviceId: deviceId,
+		deviceId:     deviceId,
 	}
 }
 
@@ -1134,13 +1131,13 @@ func (a *DevicesApiService) SpanSendMessageExecute(r ApiSpanSendMessageRequest) 
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1157,11 +1154,11 @@ func (a *DevicesApiService) SpanSendMessageExecute(r ApiSpanSendMessageRequest) 
 }
 
 type ApiSpanUpdateDeviceRequest struct {
-	ctx _context.Context
-	ApiService *DevicesApiService
+	ctx                  _context.Context
+	ApiService           *DevicesApiService
 	existingCollectionId string
-	deviceId string
-	body *UpdateDeviceRequest
+	deviceId             string
+	body                 *UpdateDeviceRequest
 }
 
 func (r ApiSpanUpdateDeviceRequest) Body(body UpdateDeviceRequest) ApiSpanUpdateDeviceRequest {
@@ -1182,10 +1179,10 @@ func (r ApiSpanUpdateDeviceRequest) Execute() (Device, *_nethttp.Response, error
  */
 func (a *DevicesApiService) SpanUpdateDevice(ctx _context.Context, existingCollectionId string, deviceId string) ApiSpanUpdateDeviceRequest {
 	return ApiSpanUpdateDeviceRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:           a,
+		ctx:                  ctx,
 		existingCollectionId: existingCollectionId,
-		deviceId: deviceId,
+		deviceId:             deviceId,
 	}
 }
 
@@ -1324,13 +1321,13 @@ func (a *DevicesApiService) SpanUpdateDeviceExecute(r ApiSpanUpdateDeviceRequest
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
