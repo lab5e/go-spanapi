@@ -29,10 +29,10 @@ var (
 type OutputsApiService service
 
 type ApiCreateOutputRequest struct {
-	ctx _context.Context
-	ApiService *OutputsApiService
+	ctx          _context.Context
+	ApiService   *OutputsApiService
 	collectionId string
-	body *Output
+	body         *Output
 }
 
 func (r ApiCreateOutputRequest) Body(body Output) ApiCreateOutputRequest {
@@ -52,8 +52,8 @@ func (r ApiCreateOutputRequest) Execute() (Output, *_nethttp.Response, error) {
  */
 func (a *OutputsApiService) CreateOutput(ctx _context.Context, collectionId string) ApiCreateOutputRequest {
 	return ApiCreateOutputRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
 	}
 }
@@ -192,13 +192,13 @@ func (a *OutputsApiService) CreateOutputExecute(r ApiCreateOutputRequest) (Outpu
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -215,12 +215,11 @@ func (a *OutputsApiService) CreateOutputExecute(r ApiCreateOutputRequest) (Outpu
 }
 
 type ApiDeleteOutputRequest struct {
-	ctx _context.Context
-	ApiService *OutputsApiService
+	ctx          _context.Context
+	ApiService   *OutputsApiService
 	collectionId string
-	outputId string
+	outputId     string
 }
-
 
 func (r ApiDeleteOutputRequest) Execute() (Output, *_nethttp.Response, error) {
 	return r.ApiService.DeleteOutputExecute(r)
@@ -235,10 +234,10 @@ func (r ApiDeleteOutputRequest) Execute() (Output, *_nethttp.Response, error) {
  */
 func (a *OutputsApiService) DeleteOutput(ctx _context.Context, collectionId string, outputId string) ApiDeleteOutputRequest {
 	return ApiDeleteOutputRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
-		outputId: outputId,
+		outputId:     outputId,
 	}
 }
 
@@ -372,13 +371,13 @@ func (a *OutputsApiService) DeleteOutputExecute(r ApiDeleteOutputRequest) (Outpu
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -395,11 +394,10 @@ func (a *OutputsApiService) DeleteOutputExecute(r ApiDeleteOutputRequest) (Outpu
 }
 
 type ApiListOutputsRequest struct {
-	ctx _context.Context
-	ApiService *OutputsApiService
+	ctx          _context.Context
+	ApiService   *OutputsApiService
 	collectionId string
 }
-
 
 func (r ApiListOutputsRequest) Execute() (ListOutputResponse, *_nethttp.Response, error) {
 	return r.ApiService.ListOutputsExecute(r)
@@ -413,8 +411,8 @@ func (r ApiListOutputsRequest) Execute() (ListOutputResponse, *_nethttp.Response
  */
 func (a *OutputsApiService) ListOutputs(ctx _context.Context, collectionId string) ApiListOutputsRequest {
 	return ApiListOutputsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
 	}
 }
@@ -548,13 +546,13 @@ func (a *OutputsApiService) ListOutputsExecute(r ApiListOutputsRequest) (ListOut
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -571,12 +569,11 @@ func (a *OutputsApiService) ListOutputsExecute(r ApiListOutputsRequest) (ListOut
 }
 
 type ApiLogsRequest struct {
-	ctx _context.Context
-	ApiService *OutputsApiService
+	ctx          _context.Context
+	ApiService   *OutputsApiService
 	collectionId string
-	outputId string
+	outputId     string
 }
-
 
 func (r ApiLogsRequest) Execute() (OutputLogResponse, *_nethttp.Response, error) {
 	return r.ApiService.LogsExecute(r)
@@ -591,10 +588,10 @@ func (r ApiLogsRequest) Execute() (OutputLogResponse, *_nethttp.Response, error)
  */
 func (a *OutputsApiService) Logs(ctx _context.Context, collectionId string, outputId string) ApiLogsRequest {
 	return ApiLogsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
-		outputId: outputId,
+		outputId:     outputId,
 	}
 }
 
@@ -728,13 +725,13 @@ func (a *OutputsApiService) LogsExecute(r ApiLogsRequest) (OutputLogResponse, *_
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -751,12 +748,11 @@ func (a *OutputsApiService) LogsExecute(r ApiLogsRequest) (OutputLogResponse, *_
 }
 
 type ApiRetrieveOutputRequest struct {
-	ctx _context.Context
-	ApiService *OutputsApiService
+	ctx          _context.Context
+	ApiService   *OutputsApiService
 	collectionId string
-	outputId string
+	outputId     string
 }
-
 
 func (r ApiRetrieveOutputRequest) Execute() (Output, *_nethttp.Response, error) {
 	return r.ApiService.RetrieveOutputExecute(r)
@@ -771,10 +767,10 @@ func (r ApiRetrieveOutputRequest) Execute() (Output, *_nethttp.Response, error) 
  */
 func (a *OutputsApiService) RetrieveOutput(ctx _context.Context, collectionId string, outputId string) ApiRetrieveOutputRequest {
 	return ApiRetrieveOutputRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
-		outputId: outputId,
+		outputId:     outputId,
 	}
 }
 
@@ -908,13 +904,13 @@ func (a *OutputsApiService) RetrieveOutputExecute(r ApiRetrieveOutputRequest) (O
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -931,12 +927,11 @@ func (a *OutputsApiService) RetrieveOutputExecute(r ApiRetrieveOutputRequest) (O
 }
 
 type ApiStatusRequest struct {
-	ctx _context.Context
-	ApiService *OutputsApiService
+	ctx          _context.Context
+	ApiService   *OutputsApiService
 	collectionId string
-	outputId string
+	outputId     string
 }
-
 
 func (r ApiStatusRequest) Execute() (OutputStatusResponse, *_nethttp.Response, error) {
 	return r.ApiService.StatusExecute(r)
@@ -951,10 +946,10 @@ func (r ApiStatusRequest) Execute() (OutputStatusResponse, *_nethttp.Response, e
  */
 func (a *OutputsApiService) Status(ctx _context.Context, collectionId string, outputId string) ApiStatusRequest {
 	return ApiStatusRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
-		outputId: outputId,
+		outputId:     outputId,
 	}
 }
 
@@ -1088,13 +1083,13 @@ func (a *OutputsApiService) StatusExecute(r ApiStatusRequest) (OutputStatusRespo
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1111,11 +1106,11 @@ func (a *OutputsApiService) StatusExecute(r ApiStatusRequest) (OutputStatusRespo
 }
 
 type ApiUpdateOutputRequest struct {
-	ctx _context.Context
-	ApiService *OutputsApiService
+	ctx          _context.Context
+	ApiService   *OutputsApiService
 	collectionId string
-	outputId string
-	body *Output
+	outputId     string
+	body         *Output
 }
 
 func (r ApiUpdateOutputRequest) Body(body Output) ApiUpdateOutputRequest {
@@ -1137,10 +1132,10 @@ func (r ApiUpdateOutputRequest) Execute() (Output, *_nethttp.Response, error) {
  */
 func (a *OutputsApiService) UpdateOutput(ctx _context.Context, collectionId string, outputId string) ApiUpdateOutputRequest {
 	return ApiUpdateOutputRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
-		outputId: outputId,
+		outputId:     outputId,
 	}
 }
 
@@ -1279,13 +1274,13 @@ func (a *OutputsApiService) UpdateOutputExecute(r ApiUpdateOutputRequest) (Outpu
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
