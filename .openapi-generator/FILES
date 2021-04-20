@@ -55,9 +55,6 @@ docs/SystemApi.md
 docs/SystemInfoResponse.md
 docs/UDPMetadata.md
 docs/UpdateDeviceRequest.md
-git_push.sh
-go.mod
-go.sum
 model_broadcast_message_request.go
 model_clear_firmware_error_response.go
 model_co_ap_metadata.go

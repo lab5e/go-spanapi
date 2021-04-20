@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.7 prized-adelbert
+ * API version: 4.1.8 adopted-kali
  * Contact: dev@lab5e.com
  */
 
