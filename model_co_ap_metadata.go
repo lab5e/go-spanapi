@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.8 adopted-kali
+ * API version: 4.1.9 receding-glennis
  * Contact: dev@lab5e.com
  */
 
@@ -148,3 +148,5 @@ func (v *NullableCoAPMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

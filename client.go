@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.8 adopted-kali
+ * API version: 4.1.9 receding-glennis
  * Contact: dev@lab5e.com
  */
 
@@ -41,7 +41,7 @@ var (
 	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
 )
 
-// APIClient manages communication with the The Span API API v4.1.8 adopted-kali
+// APIClient manages communication with the The Span API API v4.1.9 receding-glennis
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration

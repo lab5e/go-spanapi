@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.8 adopted-kali
+ * API version: 4.1.9 receding-glennis
  * Contact: dev@lab5e.com
  */
 
@@ -29,10 +29,10 @@ var (
 type DevicesApiService service
 
 type ApiCreateDeviceRequest struct {
-	ctx          _context.Context
-	ApiService   *DevicesApiService
+	ctx _context.Context
+	ApiService *DevicesApiService
 	collectionId string
-	body         *Device
+	body *Device
 }
 
 func (r ApiCreateDeviceRequest) Body(body Device) ApiCreateDeviceRequest {
@@ -53,8 +53,8 @@ func (r ApiCreateDeviceRequest) Execute() (Device, *_nethttp.Response, error) {
  */
 func (a *DevicesApiService) CreateDevice(ctx _context.Context, collectionId string) ApiCreateDeviceRequest {
 	return ApiCreateDeviceRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -193,13 +193,13 @@ func (a *DevicesApiService) CreateDeviceExecute(r ApiCreateDeviceRequest) (Devic
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -216,11 +216,12 @@ func (a *DevicesApiService) CreateDeviceExecute(r ApiCreateDeviceRequest) (Devic
 }
 
 type ApiDeleteDeviceRequest struct {
-	ctx          _context.Context
-	ApiService   *DevicesApiService
+	ctx _context.Context
+	ApiService *DevicesApiService
 	collectionId string
-	deviceId     string
+	deviceId string
 }
+
 
 func (r ApiDeleteDeviceRequest) Execute() (Device, *_nethttp.Response, error) {
 	return r.ApiService.DeleteDeviceExecute(r)
@@ -235,10 +236,10 @@ func (r ApiDeleteDeviceRequest) Execute() (Device, *_nethttp.Response, error) {
  */
 func (a *DevicesApiService) DeleteDevice(ctx _context.Context, collectionId string, deviceId string) ApiDeleteDeviceRequest {
 	return ApiDeleteDeviceRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		deviceId:     deviceId,
+		deviceId: deviceId,
 	}
 }
 
@@ -372,13 +373,13 @@ func (a *DevicesApiService) DeleteDeviceExecute(r ApiDeleteDeviceRequest) (Devic
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -395,14 +396,14 @@ func (a *DevicesApiService) DeleteDeviceExecute(r ApiDeleteDeviceRequest) (Devic
 }
 
 type ApiListDeviceDataRequest struct {
-	ctx          _context.Context
-	ApiService   *DevicesApiService
+	ctx _context.Context
+	ApiService *DevicesApiService
 	collectionId string
-	deviceId     string
-	limit        *int32
-	start        *string
-	end          *string
-	offset       *string
+	deviceId string
+	limit *int32
+	start *string
+	end *string
+	offset *string
 }
 
 func (r ApiListDeviceDataRequest) Limit(limit int32) ApiListDeviceDataRequest {
@@ -436,10 +437,10 @@ func (r ApiListDeviceDataRequest) Execute() (ListDataResponse, *_nethttp.Respons
  */
 func (a *DevicesApiService) ListDeviceData(ctx _context.Context, collectionId string, deviceId string) ApiListDeviceDataRequest {
 	return ApiListDeviceDataRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		deviceId:     deviceId,
+		deviceId: deviceId,
 	}
 }
 
@@ -585,13 +586,13 @@ func (a *DevicesApiService) ListDeviceDataExecute(r ApiListDeviceDataRequest) (L
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -608,10 +609,11 @@ func (a *DevicesApiService) ListDeviceDataExecute(r ApiListDeviceDataRequest) (L
 }
 
 type ApiListDevicesRequest struct {
-	ctx          _context.Context
-	ApiService   *DevicesApiService
+	ctx _context.Context
+	ApiService *DevicesApiService
 	collectionId string
 }
+
 
 func (r ApiListDevicesRequest) Execute() (ListDevicesResponse, *_nethttp.Response, error) {
 	return r.ApiService.ListDevicesExecute(r)
@@ -625,8 +627,8 @@ func (r ApiListDevicesRequest) Execute() (ListDevicesResponse, *_nethttp.Respons
  */
 func (a *DevicesApiService) ListDevices(ctx _context.Context, collectionId string) ApiListDevicesRequest {
 	return ApiListDevicesRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -760,13 +762,13 @@ func (a *DevicesApiService) ListDevicesExecute(r ApiListDevicesRequest) (ListDev
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -783,11 +785,12 @@ func (a *DevicesApiService) ListDevicesExecute(r ApiListDevicesRequest) (ListDev
 }
 
 type ApiRetrieveDeviceRequest struct {
-	ctx          _context.Context
-	ApiService   *DevicesApiService
+	ctx _context.Context
+	ApiService *DevicesApiService
 	collectionId string
-	deviceId     string
+	deviceId string
 }
+
 
 func (r ApiRetrieveDeviceRequest) Execute() (Device, *_nethttp.Response, error) {
 	return r.ApiService.RetrieveDeviceExecute(r)
@@ -803,10 +806,10 @@ func (r ApiRetrieveDeviceRequest) Execute() (Device, *_nethttp.Response, error) 
  */
 func (a *DevicesApiService) RetrieveDevice(ctx _context.Context, collectionId string, deviceId string) ApiRetrieveDeviceRequest {
 	return ApiRetrieveDeviceRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		deviceId:     deviceId,
+		deviceId: deviceId,
 	}
 }
 
@@ -940,13 +943,13 @@ func (a *DevicesApiService) RetrieveDeviceExecute(r ApiRetrieveDeviceRequest) (D
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -963,11 +966,11 @@ func (a *DevicesApiService) RetrieveDeviceExecute(r ApiRetrieveDeviceRequest) (D
 }
 
 type ApiSendMessageRequest struct {
-	ctx          _context.Context
-	ApiService   *DevicesApiService
+	ctx _context.Context
+	ApiService *DevicesApiService
 	collectionId string
-	deviceId     string
-	body         *SendMessageRequest
+	deviceId string
+	body *SendMessageRequest
 }
 
 func (r ApiSendMessageRequest) Body(body SendMessageRequest) ApiSendMessageRequest {
@@ -989,10 +992,10 @@ func (r ApiSendMessageRequest) Execute() (SendMessageResponse, *_nethttp.Respons
  */
 func (a *DevicesApiService) SendMessage(ctx _context.Context, collectionId string, deviceId string) ApiSendMessageRequest {
 	return ApiSendMessageRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		deviceId:     deviceId,
+		deviceId: deviceId,
 	}
 }
 
@@ -1131,13 +1134,13 @@ func (a *DevicesApiService) SendMessageExecute(r ApiSendMessageRequest) (SendMes
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1154,11 +1157,11 @@ func (a *DevicesApiService) SendMessageExecute(r ApiSendMessageRequest) (SendMes
 }
 
 type ApiUpdateDeviceRequest struct {
-	ctx                  _context.Context
-	ApiService           *DevicesApiService
+	ctx _context.Context
+	ApiService *DevicesApiService
 	existingCollectionId string
-	deviceId             string
-	body                 *UpdateDeviceRequest
+	deviceId string
+	body *UpdateDeviceRequest
 }
 
 func (r ApiUpdateDeviceRequest) Body(body UpdateDeviceRequest) ApiUpdateDeviceRequest {
@@ -1179,10 +1182,10 @@ func (r ApiUpdateDeviceRequest) Execute() (Device, *_nethttp.Response, error) {
  */
 func (a *DevicesApiService) UpdateDevice(ctx _context.Context, existingCollectionId string, deviceId string) ApiUpdateDeviceRequest {
 	return ApiUpdateDeviceRequest{
-		ApiService:           a,
-		ctx:                  ctx,
+		ApiService: a,
+		ctx: ctx,
 		existingCollectionId: existingCollectionId,
-		deviceId:             deviceId,
+		deviceId: deviceId,
 	}
 }
 
@@ -1321,13 +1324,13 @@ func (a *DevicesApiService) UpdateDeviceExecute(r ApiUpdateDeviceRequest) (Devic
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
