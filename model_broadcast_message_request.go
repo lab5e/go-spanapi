@@ -18,11 +18,11 @@ import (
 // BroadcastMessageRequest struct for BroadcastMessageRequest
 type BroadcastMessageRequest struct {
 	CollectionId *string `json:"collectionId,omitempty"`
-	Port         *int32  `json:"port,omitempty"`
-	Payload      *string `json:"payload,omitempty"`
+	Port *int32 `json:"port,omitempty"`
+	Payload *string `json:"payload,omitempty"`
 	// Valid transports are \"udp\", \"coap\", \"coap-pull\", \"udp-pull\", \"coap-push\", \"udp-push\". \"udp\" is equivalent to \"udp-push\" and \"coap\" is equivalent to \"coap-push\". Push messages are sent unsolicited to the device wheil pull messages are sent whenever the device wither sends data upstream (for UDP) or does a CoAP request to the CoAP service in span.
 	Transport *string `json:"transport,omitempty"`
-	CoapPath  *string `json:"coapPath,omitempty"`
+	CoapPath *string `json:"coapPath,omitempty"`
 }
 
 // NewBroadcastMessageRequest instantiates a new BroadcastMessageRequest object
@@ -257,3 +257,5 @@ func (v *NullableBroadcastMessageRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
