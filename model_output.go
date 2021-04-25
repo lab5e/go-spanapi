@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.9 receding-glennis
+ * API version: 4.1.10 hulking-betty
  * Contact: dev@lab5e.com
  */
 
@@ -17,12 +17,12 @@ import (
 
 // Output struct for Output
 type Output struct {
-	OutputId     *string            `json:"outputId,omitempty"`
-	CollectionId *string            `json:"collectionId,omitempty"`
-	Type         *OutputType        `json:"type,omitempty"`
-	Config       *OutputConfig      `json:"config,omitempty"`
-	Enabled      *bool              `json:"enabled,omitempty"`
-	Tags         *map[string]string `json:"tags,omitempty"`
+	OutputId *string `json:"outputId,omitempty"`
+	CollectionId *string `json:"collectionId,omitempty"`
+	Type *OutputType `json:"type,omitempty"`
+	Config *OutputConfig `json:"config,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
+	Tags *map[string]string `json:"tags,omitempty"`
 }
 
 // NewOutput instantiates a new Output object
@@ -296,3 +296,5 @@ func (v *NullableOutput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

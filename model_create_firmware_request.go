@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.9 receding-glennis
+ * API version: 4.1.10 hulking-betty
  * Contact: dev@lab5e.com
  */
 
@@ -17,11 +17,11 @@ import (
 
 // CreateFirmwareRequest struct for CreateFirmwareRequest
 type CreateFirmwareRequest struct {
-	CollectionId *string            `json:"collectionId,omitempty"`
-	Image        *string            `json:"image,omitempty"`
-	Version      *string            `json:"version,omitempty"`
-	Filename     *string            `json:"filename,omitempty"`
-	Tags         *map[string]string `json:"tags,omitempty"`
+	CollectionId *string `json:"collectionId,omitempty"`
+	Image *string `json:"image,omitempty"`
+	Version *string `json:"version,omitempty"`
+	Filename *string `json:"filename,omitempty"`
+	Tags *map[string]string `json:"tags,omitempty"`
 }
 
 // NewCreateFirmwareRequest instantiates a new CreateFirmwareRequest object
@@ -256,3 +256,5 @@ func (v *NullableCreateFirmwareRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

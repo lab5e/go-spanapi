@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.9 receding-glennis
+ * API version: 4.1.10 hulking-betty
  * Contact: dev@lab5e.com
  */
 
@@ -17,23 +17,23 @@ import (
 
 // OutputConfig Output configuration.
 type OutputConfig struct {
-	Url               *string `json:"url,omitempty"`
-	BasicAuthUser     *string `json:"basicAuthUser,omitempty"`
-	BasicAuthPass     *string `json:"basicAuthPass,omitempty"`
-	CustomHeaderName  *string `json:"customHeaderName,omitempty"`
+	Url *string `json:"url,omitempty"`
+	BasicAuthUser *string `json:"basicAuthUser,omitempty"`
+	BasicAuthPass *string `json:"basicAuthPass,omitempty"`
+	CustomHeaderName *string `json:"customHeaderName,omitempty"`
 	CustomHeaderValue *string `json:"customHeaderValue,omitempty"`
-	Host              *string `json:"host,omitempty"`
-	Port              *int32  `json:"port,omitempty"`
-	Key               *string `json:"key,omitempty"`
-	EventName         *string `json:"eventName,omitempty"`
-	AsIsPayload       *bool   `json:"asIsPayload,omitempty"`
-	Endpoint          *string `json:"endpoint,omitempty"`
+	Host *string `json:"host,omitempty"`
+	Port *int32 `json:"port,omitempty"`
+	Key *string `json:"key,omitempty"`
+	EventName *string `json:"eventName,omitempty"`
+	AsIsPayload *bool `json:"asIsPayload,omitempty"`
+	Endpoint *string `json:"endpoint,omitempty"`
 	// MQTT configuration: Disable certificate checks. Default is off.
-	DisableCertCheck *bool   `json:"disableCertCheck,omitempty"`
-	Username         *string `json:"username,omitempty"`
-	Password         *string `json:"password,omitempty"`
-	ClientId         *string `json:"clientId,omitempty"`
-	TopicName        *string `json:"topicName,omitempty"`
+	DisableCertCheck *bool `json:"disableCertCheck,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Password *string `json:"password,omitempty"`
+	ClientId *string `json:"clientId,omitempty"`
+	TopicName *string `json:"topicName,omitempty"`
 }
 
 // NewOutputConfig instantiates a new OutputConfig object
@@ -653,3 +653,5 @@ func (v *NullableOutputConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

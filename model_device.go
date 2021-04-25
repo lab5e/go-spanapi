@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.9 receding-glennis
+ * API version: 4.1.10 hulking-betty
  * Contact: dev@lab5e.com
  */
 
@@ -18,16 +18,16 @@ import (
 // Device struct for Device
 type Device struct {
 	// The device ID is assigned by the backend.
-	DeviceId     *string `json:"deviceId,omitempty"`
+	DeviceId *string `json:"deviceId,omitempty"`
 	CollectionId *string `json:"collectionId,omitempty"`
 	// The IMSI is the unique ID for the (e|nu|whatever)SIM card on your device. This is the primary identifier for your device on the network.
 	Imsi *string `json:"imsi,omitempty"`
 	// The IMEI number is the unique ID for your hardware as seen by the network. Obviously you might have a completely different view on things.
 	Imei *string `json:"imei,omitempty"`
 	// Tags are metadata for the device that you can set. These are just strings.
-	Tags     *map[string]string `json:"tags,omitempty"`
-	Network  *NetworkMetadata   `json:"network,omitempty"`
-	Firmware *FirmwareMetadata  `json:"firmware,omitempty"`
+	Tags *map[string]string `json:"tags,omitempty"`
+	Network *NetworkMetadata `json:"network,omitempty"`
+	Firmware *FirmwareMetadata `json:"firmware,omitempty"`
 }
 
 // NewDevice instantiates a new Device object
@@ -332,3 +332,5 @@ func (v *NullableDevice) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

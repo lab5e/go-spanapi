@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.9 receding-glennis
+ * API version: 4.1.10 hulking-betty
  * Contact: dev@lab5e.com
  */
 
@@ -17,9 +17,9 @@ import (
 
 // DumpedCollection struct for DumpedCollection
 type DumpedCollection struct {
-	Collection *Collection     `json:"collection,omitempty"`
-	Devices    *[]DumpedDevice `json:"devices,omitempty"`
-	Outputs    *[]Output       `json:"outputs,omitempty"`
+	Collection *Collection `json:"collection,omitempty"`
+	Devices *[]DumpedDevice `json:"devices,omitempty"`
+	Outputs *[]Output `json:"outputs,omitempty"`
 }
 
 // NewDumpedCollection instantiates a new DumpedCollection object
@@ -184,3 +184,5 @@ func (v *NullableDumpedCollection) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
