@@ -18,7 +18,7 @@ import (
 // MessageSendResult struct for MessageSendResult
 type MessageSendResult struct {
 	DeviceId *string `json:"deviceId,omitempty"`
-	Message *string `json:"message,omitempty"`
+	Message  *string `json:"message,omitempty"`
 }
 
 // NewMessageSendResult instantiates a new MessageSendResult object
@@ -148,5 +148,3 @@ func (v *NullableMessageSendResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
