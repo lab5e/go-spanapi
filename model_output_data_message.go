@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.10 hulking-betty
+ * API version: 4.1.11 evasive-governor
  * Contact: dev@lab5e.com
  */
 
@@ -17,15 +17,15 @@ import (
 
 // OutputDataMessage The output data message contains payload plus metadata for a payload received from a device.
 type OutputDataMessage struct {
-	Type    *OutputDataMessageOutputMessageType `json:"type,omitempty"`
-	Device  *Device                             `json:"device,omitempty"`
-	Payload *string                             `json:"payload,omitempty"`
+	Type *OutputDataMessageOutputMessageType `json:"type,omitempty"`
+	Device *Device `json:"device,omitempty"`
+	Payload *string `json:"payload,omitempty"`
 	// Received time for message. Value is ms since epoch.
-	Received     *string       `json:"received,omitempty"`
-	Transport    *string       `json:"transport,omitempty"`
-	UdpMetaData  *UDPMetadata  `json:"udpMetaData,omitempty"`
+	Received *string `json:"received,omitempty"`
+	Transport *string `json:"transport,omitempty"`
+	UdpMetaData *UDPMetadata `json:"udpMetaData,omitempty"`
 	CoapMetaData *CoAPMetadata `json:"coapMetaData,omitempty"`
-	MessageId    *string       `json:"messageId,omitempty"`
+	MessageId *string `json:"messageId,omitempty"`
 }
 
 // NewOutputDataMessage instantiates a new OutputDataMessage object
@@ -369,3 +369,5 @@ func (v *NullableOutputDataMessage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

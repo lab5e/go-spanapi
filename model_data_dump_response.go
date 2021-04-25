@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.10 hulking-betty
+ * API version: 4.1.11 evasive-governor
  * Contact: dev@lab5e.com
  */
 
@@ -112,3 +112,5 @@ func (v *NullableDataDumpResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

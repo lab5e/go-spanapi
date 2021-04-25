@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.10 hulking-betty
+ * API version: 4.1.11 evasive-governor
  * Contact: dev@lab5e.com
  */
 
@@ -41,7 +41,7 @@ var (
 	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
 )
 
-// APIClient manages communication with the The Span API API v4.1.10 hulking-betty
+// APIClient manages communication with the The Span API API v4.1.11 evasive-governor
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
