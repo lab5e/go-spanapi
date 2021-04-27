@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.11 evasive-governor
+ * API version: 4.1.12 infinite-dana
  * Contact: dev@lab5e.com
  */
 
@@ -18,7 +18,7 @@ import (
 // MessageSendResult struct for MessageSendResult
 type MessageSendResult struct {
 	DeviceId *string `json:"deviceId,omitempty"`
-	Message  *string `json:"message,omitempty"`
+	Message *string `json:"message,omitempty"`
 }
 
 // NewMessageSendResult instantiates a new MessageSendResult object
@@ -148,3 +148,5 @@ func (v *NullableMessageSendResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

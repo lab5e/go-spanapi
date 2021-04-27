@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.11 evasive-governor
+ * API version: 4.1.12 infinite-dana
  * Contact: dev@lab5e.com
  */
 
