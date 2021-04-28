@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.12 infinite-dana
+ * API version: 4.1.13 interdependent-karson
  * Contact: dev@lab5e.com
  */
 
@@ -18,12 +18,12 @@ import (
 // SendMessageRequest struct for SendMessageRequest
 type SendMessageRequest struct {
 	CollectionId *string `json:"collectionId,omitempty"`
-	DeviceId     *string `json:"deviceId,omitempty"`
-	Port         *int32  `json:"port,omitempty"`
-	Payload      *string `json:"payload,omitempty"`
+	DeviceId *string `json:"deviceId,omitempty"`
+	Port *int32 `json:"port,omitempty"`
+	Payload *string `json:"payload,omitempty"`
 	// Valid transports are \"udp\", \"coap\", \"coap-pull\", \"udp-pull\", \"coap-push\", \"udp-push\". \"udp\" is equivalent to \"udp-push\" and \"coap\" is equivalent to \"coap-push\". Push messages are sent unsolicited to the device wheil pull messages are sent whenever the device wither sends data upstream (for UDP) or does a CoAP request to the CoAP service in span.
 	Transport *string `json:"transport,omitempty"`
-	CoapPath  *string `json:"coapPath,omitempty"`
+	CoapPath *string `json:"coapPath,omitempty"`
 }
 
 // NewSendMessageRequest instantiates a new SendMessageRequest object
@@ -293,3 +293,5 @@ func (v *NullableSendMessageRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

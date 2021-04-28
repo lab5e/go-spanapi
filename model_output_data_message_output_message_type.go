@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.12 infinite-dana
+ * API version: 4.1.13 interdependent-karson
  * Contact: dev@lab5e.com
  */
 
@@ -21,9 +21,9 @@ type OutputDataMessageOutputMessageType string
 
 // List of OutputDataMessageOutputMessageType
 const (
-	UNKNOWN   OutputDataMessageOutputMessageType = "unknown"
+	UNKNOWN OutputDataMessageOutputMessageType = "unknown"
 	KEEPALIVE OutputDataMessageOutputMessageType = "keepalive"
-	DATA      OutputDataMessageOutputMessageType = "data"
+	DATA OutputDataMessageOutputMessageType = "data"
 )
 
 func (v *OutputDataMessageOutputMessageType) UnmarshalJSON(src []byte) error {
@@ -33,7 +33,7 @@ func (v *OutputDataMessageOutputMessageType) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := OutputDataMessageOutputMessageType(value)
-	for _, existing := range []OutputDataMessageOutputMessageType{"unknown", "keepalive", "data"} {
+	for _, existing := range []OutputDataMessageOutputMessageType{ "unknown", "keepalive", "data",   } {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -83,3 +83,4 @@ func (v *NullableOutputDataMessageOutputMessageType) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
