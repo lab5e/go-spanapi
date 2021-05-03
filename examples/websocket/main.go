@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"time"
 
 	"github.com/lab5e/go-spanapi/v4"
 	"github.com/lab5e/go-spanapi/v4/apitools"
@@ -38,8 +37,7 @@ func main() {
 	// be useful if you are wondering what is happening.
 	config.Debug = false
 
-	ctx, done := apitools.ContextWithAuth(token, 5*time.Minute)
-	defer done()
+	ctx := apitools.ContextWithAuth(token)
 
 	if deviceID != "" {
 		fmt.Println("Will read device data stream from device ", deviceID)
