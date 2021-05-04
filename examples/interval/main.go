@@ -47,7 +47,7 @@ func main() {
 
 	// In the Real World this context should also have a context.WithTimeout
 	// call to ensure we time out if there's no response.
-	ctx, done := apitools.ContextWithAuth(token, time.Second*60)
+	ctx, done := apitools.ContextWithAuthAndTimeout(token, time.Second*60)
 	defer done()
 
 	collection, _, err := client.CollectionsApi.RetrieveCollection(ctx, collectionID).Execute()

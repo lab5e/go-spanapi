@@ -3,56 +3,42 @@ package main
 import (
 	"flag"
 	"fmt"
-	"time"
+	"log"
 
 	"github.com/lab5e/go-spanapi/v4"
 	"github.com/lab5e/go-spanapi/v4/apitools"
 )
 
-func main() {
-	// It's always a good idea to leave authentication tokens out of the source
-	// code so we use a command line parameter here.
-	token := ""
-	collectionID := ""
-	deviceID := ""
-	flag.StringVar(&token, "token", "", "API token for the Span service")
-	flag.StringVar(&collectionID, "collection-id", "", "The collection to query")
-	flag.StringVar(&deviceID, "device-id", "", "The device to query")
+var (
+	token        = *flag.String("token", "", "API token for the Span service")
+	collectionID = *flag.String("collection-id", "", "The collection to query")
+	deviceID     = *flag.String("device-id", "", "The device to query")
+)
 
+func main() {
 	flag.Parse()
 
-	if token == "" {
-		fmt.Println("Missing token parameter")
-		flag.PrintDefaults()
-		return
-	}
-	if collectionID == "" {
-		fmt.Println("Needs a collection ID")
-		flag.PrintDefaults()
-		return
+	if token == "" || collectionID == "" {
+		log.Fatal("Missing parameter(s)")
 	}
 
 	config := spanapi.NewConfiguration()
+	// config.Debug = true // uncomment if you want to see what's going on
 
-	// Set this to true to list the requests and responses in the client. It can
-	// be useful if you are wondering what is happening.
-	config.Debug = false
+	// Create a Context that has our auth token
+	ctx := apitools.ContextWithAuth(token)
 
-	ctx, done := apitools.ContextWithAuth(token, 5*time.Minute)
-	defer done()
-
+	// if deviceID is set we want messages from a specific device
 	if deviceID != "" {
-		fmt.Println("Will read device data stream from device ", deviceID)
 		ds, err := apitools.NewDeviceDataStream(ctx, config, collectionID, deviceID)
 		if err != nil {
-			fmt.Println("Error connecting data stream: ", err.Error())
-			return
+			log.Fatalf("Error connecting data stream: %v", err.Error())
 		}
 		readDataStream(ds)
 		return
 	}
 
-	fmt.Println("Will read collection data stream from collection ", collectionID)
+	// deviceID is "" so we will listen to messages from the collection
 	ds, err := apitools.NewCollectionDataStream(ctx, config, collectionID)
 	if err != nil {
 		fmt.Println("Error connecting data stream: ", err.Error())
@@ -67,10 +53,14 @@ func readDataStream(ds apitools.DataStream) {
 	for {
 		msg, err := ds.Recv()
 		if err != nil {
-			fmt.Println("Error reading message: ", err.Error())
-			return
+			log.Fatalf("Error reading message: %v", err.Error())
 		}
+
 		fmt.Printf("Type: %s, Device ID: %s, Transport: %s, Payload: %s Message ID: %s\n",
-			*msg.Type, *msg.Device.DeviceId, *msg.Transport, *msg.Payload, *msg.MessageId)
+			*msg.Type,
+			*msg.Device.DeviceId,
+			*msg.Transport,
+			*msg.Payload,
+			*msg.MessageId)
 	}
 }
