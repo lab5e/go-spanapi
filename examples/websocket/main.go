@@ -10,15 +10,15 @@ import (
 )
 
 var (
-	token        = *flag.String("token", "", "API token for the Span service")
-	collectionID = *flag.String("collection-id", "", "The collection to query")
-	deviceID     = *flag.String("device-id", "", "The device to query")
+	token        = flag.String("token", "", "API token for the Span service")
+	collectionID = flag.String("collection-id", "", "The collection to query")
+	deviceID     = flag.String("device-id", "", "The device to query")
 )
 
 func main() {
 	flag.Parse()
 
-	if token == "" || collectionID == "" {
+	if *token == "" || *collectionID == "" {
 		log.Fatal("Missing parameter(s)")
 	}
 
@@ -26,11 +26,11 @@ func main() {
 	// config.Debug = true // uncomment if you want to see what's going on
 
 	// Create a Context that has our auth token
-	ctx := apitools.ContextWithAuth(token)
+	ctx := apitools.ContextWithAuth(*token)
 
 	// if deviceID is set we want messages from a specific device
-	if deviceID != "" {
-		ds, err := apitools.NewDeviceDataStream(ctx, config, collectionID, deviceID)
+	if *deviceID != "" {
+		ds, err := apitools.NewDeviceDataStream(ctx, config, *collectionID, *deviceID)
 		if err != nil {
 			log.Fatalf("Error connecting data stream: %v", err.Error())
 		}
@@ -39,7 +39,7 @@ func main() {
 	}
 
 	// deviceID is "" so we will listen to messages from the collection
-	ds, err := apitools.NewCollectionDataStream(ctx, config, collectionID)
+	ds, err := apitools.NewCollectionDataStream(ctx, config, *collectionID)
 	if err != nil {
 		fmt.Println("Error connecting data stream: ", err.Error())
 		return
