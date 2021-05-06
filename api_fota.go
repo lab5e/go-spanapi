@@ -29,12 +29,11 @@ var (
 type FotaApiService service
 
 type ApiClearFirmwareErrorRequest struct {
-	ctx _context.Context
-	ApiService *FotaApiService
+	ctx          _context.Context
+	ApiService   *FotaApiService
 	collectionId string
-	deviceId string
+	deviceId     string
 }
-
 
 func (r ApiClearFirmwareErrorRequest) Execute() (ClearFirmwareErrorResponse, *_nethttp.Response, error) {
 	return r.ApiService.ClearFirmwareErrorExecute(r)
@@ -49,10 +48,10 @@ func (r ApiClearFirmwareErrorRequest) Execute() (ClearFirmwareErrorResponse, *_n
  */
 func (a *FotaApiService) ClearFirmwareError(ctx _context.Context, collectionId string, deviceId string) ApiClearFirmwareErrorRequest {
 	return ApiClearFirmwareErrorRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
-		deviceId: deviceId,
+		deviceId:     deviceId,
 	}
 }
 
@@ -186,13 +185,13 @@ func (a *FotaApiService) ClearFirmwareErrorExecute(r ApiClearFirmwareErrorReques
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -209,10 +208,10 @@ func (a *FotaApiService) ClearFirmwareErrorExecute(r ApiClearFirmwareErrorReques
 }
 
 type ApiCreateFirmwareRequest struct {
-	ctx _context.Context
-	ApiService *FotaApiService
+	ctx          _context.Context
+	ApiService   *FotaApiService
 	collectionId string
-	body *CreateFirmwareRequest
+	body         *CreateFirmwareRequest
 }
 
 func (r ApiCreateFirmwareRequest) Body(body CreateFirmwareRequest) ApiCreateFirmwareRequest {
@@ -233,8 +232,8 @@ func (r ApiCreateFirmwareRequest) Execute() (Firmware, *_nethttp.Response, error
  */
 func (a *FotaApiService) CreateFirmware(ctx _context.Context, collectionId string) ApiCreateFirmwareRequest {
 	return ApiCreateFirmwareRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
 	}
 }
@@ -373,13 +372,13 @@ func (a *FotaApiService) CreateFirmwareExecute(r ApiCreateFirmwareRequest) (Firm
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -396,12 +395,11 @@ func (a *FotaApiService) CreateFirmwareExecute(r ApiCreateFirmwareRequest) (Firm
 }
 
 type ApiDeleteFirmwareRequest struct {
-	ctx _context.Context
-	ApiService *FotaApiService
+	ctx          _context.Context
+	ApiService   *FotaApiService
 	collectionId string
-	imageId string
+	imageId      string
 }
-
 
 func (r ApiDeleteFirmwareRequest) Execute() (Firmware, *_nethttp.Response, error) {
 	return r.ApiService.DeleteFirmwareExecute(r)
@@ -416,10 +414,10 @@ func (r ApiDeleteFirmwareRequest) Execute() (Firmware, *_nethttp.Response, error
  */
 func (a *FotaApiService) DeleteFirmware(ctx _context.Context, collectionId string, imageId string) ApiDeleteFirmwareRequest {
 	return ApiDeleteFirmwareRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
-		imageId: imageId,
+		imageId:      imageId,
 	}
 }
 
@@ -553,13 +551,13 @@ func (a *FotaApiService) DeleteFirmwareExecute(r ApiDeleteFirmwareRequest) (Firm
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -576,12 +574,11 @@ func (a *FotaApiService) DeleteFirmwareExecute(r ApiDeleteFirmwareRequest) (Firm
 }
 
 type ApiFirmwareUsageRequest struct {
-	ctx _context.Context
-	ApiService *FotaApiService
+	ctx          _context.Context
+	ApiService   *FotaApiService
 	collectionId string
-	imageId string
+	imageId      string
 }
-
 
 func (r ApiFirmwareUsageRequest) Execute() (FirmwareUsageResponse, *_nethttp.Response, error) {
 	return r.ApiService.FirmwareUsageExecute(r)
@@ -597,10 +594,10 @@ func (r ApiFirmwareUsageRequest) Execute() (FirmwareUsageResponse, *_nethttp.Res
  */
 func (a *FotaApiService) FirmwareUsage(ctx _context.Context, collectionId string, imageId string) ApiFirmwareUsageRequest {
 	return ApiFirmwareUsageRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
-		imageId: imageId,
+		imageId:      imageId,
 	}
 }
 
@@ -734,13 +731,13 @@ func (a *FotaApiService) FirmwareUsageExecute(r ApiFirmwareUsageRequest) (Firmwa
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -757,11 +754,10 @@ func (a *FotaApiService) FirmwareUsageExecute(r ApiFirmwareUsageRequest) (Firmwa
 }
 
 type ApiListFirmwareRequest struct {
-	ctx _context.Context
-	ApiService *FotaApiService
+	ctx          _context.Context
+	ApiService   *FotaApiService
 	collectionId string
 }
-
 
 func (r ApiListFirmwareRequest) Execute() (ListFirmwareResponse, *_nethttp.Response, error) {
 	return r.ApiService.ListFirmwareExecute(r)
@@ -776,8 +772,8 @@ func (r ApiListFirmwareRequest) Execute() (ListFirmwareResponse, *_nethttp.Respo
  */
 func (a *FotaApiService) ListFirmware(ctx _context.Context, collectionId string) ApiListFirmwareRequest {
 	return ApiListFirmwareRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
 	}
 }
@@ -911,13 +907,13 @@ func (a *FotaApiService) ListFirmwareExecute(r ApiListFirmwareRequest) (ListFirm
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -934,12 +930,11 @@ func (a *FotaApiService) ListFirmwareExecute(r ApiListFirmwareRequest) (ListFirm
 }
 
 type ApiRetrieveFirmwareRequest struct {
-	ctx _context.Context
-	ApiService *FotaApiService
+	ctx          _context.Context
+	ApiService   *FotaApiService
 	collectionId string
-	imageId string
+	imageId      string
 }
-
 
 func (r ApiRetrieveFirmwareRequest) Execute() (Firmware, *_nethttp.Response, error) {
 	return r.ApiService.RetrieveFirmwareExecute(r)
@@ -955,10 +950,10 @@ func (r ApiRetrieveFirmwareRequest) Execute() (Firmware, *_nethttp.Response, err
  */
 func (a *FotaApiService) RetrieveFirmware(ctx _context.Context, collectionId string, imageId string) ApiRetrieveFirmwareRequest {
 	return ApiRetrieveFirmwareRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
-		imageId: imageId,
+		imageId:      imageId,
 	}
 }
 
@@ -1092,13 +1087,13 @@ func (a *FotaApiService) RetrieveFirmwareExecute(r ApiRetrieveFirmwareRequest) (
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1115,11 +1110,11 @@ func (a *FotaApiService) RetrieveFirmwareExecute(r ApiRetrieveFirmwareRequest) (
 }
 
 type ApiUpdateFirmwareRequest struct {
-	ctx _context.Context
-	ApiService *FotaApiService
+	ctx          _context.Context
+	ApiService   *FotaApiService
 	collectionId string
-	imageId string
-	body *Firmware
+	imageId      string
+	body         *Firmware
 }
 
 func (r ApiUpdateFirmwareRequest) Body(body Firmware) ApiUpdateFirmwareRequest {
@@ -1140,10 +1135,10 @@ func (r ApiUpdateFirmwareRequest) Execute() (Firmware, *_nethttp.Response, error
  */
 func (a *FotaApiService) UpdateFirmware(ctx _context.Context, collectionId string, imageId string) ApiUpdateFirmwareRequest {
 	return ApiUpdateFirmwareRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
-		imageId: imageId,
+		imageId:      imageId,
 	}
 }
 
@@ -1282,13 +1277,13 @@ func (a *FotaApiService) UpdateFirmwareExecute(r ApiUpdateFirmwareRequest) (Firm
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v RpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v RpcStatus
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
