@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.13 interdependent-karson
+ * API version: 4.1.14 oversensitive-deante
  * Contact: dev@lab5e.com
  */
 
@@ -28,9 +28,10 @@ var (
 type SystemApiService service
 
 type ApiGetSystemInfoRequest struct {
-	ctx        _context.Context
+	ctx _context.Context
 	ApiService *SystemApiService
 }
+
 
 func (r ApiGetSystemInfoRequest) Execute() (SystemInfoResponse, *_nethttp.Response, error) {
 	return r.ApiService.GetSystemInfoExecute(r)
@@ -44,7 +45,7 @@ func (r ApiGetSystemInfoRequest) Execute() (SystemInfoResponse, *_nethttp.Respon
 func (a *SystemApiService) GetSystemInfo(ctx _context.Context) ApiGetSystemInfoRequest {
 	return ApiGetSystemInfoRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
@@ -176,13 +177,13 @@ func (a *SystemApiService) GetSystemInfoExecute(r ApiGetSystemInfoRequest) (Syst
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

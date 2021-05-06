@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.13 interdependent-karson
+ * API version: 4.1.14 oversensitive-deante
  * Contact: dev@lab5e.com
  */
 
@@ -41,7 +41,7 @@ var (
 	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
 )
 
-// APIClient manages communication with the The Span API API v4.1.13 interdependent-karson
+// APIClient manages communication with the The Span API API v4.1.14 oversensitive-deante
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration

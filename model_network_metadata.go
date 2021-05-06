@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.13 interdependent-karson
+ * API version: 4.1.14 oversensitive-deante
  * Contact: dev@lab5e.com
  */
 
@@ -186,3 +186,5 @@ func (v *NullableNetworkMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
