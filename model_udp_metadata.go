@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.14 oversensitive-deante
+ * API version: 4.1.15 disproved-darryl
  * Contact: dev@lab5e.com
  */
 
@@ -17,7 +17,7 @@ import (
 
 // UDPMetadata struct for UDPMetadata
 type UDPMetadata struct {
-	LocalPort  *int32 `json:"localPort,omitempty"`
+	LocalPort *int32 `json:"localPort,omitempty"`
 	RemotePort *int32 `json:"remotePort,omitempty"`
 }
 
@@ -148,3 +148,5 @@ func (v *NullableUDPMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

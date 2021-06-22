@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.14 oversensitive-deante
+ * API version: 4.1.15 disproved-darryl
  * Contact: dev@lab5e.com
  */
 
@@ -18,16 +18,17 @@ import (
 // Device struct for Device
 type Device struct {
 	// The device ID is assigned by the backend.
-	DeviceId     *string `json:"deviceId,omitempty"`
+	DeviceId *string `json:"deviceId,omitempty"`
 	CollectionId *string `json:"collectionId,omitempty"`
 	// The IMSI is the unique ID for the (e|nu|whatever)SIM card on your device. This is the primary identifier for your device on the network.
 	Imsi *string `json:"imsi,omitempty"`
 	// The IMEI number is the unique ID for your hardware as seen by the network. Obviously you might have a completely different view on things.
 	Imei *string `json:"imei,omitempty"`
 	// Tags are metadata for the device that you can set. These are just strings.
-	Tags     *map[string]string `json:"tags,omitempty"`
-	Network  *NetworkMetadata   `json:"network,omitempty"`
-	Firmware *FirmwareMetadata  `json:"firmware,omitempty"`
+	Tags *map[string]string `json:"tags,omitempty"`
+	Network *NetworkMetadata `json:"network,omitempty"`
+	Firmware *FirmwareMetadata `json:"firmware,omitempty"`
+	Metadata *DeviceMetadata `json:"metadata,omitempty"`
 }
 
 // NewDevice instantiates a new Device object
@@ -271,6 +272,38 @@ func (o *Device) SetFirmware(v FirmwareMetadata) {
 	o.Firmware = &v
 }
 
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *Device) GetMetadata() DeviceMetadata {
+	if o == nil || o.Metadata == nil {
+		var ret DeviceMetadata
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Device) GetMetadataOk() (*DeviceMetadata, bool) {
+	if o == nil || o.Metadata == nil {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *Device) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given DeviceMetadata and assigns it to the Metadata field.
+func (o *Device) SetMetadata(v DeviceMetadata) {
+	o.Metadata = &v
+}
+
 func (o Device) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DeviceId != nil {
@@ -293,6 +326,9 @@ func (o Device) MarshalJSON() ([]byte, error) {
 	}
 	if o.Firmware != nil {
 		toSerialize["firmware"] = o.Firmware
+	}
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
 	}
 	return json.Marshal(toSerialize)
 }
@@ -332,3 +368,5 @@ func (v *NullableDevice) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

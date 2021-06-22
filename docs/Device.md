@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Tags** | Pointer to **map[string]string** | Tags are metadata for the device that you can set. These are just strings. | [optional] 
 **Network** | Pointer to [**NetworkMetadata**](NetworkMetadata.md) |  | [optional] 
 **Firmware** | Pointer to [**FirmwareMetadata**](FirmwareMetadata.md) |  | [optional] 
+**Metadata** | Pointer to [**DeviceMetadata**](DeviceMetadata.md) |  | [optional] 
 
 ## Methods
 
@@ -205,6 +206,31 @@ SetFirmware sets Firmware field to given value.
 `func (o *Device) HasFirmware() bool`
 
 HasFirmware returns a boolean if a field has been set.
+
+### GetMetadata
+
+`func (o *Device) GetMetadata() DeviceMetadata`
+
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+
+### GetMetadataOk
+
+`func (o *Device) GetMetadataOk() (*DeviceMetadata, bool)`
+
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetadata
+
+`func (o *Device) SetMetadata(v DeviceMetadata)`
+
+SetMetadata sets Metadata field to given value.
+
+### HasMetadata
+
+`func (o *Device) HasMetadata() bool`
+
+HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

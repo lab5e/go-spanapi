@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.14 oversensitive-deante
+ * API version: 4.1.15 disproved-darryl
  * Contact: dev@lab5e.com
  */
 
@@ -17,9 +17,9 @@ import (
 
 // FieldMask struct for FieldMask
 type FieldMask struct {
-	Imsi     *bool `json:"imsi,omitempty"`
-	Imei     *bool `json:"imei,omitempty"`
-	Msisdn   *bool `json:"msisdn,omitempty"`
+	Imsi *bool `json:"imsi,omitempty"`
+	Imei *bool `json:"imei,omitempty"`
+	Msisdn *bool `json:"msisdn,omitempty"`
 	Location *bool `json:"location,omitempty"`
 }
 
@@ -220,3 +220,5 @@ func (v *NullableFieldMask) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

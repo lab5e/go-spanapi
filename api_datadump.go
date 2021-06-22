@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.14 oversensitive-deante
+ * API version: 4.1.15 disproved-darryl
  * Contact: dev@lab5e.com
  */
 
@@ -28,9 +28,9 @@ var (
 type DatadumpApiService service
 
 type ApiDataDumpRequest struct {
-	ctx        _context.Context
+	ctx _context.Context
 	ApiService *DatadumpApiService
-	body       *DataDumpRequest
+	body *DataDumpRequest
 }
 
 func (r ApiDataDumpRequest) Body(body DataDumpRequest) ApiDataDumpRequest {
@@ -51,7 +51,7 @@ func (r ApiDataDumpRequest) Execute() (DataDumpResponse, *_nethttp.Response, err
 func (a *DatadumpApiService) DataDump(ctx _context.Context) ApiDataDumpRequest {
 	return ApiDataDumpRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
@@ -188,13 +188,13 @@ func (a *DatadumpApiService) DataDumpExecute(r ApiDataDumpRequest) (DataDumpResp
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
