@@ -18,12 +18,12 @@ import (
 // OutputStatusResponse struct for OutputStatusResponse
 type OutputStatusResponse struct {
 	CollectionId *string `json:"collectionId,omitempty"`
-	OutputId *string `json:"outputId,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
-	ErrorCount *int32 `json:"errorCount,omitempty"`
-	Forwarded *int32 `json:"forwarded,omitempty"`
-	Received *int32 `json:"received,omitempty"`
-	Retransmits *int32 `json:"retransmits,omitempty"`
+	OutputId     *string `json:"outputId,omitempty"`
+	Enabled      *bool   `json:"enabled,omitempty"`
+	ErrorCount   *int32  `json:"errorCount,omitempty"`
+	Forwarded    *int32  `json:"forwarded,omitempty"`
+	Received     *int32  `json:"received,omitempty"`
+	Retransmits  *int32  `json:"retransmits,omitempty"`
 }
 
 // NewOutputStatusResponse instantiates a new OutputStatusResponse object
@@ -328,5 +328,3 @@ func (v *NullableOutputStatusResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
