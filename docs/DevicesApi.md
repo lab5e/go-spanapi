@@ -5,12 +5,12 @@ All URIs are relative to *https://api.lab5e.com/span*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateDevice**](DevicesApi.md#CreateDevice) | **Post** /collections/{collectionId}/devices | Create device
-[**DeleteDevice**](DevicesApi.md#DeleteDevice) | **Delete** /collections/{collectionId}/devices/{deviceId} | Remove device
+[**DeleteDevice**](DevicesApi.md#DeleteDevice) | **Delete** /collections/{collectionId}/devices/{deviceId} | Remove device.
 [**ListDeviceData**](DevicesApi.md#ListDeviceData) | **Get** /collections/{collectionId}/devices/{deviceId}/data | Get payloads
-[**ListDevices**](DevicesApi.md#ListDevices) | **Get** /collections/{collectionId}/devices | List devices
+[**ListDevices**](DevicesApi.md#ListDevices) | **Get** /collections/{collectionId}/devices | List devices in collection.
 [**RetrieveDevice**](DevicesApi.md#RetrieveDevice) | **Get** /collections/{collectionId}/devices/{deviceId} | Retrieve device
-[**SendMessage**](DevicesApi.md#SendMessage) | **Post** /collections/{collectionId}/devices/{deviceId}/to | Send message
-[**UpdateDevice**](DevicesApi.md#UpdateDevice) | **Patch** /collections/{existingCollectionId}/devices/{deviceId} | Update device
+[**SendMessage**](DevicesApi.md#SendMessage) | **Post** /collections/{collectionId}/devices/{deviceId}/to | Send message to a device.
+[**UpdateDevice**](DevicesApi.md#UpdateDevice) | **Patch** /collections/{existingCollectionId}/devices/{deviceId} | Update device. The device can be moved from one collection to another by setting the collection ID field to the new collection. You must have administrative access to both collections.
 
 
 
@@ -90,7 +90,9 @@ Name | Type | Description  | Notes
 
 > Device DeleteDevice(ctx, collectionId, deviceId).Execute()
 
-Remove device
+Remove device.
+
+
 
 ### Example
 
@@ -242,7 +244,9 @@ Name | Type | Description  | Notes
 
 > ListDevicesResponse ListDevices(ctx, collectionId).Execute()
 
-List devices
+List devices in collection.
+
+
 
 ### Example
 
@@ -383,7 +387,7 @@ Name | Type | Description  | Notes
 
 > SendMessageResponse SendMessage(ctx, collectionId, deviceId).Body(body).Execute()
 
-Send message
+Send message to a device.
 
 
 
@@ -458,7 +462,9 @@ Name | Type | Description  | Notes
 
 > Device UpdateDevice(ctx, existingCollectionId, deviceId).Body(body).Execute()
 
-Update device
+Update device. The device can be moved from one collection to another by setting the collection ID field to the new collection. You must have administrative access to both collections.
+
+
 
 ### Example
 

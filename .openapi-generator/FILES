@@ -3,7 +3,6 @@
 README.md
 api/openapi.yaml
 api_collections.go
-api_datadump.go
 api_devices.go
 api_fota.go
 api_outputs.go
@@ -18,14 +17,9 @@ docs/CollectionFirmware.md
 docs/CollectionFirmwareFirmwareManagement.md
 docs/CollectionsApi.md
 docs/CreateFirmwareRequest.md
-docs/DataDumpRequest.md
-docs/DataDumpResponse.md
-docs/DatadumpApi.md
 docs/Device.md
 docs/DeviceMetadata.md
 docs/DevicesApi.md
-docs/DumpedCollection.md
-docs/DumpedDevice.md
 docs/FieldMask.md
 docs/Firmware.md
 docs/FirmwareMetadata.md
@@ -64,12 +58,8 @@ model_collection.go
 model_collection_firmware.go
 model_collection_firmware_firmware_management.go
 model_create_firmware_request.go
-model_data_dump_request.go
-model_data_dump_response.go
 model_device.go
 model_device_metadata.go
-model_dumped_collection.go
-model_dumped_device.go
 model_field_mask.go
 model_firmware.go
 model_firmware_metadata.go

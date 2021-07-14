@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**FirmwareUsage**](FotaApi.md#FirmwareUsage) | **Get** /collections/{collectionId}/firmware/{imageId}/usage | Firmware usage
 [**ListFirmware**](FotaApi.md#ListFirmware) | **Get** /collections/{collectionId}/firmware | List firmware
 [**RetrieveFirmware**](FotaApi.md#RetrieveFirmware) | **Get** /collections/{collectionId}/firmware/{imageId} | Retrieve firmware
-[**UpdateFirmware**](FotaApi.md#UpdateFirmware) | **Patch** /collections/{collectionId}/firmware/{imageId} | Update firmware
+[**UpdateFirmware**](FotaApi.md#UpdateFirmware) | **Patch** /collections/{collectionId}/firmware/{imageId} | Update firmware. Only the version and tags fields can be updated. The other fields will be ignored..
 
 
 
@@ -448,7 +448,7 @@ Name | Type | Description  | Notes
 
 > Firmware UpdateFirmware(ctx, collectionId, imageId).Body(body).Execute()
 
-Update firmware
+Update firmware. Only the version and tags fields can be updated. The other fields will be ignored..
 
 ### Example
 

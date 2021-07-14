@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.15 disproved-darryl
+ * API version: 4.1.16 spooky-devante
  * Contact: dev@lab5e.com
  */
 
@@ -18,7 +18,7 @@ import (
 // UpdateDeviceRequest struct for UpdateDeviceRequest
 type UpdateDeviceRequest struct {
 	ExistingCollectionId *string `json:"existingCollectionId,omitempty"`
-	DeviceId             *string `json:"deviceId,omitempty"`
+	DeviceId *string `json:"deviceId,omitempty"`
 	// The collection id for the device. This field is optional and can be omitted if the collection id isn't changed. When changing to a new collection you must be an owner of the other collection, ie an administrator of the team that owns the new collection.
 	CollectionId *string `json:"collectionId,omitempty"`
 	// The IMSI is the unique ID for the (e|nu|whatever)SIM card on your device. This is the primary identifier for your device on the network.
@@ -26,8 +26,8 @@ type UpdateDeviceRequest struct {
 	// The IMEI number is the unique ID for your hardware as seen by the network. Obviously you might have a completely different view on things.
 	Imei *string `json:"imei,omitempty"`
 	// Tags are metadata for the device that you can set. These are just strings.
-	Tags     *map[string]string `json:"tags,omitempty"`
-	Firmware *FirmwareMetadata  `json:"firmware,omitempty"`
+	Tags *map[string]string `json:"tags,omitempty"`
+	Firmware *FirmwareMetadata `json:"firmware,omitempty"`
 }
 
 // NewUpdateDeviceRequest instantiates a new UpdateDeviceRequest object
@@ -332,3 +332,5 @@ func (v *NullableUpdateDeviceRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

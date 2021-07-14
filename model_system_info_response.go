@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.15 disproved-darryl
+ * API version: 4.1.16 spooky-devante
  * Contact: dev@lab5e.com
  */
 
@@ -17,11 +17,11 @@ import (
 
 // SystemInfoResponse struct for SystemInfoResponse
 type SystemInfoResponse struct {
-	Version          *string    `json:"version,omitempty"`
-	BuildDate        *string    `json:"buildDate,omitempty"`
-	ReleaseName      *string    `json:"releaseName,omitempty"`
+	Version *string `json:"version,omitempty"`
+	BuildDate *string `json:"buildDate,omitempty"`
+	ReleaseName *string `json:"releaseName,omitempty"`
 	DefaultFieldMask *FieldMask `json:"defaultFieldMask,omitempty"`
-	ForcedFieldMask  *FieldMask `json:"forcedFieldMask,omitempty"`
+	ForcedFieldMask *FieldMask `json:"forcedFieldMask,omitempty"`
 }
 
 // NewSystemInfoResponse instantiates a new SystemInfoResponse object
@@ -256,3 +256,5 @@ func (v *NullableSystemInfoResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
