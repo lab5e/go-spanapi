@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.16 spooky-devante
+ * API version: 4.1.17 enhanced-allie
  * Contact: dev@lab5e.com
  */
 
@@ -29,10 +29,10 @@ var (
 type CollectionsApiService service
 
 type ApiBroadcastMessageRequest struct {
-	ctx          _context.Context
-	ApiService   *CollectionsApiService
+	ctx _context.Context
+	ApiService *CollectionsApiService
 	collectionId string
-	body         *BroadcastMessageRequest
+	body *BroadcastMessageRequest
 }
 
 func (r ApiBroadcastMessageRequest) Body(body BroadcastMessageRequest) ApiBroadcastMessageRequest {
@@ -53,8 +53,8 @@ func (r ApiBroadcastMessageRequest) Execute() (MultiSendMessageResponse, *_netht
  */
 func (a *CollectionsApiService) BroadcastMessage(ctx _context.Context, collectionId string) ApiBroadcastMessageRequest {
 	return ApiBroadcastMessageRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -193,13 +193,13 @@ func (a *CollectionsApiService) BroadcastMessageExecute(r ApiBroadcastMessageReq
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -216,9 +216,9 @@ func (a *CollectionsApiService) BroadcastMessageExecute(r ApiBroadcastMessageReq
 }
 
 type ApiCreateCollectionRequest struct {
-	ctx        _context.Context
+	ctx _context.Context
 	ApiService *CollectionsApiService
-	body       *Collection
+	body *Collection
 }
 
 func (r ApiCreateCollectionRequest) Body(body Collection) ApiCreateCollectionRequest {
@@ -239,7 +239,7 @@ func (r ApiCreateCollectionRequest) Execute() (Collection, *_nethttp.Response, e
 func (a *CollectionsApiService) CreateCollection(ctx _context.Context) ApiCreateCollectionRequest {
 	return ApiCreateCollectionRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
@@ -376,13 +376,13 @@ func (a *CollectionsApiService) CreateCollectionExecute(r ApiCreateCollectionReq
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -399,10 +399,11 @@ func (a *CollectionsApiService) CreateCollectionExecute(r ApiCreateCollectionReq
 }
 
 type ApiDeleteCollectionRequest struct {
-	ctx          _context.Context
-	ApiService   *CollectionsApiService
+	ctx _context.Context
+	ApiService *CollectionsApiService
 	collectionId string
 }
+
 
 func (r ApiDeleteCollectionRequest) Execute() (Collection, *_nethttp.Response, error) {
 	return r.ApiService.DeleteCollectionExecute(r)
@@ -417,8 +418,8 @@ func (r ApiDeleteCollectionRequest) Execute() (Collection, *_nethttp.Response, e
  */
 func (a *CollectionsApiService) DeleteCollection(ctx _context.Context, collectionId string) ApiDeleteCollectionRequest {
 	return ApiDeleteCollectionRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -552,13 +553,13 @@ func (a *CollectionsApiService) DeleteCollectionExecute(r ApiDeleteCollectionReq
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -575,13 +576,13 @@ func (a *CollectionsApiService) DeleteCollectionExecute(r ApiDeleteCollectionReq
 }
 
 type ApiListCollectionDataRequest struct {
-	ctx          _context.Context
-	ApiService   *CollectionsApiService
+	ctx _context.Context
+	ApiService *CollectionsApiService
 	collectionId string
-	limit        *int32
-	start        *string
-	end          *string
-	offset       *string
+	limit *int32
+	start *string
+	end *string
+	offset *string
 }
 
 func (r ApiListCollectionDataRequest) Limit(limit int32) ApiListCollectionDataRequest {
@@ -614,8 +615,8 @@ func (r ApiListCollectionDataRequest) Execute() (ListDataResponse, *_nethttp.Res
  */
 func (a *CollectionsApiService) ListCollectionData(ctx _context.Context, collectionId string) ApiListCollectionDataRequest {
 	return ApiListCollectionDataRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -761,13 +762,13 @@ func (a *CollectionsApiService) ListCollectionDataExecute(r ApiListCollectionDat
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -784,9 +785,10 @@ func (a *CollectionsApiService) ListCollectionDataExecute(r ApiListCollectionDat
 }
 
 type ApiListCollectionsRequest struct {
-	ctx        _context.Context
+	ctx _context.Context
 	ApiService *CollectionsApiService
 }
+
 
 func (r ApiListCollectionsRequest) Execute() (ListCollectionResponse, *_nethttp.Response, error) {
 	return r.ApiService.ListCollectionsExecute(r)
@@ -801,7 +803,7 @@ func (r ApiListCollectionsRequest) Execute() (ListCollectionResponse, *_nethttp.
 func (a *CollectionsApiService) ListCollections(ctx _context.Context) ApiListCollectionsRequest {
 	return ApiListCollectionsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
@@ -933,13 +935,13 @@ func (a *CollectionsApiService) ListCollectionsExecute(r ApiListCollectionsReque
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -956,10 +958,11 @@ func (a *CollectionsApiService) ListCollectionsExecute(r ApiListCollectionsReque
 }
 
 type ApiRetrieveCollectionRequest struct {
-	ctx          _context.Context
-	ApiService   *CollectionsApiService
+	ctx _context.Context
+	ApiService *CollectionsApiService
 	collectionId string
 }
+
 
 func (r ApiRetrieveCollectionRequest) Execute() (Collection, *_nethttp.Response, error) {
 	return r.ApiService.RetrieveCollectionExecute(r)
@@ -973,8 +976,8 @@ func (r ApiRetrieveCollectionRequest) Execute() (Collection, *_nethttp.Response,
  */
 func (a *CollectionsApiService) RetrieveCollection(ctx _context.Context, collectionId string) ApiRetrieveCollectionRequest {
 	return ApiRetrieveCollectionRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -1108,13 +1111,13 @@ func (a *CollectionsApiService) RetrieveCollectionExecute(r ApiRetrieveCollectio
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1131,10 +1134,10 @@ func (a *CollectionsApiService) RetrieveCollectionExecute(r ApiRetrieveCollectio
 }
 
 type ApiUpdateCollectionRequest struct {
-	ctx          _context.Context
-	ApiService   *CollectionsApiService
+	ctx _context.Context
+	ApiService *CollectionsApiService
 	collectionId string
-	body         *Collection
+	body *Collection
 }
 
 func (r ApiUpdateCollectionRequest) Body(body Collection) ApiUpdateCollectionRequest {
@@ -1155,8 +1158,8 @@ func (r ApiUpdateCollectionRequest) Execute() (Collection, *_nethttp.Response, e
  */
 func (a *CollectionsApiService) UpdateCollection(ctx _context.Context, collectionId string) ApiUpdateCollectionRequest {
 	return ApiUpdateCollectionRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -1295,13 +1298,13 @@ func (a *CollectionsApiService) UpdateCollectionExecute(r ApiUpdateCollectionReq
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v RpcStatus
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v RpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

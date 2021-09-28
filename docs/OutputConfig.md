@@ -20,6 +20,9 @@ Name | Type | Description | Notes
 **Password** | Pointer to **string** |  | [optional] 
 **ClientId** | Pointer to **string** |  | [optional] 
 **TopicName** | Pointer to **string** |  | [optional] 
+**TopicTemplate** | Pointer to **string** |  | [optional] 
+**PayloadFormat** | Pointer to **string** |  | [optional] 
+**PayloadTemplate** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -439,6 +442,81 @@ SetTopicName sets TopicName field to given value.
 `func (o *OutputConfig) HasTopicName() bool`
 
 HasTopicName returns a boolean if a field has been set.
+
+### GetTopicTemplate
+
+`func (o *OutputConfig) GetTopicTemplate() string`
+
+GetTopicTemplate returns the TopicTemplate field if non-nil, zero value otherwise.
+
+### GetTopicTemplateOk
+
+`func (o *OutputConfig) GetTopicTemplateOk() (*string, bool)`
+
+GetTopicTemplateOk returns a tuple with the TopicTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTopicTemplate
+
+`func (o *OutputConfig) SetTopicTemplate(v string)`
+
+SetTopicTemplate sets TopicTemplate field to given value.
+
+### HasTopicTemplate
+
+`func (o *OutputConfig) HasTopicTemplate() bool`
+
+HasTopicTemplate returns a boolean if a field has been set.
+
+### GetPayloadFormat
+
+`func (o *OutputConfig) GetPayloadFormat() string`
+
+GetPayloadFormat returns the PayloadFormat field if non-nil, zero value otherwise.
+
+### GetPayloadFormatOk
+
+`func (o *OutputConfig) GetPayloadFormatOk() (*string, bool)`
+
+GetPayloadFormatOk returns a tuple with the PayloadFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPayloadFormat
+
+`func (o *OutputConfig) SetPayloadFormat(v string)`
+
+SetPayloadFormat sets PayloadFormat field to given value.
+
+### HasPayloadFormat
+
+`func (o *OutputConfig) HasPayloadFormat() bool`
+
+HasPayloadFormat returns a boolean if a field has been set.
+
+### GetPayloadTemplate
+
+`func (o *OutputConfig) GetPayloadTemplate() string`
+
+GetPayloadTemplate returns the PayloadTemplate field if non-nil, zero value otherwise.
+
+### GetPayloadTemplateOk
+
+`func (o *OutputConfig) GetPayloadTemplateOk() (*string, bool)`
+
+GetPayloadTemplateOk returns a tuple with the PayloadTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPayloadTemplate
+
+`func (o *OutputConfig) SetPayloadTemplate(v string)`
+
+SetPayloadTemplate sets PayloadTemplate field to given value.
+
+### HasPayloadTemplate
+
+`func (o *OutputConfig) HasPayloadTemplate() bool`
+
+HasPayloadTemplate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

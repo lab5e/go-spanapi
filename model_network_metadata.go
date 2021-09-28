@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.16 spooky-devante
+ * API version: 4.1.17 enhanced-allie
  * Contact: dev@lab5e.com
  */
 
@@ -186,3 +186,5 @@ func (v *NullableNetworkMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

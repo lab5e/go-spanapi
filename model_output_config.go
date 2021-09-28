@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.16 spooky-devante
+ * API version: 4.1.17 enhanced-allie
  * Contact: dev@lab5e.com
  */
 
@@ -17,23 +17,26 @@ import (
 
 // OutputConfig Output configuration.
 type OutputConfig struct {
-	Url               *string `json:"url,omitempty"`
-	BasicAuthUser     *string `json:"basicAuthUser,omitempty"`
-	BasicAuthPass     *string `json:"basicAuthPass,omitempty"`
-	CustomHeaderName  *string `json:"customHeaderName,omitempty"`
+	Url *string `json:"url,omitempty"`
+	BasicAuthUser *string `json:"basicAuthUser,omitempty"`
+	BasicAuthPass *string `json:"basicAuthPass,omitempty"`
+	CustomHeaderName *string `json:"customHeaderName,omitempty"`
 	CustomHeaderValue *string `json:"customHeaderValue,omitempty"`
-	Host              *string `json:"host,omitempty"`
-	Port              *int32  `json:"port,omitempty"`
-	Key               *string `json:"key,omitempty"`
-	EventName         *string `json:"eventName,omitempty"`
-	AsIsPayload       *bool   `json:"asIsPayload,omitempty"`
-	Endpoint          *string `json:"endpoint,omitempty"`
+	Host *string `json:"host,omitempty"`
+	Port *int32 `json:"port,omitempty"`
+	Key *string `json:"key,omitempty"`
+	EventName *string `json:"eventName,omitempty"`
+	AsIsPayload *bool `json:"asIsPayload,omitempty"`
+	Endpoint *string `json:"endpoint,omitempty"`
 	// MQTT configuration: Disable certificate checks. Default is off.
-	DisableCertCheck *bool   `json:"disableCertCheck,omitempty"`
-	Username         *string `json:"username,omitempty"`
-	Password         *string `json:"password,omitempty"`
-	ClientId         *string `json:"clientId,omitempty"`
-	TopicName        *string `json:"topicName,omitempty"`
+	DisableCertCheck *bool `json:"disableCertCheck,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Password *string `json:"password,omitempty"`
+	ClientId *string `json:"clientId,omitempty"`
+	TopicName *string `json:"topicName,omitempty"`
+	TopicTemplate *string `json:"topicTemplate,omitempty"`
+	PayloadFormat *string `json:"payloadFormat,omitempty"`
+	PayloadTemplate *string `json:"payloadTemplate,omitempty"`
 }
 
 // NewOutputConfig instantiates a new OutputConfig object
@@ -565,6 +568,102 @@ func (o *OutputConfig) SetTopicName(v string) {
 	o.TopicName = &v
 }
 
+// GetTopicTemplate returns the TopicTemplate field value if set, zero value otherwise.
+func (o *OutputConfig) GetTopicTemplate() string {
+	if o == nil || o.TopicTemplate == nil {
+		var ret string
+		return ret
+	}
+	return *o.TopicTemplate
+}
+
+// GetTopicTemplateOk returns a tuple with the TopicTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OutputConfig) GetTopicTemplateOk() (*string, bool) {
+	if o == nil || o.TopicTemplate == nil {
+		return nil, false
+	}
+	return o.TopicTemplate, true
+}
+
+// HasTopicTemplate returns a boolean if a field has been set.
+func (o *OutputConfig) HasTopicTemplate() bool {
+	if o != nil && o.TopicTemplate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTopicTemplate gets a reference to the given string and assigns it to the TopicTemplate field.
+func (o *OutputConfig) SetTopicTemplate(v string) {
+	o.TopicTemplate = &v
+}
+
+// GetPayloadFormat returns the PayloadFormat field value if set, zero value otherwise.
+func (o *OutputConfig) GetPayloadFormat() string {
+	if o == nil || o.PayloadFormat == nil {
+		var ret string
+		return ret
+	}
+	return *o.PayloadFormat
+}
+
+// GetPayloadFormatOk returns a tuple with the PayloadFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OutputConfig) GetPayloadFormatOk() (*string, bool) {
+	if o == nil || o.PayloadFormat == nil {
+		return nil, false
+	}
+	return o.PayloadFormat, true
+}
+
+// HasPayloadFormat returns a boolean if a field has been set.
+func (o *OutputConfig) HasPayloadFormat() bool {
+	if o != nil && o.PayloadFormat != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPayloadFormat gets a reference to the given string and assigns it to the PayloadFormat field.
+func (o *OutputConfig) SetPayloadFormat(v string) {
+	o.PayloadFormat = &v
+}
+
+// GetPayloadTemplate returns the PayloadTemplate field value if set, zero value otherwise.
+func (o *OutputConfig) GetPayloadTemplate() string {
+	if o == nil || o.PayloadTemplate == nil {
+		var ret string
+		return ret
+	}
+	return *o.PayloadTemplate
+}
+
+// GetPayloadTemplateOk returns a tuple with the PayloadTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OutputConfig) GetPayloadTemplateOk() (*string, bool) {
+	if o == nil || o.PayloadTemplate == nil {
+		return nil, false
+	}
+	return o.PayloadTemplate, true
+}
+
+// HasPayloadTemplate returns a boolean if a field has been set.
+func (o *OutputConfig) HasPayloadTemplate() bool {
+	if o != nil && o.PayloadTemplate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPayloadTemplate gets a reference to the given string and assigns it to the PayloadTemplate field.
+func (o *OutputConfig) SetPayloadTemplate(v string) {
+	o.PayloadTemplate = &v
+}
+
 func (o OutputConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Url != nil {
@@ -615,6 +714,15 @@ func (o OutputConfig) MarshalJSON() ([]byte, error) {
 	if o.TopicName != nil {
 		toSerialize["topicName"] = o.TopicName
 	}
+	if o.TopicTemplate != nil {
+		toSerialize["topicTemplate"] = o.TopicTemplate
+	}
+	if o.PayloadFormat != nil {
+		toSerialize["payloadFormat"] = o.PayloadFormat
+	}
+	if o.PayloadTemplate != nil {
+		toSerialize["payloadTemplate"] = o.PayloadTemplate
+	}
 	return json.Marshal(toSerialize)
 }
 
@@ -653,3 +761,5 @@ func (v *NullableOutputConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

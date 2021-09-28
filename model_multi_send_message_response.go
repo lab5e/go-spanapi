@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.16 spooky-devante
+ * API version: 4.1.17 enhanced-allie
  * Contact: dev@lab5e.com
  */
 
@@ -18,8 +18,8 @@ import (
 // MultiSendMessageResponse Broadcast message result. The errors array contains the list of errors ocurred when sending a message.
 type MultiSendMessageResponse struct {
 	Errors *[]MessageSendResult `json:"errors,omitempty"`
-	Sent   *int32               `json:"sent,omitempty"`
-	Failed *int32               `json:"failed,omitempty"`
+	Sent *int32 `json:"sent,omitempty"`
+	Failed *int32 `json:"failed,omitempty"`
 }
 
 // NewMultiSendMessageResponse instantiates a new MultiSendMessageResponse object
@@ -184,3 +184,5 @@ func (v *NullableMultiSendMessageResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

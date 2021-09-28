@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.16 spooky-devante
+ * API version: 4.1.17 enhanced-allie
  * Contact: dev@lab5e.com
  */
 
@@ -18,10 +18,11 @@ import (
 // NetworkOperator Operator holds information on the network operator. There might be several operators involved; one operator is running the network your devices are connected to and the SIM card in your device belongs to a different operator.
 type NetworkOperator struct {
 	// The Mobil Country Code for the operator.
-	Mcc     *int32  `json:"mcc,omitempty"`
-	Mnc     *int32  `json:"mnc,omitempty"`
+	Mcc *int32 `json:"mcc,omitempty"`
+	Mnc *int32 `json:"mnc,omitempty"`
 	Country *string `json:"country,omitempty"`
 	Network *string `json:"network,omitempty"`
+	CountryCode *string `json:"countryCode,omitempty"`
 }
 
 // NewNetworkOperator instantiates a new NetworkOperator object
@@ -169,6 +170,38 @@ func (o *NetworkOperator) SetNetwork(v string) {
 	o.Network = &v
 }
 
+// GetCountryCode returns the CountryCode field value if set, zero value otherwise.
+func (o *NetworkOperator) GetCountryCode() string {
+	if o == nil || o.CountryCode == nil {
+		var ret string
+		return ret
+	}
+	return *o.CountryCode
+}
+
+// GetCountryCodeOk returns a tuple with the CountryCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NetworkOperator) GetCountryCodeOk() (*string, bool) {
+	if o == nil || o.CountryCode == nil {
+		return nil, false
+	}
+	return o.CountryCode, true
+}
+
+// HasCountryCode returns a boolean if a field has been set.
+func (o *NetworkOperator) HasCountryCode() bool {
+	if o != nil && o.CountryCode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCountryCode gets a reference to the given string and assigns it to the CountryCode field.
+func (o *NetworkOperator) SetCountryCode(v string) {
+	o.CountryCode = &v
+}
+
 func (o NetworkOperator) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Mcc != nil {
@@ -182,6 +215,9 @@ func (o NetworkOperator) MarshalJSON() ([]byte, error) {
 	}
 	if o.Network != nil {
 		toSerialize["network"] = o.Network
+	}
+	if o.CountryCode != nil {
+		toSerialize["countryCode"] = o.CountryCode
 	}
 	return json.Marshal(toSerialize)
 }
@@ -221,3 +257,5 @@ func (v *NullableNetworkOperator) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
