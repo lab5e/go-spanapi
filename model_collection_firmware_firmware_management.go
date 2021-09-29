@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.17 enhanced-allie
+ * API version: 4.1.18 disgruntled-jerald
  * Contact: dev@lab5e.com
  */
 
@@ -22,9 +22,9 @@ type CollectionFirmwareFirmwareManagement string
 // List of CollectionFirmwareFirmwareManagement
 const (
 	UNSPECIFIED CollectionFirmwareFirmwareManagement = "unspecified"
-	DISABLED    CollectionFirmwareFirmwareManagement = "disabled"
-	COLLECTION  CollectionFirmwareFirmwareManagement = "collection"
-	DEVICE      CollectionFirmwareFirmwareManagement = "device"
+	DISABLED CollectionFirmwareFirmwareManagement = "disabled"
+	COLLECTION CollectionFirmwareFirmwareManagement = "collection"
+	DEVICE CollectionFirmwareFirmwareManagement = "device"
 )
 
 func (v *CollectionFirmwareFirmwareManagement) UnmarshalJSON(src []byte) error {
@@ -34,7 +34,7 @@ func (v *CollectionFirmwareFirmwareManagement) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := CollectionFirmwareFirmwareManagement(value)
-	for _, existing := range []CollectionFirmwareFirmwareManagement{"unspecified", "disabled", "collection", "device"} {
+	for _, existing := range []CollectionFirmwareFirmwareManagement{ "unspecified", "disabled", "collection", "device",   } {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -84,3 +84,4 @@ func (v *NullableCollectionFirmwareFirmwareManagement) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

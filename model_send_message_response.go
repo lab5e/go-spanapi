@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.17 enhanced-allie
+ * API version: 4.1.18 disgruntled-jerald
  * Contact: dev@lab5e.com
  */
 
@@ -18,8 +18,8 @@ import (
 // SendMessageResponse struct for SendMessageResponse
 type SendMessageResponse struct {
 	CollectionId *string `json:"collectionId,omitempty"`
-	DeviceId     *string `json:"deviceId,omitempty"`
-	BytesSent    *int32  `json:"bytesSent,omitempty"`
+	DeviceId *string `json:"deviceId,omitempty"`
+	BytesSent *int32 `json:"bytesSent,omitempty"`
 }
 
 // NewSendMessageResponse instantiates a new SendMessageResponse object
@@ -184,3 +184,5 @@ func (v *NullableSendMessageResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

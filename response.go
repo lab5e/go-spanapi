@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.17 enhanced-allie
+ * API version: 4.1.18 disgruntled-jerald
  * Contact: dev@lab5e.com
  */
 

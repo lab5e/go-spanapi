@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.17 enhanced-allie
+ * API version: 4.1.18 disgruntled-jerald
  * Contact: dev@lab5e.com
  */
 
@@ -18,10 +18,10 @@ import (
 // NetworkOperator Operator holds information on the network operator. There might be several operators involved; one operator is running the network your devices are connected to and the SIM card in your device belongs to a different operator.
 type NetworkOperator struct {
 	// The Mobil Country Code for the operator.
-	Mcc         *int32  `json:"mcc,omitempty"`
-	Mnc         *int32  `json:"mnc,omitempty"`
-	Country     *string `json:"country,omitempty"`
-	Network     *string `json:"network,omitempty"`
+	Mcc *int32 `json:"mcc,omitempty"`
+	Mnc *int32 `json:"mnc,omitempty"`
+	Country *string `json:"country,omitempty"`
+	Network *string `json:"network,omitempty"`
 	CountryCode *string `json:"countryCode,omitempty"`
 }
 
@@ -257,3 +257,5 @@ func (v *NullableNetworkOperator) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

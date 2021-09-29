@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.17 enhanced-allie
+ * API version: 4.1.18 disgruntled-jerald
  * Contact: dev@lab5e.com
  */
 
@@ -21,11 +21,11 @@ type OutputType string
 
 // List of OutputType
 const (
-	UNDEFINED  OutputType = "undefined"
-	WEBHOOK    OutputType = "webhook"
-	UDP        OutputType = "udp"
-	MQTT       OutputType = "mqtt"
-	IFTTT      OutputType = "ifttt"
+	UNDEFINED OutputType = "undefined"
+	WEBHOOK OutputType = "webhook"
+	UDP OutputType = "udp"
+	MQTT OutputType = "mqtt"
+	IFTTT OutputType = "ifttt"
 	MQTTBROKER OutputType = "mqttbroker"
 )
 
@@ -36,7 +36,7 @@ func (v *OutputType) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := OutputType(value)
-	for _, existing := range []OutputType{"undefined", "webhook", "udp", "mqtt", "ifttt", "mqttbroker"} {
+	for _, existing := range []OutputType{ "undefined", "webhook", "udp", "mqtt", "ifttt", "mqttbroker",   } {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -86,3 +86,4 @@ func (v *NullableOutputType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

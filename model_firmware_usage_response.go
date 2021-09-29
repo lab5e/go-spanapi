@@ -3,7 +3,7 @@
  *
  * API for device, collection, output and firmware management
  *
- * API version: 4.1.17 enhanced-allie
+ * API version: 4.1.18 disgruntled-jerald
  * Contact: dev@lab5e.com
  */
 
@@ -17,9 +17,9 @@ import (
 
 // FirmwareUsageResponse struct for FirmwareUsageResponse
 type FirmwareUsageResponse struct {
-	ImageId  *string   `json:"imageId,omitempty"`
+	ImageId *string `json:"imageId,omitempty"`
 	Targeted *[]string `json:"targeted,omitempty"`
-	Current  *[]string `json:"current,omitempty"`
+	Current *[]string `json:"current,omitempty"`
 }
 
 // NewFirmwareUsageResponse instantiates a new FirmwareUsageResponse object
@@ -184,3 +184,5 @@ func (v *NullableFirmwareUsageResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
