@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Url** | Pointer to **string** |  | [optional] 
+**Url** | Pointer to **string** | URL for the webhook. | [optional] 
 **BasicAuthUser** | Pointer to **string** |  | [optional] 
 **BasicAuthPass** | Pointer to **string** |  | [optional] 
 **CustomHeaderName** | Pointer to **string** |  | [optional] 

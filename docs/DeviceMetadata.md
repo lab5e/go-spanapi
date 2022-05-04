@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SimOperator** | Pointer to [**NetworkOperator**](NetworkOperator.md) |  | [optional] 
+**Ciot** | Pointer to [**CellularIoTMetadata**](CellularIoTMetadata.md) |  | [optional] 
+**Inet** | Pointer to [**InetMetadata**](InetMetadata.md) |  | [optional] 
 
 ## Methods
 
@@ -49,6 +51,56 @@ SetSimOperator sets SimOperator field to given value.
 `func (o *DeviceMetadata) HasSimOperator() bool`
 
 HasSimOperator returns a boolean if a field has been set.
+
+### GetCiot
+
+`func (o *DeviceMetadata) GetCiot() CellularIoTMetadata`
+
+GetCiot returns the Ciot field if non-nil, zero value otherwise.
+
+### GetCiotOk
+
+`func (o *DeviceMetadata) GetCiotOk() (*CellularIoTMetadata, bool)`
+
+GetCiotOk returns a tuple with the Ciot field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCiot
+
+`func (o *DeviceMetadata) SetCiot(v CellularIoTMetadata)`
+
+SetCiot sets Ciot field to given value.
+
+### HasCiot
+
+`func (o *DeviceMetadata) HasCiot() bool`
+
+HasCiot returns a boolean if a field has been set.
+
+### GetInet
+
+`func (o *DeviceMetadata) GetInet() InetMetadata`
+
+GetInet returns the Inet field if non-nil, zero value otherwise.
+
+### GetInetOk
+
+`func (o *DeviceMetadata) GetInetOk() (*InetMetadata, bool)`
+
+GetInetOk returns a tuple with the Inet field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInet
+
+`func (o *DeviceMetadata) SetInet(v InetMetadata)`
+
+SetInet sets Inet field to given value.
+
+### HasInet
+
+`func (o *DeviceMetadata) HasInet() bool`
+
+HasInet returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CurrentFirmwareId** | Pointer to **string** | The current firmware is the firmware that the devices are currently using. | [optional] 
 **TargetFirmwareId** | Pointer to **string** | The target firmware is set to the desired firmware image for the devices in this collection. If the management is set to \&quot;device\&quot; this will only be used if the target firmware isn&#39;t set on the device itself. | [optional] 
-**Management** | Pointer to [**CollectionFirmwareFirmwareManagement**](CollectionFirmwareFirmwareManagement.md) |  | [optional] [default to UNSPECIFIED]
+**Management** | Pointer to [**FirmwareManagement**](FirmwareManagement.md) |  | [optional] [default to UNSPECIFIED]
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasTargetFirmwareId returns a boolean if a field has been set.
 
 ### GetManagement
 
-`func (o *CollectionFirmware) GetManagement() CollectionFirmwareFirmwareManagement`
+`func (o *CollectionFirmware) GetManagement() FirmwareManagement`
 
 GetManagement returns the Management field if non-nil, zero value otherwise.
 
 ### GetManagementOk
 
-`func (o *CollectionFirmware) GetManagementOk() (*CollectionFirmwareFirmwareManagement, bool)`
+`func (o *CollectionFirmware) GetManagementOk() (*FirmwareManagement, bool)`
 
 GetManagementOk returns a tuple with the Management field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetManagement
 
-`func (o *CollectionFirmware) SetManagement(v CollectionFirmwareFirmwareManagement)`
+`func (o *CollectionFirmware) SetManagement(v FirmwareManagement)`
 
 SetManagement sets Management field to given value.
 

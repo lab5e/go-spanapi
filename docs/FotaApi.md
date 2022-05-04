@@ -1,16 +1,16 @@
 # \FotaApi
 
-All URIs are relative to *https://api.lab5e.com/span*
+All URIs are relative to *https://api.lab5e.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ClearFirmwareError**](FotaApi.md#ClearFirmwareError) | **Delete** /collections/{collectionId}/devices/{deviceId}/fwerror | Clear FOTA error
-[**CreateFirmware**](FotaApi.md#CreateFirmware) | **Post** /collections/{collectionId}/firmware | Create firmware
-[**DeleteFirmware**](FotaApi.md#DeleteFirmware) | **Delete** /collections/{collectionId}/firmware/{imageId} | Delete firmware
-[**FirmwareUsage**](FotaApi.md#FirmwareUsage) | **Get** /collections/{collectionId}/firmware/{imageId}/usage | Firmware usage
-[**ListFirmware**](FotaApi.md#ListFirmware) | **Get** /collections/{collectionId}/firmware | List firmware
-[**RetrieveFirmware**](FotaApi.md#RetrieveFirmware) | **Get** /collections/{collectionId}/firmware/{imageId} | Retrieve firmware
-[**UpdateFirmware**](FotaApi.md#UpdateFirmware) | **Patch** /collections/{collectionId}/firmware/{imageId} | Update firmware. Only the version and tags fields can be updated. The other fields will be ignored..
+[**ClearFirmwareError**](FotaApi.md#ClearFirmwareError) | **Delete** /span/collections/{collectionId}/devices/{deviceId}/fwerror | Clear FOTA error
+[**CreateFirmware**](FotaApi.md#CreateFirmware) | **Post** /span/collections/{collectionId}/firmware | Create firmware
+[**DeleteFirmware**](FotaApi.md#DeleteFirmware) | **Delete** /span/collections/{collectionId}/firmware/{imageId} | Delete firmware
+[**FirmwareUsage**](FotaApi.md#FirmwareUsage) | **Get** /span/collections/{collectionId}/firmware/{imageId}/usage | Firmware usage
+[**ListFirmware**](FotaApi.md#ListFirmware) | **Get** /span/collections/{collectionId}/firmware | List firmware
+[**RetrieveFirmware**](FotaApi.md#RetrieveFirmware) | **Get** /span/collections/{collectionId}/firmware/{imageId} | Retrieve firmware
+[**UpdateFirmware**](FotaApi.md#UpdateFirmware) | **Patch** /span/collections/{existingCollectionId}/firmware/{imageId} | Update firmware
 
 
 
@@ -37,8 +37,8 @@ func main() {
     deviceId := "deviceId_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FotaApi.ClearFirmwareError(context.Background(), collectionId, deviceId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FotaApi.ClearFirmwareError(context.Background(), collectionId, deviceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.ClearFirmwareError``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -91,8 +91,6 @@ Name | Type | Description  | Notes
 
 Create firmware
 
-
-
 ### Example
 
 ```go
@@ -110,8 +108,8 @@ func main() {
     body := *openapiclient.NewCreateFirmwareRequest() // CreateFirmwareRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FotaApi.CreateFirmware(context.Background(), collectionId).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FotaApi.CreateFirmware(context.Background(), collectionId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.CreateFirmware``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -180,8 +178,8 @@ func main() {
     imageId := "imageId_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FotaApi.DeleteFirmware(context.Background(), collectionId, imageId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FotaApi.DeleteFirmware(context.Background(), collectionId, imageId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.DeleteFirmware``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -234,8 +232,6 @@ Name | Type | Description  | Notes
 
 Firmware usage
 
-
-
 ### Example
 
 ```go
@@ -253,8 +249,8 @@ func main() {
     imageId := "imageId_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FotaApi.FirmwareUsage(context.Background(), collectionId, imageId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FotaApi.FirmwareUsage(context.Background(), collectionId, imageId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.FirmwareUsage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -307,8 +303,6 @@ Name | Type | Description  | Notes
 
 List firmware
 
-
-
 ### Example
 
 ```go
@@ -325,8 +319,8 @@ func main() {
     collectionId := "collectionId_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FotaApi.ListFirmware(context.Background(), collectionId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FotaApi.ListFirmware(context.Background(), collectionId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.ListFirmware``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -377,8 +371,6 @@ Name | Type | Description  | Notes
 
 Retrieve firmware
 
-
-
 ### Example
 
 ```go
@@ -396,8 +388,8 @@ func main() {
     imageId := "imageId_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FotaApi.RetrieveFirmware(context.Background(), collectionId, imageId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FotaApi.RetrieveFirmware(context.Background(), collectionId, imageId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.RetrieveFirmware``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -446,9 +438,11 @@ Name | Type | Description  | Notes
 
 ## UpdateFirmware
 
-> Firmware UpdateFirmware(ctx, collectionId, imageId).Body(body).Execute()
+> Firmware UpdateFirmware(ctx, existingCollectionId, imageId).Body(body).Execute()
 
-Update firmware. Only the version and tags fields can be updated. The other fields will be ignored..
+Update firmware
+
+
 
 ### Example
 
@@ -463,13 +457,13 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | Collection ID  Collection ID for the collection owning the firmware image.
-    imageId := "imageId_example" // string | Firmware image ID
-    body := *openapiclient.NewFirmware() // Firmware | 
+    existingCollectionId := "existingCollectionId_example" // string | 
+    imageId := "imageId_example" // string | 
+    body := *openapiclient.NewUpdateFirmwareRequest() // UpdateFirmwareRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FotaApi.UpdateFirmware(context.Background(), collectionId, imageId).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FotaApi.UpdateFirmware(context.Background(), existingCollectionId, imageId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FotaApi.UpdateFirmware``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -485,8 +479,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** | Collection ID  Collection ID for the collection owning the firmware image. | 
-**imageId** | **string** | Firmware image ID | 
+**existingCollectionId** | **string** |  | 
+**imageId** | **string** |  | 
 
 ### Other Parameters
 
@@ -497,7 +491,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | [**Firmware**](Firmware.md) |  | 
+ **body** | [**UpdateFirmwareRequest**](UpdateFirmwareRequest.md) |  | 
 
 ### Return type
 

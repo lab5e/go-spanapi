@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CollectionId** | Pointer to **string** |  | [optional] 
 **Image** | Pointer to **string** |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
 **Filename** | Pointer to **string** |  | [optional] 
@@ -28,31 +27,6 @@ will change when the set of required properties is changed
 NewCreateFirmwareRequestWithDefaults instantiates a new CreateFirmwareRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCollectionId
-
-`func (o *CreateFirmwareRequest) GetCollectionId() string`
-
-GetCollectionId returns the CollectionId field if non-nil, zero value otherwise.
-
-### GetCollectionIdOk
-
-`func (o *CreateFirmwareRequest) GetCollectionIdOk() (*string, bool)`
-
-GetCollectionIdOk returns a tuple with the CollectionId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCollectionId
-
-`func (o *CreateFirmwareRequest) SetCollectionId(v string)`
-
-SetCollectionId sets CollectionId field to given value.
-
-### HasCollectionId
-
-`func (o *CreateFirmwareRequest) HasCollectionId() bool`
-
-HasCollectionId returns a boolean if a field has been set.
 
 ### GetImage
 

@@ -1,89 +1,16 @@
 # \CollectionsApi
 
-All URIs are relative to *https://api.lab5e.com/span*
+All URIs are relative to *https://api.lab5e.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BroadcastMessage**](CollectionsApi.md#BroadcastMessage) | **Post** /collections/{collectionId}/to | Broadcast message
-[**CreateCollection**](CollectionsApi.md#CreateCollection) | **Post** /collections | Create collection
-[**DeleteCollection**](CollectionsApi.md#DeleteCollection) | **Delete** /collections/{collectionId} | Delete collection
-[**ListCollectionData**](CollectionsApi.md#ListCollectionData) | **Get** /collections/{collectionId}/data | Get payloads
-[**ListCollections**](CollectionsApi.md#ListCollections) | **Get** /collections | List collections
-[**RetrieveCollection**](CollectionsApi.md#RetrieveCollection) | **Get** /collections/{collectionId} | Retrieve collection
-[**UpdateCollection**](CollectionsApi.md#UpdateCollection) | **Patch** /collections/{collectionId} | Update collection
+[**CreateCollection**](CollectionsApi.md#CreateCollection) | **Post** /span/collections | Create collection
+[**DeleteCollection**](CollectionsApi.md#DeleteCollection) | **Delete** /span/collections/{collectionId} | Delete collection
+[**ListCollectionData**](CollectionsApi.md#ListCollectionData) | **Get** /span/collections/{collectionId}/data | Retrieve data from devices
+[**ListCollections**](CollectionsApi.md#ListCollections) | **Get** /span/collections | List collections
+[**RetrieveCollection**](CollectionsApi.md#RetrieveCollection) | **Get** /span/collections/{collectionId} | Retrieve collection
+[**UpdateCollection**](CollectionsApi.md#UpdateCollection) | **Patch** /span/collections/{collectionId} | Update collection
 
-
-
-## BroadcastMessage
-
-> MultiSendMessageResponse BroadcastMessage(ctx, collectionId).Body(body).Execute()
-
-Broadcast message
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    collectionId := "collectionId_example" // string | 
-    body := *openapiclient.NewBroadcastMessageRequest() // BroadcastMessageRequest | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CollectionsApi.BroadcastMessage(context.Background(), collectionId).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.BroadcastMessage``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `BroadcastMessage`: MultiSendMessageResponse
-    fmt.Fprintf(os.Stdout, "Response from `CollectionsApi.BroadcastMessage`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiBroadcastMessageRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **body** | [**BroadcastMessageRequest**](BroadcastMessageRequest.md) |  | 
-
-### Return type
-
-[**MultiSendMessageResponse**](MultiSendMessageResponse.md)
-
-### Authorization
-
-[APIToken](../README.md#APIToken)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## CreateCollection
@@ -107,11 +34,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewCollection() // Collection | 
+    body := *openapiclient.NewCreateCollectionRequest() // CreateCollectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CollectionsApi.CreateCollection(context.Background()).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CollectionsApi.CreateCollection(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.CreateCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -132,7 +59,7 @@ Other parameters are passed through a pointer to a apiCreateCollectionRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Collection**](Collection.md) |  | 
+ **body** | [**CreateCollectionRequest**](CreateCollectionRequest.md) |  | 
 
 ### Return type
 
@@ -176,8 +103,8 @@ func main() {
     collectionId := "collectionId_example" // string | The ID of the collection you want to delete
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CollectionsApi.DeleteCollection(context.Background(), collectionId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CollectionsApi.DeleteCollection(context.Background(), collectionId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.DeleteCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -226,7 +153,7 @@ Name | Type | Description  | Notes
 
 > ListDataResponse ListCollectionData(ctx, collectionId).Limit(limit).Start(start).End(end).Offset(offset).Execute()
 
-Get payloads
+Retrieve data from devices
 
 
 
@@ -250,8 +177,8 @@ func main() {
     offset := "offset_example" // string | The message offset based on the message ID. This parameter can't be combined with the start and end parameters. If no parameter is set the first N messages will be returned. If this parameter is set the next N messages (from newest to oldest) with message ID less than the offset will be returned. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CollectionsApi.ListCollectionData(context.Background(), collectionId).Limit(limit).Start(start).End(end).Offset(offset).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CollectionsApi.ListCollectionData(context.Background(), collectionId).Limit(limit).Start(start).End(end).Offset(offset).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.ListCollectionData``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -323,8 +250,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CollectionsApi.ListCollections(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CollectionsApi.ListCollections(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.ListCollections``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -383,8 +310,8 @@ func main() {
     collectionId := "collectionId_example" // string | The collection ID of the collection you are requesting
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CollectionsApi.RetrieveCollection(context.Background(), collectionId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CollectionsApi.RetrieveCollection(context.Background(), collectionId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.RetrieveCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -451,11 +378,11 @@ import (
 
 func main() {
     collectionId := "collectionId_example" // string | The ID of the collection. This is assigned by the backend.
-    body := *openapiclient.NewCollection() // Collection | 
+    body := *openapiclient.NewUpdateCollectionRequest() // UpdateCollectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CollectionsApi.UpdateCollection(context.Background(), collectionId).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CollectionsApi.UpdateCollection(context.Background(), collectionId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.UpdateCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -481,7 +408,7 @@ Other parameters are passed through a pointer to a apiUpdateCollectionRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**Collection**](Collection.md) |  | 
+ **body** | [**UpdateCollectionRequest**](UpdateCollectionRequest.md) |  | 
 
 ### Return type
 

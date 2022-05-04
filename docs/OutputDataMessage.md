@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**OutputDataMessageOutputMessageType**](OutputDataMessageOutputMessageType.md) |  | [optional] [default to UNKNOWN]
+**Type** | Pointer to [**OutputMessageType**](OutputMessageType.md) |  | [optional] [default to UNKNOWN]
 **Device** | Pointer to [**Device**](Device.md) |  | [optional] 
 **Payload** | Pointer to **string** |  | [optional] 
 **Received** | Pointer to **string** | Received time for message. Value is ms since epoch. | [optional] 
@@ -34,20 +34,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *OutputDataMessage) GetType() OutputDataMessageOutputMessageType`
+`func (o *OutputDataMessage) GetType() OutputMessageType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *OutputDataMessage) GetTypeOk() (*OutputDataMessageOutputMessageType, bool)`
+`func (o *OutputDataMessage) GetTypeOk() (*OutputMessageType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *OutputDataMessage) SetType(v OutputDataMessageOutputMessageType)`
+`func (o *OutputDataMessage) SetType(v OutputMessageType)`
 
 SetType sets Type field to given value.
 

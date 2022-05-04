@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeviceId** | Pointer to **string** | The device ID is assigned by the backend. | [optional] 
 **CollectionId** | Pointer to **string** |  | [optional] 
-**Imsi** | Pointer to **string** | The IMSI is the unique ID for the (e|nu|whatever)SIM card on your device. This is the primary identifier for your device on the network. | [optional] 
-**Imei** | Pointer to **string** | The IMEI number is the unique ID for your hardware as seen by the network. Obviously you might have a completely different view on things. | [optional] 
 **Tags** | Pointer to **map[string]string** | Tags are metadata for the device that you can set. These are just strings. | [optional] 
-**Network** | Pointer to [**NetworkMetadata**](NetworkMetadata.md) |  | [optional] 
 **Firmware** | Pointer to [**FirmwareMetadata**](FirmwareMetadata.md) |  | [optional] 
+**Config** | Pointer to [**DeviceConfig**](DeviceConfig.md) |  | [optional] 
 **Metadata** | Pointer to [**DeviceMetadata**](DeviceMetadata.md) |  | [optional] 
+**Imsi** | Pointer to **string** | The IMSI is the unique ID for the (e|nu|whatever)SIM card on your device. This is the primary identifier for your device on the network.  Deprecated: The IMSI is replaced by CellularIoTMetadata | [optional] 
+**Imei** | Pointer to **string** | The IMEI number is the unique ID for your hardware as seen by the network. Obviously you might have a completely different view on things.  Deprecated: The IMEI is replaced by CellularIoTMetadata | [optional] 
+**Network** | Pointer to [**NetworkMetadata**](NetworkMetadata.md) |  | [optional] 
 
 ## Methods
 
@@ -82,6 +83,106 @@ SetCollectionId sets CollectionId field to given value.
 
 HasCollectionId returns a boolean if a field has been set.
 
+### GetTags
+
+`func (o *Device) GetTags() map[string]string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *Device) GetTagsOk() (*map[string]string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *Device) SetTags(v map[string]string)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *Device) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
+
+### GetFirmware
+
+`func (o *Device) GetFirmware() FirmwareMetadata`
+
+GetFirmware returns the Firmware field if non-nil, zero value otherwise.
+
+### GetFirmwareOk
+
+`func (o *Device) GetFirmwareOk() (*FirmwareMetadata, bool)`
+
+GetFirmwareOk returns a tuple with the Firmware field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFirmware
+
+`func (o *Device) SetFirmware(v FirmwareMetadata)`
+
+SetFirmware sets Firmware field to given value.
+
+### HasFirmware
+
+`func (o *Device) HasFirmware() bool`
+
+HasFirmware returns a boolean if a field has been set.
+
+### GetConfig
+
+`func (o *Device) GetConfig() DeviceConfig`
+
+GetConfig returns the Config field if non-nil, zero value otherwise.
+
+### GetConfigOk
+
+`func (o *Device) GetConfigOk() (*DeviceConfig, bool)`
+
+GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfig
+
+`func (o *Device) SetConfig(v DeviceConfig)`
+
+SetConfig sets Config field to given value.
+
+### HasConfig
+
+`func (o *Device) HasConfig() bool`
+
+HasConfig returns a boolean if a field has been set.
+
+### GetMetadata
+
+`func (o *Device) GetMetadata() DeviceMetadata`
+
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+
+### GetMetadataOk
+
+`func (o *Device) GetMetadataOk() (*DeviceMetadata, bool)`
+
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetadata
+
+`func (o *Device) SetMetadata(v DeviceMetadata)`
+
+SetMetadata sets Metadata field to given value.
+
+### HasMetadata
+
+`func (o *Device) HasMetadata() bool`
+
+HasMetadata returns a boolean if a field has been set.
+
 ### GetImsi
 
 `func (o *Device) GetImsi() string`
@@ -132,31 +233,6 @@ SetImei sets Imei field to given value.
 
 HasImei returns a boolean if a field has been set.
 
-### GetTags
-
-`func (o *Device) GetTags() map[string]string`
-
-GetTags returns the Tags field if non-nil, zero value otherwise.
-
-### GetTagsOk
-
-`func (o *Device) GetTagsOk() (*map[string]string, bool)`
-
-GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTags
-
-`func (o *Device) SetTags(v map[string]string)`
-
-SetTags sets Tags field to given value.
-
-### HasTags
-
-`func (o *Device) HasTags() bool`
-
-HasTags returns a boolean if a field has been set.
-
 ### GetNetwork
 
 `func (o *Device) GetNetwork() NetworkMetadata`
@@ -181,56 +257,6 @@ SetNetwork sets Network field to given value.
 `func (o *Device) HasNetwork() bool`
 
 HasNetwork returns a boolean if a field has been set.
-
-### GetFirmware
-
-`func (o *Device) GetFirmware() FirmwareMetadata`
-
-GetFirmware returns the Firmware field if non-nil, zero value otherwise.
-
-### GetFirmwareOk
-
-`func (o *Device) GetFirmwareOk() (*FirmwareMetadata, bool)`
-
-GetFirmwareOk returns a tuple with the Firmware field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFirmware
-
-`func (o *Device) SetFirmware(v FirmwareMetadata)`
-
-SetFirmware sets Firmware field to given value.
-
-### HasFirmware
-
-`func (o *Device) HasFirmware() bool`
-
-HasFirmware returns a boolean if a field has been set.
-
-### GetMetadata
-
-`func (o *Device) GetMetadata() DeviceMetadata`
-
-GetMetadata returns the Metadata field if non-nil, zero value otherwise.
-
-### GetMetadataOk
-
-`func (o *Device) GetMetadataOk() (*DeviceMetadata, bool)`
-
-GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMetadata
-
-`func (o *Device) SetMetadata(v DeviceMetadata)`
-
-SetMetadata sets Metadata field to given value.
-
-### HasMetadata
-
-`func (o *Device) HasMetadata() bool`
-
-HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Mcc** | Pointer to **int32** | The Mobil Country Code for the operator. | [optional] 
+**Mcc** | Pointer to **int32** | The Mobile Country Code for the operator. | [optional] 
 **Mnc** | Pointer to **int32** |  | [optional] 
 **Country** | Pointer to **string** |  | [optional] 
 **Network** | Pointer to **string** |  | [optional] 

@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CollectionId** | Pointer to **string** | The ID of the collection. This is assigned by the backend. | [optional] 
 **TeamId** | Pointer to **string** | The team ID that owns the collection. This field is required. When you create new collections the default is to use your private team ID. | [optional] 
-**FieldMask** | Pointer to [**FieldMask**](FieldMask.md) |  | [optional] 
 **Firmware** | Pointer to [**CollectionFirmware**](CollectionFirmware.md) |  | [optional] 
 **Tags** | Pointer to **map[string]string** | Tags for the collection. Tags are metadata fields that you can assign to the collection. | [optional] 
 
@@ -78,31 +77,6 @@ SetTeamId sets TeamId field to given value.
 `func (o *Collection) HasTeamId() bool`
 
 HasTeamId returns a boolean if a field has been set.
-
-### GetFieldMask
-
-`func (o *Collection) GetFieldMask() FieldMask`
-
-GetFieldMask returns the FieldMask field if non-nil, zero value otherwise.
-
-### GetFieldMaskOk
-
-`func (o *Collection) GetFieldMaskOk() (*FieldMask, bool)`
-
-GetFieldMaskOk returns a tuple with the FieldMask field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFieldMask
-
-`func (o *Collection) SetFieldMask(v FieldMask)`
-
-SetFieldMask sets FieldMask field to given value.
-
-### HasFieldMask
-
-`func (o *Collection) HasFieldMask() bool`
-
-HasFieldMask returns a boolean if a field has been set.
 
 ### GetFirmware
 

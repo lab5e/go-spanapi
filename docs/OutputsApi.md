@@ -1,16 +1,16 @@
 # \OutputsApi
 
-All URIs are relative to *https://api.lab5e.com/span*
+All URIs are relative to *https://api.lab5e.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateOutput**](OutputsApi.md#CreateOutput) | **Post** /collections/{collectionId}/outputs | Create output
-[**DeleteOutput**](OutputsApi.md#DeleteOutput) | **Delete** /collections/{collectionId}/outputs/{outputId} | Delete output
-[**ListOutputs**](OutputsApi.md#ListOutputs) | **Get** /collections/{collectionId}/outputs | List outputs
-[**Logs**](OutputsApi.md#Logs) | **Get** /collections/{collectionId}/outputs/{outputId}/logs | Output logs
-[**RetrieveOutput**](OutputsApi.md#RetrieveOutput) | **Get** /collections/{collectionId}/outputs/{outputId} | Retrieve output
-[**Status**](OutputsApi.md#Status) | **Get** /collections/{collectionId}/outputs/{outputId}/status | Output status
-[**UpdateOutput**](OutputsApi.md#UpdateOutput) | **Patch** /collections/{collectionId}/outputs/{outputId} | Update output
+[**CreateOutput**](OutputsApi.md#CreateOutput) | **Post** /span/collections/{collectionId}/outputs | Create output
+[**DeleteOutput**](OutputsApi.md#DeleteOutput) | **Delete** /span/collections/{collectionId}/outputs/{outputId} | Delete output
+[**ListOutputs**](OutputsApi.md#ListOutputs) | **Get** /span/collections/{collectionId}/outputs | List outputs
+[**Logs**](OutputsApi.md#Logs) | **Get** /span/collections/{collectionId}/outputs/{outputId}/logs | Output logs
+[**RetrieveOutput**](OutputsApi.md#RetrieveOutput) | **Get** /span/collections/{collectionId}/outputs/{outputId} | Retrieve output
+[**Status**](OutputsApi.md#Status) | **Get** /span/collections/{collectionId}/outputs/{outputId}/status | Output status
+[**UpdateOutput**](OutputsApi.md#UpdateOutput) | **Patch** /span/collections/{existingCollectionId}/outputs/{outputId} | Update output
 
 
 
@@ -34,11 +34,11 @@ import (
 
 func main() {
     collectionId := "collectionId_example" // string | 
-    body := *openapiclient.NewOutput() // Output | 
+    body := *openapiclient.NewCreateOutputRequest() // CreateOutputRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutputsApi.CreateOutput(context.Background(), collectionId).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutputsApi.CreateOutput(context.Background(), collectionId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.CreateOutput``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -64,7 +64,7 @@ Other parameters are passed through a pointer to a apiCreateOutputRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**Output**](Output.md) |  | 
+ **body** | [**CreateOutputRequest**](CreateOutputRequest.md) |  | 
 
 ### Return type
 
@@ -107,8 +107,8 @@ func main() {
     outputId := "outputId_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutputsApi.DeleteOutput(context.Background(), collectionId, outputId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutputsApi.DeleteOutput(context.Background(), collectionId, outputId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.DeleteOutput``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -177,8 +177,8 @@ func main() {
     collectionId := "collectionId_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutputsApi.ListOutputs(context.Background(), collectionId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutputsApi.ListOutputs(context.Background(), collectionId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.ListOutputs``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -246,8 +246,8 @@ func main() {
     outputId := "outputId_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutputsApi.Logs(context.Background(), collectionId, outputId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutputsApi.Logs(context.Background(), collectionId, outputId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.Logs``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -317,8 +317,8 @@ func main() {
     outputId := "outputId_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutputsApi.RetrieveOutput(context.Background(), collectionId, outputId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutputsApi.RetrieveOutput(context.Background(), collectionId, outputId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.RetrieveOutput``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -388,8 +388,8 @@ func main() {
     outputId := "outputId_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutputsApi.Status(context.Background(), collectionId, outputId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutputsApi.Status(context.Background(), collectionId, outputId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.Status``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -438,11 +438,9 @@ Name | Type | Description  | Notes
 
 ## UpdateOutput
 
-> Output UpdateOutput(ctx, collectionId, outputId).Body(body).Execute()
+> Output UpdateOutput(ctx, existingCollectionId, outputId).Body(body).Execute()
 
 Update output
-
-
 
 ### Example
 
@@ -457,13 +455,13 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | 
+    existingCollectionId := "existingCollectionId_example" // string | 
     outputId := "outputId_example" // string | 
-    body := *openapiclient.NewOutput() // Output | 
+    body := *openapiclient.NewUpdateOutputRequest() // UpdateOutputRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutputsApi.UpdateOutput(context.Background(), collectionId, outputId).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutputsApi.UpdateOutput(context.Background(), existingCollectionId, outputId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.UpdateOutput``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -479,7 +477,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** |  | 
+**existingCollectionId** | **string** |  | 
 **outputId** | **string** |  | 
 
 ### Other Parameters
@@ -491,7 +489,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | [**Output**](Output.md) |  | 
+ **body** | [**UpdateOutputRequest**](UpdateOutputRequest.md) |  | 
 
 ### Return type
 
