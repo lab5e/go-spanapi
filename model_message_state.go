@@ -21,10 +21,10 @@ type MessageState string
 
 // List of MessageState
 const (
-	UNSPECIFIED MessageState = "unspecified"
-	PENDING MessageState = "pending"
-	SENT MessageState = "sent"
-	FAILED MessageState = "failed"
+	MESSAGESTATE_UNSPECIFIED MessageState = "unspecified"
+	MESSAGESTATE_PENDING MessageState = "pending"
+	MESSAGESTATE_SENT MessageState = "sent"
+	MESSAGESTATE_FAILED MessageState = "failed"
 )
 
 // All allowed values of MessageState enum

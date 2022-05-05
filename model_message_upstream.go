@@ -32,7 +32,7 @@ type MessageUpstream struct {
 // will change when the set of required properties is changed
 func NewMessageUpstream() *MessageUpstream {
 	this := MessageUpstream{}
-	var transport MessageTransport = UNSPECIFIED
+	var transport MessageTransport = MESSAGETRANSPORT_UNSPECIFIED
 	this.Transport = &transport
 	return &this
 }
@@ -42,7 +42,7 @@ func NewMessageUpstream() *MessageUpstream {
 // but it doesn't guarantee that properties required by API are set
 func NewMessageUpstreamWithDefaults() *MessageUpstream {
 	this := MessageUpstream{}
-	var transport MessageTransport = UNSPECIFIED
+	var transport MessageTransport = MESSAGETRANSPORT_UNSPECIFIED
 	this.Transport = &transport
 	return &this
 }

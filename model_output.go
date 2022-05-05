@@ -31,7 +31,7 @@ type Output struct {
 // will change when the set of required properties is changed
 func NewOutput() *Output {
 	this := Output{}
-	var type_ OutputType = UNDEFINED
+	var type_ OutputType = OUTPUTTYPE_UNDEFINED
 	this.Type = &type_
 	return &this
 }
@@ -41,7 +41,7 @@ func NewOutput() *Output {
 // but it doesn't guarantee that properties required by API are set
 func NewOutputWithDefaults() *Output {
 	this := Output{}
-	var type_ OutputType = UNDEFINED
+	var type_ OutputType = OUTPUTTYPE_UNDEFINED
 	this.Type = &type_
 	return &this
 }

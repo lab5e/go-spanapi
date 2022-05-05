@@ -34,9 +34,9 @@ type MessageDownstream struct {
 // will change when the set of required properties is changed
 func NewMessageDownstream() *MessageDownstream {
 	this := MessageDownstream{}
-	var transport MessageTransport = UNSPECIFIED
+	var transport MessageTransport = MESSAGETRANSPORT_UNSPECIFIED
 	this.Transport = &transport
-	var state MessageState = UNSPECIFIED
+	var state MessageState = MESSAGESTATE_UNSPECIFIED
 	this.State = &state
 	return &this
 }
@@ -46,9 +46,9 @@ func NewMessageDownstream() *MessageDownstream {
 // but it doesn't guarantee that properties required by API are set
 func NewMessageDownstreamWithDefaults() *MessageDownstream {
 	this := MessageDownstream{}
-	var transport MessageTransport = UNSPECIFIED
+	var transport MessageTransport = MESSAGETRANSPORT_UNSPECIFIED
 	this.Transport = &transport
-	var state MessageState = UNSPECIFIED
+	var state MessageState = MESSAGESTATE_UNSPECIFIED
 	this.State = &state
 	return &this
 }

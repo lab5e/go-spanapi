@@ -29,7 +29,7 @@ type CreateOutputRequest struct {
 // will change when the set of required properties is changed
 func NewCreateOutputRequest() *CreateOutputRequest {
 	this := CreateOutputRequest{}
-	var type_ OutputType = UNDEFINED
+	var type_ OutputType = OUTPUTTYPE_UNDEFINED
 	this.Type = &type_
 	return &this
 }
@@ -39,7 +39,7 @@ func NewCreateOutputRequest() *CreateOutputRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateOutputRequestWithDefaults() *CreateOutputRequest {
 	this := CreateOutputRequest{}
-	var type_ OutputType = UNDEFINED
+	var type_ OutputType = OUTPUTTYPE_UNDEFINED
 	this.Type = &type_
 	return &this
 }

@@ -21,9 +21,9 @@ type OutputMessageType string
 
 // List of OutputMessageType
 const (
-	UNKNOWN OutputMessageType = "unknown"
-	KEEPALIVE OutputMessageType = "keepalive"
-	DATA OutputMessageType = "data"
+	OUTPUTMESSAGETYPE_UNKNOWN OutputMessageType = "unknown"
+	OUTPUTMESSAGETYPE_KEEPALIVE OutputMessageType = "keepalive"
+	OUTPUTMESSAGETYPE_DATA OutputMessageType = "data"
 )
 
 // All allowed values of OutputMessageType enum

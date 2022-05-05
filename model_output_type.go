@@ -21,12 +21,12 @@ type OutputType string
 
 // List of OutputType
 const (
-	UNDEFINED OutputType = "undefined"
-	WEBHOOK OutputType = "webhook"
-	UDPOUT OutputType = "udpout"
-	MQTTCLIENT OutputType = "mqttclient"
-	IFTTT OutputType = "ifttt"
-	MQTTBROKER OutputType = "mqttbroker"
+	OUTPUTTYPE_UNDEFINED OutputType = "undefined"
+	OUTPUTTYPE_WEBHOOK OutputType = "webhook"
+	OUTPUTTYPE_UDPOUT OutputType = "udpout"
+	OUTPUTTYPE_MQTTCLIENT OutputType = "mqttclient"
+	OUTPUTTYPE_IFTTT OutputType = "ifttt"
+	OUTPUTTYPE_MQTTBROKER OutputType = "mqttbroker"
 )
 
 // All allowed values of OutputType enum

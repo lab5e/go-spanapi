@@ -30,7 +30,7 @@ type CollectionFirmware struct {
 // will change when the set of required properties is changed
 func NewCollectionFirmware() *CollectionFirmware {
 	this := CollectionFirmware{}
-	var management FirmwareManagement = UNSPECIFIED
+	var management FirmwareManagement = FIRMWAREMANAGEMENT_UNSPECIFIED
 	this.Management = &management
 	return &this
 }
@@ -40,7 +40,7 @@ func NewCollectionFirmware() *CollectionFirmware {
 // but it doesn't guarantee that properties required by API are set
 func NewCollectionFirmwareWithDefaults() *CollectionFirmware {
 	this := CollectionFirmware{}
-	var management FirmwareManagement = UNSPECIFIED
+	var management FirmwareManagement = FIRMWAREMANAGEMENT_UNSPECIFIED
 	this.Management = &management
 	return &this
 }

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**OutputMessageType**](OutputMessageType.md) |  | [optional] [default to UNKNOWN]
+**Type** | Pointer to [**OutputMessageType**](OutputMessageType.md) |  | [optional] [default to OUTPUTMESSAGETYPE_UNKNOWN]
 **Device** | Pointer to [**Device**](Device.md) |  | [optional] 
 **Payload** | Pointer to **string** |  | [optional] 
 **Received** | Pointer to **string** | Received time for message. Value is ms since epoch. | [optional] 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**OutputType**](OutputType.md) |  | [optional] [default to UNDEFINED]
+**Type** | Pointer to [**OutputType**](OutputType.md) |  | [optional] [default to OUTPUTTYPE_UNDEFINED]
 **Config** | Pointer to [**OutputConfig**](OutputConfig.md) |  | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
 **Tags** | Pointer to **map[string]string** |  | [optional] 

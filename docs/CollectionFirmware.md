@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CurrentFirmwareId** | Pointer to **string** | The current firmware is the firmware that the devices are currently using. | [optional] 
 **TargetFirmwareId** | Pointer to **string** | The target firmware is set to the desired firmware image for the devices in this collection. If the management is set to \&quot;device\&quot; this will only be used if the target firmware isn&#39;t set on the device itself. | [optional] 
-**Management** | Pointer to [**FirmwareManagement**](FirmwareManagement.md) |  | [optional] [default to UNSPECIFIED]
+**Management** | Pointer to [**FirmwareManagement**](FirmwareManagement.md) |  | [optional] [default to FIRMWAREMANAGEMENT_UNSPECIFIED]
 
 ## Methods
 

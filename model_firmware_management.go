@@ -21,10 +21,10 @@ type FirmwareManagement string
 
 // List of FirmwareManagement
 const (
-	UNSPECIFIED FirmwareManagement = "unspecified"
-	DISABLED FirmwareManagement = "disabled"
-	COLLECTION FirmwareManagement = "collection"
-	DEVICE FirmwareManagement = "device"
+	FIRMWAREMANAGEMENT_UNSPECIFIED FirmwareManagement = "unspecified"
+	FIRMWAREMANAGEMENT_DISABLED FirmwareManagement = "disabled"
+	FIRMWAREMANAGEMENT_COLLECTION FirmwareManagement = "collection"
+	FIRMWAREMANAGEMENT_DEVICE FirmwareManagement = "device"
 )
 
 // All allowed values of FirmwareManagement enum

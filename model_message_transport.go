@@ -21,9 +21,9 @@ type MessageTransport string
 
 // List of MessageTransport
 const (
-	UNSPECIFIED MessageTransport = "unspecified"
-	UDP MessageTransport = "udp"
-	COAP MessageTransport = "coap"
+	MESSAGETRANSPORT_UNSPECIFIED MessageTransport = "unspecified"
+	MESSAGETRANSPORT_UDP MessageTransport = "udp"
+	MESSAGETRANSPORT_COAP MessageTransport = "coap"
 )
 
 // All allowed values of MessageTransport enum

@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **GatewayId** | Pointer to **string** |  | [optional] 
 **CreatedTime** | Pointer to **string** |  | [optional] 
 **SentTime** | Pointer to **string** |  | [optional] 
-**Transport** | Pointer to [**MessageTransport**](MessageTransport.md) |  | [optional] [default to UNSPECIFIED]
-**State** | Pointer to [**MessageState**](MessageState.md) |  | [optional] [default to UNSPECIFIED]
+**Transport** | Pointer to [**MessageTransport**](MessageTransport.md) |  | [optional] [default to MESSAGETRANSPORT_UNSPECIFIED]
+**State** | Pointer to [**MessageState**](MessageState.md) |  | [optional] [default to MESSAGESTATE_UNSPECIFIED]
 **Payload** | Pointer to **string** |  | [optional] 
 
 ## Methods

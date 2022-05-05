@@ -34,7 +34,7 @@ type OutputDataMessage struct {
 // will change when the set of required properties is changed
 func NewOutputDataMessage() *OutputDataMessage {
 	this := OutputDataMessage{}
-	var type_ OutputMessageType = UNKNOWN
+	var type_ OutputMessageType = OUTPUTMESSAGETYPE_UNKNOWN
 	this.Type = &type_
 	return &this
 }
@@ -44,7 +44,7 @@ func NewOutputDataMessage() *OutputDataMessage {
 // but it doesn't guarantee that properties required by API are set
 func NewOutputDataMessageWithDefaults() *OutputDataMessage {
 	this := OutputDataMessage{}
-	var type_ OutputMessageType = UNKNOWN
+	var type_ OutputMessageType = OUTPUTMESSAGETYPE_UNKNOWN
 	this.Type = &type_
 	return &this
 }

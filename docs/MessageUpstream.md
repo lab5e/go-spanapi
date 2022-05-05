@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **CollectionId** | Pointer to **string** |  | [optional] 
 **DeviceId** | Pointer to **string** |  | [optional] 
 **GatewayId** | Pointer to **string** |  | [optional] 
-**Transport** | Pointer to [**MessageTransport**](MessageTransport.md) |  | [optional] [default to UNSPECIFIED]
+**Transport** | Pointer to [**MessageTransport**](MessageTransport.md) |  | [optional] [default to MESSAGETRANSPORT_UNSPECIFIED]
 **Received** | Pointer to **string** |  | [optional] 
 **Payload** | Pointer to **string** |  | [optional] 
 
