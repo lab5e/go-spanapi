@@ -97,7 +97,6 @@ func (m *mqttStream) start() error {
 				log.Printf("Couldn't subscribe to %s: %v", topicName, token.Error())
 				return
 			}
-			log.Printf("Subscribed to %s", topicName)
 		})
 
 	m.client = mqtt.NewClient(opts)
