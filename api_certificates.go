@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.2 smarmy-derik
+API version: 4.2.3 lower-elian
 Contact: dev@lab5e.com
 */
 
@@ -29,10 +29,10 @@ var (
 type CertificatesApiService service
 
 type ApiCreateCertificateRequest struct {
-	ctx          context.Context
-	ApiService   *CertificatesApiService
+	ctx context.Context
+	ApiService *CertificatesApiService
 	collectionId string
-	body         *CreateCertificateRequest
+	body *CreateCertificateRequest
 }
 
 func (r ApiCreateCertificateRequest) Body(body CreateCertificateRequest) ApiCreateCertificateRequest {
@@ -62,8 +62,8 @@ in both the TLS, DTLS and gRPC service endpoints.
 */
 func (a *CertificatesApiService) CreateCertificate(ctx context.Context, collectionId string) ApiCreateCertificateRequest {
 	return ApiCreateCertificateRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -72,10 +72,10 @@ func (a *CertificatesApiService) CreateCertificate(ctx context.Context, collecti
 //  @return CreateCertificateResponse
 func (a *CertificatesApiService) CreateCertificateExecute(r ApiCreateCertificateRequest) (*CreateCertificateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *CreateCertificateResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CreateCertificateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificatesApiService.CreateCertificate")
@@ -198,13 +198,13 @@ func (a *CertificatesApiService) CreateCertificateExecute(r ApiCreateCertificate
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -221,11 +221,11 @@ func (a *CertificatesApiService) CreateCertificateExecute(r ApiCreateCertificate
 }
 
 type ApiRetrieveCertificateChainRequest struct {
-	ctx          context.Context
-	ApiService   *CertificatesApiService
+	ctx context.Context
+	ApiService *CertificatesApiService
 	collectionId string
-	gatewayId    *string
-	deviceId     *string
+	gatewayId *string
+	deviceId *string
 }
 
 func (r ApiRetrieveCertificateChainRequest) GatewayId(gatewayId string) ApiRetrieveCertificateChainRequest {
@@ -256,8 +256,8 @@ certificates needed to verify the client certificate.
 */
 func (a *CertificatesApiService) RetrieveCertificateChain(ctx context.Context, collectionId string) ApiRetrieveCertificateChainRequest {
 	return ApiRetrieveCertificateChainRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -266,10 +266,10 @@ func (a *CertificatesApiService) RetrieveCertificateChain(ctx context.Context, c
 //  @return CertificateChainResponse
 func (a *CertificatesApiService) RetrieveCertificateChainExecute(r ApiRetrieveCertificateChainRequest) (*CertificateChainResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *CertificateChainResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CertificateChainResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificatesApiService.RetrieveCertificateChain")
@@ -393,13 +393,13 @@ func (a *CertificatesApiService) RetrieveCertificateChainExecute(r ApiRetrieveCe
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -416,10 +416,10 @@ func (a *CertificatesApiService) RetrieveCertificateChainExecute(r ApiRetrieveCe
 }
 
 type ApiSignCertificateRequest struct {
-	ctx          context.Context
-	ApiService   *CertificatesApiService
+	ctx context.Context
+	ApiService *CertificatesApiService
 	collectionId string
-	body         *SignCertificateRequest
+	body *SignCertificateRequest
 }
 
 func (r ApiSignCertificateRequest) Body(body SignCertificateRequest) ApiSignCertificateRequest {
@@ -444,8 +444,8 @@ for 14 days and must be renewed.
 */
 func (a *CertificatesApiService) SignCertificate(ctx context.Context, collectionId string) ApiSignCertificateRequest {
 	return ApiSignCertificateRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -454,10 +454,10 @@ func (a *CertificatesApiService) SignCertificate(ctx context.Context, collection
 //  @return SignCertificateResponse
 func (a *CertificatesApiService) SignCertificateExecute(r ApiSignCertificateRequest) (*SignCertificateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *SignCertificateResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SignCertificateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificatesApiService.SignCertificate")
@@ -580,13 +580,13 @@ func (a *CertificatesApiService) SignCertificateExecute(r ApiSignCertificateRequ
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -603,10 +603,10 @@ func (a *CertificatesApiService) SignCertificateExecute(r ApiSignCertificateRequ
 }
 
 type ApiVerifyCertificateRequest struct {
-	ctx          context.Context
-	ApiService   *CertificatesApiService
+	ctx context.Context
+	ApiService *CertificatesApiService
 	collectionId string
-	body         *VerifyCertificateRequest
+	body *VerifyCertificateRequest
 }
 
 func (r ApiVerifyCertificateRequest) Body(body VerifyCertificateRequest) ApiVerifyCertificateRequest {
@@ -631,8 +631,8 @@ validates the client certificate and returns the error in plain text.
 */
 func (a *CertificatesApiService) VerifyCertificate(ctx context.Context, collectionId string) ApiVerifyCertificateRequest {
 	return ApiVerifyCertificateRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -641,10 +641,10 @@ func (a *CertificatesApiService) VerifyCertificate(ctx context.Context, collecti
 //  @return VerifyCertificateResponse
 func (a *CertificatesApiService) VerifyCertificateExecute(r ApiVerifyCertificateRequest) (*VerifyCertificateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *VerifyCertificateResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *VerifyCertificateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificatesApiService.VerifyCertificate")
@@ -767,13 +767,13 @@ func (a *CertificatesApiService) VerifyCertificateExecute(r ApiVerifyCertificate
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

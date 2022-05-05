@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.2 smarmy-derik
+API version: 4.2.3 lower-elian
 Contact: dev@lab5e.com
 */
 
@@ -21,9 +21,9 @@ type OutputMessageType string
 
 // List of OutputMessageType
 const (
-	OUTPUTMESSAGETYPE_UNKNOWN   OutputMessageType = "unknown"
+	OUTPUTMESSAGETYPE_UNKNOWN OutputMessageType = "unknown"
 	OUTPUTMESSAGETYPE_KEEPALIVE OutputMessageType = "keepalive"
-	OUTPUTMESSAGETYPE_DATA      OutputMessageType = "data"
+	OUTPUTMESSAGETYPE_DATA OutputMessageType = "data"
 )
 
 // All allowed values of OutputMessageType enum
@@ -111,3 +111,4 @@ func (v *NullableOutputMessageType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
