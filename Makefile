@@ -7,6 +7,7 @@ all:
 	cd examples/interval && go build -o ../../bin
 	cd examples/websocket && go build -o ../../bin
 	cd examples/paging && go build -o ../../bin
+	cd examples/mqtt && go build -o ../../bin
 
 clean:
 	rm -fR bin
