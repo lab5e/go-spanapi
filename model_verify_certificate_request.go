@@ -17,8 +17,8 @@ import (
 
 // VerifyCertificateRequest Verify a certificate
 type VerifyCertificateRequest struct {
-	GatewayId *string `json:"gatewayId,omitempty"`
-	DeviceId *string `json:"deviceId,omitempty"`
+	GatewayId   *string `json:"gatewayId,omitempty"`
+	DeviceId    *string `json:"deviceId,omitempty"`
 	Certificate *string `json:"certificate,omitempty"`
 }
 
@@ -184,5 +184,3 @@ func (v *NullableVerifyCertificateRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
