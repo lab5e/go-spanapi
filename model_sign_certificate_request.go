@@ -18,8 +18,8 @@ import (
 // SignCertificateRequest Request certificate signing
 type SignCertificateRequest struct {
 	GatewayId *string `json:"gatewayId,omitempty"`
-	DeviceId *string `json:"deviceId,omitempty"`
-	Csr *string `json:"csr,omitempty"`
+	DeviceId  *string `json:"deviceId,omitempty"`
+	Csr       *string `json:"csr,omitempty"`
 }
 
 // NewSignCertificateRequest instantiates a new SignCertificateRequest object
@@ -184,5 +184,3 @@ func (v *NullableSignCertificateRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

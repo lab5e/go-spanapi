@@ -17,8 +17,8 @@ import (
 
 // ListOutputResponse List outputs
 type ListOutputResponse struct {
-	CollectionId *string `json:"collectionId,omitempty"`
-	Outputs []Output `json:"outputs,omitempty"`
+	CollectionId *string  `json:"collectionId,omitempty"`
+	Outputs      []Output `json:"outputs,omitempty"`
 }
 
 // NewListOutputResponse instantiates a new ListOutputResponse object
@@ -148,5 +148,3 @@ func (v *NullableListOutputResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

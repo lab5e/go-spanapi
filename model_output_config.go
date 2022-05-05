@@ -18,26 +18,26 @@ import (
 // OutputConfig Configuration for outputs.
 type OutputConfig struct {
 	// URL for the webhook.
-	Url *string `json:"url,omitempty"`
-	BasicAuthUser *string `json:"basicAuthUser,omitempty"`
-	BasicAuthPass *string `json:"basicAuthPass,omitempty"`
-	CustomHeaderName *string `json:"customHeaderName,omitempty"`
+	Url               *string `json:"url,omitempty"`
+	BasicAuthUser     *string `json:"basicAuthUser,omitempty"`
+	BasicAuthPass     *string `json:"basicAuthPass,omitempty"`
+	CustomHeaderName  *string `json:"customHeaderName,omitempty"`
 	CustomHeaderValue *string `json:"customHeaderValue,omitempty"`
-	Host *string `json:"host,omitempty"`
-	Port *int32 `json:"port,omitempty"`
-	Key *string `json:"key,omitempty"`
-	EventName *string `json:"eventName,omitempty"`
-	AsIsPayload *bool `json:"asIsPayload,omitempty"`
-	Endpoint *string `json:"endpoint,omitempty"`
+	Host              *string `json:"host,omitempty"`
+	Port              *int32  `json:"port,omitempty"`
+	Key               *string `json:"key,omitempty"`
+	EventName         *string `json:"eventName,omitempty"`
+	AsIsPayload       *bool   `json:"asIsPayload,omitempty"`
+	Endpoint          *string `json:"endpoint,omitempty"`
 	// MQTT configuration: Disable certificate checks. Default is off.
-	DisableCertCheck *bool `json:"disableCertCheck,omitempty"`
-	Username *string `json:"username,omitempty"`
-	Password *string `json:"password,omitempty"`
-	ClientId *string `json:"clientId,omitempty"`
-	TopicName *string `json:"topicName,omitempty"`
-	TopicTemplate *string `json:"topicTemplate,omitempty"`
-	PayloadFormat *string `json:"payloadFormat,omitempty"`
-	PayloadTemplate *string `json:"payloadTemplate,omitempty"`
+	DisableCertCheck *bool   `json:"disableCertCheck,omitempty"`
+	Username         *string `json:"username,omitempty"`
+	Password         *string `json:"password,omitempty"`
+	ClientId         *string `json:"clientId,omitempty"`
+	TopicName        *string `json:"topicName,omitempty"`
+	TopicTemplate    *string `json:"topicTemplate,omitempty"`
+	PayloadFormat    *string `json:"payloadFormat,omitempty"`
+	PayloadTemplate  *string `json:"payloadTemplate,omitempty"`
 }
 
 // NewOutputConfig instantiates a new OutputConfig object
@@ -762,5 +762,3 @@ func (v *NullableOutputConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -29,11 +29,10 @@ var (
 type GatewaysApiService service
 
 type ApiListGatewaysRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *GatewaysApiService
-	networkId string
+	networkId  string
 }
-
 
 func (r ApiListGatewaysRequest) Execute() (*ListGatewayResponse, *http.Response, error) {
 	return r.ApiService.ListGatewaysExecute(r)
@@ -52,8 +51,8 @@ Span and can't be deleted.
 func (a *GatewaysApiService) ListGateways(ctx context.Context, networkId string) ApiListGatewaysRequest {
 	return ApiListGatewaysRequest{
 		ApiService: a,
-		ctx: ctx,
-		networkId: networkId,
+		ctx:        ctx,
+		networkId:  networkId,
 	}
 }
 
@@ -61,10 +60,10 @@ func (a *GatewaysApiService) ListGateways(ctx context.Context, networkId string)
 //  @return ListGatewayResponse
 func (a *GatewaysApiService) ListGatewaysExecute(r ApiListGatewaysRequest) (*ListGatewayResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ListGatewayResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ListGatewayResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GatewaysApiService.ListGateways")
@@ -182,13 +181,13 @@ func (a *GatewaysApiService) ListGatewaysExecute(r ApiListGatewaysRequest) (*Lis
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v Status
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -205,10 +204,9 @@ func (a *GatewaysApiService) ListGatewaysExecute(r ApiListGatewaysRequest) (*Lis
 }
 
 type ApiListNetworksRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *GatewaysApiService
 }
-
 
 func (r ApiListNetworksRequest) Execute() (*ListNetworkResponse, *http.Response, error) {
 	return r.ApiService.ListNetworksExecute(r)
@@ -226,7 +224,7 @@ networks in Span.
 func (a *GatewaysApiService) ListNetworks(ctx context.Context) ApiListNetworksRequest {
 	return ApiListNetworksRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -234,10 +232,10 @@ func (a *GatewaysApiService) ListNetworks(ctx context.Context) ApiListNetworksRe
 //  @return ListNetworkResponse
 func (a *GatewaysApiService) ListNetworksExecute(r ApiListNetworksRequest) (*ListNetworkResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ListNetworkResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ListNetworkResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GatewaysApiService.ListNetworks")
@@ -354,13 +352,13 @@ func (a *GatewaysApiService) ListNetworksExecute(r ApiListNetworksRequest) (*Lis
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v Status
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -377,12 +375,11 @@ func (a *GatewaysApiService) ListNetworksExecute(r ApiListNetworksRequest) (*Lis
 }
 
 type ApiRetrieveGatewayRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *GatewaysApiService
-	networkId string
-	gatewayId string
+	networkId  string
+	gatewayId  string
 }
-
 
 func (r ApiRetrieveGatewayRequest) Execute() (*Gateway, *http.Response, error) {
 	return r.ApiService.RetrieveGatewayExecute(r)
@@ -401,9 +398,9 @@ Get gateway information
 func (a *GatewaysApiService) RetrieveGateway(ctx context.Context, networkId string, gatewayId string) ApiRetrieveGatewayRequest {
 	return ApiRetrieveGatewayRequest{
 		ApiService: a,
-		ctx: ctx,
-		networkId: networkId,
-		gatewayId: gatewayId,
+		ctx:        ctx,
+		networkId:  networkId,
+		gatewayId:  gatewayId,
 	}
 }
 
@@ -411,10 +408,10 @@ func (a *GatewaysApiService) RetrieveGateway(ctx context.Context, networkId stri
 //  @return Gateway
 func (a *GatewaysApiService) RetrieveGatewayExecute(r ApiRetrieveGatewayRequest) (*Gateway, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Gateway
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Gateway
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GatewaysApiService.RetrieveGateway")
@@ -533,13 +530,13 @@ func (a *GatewaysApiService) RetrieveGatewayExecute(r ApiRetrieveGatewayRequest)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v Status
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

@@ -17,9 +17,9 @@ import (
 
 // FirmwareUsageResponse Firmware usage report
 type FirmwareUsageResponse struct {
-	ImageId *string `json:"imageId,omitempty"`
+	ImageId  *string  `json:"imageId,omitempty"`
 	Targeted []string `json:"targeted,omitempty"`
-	Current []string `json:"current,omitempty"`
+	Current  []string `json:"current,omitempty"`
 }
 
 // NewFirmwareUsageResponse instantiates a new FirmwareUsageResponse object
@@ -184,5 +184,3 @@ func (v *NullableFirmwareUsageResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -28,10 +28,9 @@ var (
 type SpanApiService service
 
 type ApiGetSystemInfoRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *SpanApiService
 }
-
 
 func (r ApiGetSystemInfoRequest) Execute() (*SystemInfoResponse, *http.Response, error) {
 	return r.ApiService.GetSystemInfoExecute(r)
@@ -48,7 +47,7 @@ Get system information. This will show the current version of the API that you a
 func (a *SpanApiService) GetSystemInfo(ctx context.Context) ApiGetSystemInfoRequest {
 	return ApiGetSystemInfoRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -56,10 +55,10 @@ func (a *SpanApiService) GetSystemInfo(ctx context.Context) ApiGetSystemInfoRequ
 //  @return SystemInfoResponse
 func (a *SpanApiService) GetSystemInfoExecute(r ApiGetSystemInfoRequest) (*SystemInfoResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SystemInfoResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SystemInfoResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SpanApiService.GetSystemInfo")
@@ -176,13 +175,13 @@ func (a *SpanApiService) GetSystemInfoExecute(r ApiGetSystemInfoRequest) (*Syste
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v Status
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
