@@ -94,13 +94,13 @@ func main() {
 			return
 		}
 
-		if items.Data == nil || len(*items.Data) == 0 {
+		if items.Data == nil || len(items.Data) == 0 {
 			tw.Flush()
 			fmt.Println("Zero rows returned, exiting.")
 			return
 		}
 
-		for _, data := range *items.Data {
+		for _, data := range items.Data {
 			// If this is the end of the interval we'll discard the rest of the results
 			ms, ts := receivedToTime(*data.Received)
 			if ms < start {

@@ -49,7 +49,7 @@ func main() {
 	fmt.Println("Collections and devices")
 	fmt.Println("=======================")
 
-	for _, collection := range *collections.Collections {
+	for _, collection := range collections.Collections {
 		fmt.Printf("Collection ID = %s\n", *collection.CollectionId)
 
 		devices, _, err := client.DevicesApi.ListDevices(ctx, *collection.CollectionId).Execute()
@@ -58,10 +58,10 @@ func main() {
 			continue
 		}
 		if devices.Devices != nil {
-			for _, device := range *devices.Devices {
+			for _, device := range devices.Devices {
 				fmt.Printf("   Device ID = %s,  IMSI = %s,  IMEI = %s\n", *device.DeviceId, *device.Imsi, *device.Imei)
 			}
-			fmt.Println(len(*devices.Devices), " devices in collection")
+			fmt.Println(len(devices.Devices), " devices in collection")
 		}
 		fmt.Println()
 	}

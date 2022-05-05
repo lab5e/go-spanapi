@@ -57,7 +57,7 @@ func main() {
 	if err != nil {
 		fmt.Println("Error retrieving data: ", err.Error())
 	}
-	for _, data := range *items.Data {
+	for _, data := range items.Data {
 		// Print the payload. The payload is base64 encoded so you have decode
 		// it if you want the raw data with base64.StdEncoding.DecodeString()
 		fmt.Println("Device ID: ", *data.Device.DeviceId, " Payload: ", *data.Payload, " Transport: ", *data.Transport)
