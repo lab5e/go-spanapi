@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.1 petulant-kyan
+API version: 4.2.2 smarmy-derik
 Contact: dev@lab5e.com
 */
 
@@ -29,9 +29,9 @@ var (
 type CollectionsApiService service
 
 type ApiCreateCollectionRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CollectionsApiService
-	body       *CreateCollectionRequest
+	body *CreateCollectionRequest
 }
 
 func (r ApiCreateCollectionRequest) Body(body CreateCollectionRequest) ApiCreateCollectionRequest {
@@ -54,7 +54,7 @@ Create a new collection
 func (a *CollectionsApiService) CreateCollection(ctx context.Context) ApiCreateCollectionRequest {
 	return ApiCreateCollectionRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
@@ -62,10 +62,10 @@ func (a *CollectionsApiService) CreateCollection(ctx context.Context) ApiCreateC
 //  @return Collection
 func (a *CollectionsApiService) CreateCollectionExecute(r ApiCreateCollectionRequest) (*Collection, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Collection
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Collection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.CreateCollection")
@@ -187,13 +187,13 @@ func (a *CollectionsApiService) CreateCollectionExecute(r ApiCreateCollectionReq
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -210,10 +210,11 @@ func (a *CollectionsApiService) CreateCollectionExecute(r ApiCreateCollectionReq
 }
 
 type ApiDeleteCollectionRequest struct {
-	ctx          context.Context
-	ApiService   *CollectionsApiService
+	ctx context.Context
+	ApiService *CollectionsApiService
 	collectionId string
 }
+
 
 func (r ApiDeleteCollectionRequest) Execute() (*Collection, *http.Response, error) {
 	return r.ApiService.DeleteCollectionExecute(r)
@@ -231,8 +232,8 @@ from the collection before it can be deleted.
 */
 func (a *CollectionsApiService) DeleteCollection(ctx context.Context, collectionId string) ApiDeleteCollectionRequest {
 	return ApiDeleteCollectionRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -241,10 +242,10 @@ func (a *CollectionsApiService) DeleteCollection(ctx context.Context, collection
 //  @return Collection
 func (a *CollectionsApiService) DeleteCollectionExecute(r ApiDeleteCollectionRequest) (*Collection, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Collection
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Collection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.DeleteCollection")
@@ -362,13 +363,13 @@ func (a *CollectionsApiService) DeleteCollectionExecute(r ApiDeleteCollectionReq
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -385,13 +386,13 @@ func (a *CollectionsApiService) DeleteCollectionExecute(r ApiDeleteCollectionReq
 }
 
 type ApiListCollectionDataRequest struct {
-	ctx          context.Context
-	ApiService   *CollectionsApiService
+	ctx context.Context
+	ApiService *CollectionsApiService
 	collectionId string
-	limit        *int32
-	start        *string
-	end          *string
-	offset       *string
+	limit *int32
+	start *string
+	end *string
+	offset *string
 }
 
 // Limit the number of payloads to return. The default is 512.
@@ -399,19 +400,16 @@ func (r ApiListCollectionDataRequest) Limit(limit int32) ApiListCollectionDataRe
 	r.limit = &limit
 	return r
 }
-
 // Start of time range. The default is 24 hours ago. Value is in milliseconds since epoch.
 func (r ApiListCollectionDataRequest) Start(start string) ApiListCollectionDataRequest {
 	r.start = &start
 	return r
 }
-
 // End of time range. The default is the current time stamp. Value is in milliseconds since epoch.
 func (r ApiListCollectionDataRequest) End(end string) ApiListCollectionDataRequest {
 	r.end = &end
 	return r
 }
-
 // The message offset based on the message ID. This parameter can&#39;t be combined with the start and end parameters. If no parameter is set the first N messages will be returned. If this parameter is set the next N messages (from newest to oldest) with message ID less than the offset will be returned.
 func (r ApiListCollectionDataRequest) Offset(offset string) ApiListCollectionDataRequest {
 	r.offset = &offset
@@ -433,8 +431,8 @@ Retrieve data sent by the devices in the collection. The maximum number of data 
 */
 func (a *CollectionsApiService) ListCollectionData(ctx context.Context, collectionId string) ApiListCollectionDataRequest {
 	return ApiListCollectionDataRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -443,10 +441,10 @@ func (a *CollectionsApiService) ListCollectionData(ctx context.Context, collecti
 //  @return ListDataResponse
 func (a *CollectionsApiService) ListCollectionDataExecute(r ApiListCollectionDataRequest) (*ListDataResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListDataResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListDataResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.ListCollectionData")
@@ -576,13 +574,13 @@ func (a *CollectionsApiService) ListCollectionDataExecute(r ApiListCollectionDat
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -599,9 +597,10 @@ func (a *CollectionsApiService) ListCollectionDataExecute(r ApiListCollectionDat
 }
 
 type ApiListCollectionsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CollectionsApiService
 }
+
 
 func (r ApiListCollectionsRequest) Execute() (*ListCollectionResponse, *http.Response, error) {
 	return r.ApiService.ListCollectionsExecute(r)
@@ -618,7 +617,7 @@ Lists all the collections that one of your teams owns.
 func (a *CollectionsApiService) ListCollections(ctx context.Context) ApiListCollectionsRequest {
 	return ApiListCollectionsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
@@ -626,10 +625,10 @@ func (a *CollectionsApiService) ListCollections(ctx context.Context) ApiListColl
 //  @return ListCollectionResponse
 func (a *CollectionsApiService) ListCollectionsExecute(r ApiListCollectionsRequest) (*ListCollectionResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListCollectionResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListCollectionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.ListCollections")
@@ -746,13 +745,13 @@ func (a *CollectionsApiService) ListCollectionsExecute(r ApiListCollectionsReque
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -769,10 +768,11 @@ func (a *CollectionsApiService) ListCollectionsExecute(r ApiListCollectionsReque
 }
 
 type ApiRetrieveCollectionRequest struct {
-	ctx          context.Context
-	ApiService   *CollectionsApiService
+	ctx context.Context
+	ApiService *CollectionsApiService
 	collectionId string
 }
+
 
 func (r ApiRetrieveCollectionRequest) Execute() (*Collection, *http.Response, error) {
 	return r.ApiService.RetrieveCollectionExecute(r)
@@ -787,8 +787,8 @@ RetrieveCollection Retrieve collection
 */
 func (a *CollectionsApiService) RetrieveCollection(ctx context.Context, collectionId string) ApiRetrieveCollectionRequest {
 	return ApiRetrieveCollectionRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -797,10 +797,10 @@ func (a *CollectionsApiService) RetrieveCollection(ctx context.Context, collecti
 //  @return Collection
 func (a *CollectionsApiService) RetrieveCollectionExecute(r ApiRetrieveCollectionRequest) (*Collection, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Collection
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Collection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.RetrieveCollection")
@@ -918,13 +918,13 @@ func (a *CollectionsApiService) RetrieveCollectionExecute(r ApiRetrieveCollectio
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -941,10 +941,10 @@ func (a *CollectionsApiService) RetrieveCollectionExecute(r ApiRetrieveCollectio
 }
 
 type ApiUpdateCollectionRequest struct {
-	ctx          context.Context
-	ApiService   *CollectionsApiService
+	ctx context.Context
+	ApiService *CollectionsApiService
 	collectionId string
-	body         *UpdateCollectionRequest
+	body *UpdateCollectionRequest
 }
 
 func (r ApiUpdateCollectionRequest) Body(body UpdateCollectionRequest) ApiUpdateCollectionRequest {
@@ -967,8 +967,8 @@ Update a collection.
 */
 func (a *CollectionsApiService) UpdateCollection(ctx context.Context, collectionId string) ApiUpdateCollectionRequest {
 	return ApiUpdateCollectionRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -977,10 +977,10 @@ func (a *CollectionsApiService) UpdateCollection(ctx context.Context, collection
 //  @return Collection
 func (a *CollectionsApiService) UpdateCollectionExecute(r ApiUpdateCollectionRequest) (*Collection, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Collection
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Collection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.UpdateCollection")
@@ -1103,13 +1103,13 @@ func (a *CollectionsApiService) UpdateCollectionExecute(r ApiUpdateCollectionReq
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

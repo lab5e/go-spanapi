@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.1 petulant-kyan
+API version: 4.2.2 smarmy-derik
 Contact: dev@lab5e.com
 */
 
@@ -112,3 +112,5 @@ func (v *NullableCertificateChainResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

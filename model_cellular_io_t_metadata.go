@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.1 petulant-kyan
+API version: 4.2.2 smarmy-derik
 Contact: dev@lab5e.com
 */
 
@@ -17,17 +17,17 @@ import (
 
 // CellularIoTMetadata This is the metadata for a Cellular IoT device connected via an APN.
 type CellularIoTMetadata struct {
-	GatewayId   *string `json:"gatewayId,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty"`
 	AllocatedIp *string `json:"allocatedIp,omitempty"`
 	AllocatedAt *string `json:"allocatedAt,omitempty"`
-	CellId      *string `json:"cellId,omitempty"`
+	CellId *string `json:"cellId,omitempty"`
 	// the provider in use.
-	Mcc         *int32  `json:"mcc,omitempty"`
-	Mnc         *int32  `json:"mnc,omitempty"`
-	Country     *string `json:"country,omitempty"`
-	Network     *string `json:"network,omitempty"`
+	Mcc *int32 `json:"mcc,omitempty"`
+	Mnc *int32 `json:"mnc,omitempty"`
+	Country *string `json:"country,omitempty"`
+	Network *string `json:"network,omitempty"`
 	CountryCode *string `json:"countryCode,omitempty"`
-	LastUpdate  *string `json:"lastUpdate,omitempty"`
+	LastUpdate *string `json:"lastUpdate,omitempty"`
 }
 
 // NewCellularIoTMetadata instantiates a new CellularIoTMetadata object
@@ -437,3 +437,5 @@ func (v *NullableCellularIoTMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
