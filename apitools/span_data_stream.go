@@ -85,7 +85,7 @@ func (d *wsDataStream) Recv() (spanapi.OutputDataMessage, error) {
 			return spanapi.OutputDataMessage{}, err
 		}
 
-		if m.Type != nil && *m.Type == spanapi.DATA {
+		if m.Type != nil && *m.Type == spanapi.OUTPUTMESSAGETYPE_DATA {
 			return m, nil
 		}
 	}
