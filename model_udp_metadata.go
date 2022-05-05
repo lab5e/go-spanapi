@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.0 alternative-adolphus
+API version: 4.2.1 petulant-kyan
 Contact: dev@lab5e.com
 */
 
@@ -17,7 +17,7 @@ import (
 
 // UDPMetadata UDP metadata for messages receveied through one of the UDP endpoints
 type UDPMetadata struct {
-	LocalPort  *int32 `json:"localPort,omitempty"`
+	LocalPort *int32 `json:"localPort,omitempty"`
 	RemotePort *int32 `json:"remotePort,omitempty"`
 }
 
@@ -148,3 +148,5 @@ func (v *NullableUDPMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

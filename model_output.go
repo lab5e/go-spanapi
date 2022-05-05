@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.0 alternative-adolphus
+API version: 4.2.1 petulant-kyan
 Contact: dev@lab5e.com
 */
 
@@ -17,12 +17,12 @@ import (
 
 // Output Output resource. The configuration depends on the kind of output type. There are five outputs: Webhooks, UDP forwarding, IFTTT events, MQTT client and MQTT broker. The MQTT broker output is just used to configure the built-in MQTT broker in Span.
 type Output struct {
-	OutputId     *string            `json:"outputId,omitempty"`
-	CollectionId *string            `json:"collectionId,omitempty"`
-	Type         *OutputType        `json:"type,omitempty"`
-	Config       *OutputConfig      `json:"config,omitempty"`
-	Enabled      *bool              `json:"enabled,omitempty"`
-	Tags         *map[string]string `json:"tags,omitempty"`
+	OutputId *string `json:"outputId,omitempty"`
+	CollectionId *string `json:"collectionId,omitempty"`
+	Type *OutputType `json:"type,omitempty"`
+	Config *OutputConfig `json:"config,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
+	Tags *map[string]string `json:"tags,omitempty"`
 }
 
 // NewOutput instantiates a new Output object
@@ -296,3 +296,5 @@ func (v *NullableOutput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

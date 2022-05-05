@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.0 alternative-adolphus
+API version: 4.2.1 petulant-kyan
 Contact: dev@lab5e.com
 */
 
@@ -17,13 +17,13 @@ import (
 
 // MessageUpstream This is the messages sent from the device to the backend service
 type MessageUpstream struct {
-	MessageId    *string           `json:"messageId,omitempty"`
-	CollectionId *string           `json:"collectionId,omitempty"`
-	DeviceId     *string           `json:"deviceId,omitempty"`
-	GatewayId    *string           `json:"gatewayId,omitempty"`
-	Transport    *MessageTransport `json:"transport,omitempty"`
-	Received     *string           `json:"received,omitempty"`
-	Payload      *string           `json:"payload,omitempty"`
+	MessageId *string `json:"messageId,omitempty"`
+	CollectionId *string `json:"collectionId,omitempty"`
+	DeviceId *string `json:"deviceId,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty"`
+	Transport *MessageTransport `json:"transport,omitempty"`
+	Received *string `json:"received,omitempty"`
+	Payload *string `json:"payload,omitempty"`
 }
 
 // NewMessageUpstream instantiates a new MessageUpstream object
@@ -332,3 +332,5 @@ func (v *NullableMessageUpstream) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
