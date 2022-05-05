@@ -18,7 +18,7 @@ import (
 // CreateCertificateRequest Request object to create a new certificate.
 type CreateCertificateRequest struct {
 	GatewayId *string `json:"gatewayId,omitempty"`
-	DeviceId *string `json:"deviceId,omitempty"`
+	DeviceId  *string `json:"deviceId,omitempty"`
 }
 
 // NewCreateCertificateRequest instantiates a new CreateCertificateRequest object
@@ -148,5 +148,3 @@ func (v *NullableCreateCertificateRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
