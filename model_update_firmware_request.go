@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.3 lower-elian
+API version: 4.2.4 curable-andres
 Contact: dev@lab5e.com
 */
 
@@ -17,9 +17,9 @@ import (
 
 // UpdateFirmwareRequest This is the request object when updating the firmware image
 type UpdateFirmwareRequest struct {
-	CollectionId *string            `json:"collectionId,omitempty"`
-	Version      *string            `json:"version,omitempty"`
-	Tags         *map[string]string `json:"tags,omitempty"`
+	CollectionId *string `json:"collectionId,omitempty"`
+	Version *string `json:"version,omitempty"`
+	Tags *map[string]string `json:"tags,omitempty"`
 }
 
 // NewUpdateFirmwareRequest instantiates a new UpdateFirmwareRequest object
@@ -184,3 +184,5 @@ func (v *NullableUpdateFirmwareRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

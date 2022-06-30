@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.3 lower-elian
+API version: 4.2.4 curable-andres
 Contact: dev@lab5e.com
 */
 
@@ -22,8 +22,8 @@ type MessageTransport string
 // List of MessageTransport
 const (
 	MESSAGETRANSPORT_UNSPECIFIED MessageTransport = "unspecified"
-	MESSAGETRANSPORT_UDP         MessageTransport = "udp"
-	MESSAGETRANSPORT_COAP        MessageTransport = "coap"
+	MESSAGETRANSPORT_UDP MessageTransport = "udp"
+	MESSAGETRANSPORT_COAP MessageTransport = "coap"
 )
 
 // All allowed values of MessageTransport enum
@@ -111,3 +111,4 @@ func (v *NullableMessageTransport) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

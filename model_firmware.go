@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.3 lower-elian
+API version: 4.2.4 curable-andres
 Contact: dev@lab5e.com
 */
 
@@ -24,10 +24,10 @@ type Firmware struct {
 	Filename *string `json:"filename,omitempty"`
 	// To ensure each image is unique the SHA-256 hash for all images in a collection must be unqique
 	Sha256 *string `json:"sha256,omitempty"`
-	Length *int32  `json:"length,omitempty"`
+	Length *int32 `json:"length,omitempty"`
 	// Collection ID for the collection owning the firmware image.
 	CollectionId *string `json:"collectionId,omitempty"`
-	Created      *string `json:"created,omitempty"`
+	Created *string `json:"created,omitempty"`
 	// Tags for firmware image.
 	Tags *map[string]string `json:"tags,omitempty"`
 }
@@ -369,3 +369,5 @@ func (v *NullableFirmware) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

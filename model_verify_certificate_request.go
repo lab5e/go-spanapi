@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.3 lower-elian
+API version: 4.2.4 curable-andres
 Contact: dev@lab5e.com
 */
 
@@ -17,8 +17,8 @@ import (
 
 // VerifyCertificateRequest Verify a certificate
 type VerifyCertificateRequest struct {
-	GatewayId   *string `json:"gatewayId,omitempty"`
-	DeviceId    *string `json:"deviceId,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty"`
+	DeviceId *string `json:"deviceId,omitempty"`
 	Certificate *string `json:"certificate,omitempty"`
 }
 
@@ -184,3 +184,5 @@ func (v *NullableVerifyCertificateRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

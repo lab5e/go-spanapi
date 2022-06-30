@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.3 lower-elian
+API version: 4.2.4 curable-andres
 Contact: dev@lab5e.com
 */
 
@@ -17,8 +17,8 @@ import (
 
 // ListOutputResponse List outputs
 type ListOutputResponse struct {
-	CollectionId *string  `json:"collectionId,omitempty"`
-	Outputs      []Output `json:"outputs,omitempty"`
+	CollectionId *string `json:"collectionId,omitempty"`
+	Outputs []Output `json:"outputs,omitempty"`
 }
 
 // NewListOutputResponse instantiates a new ListOutputResponse object
@@ -148,3 +148,5 @@ func (v *NullableListOutputResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

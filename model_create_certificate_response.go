@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.3 lower-elian
+API version: 4.2.4 curable-andres
 Contact: dev@lab5e.com
 */
 
@@ -18,8 +18,8 @@ import (
 // CreateCertificateResponse Response when creating a new certificate
 type CreateCertificateResponse struct {
 	Certificate *string `json:"certificate,omitempty"`
-	PrivateKey  *string `json:"privateKey,omitempty"`
-	Chain       *string `json:"chain,omitempty"`
+	PrivateKey *string `json:"privateKey,omitempty"`
+	Chain *string `json:"chain,omitempty"`
 }
 
 // NewCreateCertificateResponse instantiates a new CreateCertificateResponse object
@@ -184,3 +184,5 @@ func (v *NullableCreateCertificateResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

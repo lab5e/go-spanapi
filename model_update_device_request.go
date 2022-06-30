@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.3 lower-elian
+API version: 4.2.4 curable-andres
 Contact: dev@lab5e.com
 */
 
@@ -24,9 +24,9 @@ type UpdateDeviceRequest struct {
 	// Deprecated: This is replaced by the Config type The IMEI number is the unique ID for your hardware as seen by the network. Obviously you might have a completely different view on things.
 	Imei *string `json:"imei,omitempty"`
 	// Tags are metadata for the device that you can set. These are just strings.
-	Tags     *map[string]string `json:"tags,omitempty"`
-	Firmware *FirmwareMetadata  `json:"firmware,omitempty"`
-	Config   *DeviceConfig      `json:"config,omitempty"`
+	Tags *map[string]string `json:"tags,omitempty"`
+	Firmware *FirmwareMetadata `json:"firmware,omitempty"`
+	Config *DeviceConfig `json:"config,omitempty"`
 }
 
 // NewUpdateDeviceRequest instantiates a new UpdateDeviceRequest object
@@ -296,3 +296,5 @@ func (v *NullableUpdateDeviceRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

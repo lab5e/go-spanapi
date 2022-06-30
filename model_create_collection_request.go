@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.3 lower-elian
+API version: 4.2.4 curable-andres
 Contact: dev@lab5e.com
 */
 
@@ -18,7 +18,7 @@ import (
 // CreateCollectionRequest Request object when creating a collection. The collect ID is assigned by the service.
 type CreateCollectionRequest struct {
 	// The team ID that owns the collection. This field is required. When you create new collections the default is to use your private team ID.
-	TeamId   *string             `json:"teamId,omitempty"`
+	TeamId *string `json:"teamId,omitempty"`
 	Firmware *CollectionFirmware `json:"firmware,omitempty"`
 	// Tags for the collection. Tags are metadata fields that you can assign to the collection.
 	Tags *map[string]string `json:"tags,omitempty"`
@@ -186,3 +186,5 @@ func (v *NullableCreateCollectionRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
