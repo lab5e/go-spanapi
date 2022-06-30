@@ -18,8 +18,8 @@ import (
 // CreateCertificateResponse Response when creating a new certificate
 type CreateCertificateResponse struct {
 	Certificate *string `json:"certificate,omitempty"`
-	PrivateKey *string `json:"privateKey,omitempty"`
-	Chain *string `json:"chain,omitempty"`
+	PrivateKey  *string `json:"privateKey,omitempty"`
+	Chain       *string `json:"chain,omitempty"`
 }
 
 // NewCreateCertificateResponse instantiates a new CreateCertificateResponse object
@@ -184,5 +184,3 @@ func (v *NullableCreateCertificateResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

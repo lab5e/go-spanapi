@@ -18,7 +18,7 @@ import (
 // SignCertificateResponse Response when signing a certificate
 type SignCertificateResponse struct {
 	Certificate *string `json:"certificate,omitempty"`
-	Chain *string `json:"chain,omitempty"`
+	Chain       *string `json:"chain,omitempty"`
 }
 
 // NewSignCertificateResponse instantiates a new SignCertificateResponse object
@@ -148,5 +148,3 @@ func (v *NullableSignCertificateResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
