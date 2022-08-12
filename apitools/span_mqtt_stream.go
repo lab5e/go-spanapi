@@ -1,124 +1,122 @@
 package apitools
 
 import (
-	"encoding/json"
+	"context"
+	"errors"
 	"fmt"
-	"log"
 	"math/rand"
+	"net/url"
+	"time"
 
-	mqtt "github.com/eclipse/paho.mqtt.golang"
+	"github.com/eclipse/paho.golang/autopaho"
+	"github.com/eclipse/paho.golang/paho"
 	"github.com/lab5e/go-spanapi/v4"
 )
 
-type mqttParam struct {
-	apiToken       string
-	collectionID   string
-	clientID       string
-	brokerOverride string
+type mqttStream struct {
+	config   mqttParam
+	client   *autopaho.ConnectionManager
+	dataChan chan spanapi.OutputDataMessage
 }
 
-// MQTTOption is an option type for MQTT streams
-type MQTTOption func(opt *mqttParam) *mqttParam
+// defaults, these should be reasonable
+const (
+	keepAliveSeconds   = 30
+	connectRetryDelay  = 5 * time.Second
+	connectTimeout     = 5 * time.Second
+	closeTimeout       = 15 * time.Second
+	collectionTopicQoS = 1
+	defaultBrokerAddr  = "tls://mqtt.lab5e.com:8883"
+)
 
-// WithAPIToken sets the API token to use when streaming data
-func WithAPIToken(token string) MQTTOption {
-	return func(o *mqttParam) *mqttParam {
-		o.apiToken = token
-		return o
-	}
-}
-
-// WithClientID sets the client ID to use.
-func WithClientID(id string) MQTTOption {
-	return func(o *mqttParam) *mqttParam {
-		o.clientID = id
-		return o
-	}
-}
-
-// WithCollectionID sets the collection ID to use when streaming data
-func WithCollectionID(collectionID string) MQTTOption {
-	return func(o *mqttParam) *mqttParam {
-		o.collectionID = collectionID
-		return o
-	}
-}
-
-// WithBrokerOverride overrides the default MQTT broker endpoint.
-func WithBrokerOverride(broker string) MQTTOption {
-	return func(o *mqttParam) *mqttParam {
-		o.brokerOverride = broker
-		return o
-	}
-}
+// errors
+var (
+	ErrTimeout             = errors.New("timed out")
+	ErrEmptyBrokerAddress  = errors.New("broker address is empty")
+	ErrMissingAPIToken     = errors.New("api token has not been set")
+	ErrMissingCollectionID = errors.New("collection ID has not been set")
+)
 
 // NewMQTTStream creates a new data stream that uses the Span MQTT broker
 func NewMQTTStream(options ...MQTTOption) (DataStream, error) {
-	opts := &mqttParam{}
+	opts := &mqttParam{
+		brokerAddr: defaultBrokerAddr,
+	}
+
 	for _, opt := range options {
 		opts = opt(opts)
 	}
+
+	if opts.brokerAddr == "" {
+		return nil, ErrEmptyBrokerAddress
+	}
+
+	if opts.apiToken == "" {
+		return nil, ErrMissingAPIToken
+	}
+
+	if opts.collectionID == "" {
+		return nil, ErrMissingCollectionID
+	}
+
 	stream := &mqttStream{
 		config:   *opts,
 		dataChan: make(chan spanapi.OutputDataMessage),
 	}
-	if err := stream.start(); err != nil {
+
+	err := stream.start()
+	if err != nil {
 		return nil, err
 	}
 
 	return stream, nil
 }
 
-type mqttStream struct {
-	config   mqttParam
-	client   mqtt.Client
-	dataChan chan spanapi.OutputDataMessage
-}
-
-func (m *mqttStream) start() error {
-	broker := "tls://mqtt.lab5e.com:8883"
-	if m.config.brokerOverride != "" {
-		broker = m.config.brokerOverride
-	}
-	clientID := fmt.Sprintf("spanapi_%d", rand.Int())
-	if m.config.clientID != "" {
-		clientID = m.config.clientID
-	}
-	opts := mqtt.NewClientOptions().
-		AddBroker(broker).
-		SetResumeSubs(true).
-		SetAutoReconnect(true).
-		SetUsername(m.config.collectionID).
-		SetPassword(m.config.apiToken).
-		SetClientID(clientID).
-		SetOnConnectHandler(func(c mqtt.Client) {
-			topicName := fmt.Sprintf("%s/#", m.config.collectionID)
-			if token := c.Subscribe(topicName, 0, m.messageHandler); token.Wait() && token.Error() != nil {
-				log.Printf("Couldn't subscribe to %s: %v", topicName, token.Error())
-				return
-			}
-		})
-
-	m.client = mqtt.NewClient(opts)
-	if token := m.client.Connect(); token.Wait() && token.Error() != nil {
-		return token.Error()
-	}
-	return nil
-}
-
-func (m *mqttStream) messageHandler(client mqtt.Client, msg mqtt.Message) {
-	msgStub := spanapi.OutputDataMessage{}
-	if err := json.Unmarshal(msg.Payload(), &msgStub); err != nil {
-		log.Printf("Error unmarshaling output message: %v", err)
-		return
-	}
-	m.dataChan <- msgStub
-}
 func (m *mqttStream) Recv() (spanapi.OutputDataMessage, error) {
 	return <-m.dataChan, nil
 }
 
 func (m *mqttStream) Close() error {
-	m.client.Disconnect(60000)
+	ctx, cancel := context.WithTimeout(context.Background(), closeTimeout)
+	defer cancel()
+
+	return m.client.Disconnect(ctx)
+}
+
+// start the MQTT broker client.  This client will auto-reconnect if the connection
+// falls down.
+func (m *mqttStream) start() error {
+	brokerURL, err := url.Parse(m.config.brokerAddr)
+	if err != nil {
+		return err
+	}
+
+	clientID := fmt.Sprintf("spanapi_%d", rand.Int())
+	if m.config.clientID != "" {
+		clientID = m.config.clientID
+	}
+
+	clientConfig := autopaho.ClientConfig{
+		BrokerUrls:        []*url.URL{brokerURL},
+		KeepAlive:         keepAliveSeconds,
+		ConnectRetryDelay: connectRetryDelay,
+		ConnectTimeout:    connectTimeout,
+		OnConnectionUp:    m.handleOnConnectionUp,
+		OnConnectError:    m.handleOnConnectError,
+
+		ClientConfig: paho.ClientConfig{
+			ClientID:           clientID,
+			Router:             paho.NewSingleHandlerRouter(m.handleIncoming),
+			OnServerDisconnect: m.handleDisconnect,
+			OnClientError:      m.handleClientError,
+		},
+	}
+
+	clientConfig.SetUsernamePassword(m.config.collectionID, []byte(m.config.apiToken))
+
+	m.client, err = autopaho.NewConnection(context.Background(), clientConfig)
+	if err != nil {
+		return fmt.Errorf("error creating new connection: %v", err)
+	}
 	return nil
 }
