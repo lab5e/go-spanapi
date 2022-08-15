@@ -63,7 +63,7 @@ func newDataStream(ctx context.Context, urlStr string) (DataStream, error) {
 	dialer := websocket.Dialer{}
 	ws, _, err := dialer.Dial(urlStr, header)
 	if err != nil {
-		return nil, fmt.Errorf("Error dialing websocket: %v", err)
+		return nil, fmt.Errorf("error dialing websocket: %v", err)
 	}
 	return &wsDataStream{ws}, nil
 }
