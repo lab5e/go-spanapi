@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **UdpMetaData** | Pointer to [**UDPMetadata**](UDPMetadata.md) |  | [optional] 
 **CoapMetaData** | Pointer to [**CoAPMetadata**](CoAPMetadata.md) |  | [optional] 
 **MessageId** | Pointer to **string** |  | [optional] 
+**MqttMetaData** | Pointer to [**MQTTMetadata**](MQTTMetadata.md) |  | [optional] 
 
 ## Methods
 
@@ -231,6 +232,31 @@ SetMessageId sets MessageId field to given value.
 `func (o *OutputDataMessage) HasMessageId() bool`
 
 HasMessageId returns a boolean if a field has been set.
+
+### GetMqttMetaData
+
+`func (o *OutputDataMessage) GetMqttMetaData() MQTTMetadata`
+
+GetMqttMetaData returns the MqttMetaData field if non-nil, zero value otherwise.
+
+### GetMqttMetaDataOk
+
+`func (o *OutputDataMessage) GetMqttMetaDataOk() (*MQTTMetadata, bool)`
+
+GetMqttMetaDataOk returns a tuple with the MqttMetaData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMqttMetaData
+
+`func (o *OutputDataMessage) SetMqttMetaData(v MQTTMetadata)`
+
+SetMqttMetaData sets MqttMetaData field to given value.
+
+### HasMqttMetaData
+
+`func (o *OutputDataMessage) HasMqttMetaData() bool`
+
+HasMqttMetaData returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

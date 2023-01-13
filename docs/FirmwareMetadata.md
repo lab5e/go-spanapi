@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **SerialNumber** | Pointer to **string** |  | [optional] 
 **ModelNumber** | Pointer to **string** |  | [optional] 
 **Manufacturer** | Pointer to **string** |  | [optional] 
-**State** | Pointer to **string** |  | [optional] 
+**State** | Pointer to **string** | State of the firmware. | [optional] 
 **StateMessage** | Pointer to **string** |  | [optional] 
 
 ## Methods

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Imsi** | Pointer to **string** |  | [optional] 
-**Imei** | Pointer to **string** | on your device. This is the primary identifier for your device on the network. | [optional] 
+**Imei** | Pointer to **string** | on your device. This is the primary identifier for your device on the network.  The IMEI number is the unique ID for your hardware as | [optional] 
 
 ## Methods
 

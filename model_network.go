@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.4 curable-andres
+API version: 4.3.0 grouchy-aloysius
 Contact: dev@lab5e.com
 */
 
@@ -17,8 +17,8 @@ import (
 
 // Network Network is the network devices runs on. They communicate via gateway to Span.
 type Network struct {
-	NetworkId *string            `json:"networkId,omitempty"`
-	Tags      *map[string]string `json:"tags,omitempty"`
+	NetworkId *string `json:"networkId,omitempty"`
+	Tags *map[string]string `json:"tags,omitempty"`
 }
 
 // NewNetwork instantiates a new Network object
@@ -148,3 +148,5 @@ func (v *NullableNetwork) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.4 curable-andres
+API version: 4.3.0 grouchy-aloysius
 Contact: dev@lab5e.com
 */
 
@@ -17,7 +17,7 @@ import (
 
 // VerifyCertificateResponse Response when verifying a certificate. The valid flag is set to true when the certificate is valid.  Any errors will be added to the errors array.
 type VerifyCertificateResponse struct {
-	Valid  *bool    `json:"valid,omitempty"`
+	Valid *bool `json:"valid,omitempty"`
 	Errors []string `json:"errors,omitempty"`
 }
 
@@ -148,3 +148,5 @@ func (v *NullableVerifyCertificateResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

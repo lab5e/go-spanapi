@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.4 curable-andres
+API version: 4.3.0 grouchy-aloysius
 Contact: dev@lab5e.com
 */
 
@@ -29,11 +29,11 @@ var (
 type DevicesApiService service
 
 type ApiAddDownstreamMessageRequest struct {
-	ctx          context.Context
-	ApiService   *DevicesApiService
+	ctx context.Context
+	ApiService *DevicesApiService
 	collectionId string
-	deviceId     string
-	body         *AddDownstreamMessageRequest
+	deviceId string
+	body *AddDownstreamMessageRequest
 }
 
 func (r ApiAddDownstreamMessageRequest) Body(body AddDownstreamMessageRequest) ApiAddDownstreamMessageRequest {
@@ -58,10 +58,10 @@ messages will be sent first.
 */
 func (a *DevicesApiService) AddDownstreamMessage(ctx context.Context, collectionId string, deviceId string) ApiAddDownstreamMessageRequest {
 	return ApiAddDownstreamMessageRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		deviceId:     deviceId,
+		deviceId: deviceId,
 	}
 }
 
@@ -69,10 +69,10 @@ func (a *DevicesApiService) AddDownstreamMessage(ctx context.Context, collection
 //  @return MessageDownstream
 func (a *DevicesApiService) AddDownstreamMessageExecute(r ApiAddDownstreamMessageRequest) (*MessageDownstream, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *MessageDownstream
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MessageDownstream
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.AddDownstreamMessage")
@@ -196,13 +196,13 @@ func (a *DevicesApiService) AddDownstreamMessageExecute(r ApiAddDownstreamMessag
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -219,10 +219,10 @@ func (a *DevicesApiService) AddDownstreamMessageExecute(r ApiAddDownstreamMessag
 }
 
 type ApiCreateDeviceRequest struct {
-	ctx          context.Context
-	ApiService   *DevicesApiService
+	ctx context.Context
+	ApiService *DevicesApiService
 	collectionId string
-	body         *CreateDeviceRequest
+	body *CreateDeviceRequest
 }
 
 func (r ApiCreateDeviceRequest) Body(body CreateDeviceRequest) ApiCreateDeviceRequest {
@@ -243,8 +243,8 @@ CreateDevice Create device
 */
 func (a *DevicesApiService) CreateDevice(ctx context.Context, collectionId string) ApiCreateDeviceRequest {
 	return ApiCreateDeviceRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -253,10 +253,10 @@ func (a *DevicesApiService) CreateDevice(ctx context.Context, collectionId strin
 //  @return Device
 func (a *DevicesApiService) CreateDeviceExecute(r ApiCreateDeviceRequest) (*Device, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Device
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Device
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.CreateDevice")
@@ -379,13 +379,13 @@ func (a *DevicesApiService) CreateDeviceExecute(r ApiCreateDeviceRequest) (*Devi
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -402,11 +402,12 @@ func (a *DevicesApiService) CreateDeviceExecute(r ApiCreateDeviceRequest) (*Devi
 }
 
 type ApiDeleteDeviceRequest struct {
-	ctx          context.Context
-	ApiService   *DevicesApiService
+	ctx context.Context
+	ApiService *DevicesApiService
 	collectionId string
-	deviceId     string
+	deviceId string
 }
+
 
 func (r ApiDeleteDeviceRequest) Execute() (*Device, *http.Response, error) {
 	return r.ApiService.DeleteDeviceExecute(r)
@@ -422,10 +423,10 @@ DeleteDevice Remove device.
 */
 func (a *DevicesApiService) DeleteDevice(ctx context.Context, collectionId string, deviceId string) ApiDeleteDeviceRequest {
 	return ApiDeleteDeviceRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		deviceId:     deviceId,
+		deviceId: deviceId,
 	}
 }
 
@@ -433,10 +434,10 @@ func (a *DevicesApiService) DeleteDevice(ctx context.Context, collectionId strin
 //  @return Device
 func (a *DevicesApiService) DeleteDeviceExecute(r ApiDeleteDeviceRequest) (*Device, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Device
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Device
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.DeleteDevice")
@@ -555,13 +556,13 @@ func (a *DevicesApiService) DeleteDeviceExecute(r ApiDeleteDeviceRequest) (*Devi
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -578,12 +579,13 @@ func (a *DevicesApiService) DeleteDeviceExecute(r ApiDeleteDeviceRequest) (*Devi
 }
 
 type ApiDeleteDownstreamMessageRequest struct {
-	ctx          context.Context
-	ApiService   *DevicesApiService
+	ctx context.Context
+	ApiService *DevicesApiService
 	collectionId string
-	deviceId     string
-	messageId    string
+	deviceId string
+	messageId string
 }
+
 
 func (r ApiDeleteDownstreamMessageRequest) Execute() (*DeleteDownstreamMessageResponse, *http.Response, error) {
 	return r.ApiService.DeleteDownstreamMessageExecute(r)
@@ -602,11 +604,11 @@ Delete an outgoing (ie downstream) message from the outbox.
 */
 func (a *DevicesApiService) DeleteDownstreamMessage(ctx context.Context, collectionId string, deviceId string, messageId string) ApiDeleteDownstreamMessageRequest {
 	return ApiDeleteDownstreamMessageRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		deviceId:     deviceId,
-		messageId:    messageId,
+		deviceId: deviceId,
+		messageId: messageId,
 	}
 }
 
@@ -614,10 +616,10 @@ func (a *DevicesApiService) DeleteDownstreamMessage(ctx context.Context, collect
 //  @return DeleteDownstreamMessageResponse
 func (a *DevicesApiService) DeleteDownstreamMessageExecute(r ApiDeleteDownstreamMessageRequest) (*DeleteDownstreamMessageResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *DeleteDownstreamMessageResponse
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *DeleteDownstreamMessageResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.DeleteDownstreamMessage")
@@ -737,13 +739,13 @@ func (a *DevicesApiService) DeleteDownstreamMessageExecute(r ApiDeleteDownstream
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -760,11 +762,12 @@ func (a *DevicesApiService) DeleteDownstreamMessageExecute(r ApiDeleteDownstream
 }
 
 type ApiDeviceCertificateRequest struct {
-	ctx          context.Context
-	ApiService   *DevicesApiService
+	ctx context.Context
+	ApiService *DevicesApiService
 	collectionId string
-	deviceId     string
+	deviceId string
 }
+
 
 func (r ApiDeviceCertificateRequest) Execute() (*DeviceCertificateResponse, *http.Response, error) {
 	return r.ApiService.DeviceCertificateExecute(r)
@@ -780,10 +783,10 @@ DeviceCertificate Get issued certificate(s) for device
 */
 func (a *DevicesApiService) DeviceCertificate(ctx context.Context, collectionId string, deviceId string) ApiDeviceCertificateRequest {
 	return ApiDeviceCertificateRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		deviceId:     deviceId,
+		deviceId: deviceId,
 	}
 }
 
@@ -791,10 +794,10 @@ func (a *DevicesApiService) DeviceCertificate(ctx context.Context, collectionId 
 //  @return DeviceCertificateResponse
 func (a *DevicesApiService) DeviceCertificateExecute(r ApiDeviceCertificateRequest) (*DeviceCertificateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *DeviceCertificateResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *DeviceCertificateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.DeviceCertificate")
@@ -913,13 +916,13 @@ func (a *DevicesApiService) DeviceCertificateExecute(r ApiDeviceCertificateReque
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -936,14 +939,14 @@ func (a *DevicesApiService) DeviceCertificateExecute(r ApiDeviceCertificateReque
 }
 
 type ApiListDeviceDataRequest struct {
-	ctx          context.Context
-	ApiService   *DevicesApiService
+	ctx context.Context
+	ApiService *DevicesApiService
 	collectionId string
-	deviceId     string
-	limit        *int32
-	start        *string
-	end          *string
-	offset       *string
+	deviceId string
+	limit *int32
+	start *string
+	end *string
+	offset *string
 }
 
 // Limit the number of payloads to return. The default is 512.
@@ -951,19 +954,16 @@ func (r ApiListDeviceDataRequest) Limit(limit int32) ApiListDeviceDataRequest {
 	r.limit = &limit
 	return r
 }
-
 // Start of time range. The default is 24 hours ago. Value is in milliseconds since epoch.
 func (r ApiListDeviceDataRequest) Start(start string) ApiListDeviceDataRequest {
 	r.start = &start
 	return r
 }
-
 // End of time range. The default is the current time stamp. Value is in milliseconds since epoch.
 func (r ApiListDeviceDataRequest) End(end string) ApiListDeviceDataRequest {
 	r.end = &end
 	return r
 }
-
 // The message offset based on the message ID. This parameter can&#39;t be combined with the start and end parameters. If no parameter is set the first N messages will be returned. If this parameter is set the next N messages (from newest to oldest) with message ID less than the offset will be returned.
 func (r ApiListDeviceDataRequest) Offset(offset string) ApiListDeviceDataRequest {
 	r.offset = &offset
@@ -977,7 +977,7 @@ func (r ApiListDeviceDataRequest) Execute() (*ListDataResponse, *http.Response, 
 /*
 ListDeviceData Retrieve data from device
 
-List the data received from the device. Use the query parameters to control what data you retrieve. The
+List the data received from the device. Use the query parameters to control what data you retrieve. The 
 maximum number of data points is 100.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -987,10 +987,10 @@ maximum number of data points is 100.
 */
 func (a *DevicesApiService) ListDeviceData(ctx context.Context, collectionId string, deviceId string) ApiListDeviceDataRequest {
 	return ApiListDeviceDataRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		deviceId:     deviceId,
+		deviceId: deviceId,
 	}
 }
 
@@ -998,10 +998,10 @@ func (a *DevicesApiService) ListDeviceData(ctx context.Context, collectionId str
 //  @return ListDataResponse
 func (a *DevicesApiService) ListDeviceDataExecute(r ApiListDeviceDataRequest) (*ListDataResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListDataResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListDataResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.ListDeviceData")
@@ -1132,13 +1132,13 @@ func (a *DevicesApiService) ListDeviceDataExecute(r ApiListDeviceDataRequest) (*
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1155,10 +1155,11 @@ func (a *DevicesApiService) ListDeviceDataExecute(r ApiListDeviceDataRequest) (*
 }
 
 type ApiListDevicesRequest struct {
-	ctx          context.Context
-	ApiService   *DevicesApiService
+	ctx context.Context
+	ApiService *DevicesApiService
 	collectionId string
 }
+
 
 func (r ApiListDevicesRequest) Execute() (*ListDevicesResponse, *http.Response, error) {
 	return r.ApiService.ListDevicesExecute(r)
@@ -1173,8 +1174,8 @@ ListDevices List devices in collection.
 */
 func (a *DevicesApiService) ListDevices(ctx context.Context, collectionId string) ApiListDevicesRequest {
 	return ApiListDevicesRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
@@ -1183,10 +1184,10 @@ func (a *DevicesApiService) ListDevices(ctx context.Context, collectionId string
 //  @return ListDevicesResponse
 func (a *DevicesApiService) ListDevicesExecute(r ApiListDevicesRequest) (*ListDevicesResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListDevicesResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListDevicesResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.ListDevices")
@@ -1304,13 +1305,13 @@ func (a *DevicesApiService) ListDevicesExecute(r ApiListDevicesRequest) (*ListDe
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1327,33 +1328,30 @@ func (a *DevicesApiService) ListDevicesExecute(r ApiListDevicesRequest) (*ListDe
 }
 
 type ApiListDownstreamMessagesRequest struct {
-	ctx          context.Context
-	ApiService   *DevicesApiService
+	ctx context.Context
+	ApiService *DevicesApiService
 	collectionId string
-	deviceId     string
-	limit        *int32
-	start        *string
-	end          *string
-	offset       *string
+	deviceId string
+	limit *int32
+	start *string
+	end *string
+	offset *string
 }
 
 func (r ApiListDownstreamMessagesRequest) Limit(limit int32) ApiListDownstreamMessagesRequest {
 	r.limit = &limit
 	return r
 }
-
 // Start of time range. The default is 24 hours ago. Value is in milliseconds since epoch.
 func (r ApiListDownstreamMessagesRequest) Start(start string) ApiListDownstreamMessagesRequest {
 	r.start = &start
 	return r
 }
-
 // End of time range. The default is the current time stamp. Value is in milliseconds since epoch.
 func (r ApiListDownstreamMessagesRequest) End(end string) ApiListDownstreamMessagesRequest {
 	r.end = &end
 	return r
 }
-
 // The message offset based on the message ID. This parameter can&#39;t be combined with the start and end parameters. If no parameter is set the first N messages will be returned. If this parameter is set the next N messages (from newest to oldest) with message ID less than the offset will be returned.
 func (r ApiListDownstreamMessagesRequest) Offset(offset string) ApiListDownstreamMessagesRequest {
 	r.offset = &offset
@@ -1378,10 +1376,10 @@ a message via CoAP GET request.option
 */
 func (a *DevicesApiService) ListDownstreamMessages(ctx context.Context, collectionId string, deviceId string) ApiListDownstreamMessagesRequest {
 	return ApiListDownstreamMessagesRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		deviceId:     deviceId,
+		deviceId: deviceId,
 	}
 }
 
@@ -1389,10 +1387,10 @@ func (a *DevicesApiService) ListDownstreamMessages(ctx context.Context, collecti
 //  @return ListDownstreamMessagesResponse
 func (a *DevicesApiService) ListDownstreamMessagesExecute(r ApiListDownstreamMessagesRequest) (*ListDownstreamMessagesResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListDownstreamMessagesResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListDownstreamMessagesResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.ListDownstreamMessages")
@@ -1523,13 +1521,13 @@ func (a *DevicesApiService) ListDownstreamMessagesExecute(r ApiListDownstreamMes
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1546,33 +1544,30 @@ func (a *DevicesApiService) ListDownstreamMessagesExecute(r ApiListDownstreamMes
 }
 
 type ApiListUpstreamMessagesRequest struct {
-	ctx          context.Context
-	ApiService   *DevicesApiService
+	ctx context.Context
+	ApiService *DevicesApiService
 	collectionId string
-	deviceId     string
-	limit        *int32
-	start        *string
-	end          *string
-	offset       *string
+	deviceId string
+	limit *int32
+	start *string
+	end *string
+	offset *string
 }
 
 func (r ApiListUpstreamMessagesRequest) Limit(limit int32) ApiListUpstreamMessagesRequest {
 	r.limit = &limit
 	return r
 }
-
 // Start of time range. The default is 24 hours ago. Value is in milliseconds since epoch.
 func (r ApiListUpstreamMessagesRequest) Start(start string) ApiListUpstreamMessagesRequest {
 	r.start = &start
 	return r
 }
-
 // End of time range. The default is the current time stamp. Value is in milliseconds since epoch.
 func (r ApiListUpstreamMessagesRequest) End(end string) ApiListUpstreamMessagesRequest {
 	r.end = &end
 	return r
 }
-
 // The message offset based on the message ID. This parameter can&#39;t be combined with the start and end parameters. If no parameter is set the first N messages will be returned. If this parameter is set the next N messages (from newest to oldest) with message ID less than the offset will be returned.
 func (r ApiListUpstreamMessagesRequest) Offset(offset string) ApiListUpstreamMessagesRequest {
 	r.offset = &offset
@@ -1586,8 +1581,8 @@ func (r ApiListUpstreamMessagesRequest) Execute() (*ListUpstreamMessagesResponse
 /*
 ListUpstreamMessages List incoming messages
 
-Retrieve a list of incoming (ie upstream) messages, ie messages sent from the device to the service.
-These messages are buffered in the service until they expire.
+Retrieve a list of incoming (ie upstream) messages, ie messages sent from the device to the service. 
+These messages are buffered in the service until they expire. 
 
 Use the query parameters to limit the number of messages to return. If no limit is specified the default
 limit of 250 is used.
@@ -1599,10 +1594,10 @@ limit of 250 is used.
 */
 func (a *DevicesApiService) ListUpstreamMessages(ctx context.Context, collectionId string, deviceId string) ApiListUpstreamMessagesRequest {
 	return ApiListUpstreamMessagesRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		deviceId:     deviceId,
+		deviceId: deviceId,
 	}
 }
 
@@ -1610,10 +1605,10 @@ func (a *DevicesApiService) ListUpstreamMessages(ctx context.Context, collection
 //  @return ListUpstreamMessagesResponse
 func (a *DevicesApiService) ListUpstreamMessagesExecute(r ApiListUpstreamMessagesRequest) (*ListUpstreamMessagesResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListUpstreamMessagesResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListUpstreamMessagesResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.ListUpstreamMessages")
@@ -1744,13 +1739,13 @@ func (a *DevicesApiService) ListUpstreamMessagesExecute(r ApiListUpstreamMessage
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1767,11 +1762,12 @@ func (a *DevicesApiService) ListUpstreamMessagesExecute(r ApiListUpstreamMessage
 }
 
 type ApiRetrieveDeviceRequest struct {
-	ctx          context.Context
-	ApiService   *DevicesApiService
+	ctx context.Context
+	ApiService *DevicesApiService
 	collectionId string
-	deviceId     string
+	deviceId string
 }
+
 
 func (r ApiRetrieveDeviceRequest) Execute() (*Device, *http.Response, error) {
 	return r.ApiService.RetrieveDeviceExecute(r)
@@ -1787,10 +1783,10 @@ RetrieveDevice Retrieve device
 */
 func (a *DevicesApiService) RetrieveDevice(ctx context.Context, collectionId string, deviceId string) ApiRetrieveDeviceRequest {
 	return ApiRetrieveDeviceRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		deviceId:     deviceId,
+		deviceId: deviceId,
 	}
 }
 
@@ -1798,10 +1794,10 @@ func (a *DevicesApiService) RetrieveDevice(ctx context.Context, collectionId str
 //  @return Device
 func (a *DevicesApiService) RetrieveDeviceExecute(r ApiRetrieveDeviceRequest) (*Device, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Device
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Device
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.RetrieveDevice")
@@ -1920,13 +1916,13 @@ func (a *DevicesApiService) RetrieveDeviceExecute(r ApiRetrieveDeviceRequest) (*
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1943,11 +1939,11 @@ func (a *DevicesApiService) RetrieveDeviceExecute(r ApiRetrieveDeviceRequest) (*
 }
 
 type ApiUpdateDeviceRequest struct {
-	ctx                  context.Context
-	ApiService           *DevicesApiService
+	ctx context.Context
+	ApiService *DevicesApiService
 	existingCollectionId string
-	deviceId             string
-	body                 *UpdateDeviceRequest
+	deviceId string
+	body *UpdateDeviceRequest
 }
 
 func (r ApiUpdateDeviceRequest) Body(body UpdateDeviceRequest) ApiUpdateDeviceRequest {
@@ -1962,7 +1958,7 @@ func (r ApiUpdateDeviceRequest) Execute() (*Device, *http.Response, error) {
 /*
 UpdateDevice Update device
 
-The device can be moved from one collection to another by setting the collection ID field to the new
+The device can be moved from one collection to another by setting the collection ID field to the new 
 collection. You must have administrative access to both collections.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1972,10 +1968,10 @@ collection. You must have administrative access to both collections.
 */
 func (a *DevicesApiService) UpdateDevice(ctx context.Context, existingCollectionId string, deviceId string) ApiUpdateDeviceRequest {
 	return ApiUpdateDeviceRequest{
-		ApiService:           a,
-		ctx:                  ctx,
+		ApiService: a,
+		ctx: ctx,
 		existingCollectionId: existingCollectionId,
-		deviceId:             deviceId,
+		deviceId: deviceId,
 	}
 }
 
@@ -1983,10 +1979,10 @@ func (a *DevicesApiService) UpdateDevice(ctx context.Context, existingCollection
 //  @return Device
 func (a *DevicesApiService) UpdateDeviceExecute(r ApiUpdateDeviceRequest) (*Device, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Device
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Device
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesApiService.UpdateDevice")
@@ -2110,13 +2106,13 @@ func (a *DevicesApiService) UpdateDeviceExecute(r ApiUpdateDeviceRequest) (*Devi
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

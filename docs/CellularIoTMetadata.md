@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GatewayId** | Pointer to **string** |  | [optional] 
-**AllocatedIp** | Pointer to **string** |  | [optional] 
+**AllocatedIp** | Pointer to **string** | Allocated IP address. | [optional] 
 **AllocatedAt** | Pointer to **string** |  | [optional] 
 **CellId** | Pointer to **string** |  | [optional] 
-**Mcc** | Pointer to **int32** | the provider in use. | [optional] 
+**Mcc** | Pointer to **int32** | the provider in use.  The Mobile Country Code for the operator. | [optional] 
 **Mnc** | Pointer to **int32** |  | [optional] 
 **Country** | Pointer to **string** |  | [optional] 
 **Network** | Pointer to **string** |  | [optional] 

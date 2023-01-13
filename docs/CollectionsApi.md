@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewCreateCollectionRequest() // CreateCollectionRequest | 
+    body := *openapiclient.NewCreateCollectionRequest() // CreateCollectionRequest | Request object when creating a collection. The collect ID is assigned by the service.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -59,7 +59,7 @@ Other parameters are passed through a pointer to a apiCreateCollectionRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**CreateCollectionRequest**](CreateCollectionRequest.md) |  | 
+ **body** | [**CreateCollectionRequest**](CreateCollectionRequest.md) | Request object when creating a collection. The collect ID is assigned by the service. | 
 
 ### Return type
 

@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.4 curable-andres
+API version: 4.3.0 grouchy-aloysius
 Contact: dev@lab5e.com
 */
 
@@ -18,7 +18,7 @@ import (
 // CellularIoTConfig This is the cellular IOT config
 type CellularIoTConfig struct {
 	Imsi *string `json:"imsi,omitempty"`
-	// on your device. This is the primary identifier for your device on the network.
+	// on your device. This is the primary identifier for your device on the network.  The IMEI number is the unique ID for your hardware as
 	Imei *string `json:"imei,omitempty"`
 }
 
@@ -149,3 +149,5 @@ func (v *NullableCellularIoTConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

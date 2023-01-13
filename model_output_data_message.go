@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.4 curable-andres
+API version: 4.3.0 grouchy-aloysius
 Contact: dev@lab5e.com
 */
 
@@ -17,15 +17,16 @@ import (
 
 // OutputDataMessage The output data message contains payload plus metadata for a payload received from a device.
 type OutputDataMessage struct {
-	Type    *OutputMessageType `json:"type,omitempty"`
-	Device  *Device            `json:"device,omitempty"`
-	Payload *string            `json:"payload,omitempty"`
+	Type *OutputMessageType `json:"type,omitempty"`
+	Device *Device `json:"device,omitempty"`
+	Payload *string `json:"payload,omitempty"`
 	// Received time for message. Value is ms since epoch.
-	Received     *string       `json:"received,omitempty"`
-	Transport    *string       `json:"transport,omitempty"`
-	UdpMetaData  *UDPMetadata  `json:"udpMetaData,omitempty"`
+	Received *string `json:"received,omitempty"`
+	Transport *string `json:"transport,omitempty"`
+	UdpMetaData *UDPMetadata `json:"udpMetaData,omitempty"`
 	CoapMetaData *CoAPMetadata `json:"coapMetaData,omitempty"`
-	MessageId    *string       `json:"messageId,omitempty"`
+	MessageId *string `json:"messageId,omitempty"`
+	MqttMetaData *MQTTMetadata `json:"mqttMetaData,omitempty"`
 }
 
 // NewOutputDataMessage instantiates a new OutputDataMessage object
@@ -305,6 +306,38 @@ func (o *OutputDataMessage) SetMessageId(v string) {
 	o.MessageId = &v
 }
 
+// GetMqttMetaData returns the MqttMetaData field value if set, zero value otherwise.
+func (o *OutputDataMessage) GetMqttMetaData() MQTTMetadata {
+	if o == nil || o.MqttMetaData == nil {
+		var ret MQTTMetadata
+		return ret
+	}
+	return *o.MqttMetaData
+}
+
+// GetMqttMetaDataOk returns a tuple with the MqttMetaData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OutputDataMessage) GetMqttMetaDataOk() (*MQTTMetadata, bool) {
+	if o == nil || o.MqttMetaData == nil {
+		return nil, false
+	}
+	return o.MqttMetaData, true
+}
+
+// HasMqttMetaData returns a boolean if a field has been set.
+func (o *OutputDataMessage) HasMqttMetaData() bool {
+	if o != nil && o.MqttMetaData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMqttMetaData gets a reference to the given MQTTMetadata and assigns it to the MqttMetaData field.
+func (o *OutputDataMessage) SetMqttMetaData(v MQTTMetadata) {
+	o.MqttMetaData = &v
+}
+
 func (o OutputDataMessage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Type != nil {
@@ -330,6 +363,9 @@ func (o OutputDataMessage) MarshalJSON() ([]byte, error) {
 	}
 	if o.MessageId != nil {
 		toSerialize["messageId"] = o.MessageId
+	}
+	if o.MqttMetaData != nil {
+		toSerialize["mqttMetaData"] = o.MqttMetaData
 	}
 	return json.Marshal(toSerialize)
 }
@@ -369,3 +405,5 @@ func (v *NullableOutputDataMessage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

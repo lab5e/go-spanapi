@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.4 curable-andres
+API version: 4.3.0 grouchy-aloysius
 Contact: dev@lab5e.com
 */
 
@@ -18,7 +18,7 @@ import (
 // CertificateInfo Certificate information
 type CertificateInfo struct {
 	CertificateSerial *string `json:"certificateSerial,omitempty"`
-	Expires           *string `json:"expires,omitempty"`
+	Expires *string `json:"expires,omitempty"`
 }
 
 // NewCertificateInfo instantiates a new CertificateInfo object
@@ -148,3 +148,5 @@ func (v *NullableCertificateInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -52,6 +52,7 @@ docs/ListGatewayResponse.md
 docs/ListNetworkResponse.md
 docs/ListOutputResponse.md
 docs/ListUpstreamMessagesResponse.md
+docs/MQTTMetadata.md
 docs/MessageDownstream.md
 docs/MessageState.md
 docs/MessageTransport.md
@@ -120,6 +121,7 @@ model_message_downstream.go
 model_message_state.go
 model_message_transport.go
 model_message_upstream.go
+model_mqtt_metadata.go
 model_network.go
 model_network_metadata.go
 model_network_operator.go

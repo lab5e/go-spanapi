@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.4 curable-andres
+API version: 4.3.0 grouchy-aloysius
 Contact: dev@lab5e.com
 */
 
@@ -18,17 +18,17 @@ import (
 // Device This a device
 type Device struct {
 	// The device ID is assigned by the backend.
-	DeviceId     *string `json:"deviceId,omitempty"`
+	DeviceId *string `json:"deviceId,omitempty"`
 	CollectionId *string `json:"collectionId,omitempty"`
 	// Tags are metadata for the device that you can set. These are just strings.
-	Tags     *map[string]string `json:"tags,omitempty"`
-	Firmware *FirmwareMetadata  `json:"firmware,omitempty"`
-	Config   *DeviceConfig      `json:"config,omitempty"`
-	Metadata *DeviceMetadata    `json:"metadata,omitempty"`
+	Tags *map[string]string `json:"tags,omitempty"`
+	Firmware *FirmwareMetadata `json:"firmware,omitempty"`
+	Config *DeviceConfig `json:"config,omitempty"`
+	Metadata *DeviceMetadata `json:"metadata,omitempty"`
 	// The IMSI is the unique ID for the (e|nu|whatever)SIM card on your device. This is the primary identifier for your device on the network.  Deprecated: The IMSI is replaced by CellularIoTMetadata
 	Imsi *string `json:"imsi,omitempty"`
 	// The IMEI number is the unique ID for your hardware as seen by the network. Obviously you might have a completely different view on things.  Deprecated: The IMEI is replaced by CellularIoTMetadata
-	Imei    *string          `json:"imei,omitempty"`
+	Imei *string `json:"imei,omitempty"`
 	Network *NetworkMetadata `json:"network,omitempty"`
 }
 
@@ -404,3 +404,5 @@ func (v *NullableDevice) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

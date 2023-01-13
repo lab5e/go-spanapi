@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.2.4 curable-andres
+API version: 4.3.0 grouchy-aloysius
 Contact: dev@lab5e.com
 */
 
@@ -22,9 +22,9 @@ type MessageState string
 // List of MessageState
 const (
 	MESSAGESTATE_UNSPECIFIED MessageState = "unspecified"
-	MESSAGESTATE_PENDING     MessageState = "pending"
-	MESSAGESTATE_SENT        MessageState = "sent"
-	MESSAGESTATE_FAILED      MessageState = "failed"
+	MESSAGESTATE_PENDING MessageState = "pending"
+	MESSAGESTATE_SENT MessageState = "sent"
+	MESSAGESTATE_FAILED MessageState = "failed"
 )
 
 // All allowed values of MessageState enum
@@ -113,3 +113,4 @@ func (v *NullableMessageState) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
