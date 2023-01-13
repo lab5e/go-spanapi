@@ -18,7 +18,7 @@ import (
 // CertificateInfo Certificate information
 type CertificateInfo struct {
 	CertificateSerial *string `json:"certificateSerial,omitempty"`
-	Expires *string `json:"expires,omitempty"`
+	Expires           *string `json:"expires,omitempty"`
 }
 
 // NewCertificateInfo instantiates a new CertificateInfo object
@@ -148,5 +148,3 @@ func (v *NullableCertificateInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -22,9 +22,9 @@ type MessageState string
 // List of MessageState
 const (
 	MESSAGESTATE_UNSPECIFIED MessageState = "unspecified"
-	MESSAGESTATE_PENDING MessageState = "pending"
-	MESSAGESTATE_SENT MessageState = "sent"
-	MESSAGESTATE_FAILED MessageState = "failed"
+	MESSAGESTATE_PENDING     MessageState = "pending"
+	MESSAGESTATE_SENT        MessageState = "sent"
+	MESSAGESTATE_FAILED      MessageState = "failed"
 )
 
 // All allowed values of MessageState enum
@@ -113,4 +113,3 @@ func (v *NullableMessageState) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

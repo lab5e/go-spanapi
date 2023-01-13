@@ -21,9 +21,9 @@ type OutputMessageType string
 
 // List of OutputMessageType
 const (
-	OUTPUTMESSAGETYPE_UNKNOWN OutputMessageType = "unknown"
+	OUTPUTMESSAGETYPE_UNKNOWN   OutputMessageType = "unknown"
 	OUTPUTMESSAGETYPE_KEEPALIVE OutputMessageType = "keepalive"
-	OUTPUTMESSAGETYPE_DATA OutputMessageType = "data"
+	OUTPUTMESSAGETYPE_DATA      OutputMessageType = "data"
 )
 
 // All allowed values of OutputMessageType enum
@@ -111,4 +111,3 @@ func (v *NullableOutputMessageType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -17,10 +17,10 @@ import (
 
 // Gateway A gateway is a connection between devices and Span
 type Gateway struct {
-	GatewayId *string `json:"gatewayId,omitempty"`
-	CollectionId *string `json:"collectionId,omitempty"`
-	NetworkId *string `json:"networkId,omitempty"`
-	Tags *map[string]string `json:"tags,omitempty"`
+	GatewayId    *string            `json:"gatewayId,omitempty"`
+	CollectionId *string            `json:"collectionId,omitempty"`
+	NetworkId    *string            `json:"networkId,omitempty"`
+	Tags         *map[string]string `json:"tags,omitempty"`
 }
 
 // NewGateway instantiates a new Gateway object
@@ -220,5 +220,3 @@ func (v *NullableGateway) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
