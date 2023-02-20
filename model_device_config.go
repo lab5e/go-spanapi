@@ -19,7 +19,7 @@ import (
 type DeviceConfig struct {
 	Ciot *CellularIoTConfig `json:"ciot,omitempty"`
 	// This is the configuration for an internet-connected device. There are currently no configuration options for internet devices; the device is identified via the clientcertificate.  This is empty since there's no configuration required for the internet  gateway
-	Inet map[string]interface{} `json:"inet,omitempty"`
+	Inet    map[string]interface{}          `json:"inet,omitempty"`
 	Gateway *map[string]GatewayDeviceConfig `json:"gateway,omitempty"`
 }
 
@@ -185,5 +185,3 @@ func (v *NullableDeviceConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

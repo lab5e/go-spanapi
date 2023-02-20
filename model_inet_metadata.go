@@ -17,9 +17,9 @@ import (
 
 // InetMetadata Metadata for devices connected via the internet gateway. This metadata shows the configuration for the last message transmission.
 type InetMetadata struct {
-	GatewayId *string `json:"gatewayId,omitempty"`
-	LastUpdate *string `json:"lastUpdate,omitempty"`
-	RemoteAddress *string `json:"remoteAddress,omitempty"`
+	GatewayId         *string `json:"gatewayId,omitempty"`
+	LastUpdate        *string `json:"lastUpdate,omitempty"`
+	RemoteAddress     *string `json:"remoteAddress,omitempty"`
 	CertificateSerial *string `json:"certificateSerial,omitempty"`
 }
 
@@ -220,5 +220,3 @@ func (v *NullableInetMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

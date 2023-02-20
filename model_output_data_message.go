@@ -17,18 +17,18 @@ import (
 
 // OutputDataMessage The output data message contains payload plus metadata for a payload received from a device.
 type OutputDataMessage struct {
-	Type *OutputMessageType `json:"type,omitempty"`
-	Device *Device `json:"device,omitempty"`
-	Payload *string `json:"payload,omitempty"`
+	Type    *OutputMessageType `json:"type,omitempty"`
+	Device  *Device            `json:"device,omitempty"`
+	Payload *string            `json:"payload,omitempty"`
 	// Received time for message. Value is ms since epoch.
-	Received *string `json:"received,omitempty"`
-	Transport *string `json:"transport,omitempty"`
-	UdpMetaData *UDPMetadata `json:"udpMetaData,omitempty"`
-	CoapMetaData *CoAPMetadata `json:"coapMetaData,omitempty"`
-	MessageId *string `json:"messageId,omitempty"`
-	MqttMetaData *MQTTMetadata `json:"mqttMetaData,omitempty"`
+	Received        *string          `json:"received,omitempty"`
+	Transport       *string          `json:"transport,omitempty"`
+	UdpMetaData     *UDPMetadata     `json:"udpMetaData,omitempty"`
+	CoapMetaData    *CoAPMetadata    `json:"coapMetaData,omitempty"`
+	MessageId       *string          `json:"messageId,omitempty"`
+	MqttMetaData    *MQTTMetadata    `json:"mqttMetaData,omitempty"`
 	GatewayMetaData *GatewayMetadata `json:"gatewayMetaData,omitempty"`
-	GatewayId *string `json:"gatewayId,omitempty"`
+	GatewayId       *string          `json:"gatewayId,omitempty"`
 }
 
 // NewOutputDataMessage instantiates a new OutputDataMessage object
@@ -477,5 +477,3 @@ func (v *NullableOutputDataMessage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

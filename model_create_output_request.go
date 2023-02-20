@@ -17,10 +17,10 @@ import (
 
 // CreateOutputRequest Request type when creating new outputs
 type CreateOutputRequest struct {
-	Type *OutputType `json:"type,omitempty"`
-	Config *OutputConfig `json:"config,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
-	Tags *map[string]string `json:"tags,omitempty"`
+	Type    *OutputType        `json:"type,omitempty"`
+	Config  *OutputConfig      `json:"config,omitempty"`
+	Enabled *bool              `json:"enabled,omitempty"`
+	Tags    *map[string]string `json:"tags,omitempty"`
 }
 
 // NewCreateOutputRequest instantiates a new CreateOutputRequest object
@@ -224,5 +224,3 @@ func (v *NullableCreateOutputRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
