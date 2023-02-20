@@ -6,8 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GatewayId** | Pointer to **string** |  | [optional] 
 **CollectionId** | Pointer to **string** |  | [optional] 
-**NetworkId** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **string** |  | [optional] 
+**BuiltIn** | Pointer to **bool** |  | [optional] 
+**Type** | Pointer to [**GatewayType**](GatewayType.md) |  | [optional] [default to GATEWAYTYPE_UNKNOWN]
+**Config** | Pointer to [**GatewayConfig**](GatewayConfig.md) |  | [optional] 
 **Tags** | Pointer to **map[string]string** |  | [optional] 
+**Status** | Pointer to [**GatewayStatus**](GatewayStatus.md) |  | [optional] [default to GATEWAYSTATUS_UNKNOWN]
 
 ## Methods
 
@@ -78,30 +82,105 @@ SetCollectionId sets CollectionId field to given value.
 
 HasCollectionId returns a boolean if a field has been set.
 
-### GetNetworkId
+### GetName
 
-`func (o *Gateway) GetNetworkId() string`
+`func (o *Gateway) GetName() string`
 
-GetNetworkId returns the NetworkId field if non-nil, zero value otherwise.
+GetName returns the Name field if non-nil, zero value otherwise.
 
-### GetNetworkIdOk
+### GetNameOk
 
-`func (o *Gateway) GetNetworkIdOk() (*string, bool)`
+`func (o *Gateway) GetNameOk() (*string, bool)`
 
-GetNetworkIdOk returns a tuple with the NetworkId field if it's non-nil, zero value otherwise
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNetworkId
+### SetName
 
-`func (o *Gateway) SetNetworkId(v string)`
+`func (o *Gateway) SetName(v string)`
 
-SetNetworkId sets NetworkId field to given value.
+SetName sets Name field to given value.
 
-### HasNetworkId
+### HasName
 
-`func (o *Gateway) HasNetworkId() bool`
+`func (o *Gateway) HasName() bool`
 
-HasNetworkId returns a boolean if a field has been set.
+HasName returns a boolean if a field has been set.
+
+### GetBuiltIn
+
+`func (o *Gateway) GetBuiltIn() bool`
+
+GetBuiltIn returns the BuiltIn field if non-nil, zero value otherwise.
+
+### GetBuiltInOk
+
+`func (o *Gateway) GetBuiltInOk() (*bool, bool)`
+
+GetBuiltInOk returns a tuple with the BuiltIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuiltIn
+
+`func (o *Gateway) SetBuiltIn(v bool)`
+
+SetBuiltIn sets BuiltIn field to given value.
+
+### HasBuiltIn
+
+`func (o *Gateway) HasBuiltIn() bool`
+
+HasBuiltIn returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *Gateway) GetType() GatewayType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *Gateway) GetTypeOk() (*GatewayType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *Gateway) SetType(v GatewayType)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *Gateway) HasType() bool`
+
+HasType returns a boolean if a field has been set.
+
+### GetConfig
+
+`func (o *Gateway) GetConfig() GatewayConfig`
+
+GetConfig returns the Config field if non-nil, zero value otherwise.
+
+### GetConfigOk
+
+`func (o *Gateway) GetConfigOk() (*GatewayConfig, bool)`
+
+GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfig
+
+`func (o *Gateway) SetConfig(v GatewayConfig)`
+
+SetConfig sets Config field to given value.
+
+### HasConfig
+
+`func (o *Gateway) HasConfig() bool`
+
+HasConfig returns a boolean if a field has been set.
 
 ### GetTags
 
@@ -127,6 +206,31 @@ SetTags sets Tags field to given value.
 `func (o *Gateway) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *Gateway) GetStatus() GatewayStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *Gateway) GetStatusOk() (*GatewayStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *Gateway) SetStatus(v GatewayStatus)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *Gateway) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

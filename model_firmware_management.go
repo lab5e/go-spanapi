@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.3.0 grouchy-aloysius
+API version: 4.4.0 lean-joline
 Contact: dev@lab5e.com
 */
 
@@ -22,9 +22,9 @@ type FirmwareManagement string
 // List of FirmwareManagement
 const (
 	FIRMWAREMANAGEMENT_UNSPECIFIED FirmwareManagement = "unspecified"
-	FIRMWAREMANAGEMENT_DISABLED    FirmwareManagement = "disabled"
-	FIRMWAREMANAGEMENT_COLLECTION  FirmwareManagement = "collection"
-	FIRMWAREMANAGEMENT_DEVICE      FirmwareManagement = "device"
+	FIRMWAREMANAGEMENT_DISABLED FirmwareManagement = "disabled"
+	FIRMWAREMANAGEMENT_COLLECTION FirmwareManagement = "collection"
+	FIRMWAREMANAGEMENT_DEVICE FirmwareManagement = "device"
 )
 
 // All allowed values of FirmwareManagement enum
@@ -113,3 +113,4 @@ func (v *NullableFirmwareManagement) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

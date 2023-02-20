@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **CoapMetaData** | Pointer to [**CoAPMetadata**](CoAPMetadata.md) |  | [optional] 
 **MessageId** | Pointer to **string** |  | [optional] 
 **MqttMetaData** | Pointer to [**MQTTMetadata**](MQTTMetadata.md) |  | [optional] 
+**GatewayMetaData** | Pointer to [**GatewayMetadata**](GatewayMetadata.md) |  | [optional] 
+**GatewayId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -257,6 +259,56 @@ SetMqttMetaData sets MqttMetaData field to given value.
 `func (o *OutputDataMessage) HasMqttMetaData() bool`
 
 HasMqttMetaData returns a boolean if a field has been set.
+
+### GetGatewayMetaData
+
+`func (o *OutputDataMessage) GetGatewayMetaData() GatewayMetadata`
+
+GetGatewayMetaData returns the GatewayMetaData field if non-nil, zero value otherwise.
+
+### GetGatewayMetaDataOk
+
+`func (o *OutputDataMessage) GetGatewayMetaDataOk() (*GatewayMetadata, bool)`
+
+GetGatewayMetaDataOk returns a tuple with the GatewayMetaData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGatewayMetaData
+
+`func (o *OutputDataMessage) SetGatewayMetaData(v GatewayMetadata)`
+
+SetGatewayMetaData sets GatewayMetaData field to given value.
+
+### HasGatewayMetaData
+
+`func (o *OutputDataMessage) HasGatewayMetaData() bool`
+
+HasGatewayMetaData returns a boolean if a field has been set.
+
+### GetGatewayId
+
+`func (o *OutputDataMessage) GetGatewayId() string`
+
+GetGatewayId returns the GatewayId field if non-nil, zero value otherwise.
+
+### GetGatewayIdOk
+
+`func (o *OutputDataMessage) GetGatewayIdOk() (*string, bool)`
+
+GetGatewayIdOk returns a tuple with the GatewayId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGatewayId
+
+`func (o *OutputDataMessage) SetGatewayId(v string)`
+
+SetGatewayId sets GatewayId field to given value.
+
+### HasGatewayId
+
+`func (o *OutputDataMessage) HasGatewayId() bool`
+
+HasGatewayId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

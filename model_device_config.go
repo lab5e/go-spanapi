@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.3.0 grouchy-aloysius
+API version: 4.4.0 lean-joline
 Contact: dev@lab5e.com
 */
 
@@ -18,6 +18,9 @@ import (
 // DeviceConfig This is the configuration for the device via the various gateways.
 type DeviceConfig struct {
 	Ciot *CellularIoTConfig `json:"ciot,omitempty"`
+	// This is the configuration for an internet-connected device. There are currently no configuration options for internet devices; the device is identified via the clientcertificate.  This is empty since there's no configuration required for the internet  gateway
+	Inet map[string]interface{} `json:"inet,omitempty"`
+	Gateway *map[string]GatewayDeviceConfig `json:"gateway,omitempty"`
 }
 
 // NewDeviceConfig instantiates a new DeviceConfig object
@@ -69,10 +72,80 @@ func (o *DeviceConfig) SetCiot(v CellularIoTConfig) {
 	o.Ciot = &v
 }
 
+// GetInet returns the Inet field value if set, zero value otherwise.
+func (o *DeviceConfig) GetInet() map[string]interface{} {
+	if o == nil || o.Inet == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Inet
+}
+
+// GetInetOk returns a tuple with the Inet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceConfig) GetInetOk() (map[string]interface{}, bool) {
+	if o == nil || o.Inet == nil {
+		return nil, false
+	}
+	return o.Inet, true
+}
+
+// HasInet returns a boolean if a field has been set.
+func (o *DeviceConfig) HasInet() bool {
+	if o != nil && o.Inet != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInet gets a reference to the given map[string]interface{} and assigns it to the Inet field.
+func (o *DeviceConfig) SetInet(v map[string]interface{}) {
+	o.Inet = v
+}
+
+// GetGateway returns the Gateway field value if set, zero value otherwise.
+func (o *DeviceConfig) GetGateway() map[string]GatewayDeviceConfig {
+	if o == nil || o.Gateway == nil {
+		var ret map[string]GatewayDeviceConfig
+		return ret
+	}
+	return *o.Gateway
+}
+
+// GetGatewayOk returns a tuple with the Gateway field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceConfig) GetGatewayOk() (*map[string]GatewayDeviceConfig, bool) {
+	if o == nil || o.Gateway == nil {
+		return nil, false
+	}
+	return o.Gateway, true
+}
+
+// HasGateway returns a boolean if a field has been set.
+func (o *DeviceConfig) HasGateway() bool {
+	if o != nil && o.Gateway != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGateway gets a reference to the given map[string]GatewayDeviceConfig and assigns it to the Gateway field.
+func (o *DeviceConfig) SetGateway(v map[string]GatewayDeviceConfig) {
+	o.Gateway = &v
+}
+
 func (o DeviceConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Ciot != nil {
 		toSerialize["ciot"] = o.Ciot
+	}
+	if o.Inet != nil {
+		toSerialize["inet"] = o.Inet
+	}
+	if o.Gateway != nil {
+		toSerialize["gateway"] = o.Gateway
 	}
 	return json.Marshal(toSerialize)
 }
@@ -112,3 +185,5 @@ func (v *NullableDeviceConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.3.0 grouchy-aloysius
+API version: 4.4.0 lean-joline
 Contact: dev@lab5e.com
 */
 
@@ -112,3 +112,5 @@ func (v *NullableMQTTMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

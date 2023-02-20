@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **Firmware** | Pointer to [**FirmwareMetadata**](FirmwareMetadata.md) |  | [optional] 
 **Config** | Pointer to [**DeviceConfig**](DeviceConfig.md) |  | [optional] 
 **Metadata** | Pointer to [**DeviceMetadata**](DeviceMetadata.md) |  | [optional] 
-**Imsi** | Pointer to **string** | The IMSI is the unique ID for the (e|nu|whatever)SIM card on your device. This is the primary identifier for your device on the network.  Deprecated: The IMSI is replaced by CellularIoTMetadata | [optional] 
-**Imei** | Pointer to **string** | The IMEI number is the unique ID for your hardware as seen by the network. Obviously you might have a completely different view on things.  Deprecated: The IMEI is replaced by CellularIoTMetadata | [optional] 
+**Imsi** | Pointer to **string** | Deprecated: The IMSI is replaced by CellularIoTMetadata | [optional] 
+**Imei** | Pointer to **string** | The IMEI number is the unique ID for your hardware as seen by the network. Obviously you might have a completely different view on things. This field is deprecated.  Deprecated: The IMEI is replaced by CellularIoTMetadata | [optional] 
 **Network** | Pointer to [**NetworkMetadata**](NetworkMetadata.md) |  | [optional] 
 
 ## Methods

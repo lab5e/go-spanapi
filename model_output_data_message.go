@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.3.0 grouchy-aloysius
+API version: 4.4.0 lean-joline
 Contact: dev@lab5e.com
 */
 
@@ -17,16 +17,18 @@ import (
 
 // OutputDataMessage The output data message contains payload plus metadata for a payload received from a device.
 type OutputDataMessage struct {
-	Type    *OutputMessageType `json:"type,omitempty"`
-	Device  *Device            `json:"device,omitempty"`
-	Payload *string            `json:"payload,omitempty"`
+	Type *OutputMessageType `json:"type,omitempty"`
+	Device *Device `json:"device,omitempty"`
+	Payload *string `json:"payload,omitempty"`
 	// Received time for message. Value is ms since epoch.
-	Received     *string       `json:"received,omitempty"`
-	Transport    *string       `json:"transport,omitempty"`
-	UdpMetaData  *UDPMetadata  `json:"udpMetaData,omitempty"`
+	Received *string `json:"received,omitempty"`
+	Transport *string `json:"transport,omitempty"`
+	UdpMetaData *UDPMetadata `json:"udpMetaData,omitempty"`
 	CoapMetaData *CoAPMetadata `json:"coapMetaData,omitempty"`
-	MessageId    *string       `json:"messageId,omitempty"`
+	MessageId *string `json:"messageId,omitempty"`
 	MqttMetaData *MQTTMetadata `json:"mqttMetaData,omitempty"`
+	GatewayMetaData *GatewayMetadata `json:"gatewayMetaData,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty"`
 }
 
 // NewOutputDataMessage instantiates a new OutputDataMessage object
@@ -338,6 +340,70 @@ func (o *OutputDataMessage) SetMqttMetaData(v MQTTMetadata) {
 	o.MqttMetaData = &v
 }
 
+// GetGatewayMetaData returns the GatewayMetaData field value if set, zero value otherwise.
+func (o *OutputDataMessage) GetGatewayMetaData() GatewayMetadata {
+	if o == nil || o.GatewayMetaData == nil {
+		var ret GatewayMetadata
+		return ret
+	}
+	return *o.GatewayMetaData
+}
+
+// GetGatewayMetaDataOk returns a tuple with the GatewayMetaData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OutputDataMessage) GetGatewayMetaDataOk() (*GatewayMetadata, bool) {
+	if o == nil || o.GatewayMetaData == nil {
+		return nil, false
+	}
+	return o.GatewayMetaData, true
+}
+
+// HasGatewayMetaData returns a boolean if a field has been set.
+func (o *OutputDataMessage) HasGatewayMetaData() bool {
+	if o != nil && o.GatewayMetaData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGatewayMetaData gets a reference to the given GatewayMetadata and assigns it to the GatewayMetaData field.
+func (o *OutputDataMessage) SetGatewayMetaData(v GatewayMetadata) {
+	o.GatewayMetaData = &v
+}
+
+// GetGatewayId returns the GatewayId field value if set, zero value otherwise.
+func (o *OutputDataMessage) GetGatewayId() string {
+	if o == nil || o.GatewayId == nil {
+		var ret string
+		return ret
+	}
+	return *o.GatewayId
+}
+
+// GetGatewayIdOk returns a tuple with the GatewayId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OutputDataMessage) GetGatewayIdOk() (*string, bool) {
+	if o == nil || o.GatewayId == nil {
+		return nil, false
+	}
+	return o.GatewayId, true
+}
+
+// HasGatewayId returns a boolean if a field has been set.
+func (o *OutputDataMessage) HasGatewayId() bool {
+	if o != nil && o.GatewayId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGatewayId gets a reference to the given string and assigns it to the GatewayId field.
+func (o *OutputDataMessage) SetGatewayId(v string) {
+	o.GatewayId = &v
+}
+
 func (o OutputDataMessage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Type != nil {
@@ -366,6 +432,12 @@ func (o OutputDataMessage) MarshalJSON() ([]byte, error) {
 	}
 	if o.MqttMetaData != nil {
 		toSerialize["mqttMetaData"] = o.MqttMetaData
+	}
+	if o.GatewayMetaData != nil {
+		toSerialize["gatewayMetaData"] = o.GatewayMetaData
+	}
+	if o.GatewayId != nil {
+		toSerialize["gatewayId"] = o.GatewayId
 	}
 	return json.Marshal(toSerialize)
 }
@@ -405,3 +477,5 @@ func (v *NullableOutputDataMessage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

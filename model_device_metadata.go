@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.3.0 grouchy-aloysius
+API version: 4.4.0 lean-joline
 Contact: dev@lab5e.com
 */
 
@@ -17,9 +17,10 @@ import (
 
 // DeviceMetadata This is the metadata for devices.
 type DeviceMetadata struct {
-	SimOperator *NetworkOperator     `json:"simOperator,omitempty"`
-	Ciot        *CellularIoTMetadata `json:"ciot,omitempty"`
-	Inet        *InetMetadata        `json:"inet,omitempty"`
+	SimOperator *NetworkOperator `json:"simOperator,omitempty"`
+	Ciot *CellularIoTMetadata `json:"ciot,omitempty"`
+	Inet *InetMetadata `json:"inet,omitempty"`
+	Gateway *GatewayDeviceMetadata `json:"gateway,omitempty"`
 }
 
 // NewDeviceMetadata instantiates a new DeviceMetadata object
@@ -135,6 +136,38 @@ func (o *DeviceMetadata) SetInet(v InetMetadata) {
 	o.Inet = &v
 }
 
+// GetGateway returns the Gateway field value if set, zero value otherwise.
+func (o *DeviceMetadata) GetGateway() GatewayDeviceMetadata {
+	if o == nil || o.Gateway == nil {
+		var ret GatewayDeviceMetadata
+		return ret
+	}
+	return *o.Gateway
+}
+
+// GetGatewayOk returns a tuple with the Gateway field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceMetadata) GetGatewayOk() (*GatewayDeviceMetadata, bool) {
+	if o == nil || o.Gateway == nil {
+		return nil, false
+	}
+	return o.Gateway, true
+}
+
+// HasGateway returns a boolean if a field has been set.
+func (o *DeviceMetadata) HasGateway() bool {
+	if o != nil && o.Gateway != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGateway gets a reference to the given GatewayDeviceMetadata and assigns it to the Gateway field.
+func (o *DeviceMetadata) SetGateway(v GatewayDeviceMetadata) {
+	o.Gateway = &v
+}
+
 func (o DeviceMetadata) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.SimOperator != nil {
@@ -145,6 +178,9 @@ func (o DeviceMetadata) MarshalJSON() ([]byte, error) {
 	}
 	if o.Inet != nil {
 		toSerialize["inet"] = o.Inet
+	}
+	if o.Gateway != nil {
+		toSerialize["gateway"] = o.Gateway
 	}
 	return json.Marshal(toSerialize)
 }
@@ -184,3 +220,5 @@ func (v *NullableDeviceMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

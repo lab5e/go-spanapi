@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.3.0 grouchy-aloysius
+API version: 4.4.0 lean-joline
 Contact: dev@lab5e.com
 */
 
@@ -21,11 +21,11 @@ type OutputType string
 
 // List of OutputType
 const (
-	OUTPUTTYPE_UNDEFINED  OutputType = "undefined"
-	OUTPUTTYPE_WEBHOOK    OutputType = "webhook"
-	OUTPUTTYPE_UDPOUT     OutputType = "udpout"
+	OUTPUTTYPE_UNDEFINED OutputType = "undefined"
+	OUTPUTTYPE_WEBHOOK OutputType = "webhook"
+	OUTPUTTYPE_UDPOUT OutputType = "udpout"
 	OUTPUTTYPE_MQTTCLIENT OutputType = "mqttclient"
-	OUTPUTTYPE_IFTTT      OutputType = "ifttt"
+	OUTPUTTYPE_IFTTT OutputType = "ifttt"
 	OUTPUTTYPE_MQTTBROKER OutputType = "mqttbroker"
 )
 
@@ -117,3 +117,4 @@ func (v *NullableOutputType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.3.0 grouchy-aloysius
+API version: 4.4.0 lean-joline
 Contact: dev@lab5e.com
 */
 
@@ -17,10 +17,14 @@ import (
 
 // Gateway A gateway is a connection between devices and Span
 type Gateway struct {
-	GatewayId    *string            `json:"gatewayId,omitempty"`
-	CollectionId *string            `json:"collectionId,omitempty"`
-	NetworkId    *string            `json:"networkId,omitempty"`
-	Tags         *map[string]string `json:"tags,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty"`
+	CollectionId *string `json:"collectionId,omitempty"`
+	Name *string `json:"name,omitempty"`
+	BuiltIn *bool `json:"builtIn,omitempty"`
+	Type *GatewayType `json:"type,omitempty"`
+	Config *GatewayConfig `json:"config,omitempty"`
+	Tags *map[string]string `json:"tags,omitempty"`
+	Status *GatewayStatus `json:"status,omitempty"`
 }
 
 // NewGateway instantiates a new Gateway object
@@ -29,6 +33,10 @@ type Gateway struct {
 // will change when the set of required properties is changed
 func NewGateway() *Gateway {
 	this := Gateway{}
+	var type_ GatewayType = GATEWAYTYPE_UNKNOWN
+	this.Type = &type_
+	var status GatewayStatus = GATEWAYSTATUS_UNKNOWN
+	this.Status = &status
 	return &this
 }
 
@@ -37,6 +45,10 @@ func NewGateway() *Gateway {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayWithDefaults() *Gateway {
 	this := Gateway{}
+	var type_ GatewayType = GATEWAYTYPE_UNKNOWN
+	this.Type = &type_
+	var status GatewayStatus = GATEWAYSTATUS_UNKNOWN
+	this.Status = &status
 	return &this
 }
 
@@ -104,36 +116,132 @@ func (o *Gateway) SetCollectionId(v string) {
 	o.CollectionId = &v
 }
 
-// GetNetworkId returns the NetworkId field value if set, zero value otherwise.
-func (o *Gateway) GetNetworkId() string {
-	if o == nil || o.NetworkId == nil {
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *Gateway) GetName() string {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
-	return *o.NetworkId
+	return *o.Name
 }
 
-// GetNetworkIdOk returns a tuple with the NetworkId field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Gateway) GetNetworkIdOk() (*string, bool) {
-	if o == nil || o.NetworkId == nil {
+func (o *Gateway) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
-	return o.NetworkId, true
+	return o.Name, true
 }
 
-// HasNetworkId returns a boolean if a field has been set.
-func (o *Gateway) HasNetworkId() bool {
-	if o != nil && o.NetworkId != nil {
+// HasName returns a boolean if a field has been set.
+func (o *Gateway) HasName() bool {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetNetworkId gets a reference to the given string and assigns it to the NetworkId field.
-func (o *Gateway) SetNetworkId(v string) {
-	o.NetworkId = &v
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *Gateway) SetName(v string) {
+	o.Name = &v
+}
+
+// GetBuiltIn returns the BuiltIn field value if set, zero value otherwise.
+func (o *Gateway) GetBuiltIn() bool {
+	if o == nil || o.BuiltIn == nil {
+		var ret bool
+		return ret
+	}
+	return *o.BuiltIn
+}
+
+// GetBuiltInOk returns a tuple with the BuiltIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Gateway) GetBuiltInOk() (*bool, bool) {
+	if o == nil || o.BuiltIn == nil {
+		return nil, false
+	}
+	return o.BuiltIn, true
+}
+
+// HasBuiltIn returns a boolean if a field has been set.
+func (o *Gateway) HasBuiltIn() bool {
+	if o != nil && o.BuiltIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBuiltIn gets a reference to the given bool and assigns it to the BuiltIn field.
+func (o *Gateway) SetBuiltIn(v bool) {
+	o.BuiltIn = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *Gateway) GetType() GatewayType {
+	if o == nil || o.Type == nil {
+		var ret GatewayType
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Gateway) GetTypeOk() (*GatewayType, bool) {
+	if o == nil || o.Type == nil {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *Gateway) HasType() bool {
+	if o != nil && o.Type != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given GatewayType and assigns it to the Type field.
+func (o *Gateway) SetType(v GatewayType) {
+	o.Type = &v
+}
+
+// GetConfig returns the Config field value if set, zero value otherwise.
+func (o *Gateway) GetConfig() GatewayConfig {
+	if o == nil || o.Config == nil {
+		var ret GatewayConfig
+		return ret
+	}
+	return *o.Config
+}
+
+// GetConfigOk returns a tuple with the Config field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Gateway) GetConfigOk() (*GatewayConfig, bool) {
+	if o == nil || o.Config == nil {
+		return nil, false
+	}
+	return o.Config, true
+}
+
+// HasConfig returns a boolean if a field has been set.
+func (o *Gateway) HasConfig() bool {
+	if o != nil && o.Config != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConfig gets a reference to the given GatewayConfig and assigns it to the Config field.
+func (o *Gateway) SetConfig(v GatewayConfig) {
+	o.Config = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -168,6 +276,38 @@ func (o *Gateway) SetTags(v map[string]string) {
 	o.Tags = &v
 }
 
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *Gateway) GetStatus() GatewayStatus {
+	if o == nil || o.Status == nil {
+		var ret GatewayStatus
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Gateway) GetStatusOk() (*GatewayStatus, bool) {
+	if o == nil || o.Status == nil {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *Gateway) HasStatus() bool {
+	if o != nil && o.Status != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given GatewayStatus and assigns it to the Status field.
+func (o *Gateway) SetStatus(v GatewayStatus) {
+	o.Status = &v
+}
+
 func (o Gateway) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.GatewayId != nil {
@@ -176,11 +316,23 @@ func (o Gateway) MarshalJSON() ([]byte, error) {
 	if o.CollectionId != nil {
 		toSerialize["collectionId"] = o.CollectionId
 	}
-	if o.NetworkId != nil {
-		toSerialize["networkId"] = o.NetworkId
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
+	}
+	if o.BuiltIn != nil {
+		toSerialize["builtIn"] = o.BuiltIn
+	}
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
+	}
+	if o.Config != nil {
+		toSerialize["config"] = o.Config
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
+	}
+	if o.Status != nil {
+		toSerialize["status"] = o.Status
 	}
 	return json.Marshal(toSerialize)
 }
@@ -220,3 +372,5 @@ func (v *NullableGateway) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

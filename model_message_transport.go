@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.3.0 grouchy-aloysius
+API version: 4.4.0 lean-joline
 Contact: dev@lab5e.com
 */
 
@@ -22,9 +22,12 @@ type MessageTransport string
 // List of MessageTransport
 const (
 	MESSAGETRANSPORT_UNSPECIFIED MessageTransport = "unspecified"
-	MESSAGETRANSPORT_UDP         MessageTransport = "udp"
-	MESSAGETRANSPORT_COAP        MessageTransport = "coap"
-	MESSAGETRANSPORT_MQTT        MessageTransport = "mqtt"
+	MESSAGETRANSPORT_UDP MessageTransport = "udp"
+	MESSAGETRANSPORT_COAP MessageTransport = "coap"
+	MESSAGETRANSPORT_MQTT MessageTransport = "mqtt"
+	MESSAGETRANSPORT_GATEWAY MessageTransport = "gateway"
+	MESSAGETRANSPORT_COAPS MessageTransport = "coaps"
+	MESSAGETRANSPORT_DTLS MessageTransport = "dtls"
 )
 
 // All allowed values of MessageTransport enum
@@ -33,6 +36,9 @@ var AllowedMessageTransportEnumValues = []MessageTransport{
 	"udp",
 	"coap",
 	"mqtt",
+	"gateway",
+	"coaps",
+	"dtls",
 }
 
 func (v *MessageTransport) UnmarshalJSON(src []byte) error {
@@ -113,3 +119,4 @@ func (v *NullableMessageTransport) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

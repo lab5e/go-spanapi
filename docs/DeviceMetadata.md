@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **SimOperator** | Pointer to [**NetworkOperator**](NetworkOperator.md) |  | [optional] 
 **Ciot** | Pointer to [**CellularIoTMetadata**](CellularIoTMetadata.md) |  | [optional] 
 **Inet** | Pointer to [**InetMetadata**](InetMetadata.md) |  | [optional] 
+**Gateway** | Pointer to [**GatewayDeviceMetadata**](GatewayDeviceMetadata.md) |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetInet sets Inet field to given value.
 `func (o *DeviceMetadata) HasInet() bool`
 
 HasInet returns a boolean if a field has been set.
+
+### GetGateway
+
+`func (o *DeviceMetadata) GetGateway() GatewayDeviceMetadata`
+
+GetGateway returns the Gateway field if non-nil, zero value otherwise.
+
+### GetGatewayOk
+
+`func (o *DeviceMetadata) GetGatewayOk() (*GatewayDeviceMetadata, bool)`
+
+GetGatewayOk returns a tuple with the Gateway field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGateway
+
+`func (o *DeviceMetadata) SetGateway(v GatewayDeviceMetadata)`
+
+SetGateway sets Gateway field to given value.
+
+### HasGateway
+
+`func (o *DeviceMetadata) HasGateway() bool`
+
+HasGateway returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
