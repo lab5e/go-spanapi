@@ -17,8 +17,8 @@ import (
 
 // GatewayCIoTConfig struct for GatewayCIoTConfig
 type GatewayCIoTConfig struct {
-	Apn *string `json:"apn,omitempty"`
-	UdpEndpoint *string `json:"udpEndpoint,omitempty"`
+	Apn          *string `json:"apn,omitempty"`
+	UdpEndpoint  *string `json:"udpEndpoint,omitempty"`
 	CoapEndpoint *string `json:"coapEndpoint,omitempty"`
 }
 
@@ -184,5 +184,3 @@ func (v *NullableGatewayCIoTConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

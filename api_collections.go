@@ -29,9 +29,9 @@ var (
 type CollectionsApiService service
 
 type ApiCreateCollectionRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CollectionsApiService
-	body *CreateCollectionRequest
+	body       *CreateCollectionRequest
 }
 
 // Request object when creating a collection. The collect ID is assigned by the service.
@@ -49,24 +49,25 @@ CreateCollection Create collection
 
 Create a new collection
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateCollectionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCreateCollectionRequest
 */
 func (a *CollectionsApiService) CreateCollection(ctx context.Context) ApiCreateCollectionRequest {
 	return ApiCreateCollectionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return Collection
+//
+//	@return Collection
 func (a *CollectionsApiService) CreateCollectionExecute(r ApiCreateCollectionRequest) (*Collection, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Collection
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Collection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.CreateCollection")
@@ -188,13 +189,13 @@ func (a *CollectionsApiService) CreateCollectionExecute(r ApiCreateCollectionReq
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v Status
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -211,11 +212,10 @@ func (a *CollectionsApiService) CreateCollectionExecute(r ApiCreateCollectionReq
 }
 
 type ApiDeleteCollectionRequest struct {
-	ctx context.Context
-	ApiService *CollectionsApiService
+	ctx          context.Context
+	ApiService   *CollectionsApiService
 	collectionId string
 }
-
 
 func (r ApiDeleteCollectionRequest) Execute() (*Collection, *http.Response, error) {
 	return r.ApiService.DeleteCollectionExecute(r)
@@ -228,26 +228,27 @@ Remove the collection. Devices, firmware images, outputs and all other
 related resources must be removed from the collection before it can be
 deleted.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId The ID of the collection you want to delete
- @return ApiDeleteCollectionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param collectionId The ID of the collection you want to delete
+	@return ApiDeleteCollectionRequest
 */
 func (a *CollectionsApiService) DeleteCollection(ctx context.Context, collectionId string) ApiDeleteCollectionRequest {
 	return ApiDeleteCollectionRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
 	}
 }
 
 // Execute executes the request
-//  @return Collection
+//
+//	@return Collection
 func (a *CollectionsApiService) DeleteCollectionExecute(r ApiDeleteCollectionRequest) (*Collection, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Collection
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Collection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.DeleteCollection")
@@ -365,13 +366,13 @@ func (a *CollectionsApiService) DeleteCollectionExecute(r ApiDeleteCollectionReq
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v Status
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -388,13 +389,13 @@ func (a *CollectionsApiService) DeleteCollectionExecute(r ApiDeleteCollectionReq
 }
 
 type ApiListCollectionDataRequest struct {
-	ctx context.Context
-	ApiService *CollectionsApiService
+	ctx          context.Context
+	ApiService   *CollectionsApiService
 	collectionId string
-	limit *int32
-	start *string
-	end *string
-	offset *string
+	limit        *int32
+	start        *string
+	end          *string
+	offset       *string
 }
 
 // Limit the number of payloads to return. The default is 512.
@@ -402,16 +403,19 @@ func (r ApiListCollectionDataRequest) Limit(limit int32) ApiListCollectionDataRe
 	r.limit = &limit
 	return r
 }
+
 // Start of time range. The default is 24 hours ago. Value is in milliseconds since epoch.
 func (r ApiListCollectionDataRequest) Start(start string) ApiListCollectionDataRequest {
 	r.start = &start
 	return r
 }
+
 // End of time range. The default is the current time stamp. Value is in milliseconds since epoch.
 func (r ApiListCollectionDataRequest) End(end string) ApiListCollectionDataRequest {
 	r.end = &end
 	return r
 }
+
 // The message offset based on the message ID. This parameter can&#39;t be combined with the start and end parameters. If no parameter is set the first N messages will be returned. If this parameter is set the next N messages (from newest to oldest) with message ID less than the offset will be returned.
 func (r ApiListCollectionDataRequest) Offset(offset string) ApiListCollectionDataRequest {
 	r.offset = &offset
@@ -428,26 +432,27 @@ ListCollectionData Retrieve data from devices
 Retrieve data sent by the devices in the collection. The maximum number of
 data points is 100.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId The collection ID requested. This is included in the request path.
- @return ApiListCollectionDataRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param collectionId The collection ID requested. This is included in the request path.
+	@return ApiListCollectionDataRequest
 */
 func (a *CollectionsApiService) ListCollectionData(ctx context.Context, collectionId string) ApiListCollectionDataRequest {
 	return ApiListCollectionDataRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
 	}
 }
 
 // Execute executes the request
-//  @return ListDataResponse
+//
+//	@return ListDataResponse
 func (a *CollectionsApiService) ListCollectionDataExecute(r ApiListCollectionDataRequest) (*ListDataResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ListDataResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ListDataResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.ListCollectionData")
@@ -577,13 +582,13 @@ func (a *CollectionsApiService) ListCollectionDataExecute(r ApiListCollectionDat
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v Status
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -600,10 +605,9 @@ func (a *CollectionsApiService) ListCollectionDataExecute(r ApiListCollectionDat
 }
 
 type ApiListCollectionsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CollectionsApiService
 }
-
 
 func (r ApiListCollectionsRequest) Execute() (*ListCollectionResponse, *http.Response, error) {
 	return r.ApiService.ListCollectionsExecute(r)
@@ -614,24 +618,25 @@ ListCollections List collections
 
 Lists all the collections that one of your teams owns.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListCollectionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiListCollectionsRequest
 */
 func (a *CollectionsApiService) ListCollections(ctx context.Context) ApiListCollectionsRequest {
 	return ApiListCollectionsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ListCollectionResponse
+//
+//	@return ListCollectionResponse
 func (a *CollectionsApiService) ListCollectionsExecute(r ApiListCollectionsRequest) (*ListCollectionResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ListCollectionResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ListCollectionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.ListCollections")
@@ -748,13 +753,13 @@ func (a *CollectionsApiService) ListCollectionsExecute(r ApiListCollectionsReque
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v Status
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -771,11 +776,10 @@ func (a *CollectionsApiService) ListCollectionsExecute(r ApiListCollectionsReque
 }
 
 type ApiRetrieveCollectionRequest struct {
-	ctx context.Context
-	ApiService *CollectionsApiService
+	ctx          context.Context
+	ApiService   *CollectionsApiService
 	collectionId string
 }
-
 
 func (r ApiRetrieveCollectionRequest) Execute() (*Collection, *http.Response, error) {
 	return r.ApiService.RetrieveCollectionExecute(r)
@@ -784,26 +788,27 @@ func (r ApiRetrieveCollectionRequest) Execute() (*Collection, *http.Response, er
 /*
 RetrieveCollection Retrieve collection
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId The collection ID of the collection you are requesting
- @return ApiRetrieveCollectionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param collectionId The collection ID of the collection you are requesting
+	@return ApiRetrieveCollectionRequest
 */
 func (a *CollectionsApiService) RetrieveCollection(ctx context.Context, collectionId string) ApiRetrieveCollectionRequest {
 	return ApiRetrieveCollectionRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
 	}
 }
 
 // Execute executes the request
-//  @return Collection
+//
+//	@return Collection
 func (a *CollectionsApiService) RetrieveCollectionExecute(r ApiRetrieveCollectionRequest) (*Collection, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Collection
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Collection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.RetrieveCollection")
@@ -921,13 +926,13 @@ func (a *CollectionsApiService) RetrieveCollectionExecute(r ApiRetrieveCollectio
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v Status
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -944,10 +949,10 @@ func (a *CollectionsApiService) RetrieveCollectionExecute(r ApiRetrieveCollectio
 }
 
 type ApiUpdateCollectionRequest struct {
-	ctx context.Context
-	ApiService *CollectionsApiService
+	ctx          context.Context
+	ApiService   *CollectionsApiService
 	collectionId string
-	body *UpdateCollectionRequest
+	body         *UpdateCollectionRequest
 }
 
 func (r ApiUpdateCollectionRequest) Body(body UpdateCollectionRequest) ApiUpdateCollectionRequest {
@@ -964,26 +969,27 @@ UpdateCollection Update collection
 
 Update a collection.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId The ID of the collection. This is assigned by the backend.
- @return ApiUpdateCollectionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param collectionId The ID of the collection. This is assigned by the backend.
+	@return ApiUpdateCollectionRequest
 */
 func (a *CollectionsApiService) UpdateCollection(ctx context.Context, collectionId string) ApiUpdateCollectionRequest {
 	return ApiUpdateCollectionRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		collectionId: collectionId,
 	}
 }
 
 // Execute executes the request
-//  @return Collection
+//
+//	@return Collection
 func (a *CollectionsApiService) UpdateCollectionExecute(r ApiUpdateCollectionRequest) (*Collection, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Collection
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Collection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionsApiService.UpdateCollection")
@@ -1106,13 +1112,13 @@ func (a *CollectionsApiService) UpdateCollectionExecute(r ApiUpdateCollectionReq
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
+		var v Status
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

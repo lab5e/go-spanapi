@@ -23,7 +23,7 @@ type GatewayStatus string
 const (
 	GATEWAYSTATUS_UNKNOWN GatewayStatus = "unknown"
 	GATEWAYSTATUS_OFFLINE GatewayStatus = "offline"
-	GATEWAYSTATUS_ONLINE GatewayStatus = "online"
+	GATEWAYSTATUS_ONLINE  GatewayStatus = "online"
 )
 
 // All allowed values of GatewayStatus enum
@@ -111,4 +111,3 @@ func (v *NullableGatewayStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

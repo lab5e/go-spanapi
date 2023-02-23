@@ -18,8 +18,8 @@ import (
 // GatewayDeviceConfig Configuration parameters for a device in a user-managed gateway. The configuration parameters depends on the type of gateway.
 type GatewayDeviceConfig struct {
 	// This is the ID of the gateway this configuration applies to.
-	GatewayId *string `json:"gatewayId,omitempty"`
-	Params *map[string]string `json:"params,omitempty"`
+	GatewayId *string            `json:"gatewayId,omitempty"`
+	Params    *map[string]string `json:"params,omitempty"`
 }
 
 // NewGatewayDeviceConfig instantiates a new GatewayDeviceConfig object
@@ -149,5 +149,3 @@ func (v *NullableGatewayDeviceConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

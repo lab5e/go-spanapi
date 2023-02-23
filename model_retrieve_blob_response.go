@@ -18,8 +18,8 @@ import (
 // RetrieveBlobResponse This is not available throught the API, just as a regular HTTP response
 type RetrieveBlobResponse struct {
 	ContentType *string `json:"contentType,omitempty"`
-	Size *int32 `json:"size,omitempty"`
-	Data *string `json:"data,omitempty"`
+	Size        *int32  `json:"size,omitempty"`
+	Data        *string `json:"data,omitempty"`
 }
 
 // NewRetrieveBlobResponse instantiates a new RetrieveBlobResponse object
@@ -184,5 +184,3 @@ func (v *NullableRetrieveBlobResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
