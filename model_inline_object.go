@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.0 lean-joline
+API version: 4.4.1 busy-janay
 Contact: dev@lab5e.com
 */
 
@@ -17,10 +17,10 @@ import (
 
 // InlineObject struct for InlineObject
 type InlineObject struct {
-	Name   *string            `json:"name,omitempty"`
-	Type   *GatewayType       `json:"type,omitempty"`
-	Config *GatewayConfig     `json:"config,omitempty"`
-	Tags   *map[string]string `json:"tags,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Type *GatewayType `json:"type,omitempty"`
+	Config *GatewayConfig `json:"config,omitempty"`
+	Tags *map[string]string `json:"tags,omitempty"`
 }
 
 // NewInlineObject instantiates a new InlineObject object
@@ -224,3 +224,5 @@ func (v *NullableInlineObject) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

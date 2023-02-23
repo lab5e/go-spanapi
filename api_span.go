@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.0 lean-joline
+API version: 4.4.1 busy-janay
 Contact: dev@lab5e.com
 */
 
@@ -28,9 +28,10 @@ var (
 type SpanApiService service
 
 type ApiGetSystemInfoRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SpanApiService
 }
+
 
 func (r ApiGetSystemInfoRequest) Execute() (*SystemInfoResponse, *http.Response, error) {
 	return r.ApiService.GetSystemInfoExecute(r)
@@ -42,25 +43,24 @@ GetSystemInfo System information
 Get system information. This will show the current version of the API that
 you are using.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetSystemInfoRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetSystemInfoRequest
 */
 func (a *SpanApiService) GetSystemInfo(ctx context.Context) ApiGetSystemInfoRequest {
 	return ApiGetSystemInfoRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return SystemInfoResponse
+//  @return SystemInfoResponse
 func (a *SpanApiService) GetSystemInfoExecute(r ApiGetSystemInfoRequest) (*SystemInfoResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *SystemInfoResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SystemInfoResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SpanApiService.GetSystemInfo")
@@ -177,13 +177,13 @@ func (a *SpanApiService) GetSystemInfoExecute(r ApiGetSystemInfoRequest) (*Syste
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

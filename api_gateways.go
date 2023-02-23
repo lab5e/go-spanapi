@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.0 lean-joline
+API version: 4.4.1 busy-janay
 Contact: dev@lab5e.com
 */
 
@@ -29,10 +29,10 @@ var (
 type GatewaysApiService service
 
 type ApiCreateGatewayRequest struct {
-	ctx          context.Context
-	ApiService   *GatewaysApiService
+	ctx context.Context
+	ApiService *GatewaysApiService
 	collectionId string
-	body         *InlineObject
+	body *InlineObject
 }
 
 func (r ApiCreateGatewayRequest) Body(body InlineObject) ApiCreateGatewayRequest {
@@ -49,27 +49,26 @@ CreateGateway Create gateway
 
 Create a new gateway.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param collectionId
-	@return ApiCreateGatewayRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param collectionId
+ @return ApiCreateGatewayRequest
 */
 func (a *GatewaysApiService) CreateGateway(ctx context.Context, collectionId string) ApiCreateGatewayRequest {
 	return ApiCreateGatewayRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Gateway
+//  @return Gateway
 func (a *GatewaysApiService) CreateGatewayExecute(r ApiCreateGatewayRequest) (*Gateway, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Gateway
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Gateway
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GatewaysApiService.CreateGateway")
@@ -192,13 +191,13 @@ func (a *GatewaysApiService) CreateGatewayExecute(r ApiCreateGatewayRequest) (*G
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -215,11 +214,12 @@ func (a *GatewaysApiService) CreateGatewayExecute(r ApiCreateGatewayRequest) (*G
 }
 
 type ApiDeleteGatewayRequest struct {
-	ctx          context.Context
-	ApiService   *GatewaysApiService
+	ctx context.Context
+	ApiService *GatewaysApiService
 	collectionId string
-	gatewayId    string
+	gatewayId string
 }
+
 
 func (r ApiDeleteGatewayRequest) Execute() (*Gateway, *http.Response, error) {
 	return r.ApiService.DeleteGatewayExecute(r)
@@ -230,29 +230,28 @@ DeleteGateway Delete gateway
 
 Remove a gateway from Span.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param collectionId
-	@param gatewayId
-	@return ApiDeleteGatewayRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param collectionId
+ @param gatewayId
+ @return ApiDeleteGatewayRequest
 */
 func (a *GatewaysApiService) DeleteGateway(ctx context.Context, collectionId string, gatewayId string) ApiDeleteGatewayRequest {
 	return ApiDeleteGatewayRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		gatewayId:    gatewayId,
+		gatewayId: gatewayId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Gateway
+//  @return Gateway
 func (a *GatewaysApiService) DeleteGatewayExecute(r ApiDeleteGatewayRequest) (*Gateway, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Gateway
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Gateway
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GatewaysApiService.DeleteGateway")
@@ -371,13 +370,13 @@ func (a *GatewaysApiService) DeleteGatewayExecute(r ApiDeleteGatewayRequest) (*G
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -394,11 +393,12 @@ func (a *GatewaysApiService) DeleteGatewayExecute(r ApiDeleteGatewayRequest) (*G
 }
 
 type ApiGatewayCertificatesRequest struct {
-	ctx          context.Context
-	ApiService   *GatewaysApiService
+	ctx context.Context
+	ApiService *GatewaysApiService
 	collectionId string
-	gatewayId    string
+	gatewayId string
 }
+
 
 func (r ApiGatewayCertificatesRequest) Execute() (*GatewayCertificateResponse, *http.Response, error) {
 	return r.ApiService.GatewayCertificatesExecute(r)
@@ -407,29 +407,28 @@ func (r ApiGatewayCertificatesRequest) Execute() (*GatewayCertificateResponse, *
 /*
 GatewayCertificates Get issued certificate(s) for gateway
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param collectionId
-	@param gatewayId
-	@return ApiGatewayCertificatesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param collectionId
+ @param gatewayId
+ @return ApiGatewayCertificatesRequest
 */
 func (a *GatewaysApiService) GatewayCertificates(ctx context.Context, collectionId string, gatewayId string) ApiGatewayCertificatesRequest {
 	return ApiGatewayCertificatesRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		gatewayId:    gatewayId,
+		gatewayId: gatewayId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return GatewayCertificateResponse
+//  @return GatewayCertificateResponse
 func (a *GatewaysApiService) GatewayCertificatesExecute(r ApiGatewayCertificatesRequest) (*GatewayCertificateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GatewayCertificateResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GatewayCertificateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GatewaysApiService.GatewayCertificates")
@@ -548,13 +547,13 @@ func (a *GatewaysApiService) GatewayCertificatesExecute(r ApiGatewayCertificates
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -571,10 +570,11 @@ func (a *GatewaysApiService) GatewayCertificatesExecute(r ApiGatewayCertificates
 }
 
 type ApiListGatewaysRequest struct {
-	ctx          context.Context
-	ApiService   *GatewaysApiService
+	ctx context.Context
+	ApiService *GatewaysApiService
 	collectionId string
 }
+
 
 func (r ApiListGatewaysRequest) Execute() (*ListGatewayResponse, *http.Response, error) {
 	return r.ApiService.ListGatewaysExecute(r)
@@ -585,27 +585,26 @@ ListGateways List gateways
 
 List the user's gatways, including built-in gateways.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param collectionId
-	@return ApiListGatewaysRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param collectionId
+ @return ApiListGatewaysRequest
 */
 func (a *GatewaysApiService) ListGateways(ctx context.Context, collectionId string) ApiListGatewaysRequest {
 	return ApiListGatewaysRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ListGatewayResponse
+//  @return ListGatewayResponse
 func (a *GatewaysApiService) ListGatewaysExecute(r ApiListGatewaysRequest) (*ListGatewayResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListGatewayResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListGatewayResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GatewaysApiService.ListGateways")
@@ -723,13 +722,13 @@ func (a *GatewaysApiService) ListGatewaysExecute(r ApiListGatewaysRequest) (*Lis
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -746,11 +745,12 @@ func (a *GatewaysApiService) ListGatewaysExecute(r ApiListGatewaysRequest) (*Lis
 }
 
 type ApiRetrieveGatewayRequest struct {
-	ctx          context.Context
-	ApiService   *GatewaysApiService
+	ctx context.Context
+	ApiService *GatewaysApiService
 	collectionId string
-	gatewayId    string
+	gatewayId string
 }
+
 
 func (r ApiRetrieveGatewayRequest) Execute() (*Gateway, *http.Response, error) {
 	return r.ApiService.RetrieveGatewayExecute(r)
@@ -761,29 +761,28 @@ RetrieveGateway Retrieve gateway
 
 Get gateway information
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param collectionId
-	@param gatewayId
-	@return ApiRetrieveGatewayRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param collectionId
+ @param gatewayId
+ @return ApiRetrieveGatewayRequest
 */
 func (a *GatewaysApiService) RetrieveGateway(ctx context.Context, collectionId string, gatewayId string) ApiRetrieveGatewayRequest {
 	return ApiRetrieveGatewayRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		gatewayId:    gatewayId,
+		gatewayId: gatewayId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Gateway
+//  @return Gateway
 func (a *GatewaysApiService) RetrieveGatewayExecute(r ApiRetrieveGatewayRequest) (*Gateway, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Gateway
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Gateway
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GatewaysApiService.RetrieveGateway")
@@ -902,13 +901,13 @@ func (a *GatewaysApiService) RetrieveGatewayExecute(r ApiRetrieveGatewayRequest)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -925,11 +924,11 @@ func (a *GatewaysApiService) RetrieveGatewayExecute(r ApiRetrieveGatewayRequest)
 }
 
 type ApiUpdateGatewayRequest struct {
-	ctx                  context.Context
-	ApiService           *GatewaysApiService
+	ctx context.Context
+	ApiService *GatewaysApiService
 	existingCollectionId string
-	gatewayId            string
-	body                 *InlineObject1
+	gatewayId string
+	body *InlineObject1
 }
 
 func (r ApiUpdateGatewayRequest) Body(body InlineObject1) ApiUpdateGatewayRequest {
@@ -946,29 +945,28 @@ UpdateGateway Update gateway
 
 Update a gateway in Span
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param existingCollectionId
-	@param gatewayId
-	@return ApiUpdateGatewayRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param existingCollectionId
+ @param gatewayId
+ @return ApiUpdateGatewayRequest
 */
 func (a *GatewaysApiService) UpdateGateway(ctx context.Context, existingCollectionId string, gatewayId string) ApiUpdateGatewayRequest {
 	return ApiUpdateGatewayRequest{
-		ApiService:           a,
-		ctx:                  ctx,
+		ApiService: a,
+		ctx: ctx,
 		existingCollectionId: existingCollectionId,
-		gatewayId:            gatewayId,
+		gatewayId: gatewayId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Gateway
+//  @return Gateway
 func (a *GatewaysApiService) UpdateGatewayExecute(r ApiUpdateGatewayRequest) (*Gateway, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Gateway
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Gateway
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GatewaysApiService.UpdateGateway")
@@ -1092,13 +1090,13 @@ func (a *GatewaysApiService) UpdateGatewayExecute(r ApiUpdateGatewayRequest) (*G
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

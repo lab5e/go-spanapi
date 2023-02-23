@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.0 lean-joline
+API version: 4.4.1 busy-janay
 Contact: dev@lab5e.com
 */
 
@@ -17,9 +17,9 @@ import (
 
 // Status struct for Status
 type Status struct {
-	Code    *int32  `json:"code,omitempty"`
+	Code *int32 `json:"code,omitempty"`
 	Message *string `json:"message,omitempty"`
-	Details []Any   `json:"details,omitempty"`
+	Details []Any `json:"details,omitempty"`
 }
 
 // NewStatus instantiates a new Status object
@@ -184,3 +184,5 @@ func (v *NullableStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

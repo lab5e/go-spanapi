@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.0 lean-joline
+API version: 4.4.1 busy-janay
 Contact: dev@lab5e.com
 */
 
@@ -17,11 +17,11 @@ import (
 
 // UpdateOutputRequest Request type to update outputs
 type UpdateOutputRequest struct {
-	CollectionId *string            `json:"collectionId,omitempty"`
-	Type         *OutputType        `json:"type,omitempty"`
-	Config       *OutputConfig      `json:"config,omitempty"`
-	Enabled      *bool              `json:"enabled,omitempty"`
-	Tags         *map[string]string `json:"tags,omitempty"`
+	CollectionId *string `json:"collectionId,omitempty"`
+	Type *OutputType `json:"type,omitempty"`
+	Config *OutputConfig `json:"config,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
+	Tags *map[string]string `json:"tags,omitempty"`
 }
 
 // NewUpdateOutputRequest instantiates a new UpdateOutputRequest object
@@ -260,3 +260,5 @@ func (v *NullableUpdateOutputRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

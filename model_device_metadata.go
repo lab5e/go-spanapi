@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.0 lean-joline
+API version: 4.4.1 busy-janay
 Contact: dev@lab5e.com
 */
 
@@ -17,10 +17,10 @@ import (
 
 // DeviceMetadata This is the metadata for devices.
 type DeviceMetadata struct {
-	SimOperator *NetworkOperator       `json:"simOperator,omitempty"`
-	Ciot        *CellularIoTMetadata   `json:"ciot,omitempty"`
-	Inet        *InetMetadata          `json:"inet,omitempty"`
-	Gateway     *GatewayDeviceMetadata `json:"gateway,omitempty"`
+	SimOperator *NetworkOperator `json:"simOperator,omitempty"`
+	Ciot *CellularIoTMetadata `json:"ciot,omitempty"`
+	Inet *InetMetadata `json:"inet,omitempty"`
+	Gateway *GatewayDeviceMetadata `json:"gateway,omitempty"`
 }
 
 // NewDeviceMetadata instantiates a new DeviceMetadata object
@@ -220,3 +220,5 @@ func (v *NullableDeviceMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

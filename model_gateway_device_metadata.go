@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.0 lean-joline
+API version: 4.4.1 busy-janay
 Contact: dev@lab5e.com
 */
 
@@ -17,9 +17,9 @@ import (
 
 // GatewayDeviceMetadata Metadata for devices connected via user-managed gateways. This metadata shows the configuration for the last message transmission
 type GatewayDeviceMetadata struct {
-	GatewayId  *string            `json:"gatewayId,omitempty"`
-	LastUpdate *string            `json:"lastUpdate,omitempty"`
-	Params     *map[string]string `json:"params,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty"`
+	LastUpdate *string `json:"lastUpdate,omitempty"`
+	Params *map[string]string `json:"params,omitempty"`
 }
 
 // NewGatewayDeviceMetadata instantiates a new GatewayDeviceMetadata object
@@ -184,3 +184,5 @@ func (v *NullableGatewayDeviceMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
