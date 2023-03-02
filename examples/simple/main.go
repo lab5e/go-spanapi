@@ -59,7 +59,7 @@ func main() {
 		}
 		if devices.Devices != nil {
 			for _, device := range devices.Devices {
-				fmt.Printf("   Device ID = %s,  IMSI = %s,  IMEI = %s\n", *device.DeviceId, *device.Imsi, *device.Imei)
+				fmt.Printf("   Device ID = %s,  IMSI = %s,  IMEI = %s\n", device.GetDeviceId(), device.GetConfig().Ciot.GetImsi(), device.GetConfig().Ciot.GetImei())
 			}
 			fmt.Println(len(devices.Devices), " devices in collection")
 		}
