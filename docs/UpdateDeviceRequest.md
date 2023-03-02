@@ -5,8 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CollectionId** | Pointer to **string** | The collection id for the device. This field is optional and can be omitted if the collection id isn&#39;t changed. When changing to a new collection you must be an owner of the other collection, ie an administrator of the team that owns the new collection. | [optional] 
-**Imsi** | Pointer to **string** | Deprecated: this is replaced by the Config type The IMSI is the unique ID for the (e|nu|whatever)SIM card on your device. This is the primary identifier for your device on the network. | [optional] 
-**Imei** | Pointer to **string** | Deprecated: This is replaced by the Config type The IMEI number is the unique ID for your hardware as seen by the network. Obviously you might have a completely different view on things. | [optional] 
 **Tags** | Pointer to **map[string]string** | Tags are metadata for the device that you can set. These are just strings. | [optional] 
 **Firmware** | Pointer to [**FirmwareMetadata**](FirmwareMetadata.md) |  | [optional] 
 **Config** | Pointer to [**DeviceConfig**](DeviceConfig.md) |  | [optional] 
@@ -54,56 +52,6 @@ SetCollectionId sets CollectionId field to given value.
 `func (o *UpdateDeviceRequest) HasCollectionId() bool`
 
 HasCollectionId returns a boolean if a field has been set.
-
-### GetImsi
-
-`func (o *UpdateDeviceRequest) GetImsi() string`
-
-GetImsi returns the Imsi field if non-nil, zero value otherwise.
-
-### GetImsiOk
-
-`func (o *UpdateDeviceRequest) GetImsiOk() (*string, bool)`
-
-GetImsiOk returns a tuple with the Imsi field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetImsi
-
-`func (o *UpdateDeviceRequest) SetImsi(v string)`
-
-SetImsi sets Imsi field to given value.
-
-### HasImsi
-
-`func (o *UpdateDeviceRequest) HasImsi() bool`
-
-HasImsi returns a boolean if a field has been set.
-
-### GetImei
-
-`func (o *UpdateDeviceRequest) GetImei() string`
-
-GetImei returns the Imei field if non-nil, zero value otherwise.
-
-### GetImeiOk
-
-`func (o *UpdateDeviceRequest) GetImeiOk() (*string, bool)`
-
-GetImeiOk returns a tuple with the Imei field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetImei
-
-`func (o *UpdateDeviceRequest) SetImei(v string)`
-
-SetImei sets Imei field to given value.
-
-### HasImei
-
-`func (o *UpdateDeviceRequest) HasImei() bool`
-
-HasImei returns a boolean if a field has been set.
 
 ### GetTags
 

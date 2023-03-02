@@ -72,8 +72,6 @@ docs/MessageDownstream.md
 docs/MessageState.md
 docs/MessageTransport.md
 docs/MessageUpstream.md
-docs/NetworkMetadata.md
-docs/NetworkOperator.md
 docs/Output.md
 docs/OutputConfig.md
 docs/OutputDataMessage.md
@@ -150,8 +148,6 @@ model_message_state.go
 model_message_transport.go
 model_message_upstream.go
 model_mqtt_metadata.go
-model_network_metadata.go
-model_network_operator.go
 model_output.go
 model_output_config.go
 model_output_data_message.go

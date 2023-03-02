@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.1 busy-janay
+API version: 4.4.2 nonviolent-adelbert
 Contact: dev@lab5e.com
 */
 
@@ -18,15 +18,10 @@ import (
 // CreateDeviceRequest Request object to create new devices
 type CreateDeviceRequest struct {
 	// Tags are metadata for the device that you can set. These are just strings.
-	Tags     *map[string]string `json:"tags,omitempty"`
-	Firmware *FirmwareMetadata  `json:"firmware,omitempty"`
-	Config   *DeviceConfig      `json:"config,omitempty"`
-	Metadata *DeviceMetadata    `json:"metadata,omitempty"`
-	// Deprecated: The IMSI is replaced by CellularIoTMetadata
-	Imsi *string `json:"imsi,omitempty"`
-	// The IMEI number is the unique ID for your hardware as seen by the network. Obviously you might have a completely different view on things. This field is deprecated.  Deprecated: The IMEI is replaced by CellularIoTMetadata
-	Imei    *string          `json:"imei,omitempty"`
-	Network *NetworkMetadata `json:"network,omitempty"`
+	Tags *map[string]string `json:"tags,omitempty"`
+	Firmware *FirmwareMetadata `json:"firmware,omitempty"`
+	Config *DeviceConfig `json:"config,omitempty"`
+	Metadata *DeviceMetadata `json:"metadata,omitempty"`
 }
 
 // NewCreateDeviceRequest instantiates a new CreateDeviceRequest object
@@ -174,102 +169,6 @@ func (o *CreateDeviceRequest) SetMetadata(v DeviceMetadata) {
 	o.Metadata = &v
 }
 
-// GetImsi returns the Imsi field value if set, zero value otherwise.
-func (o *CreateDeviceRequest) GetImsi() string {
-	if o == nil || o.Imsi == nil {
-		var ret string
-		return ret
-	}
-	return *o.Imsi
-}
-
-// GetImsiOk returns a tuple with the Imsi field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateDeviceRequest) GetImsiOk() (*string, bool) {
-	if o == nil || o.Imsi == nil {
-		return nil, false
-	}
-	return o.Imsi, true
-}
-
-// HasImsi returns a boolean if a field has been set.
-func (o *CreateDeviceRequest) HasImsi() bool {
-	if o != nil && o.Imsi != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetImsi gets a reference to the given string and assigns it to the Imsi field.
-func (o *CreateDeviceRequest) SetImsi(v string) {
-	o.Imsi = &v
-}
-
-// GetImei returns the Imei field value if set, zero value otherwise.
-func (o *CreateDeviceRequest) GetImei() string {
-	if o == nil || o.Imei == nil {
-		var ret string
-		return ret
-	}
-	return *o.Imei
-}
-
-// GetImeiOk returns a tuple with the Imei field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateDeviceRequest) GetImeiOk() (*string, bool) {
-	if o == nil || o.Imei == nil {
-		return nil, false
-	}
-	return o.Imei, true
-}
-
-// HasImei returns a boolean if a field has been set.
-func (o *CreateDeviceRequest) HasImei() bool {
-	if o != nil && o.Imei != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetImei gets a reference to the given string and assigns it to the Imei field.
-func (o *CreateDeviceRequest) SetImei(v string) {
-	o.Imei = &v
-}
-
-// GetNetwork returns the Network field value if set, zero value otherwise.
-func (o *CreateDeviceRequest) GetNetwork() NetworkMetadata {
-	if o == nil || o.Network == nil {
-		var ret NetworkMetadata
-		return ret
-	}
-	return *o.Network
-}
-
-// GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateDeviceRequest) GetNetworkOk() (*NetworkMetadata, bool) {
-	if o == nil || o.Network == nil {
-		return nil, false
-	}
-	return o.Network, true
-}
-
-// HasNetwork returns a boolean if a field has been set.
-func (o *CreateDeviceRequest) HasNetwork() bool {
-	if o != nil && o.Network != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNetwork gets a reference to the given NetworkMetadata and assigns it to the Network field.
-func (o *CreateDeviceRequest) SetNetwork(v NetworkMetadata) {
-	o.Network = &v
-}
-
 func (o CreateDeviceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -283,15 +182,6 @@ func (o CreateDeviceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
-	}
-	if o.Imsi != nil {
-		toSerialize["imsi"] = o.Imsi
-	}
-	if o.Imei != nil {
-		toSerialize["imei"] = o.Imei
-	}
-	if o.Network != nil {
-		toSerialize["network"] = o.Network
 	}
 	return json.Marshal(toSerialize)
 }
@@ -331,3 +221,5 @@ func (v *NullableCreateDeviceRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

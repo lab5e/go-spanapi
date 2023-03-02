@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.1 busy-janay
+API version: 4.4.2 nonviolent-adelbert
 Contact: dev@lab5e.com
 */
 
@@ -20,8 +20,8 @@ type CollectionFirmware struct {
 	// The current firmware is the firmware that the devices are currently using.
 	CurrentFirmwareId *string `json:"currentFirmwareId,omitempty"`
 	// The target firmware is set to the desired firmware image for the devices in this collection. If the management is set to \"device\" this will only be used if the target firmware isn't set on the device itself.
-	TargetFirmwareId *string             `json:"targetFirmwareId,omitempty"`
-	Management       *FirmwareManagement `json:"management,omitempty"`
+	TargetFirmwareId *string `json:"targetFirmwareId,omitempty"`
+	Management *FirmwareManagement `json:"management,omitempty"`
 }
 
 // NewCollectionFirmware instantiates a new CollectionFirmware object
@@ -190,3 +190,5 @@ func (v *NullableCollectionFirmware) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

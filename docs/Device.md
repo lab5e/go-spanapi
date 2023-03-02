@@ -10,9 +10,10 @@ Name | Type | Description | Notes
 **Firmware** | Pointer to [**FirmwareMetadata**](FirmwareMetadata.md) |  | [optional] 
 **Config** | Pointer to [**DeviceConfig**](DeviceConfig.md) |  | [optional] 
 **Metadata** | Pointer to [**DeviceMetadata**](DeviceMetadata.md) |  | [optional] 
-**Imsi** | Pointer to **string** | The IMSI is the unique ID for the (e|nu|whatever)SIM card on your device. This is the primary identifier for your device on the network.  Deprecated: The IMSI is replaced by CellularIoTMetadata | [optional] 
-**Imei** | Pointer to **string** | The IMEI number is the unique ID for your hardware as seen by the network. Obviously you might have a completely different view on things.  Deprecated: The IMEI is replaced by CellularIoTMetadata | [optional] 
-**Network** | Pointer to [**NetworkMetadata**](NetworkMetadata.md) |  | [optional] 
+**LastGatewayId** | Pointer to **string** |  | [optional] 
+**LastTransport** | Pointer to [**MessageTransport**](MessageTransport.md) |  | [optional] [default to MESSAGETRANSPORT_UNSPECIFIED]
+**LastReceived** | Pointer to **string** |  | [optional] 
+**LastPayload** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -183,80 +184,105 @@ SetMetadata sets Metadata field to given value.
 
 HasMetadata returns a boolean if a field has been set.
 
-### GetImsi
+### GetLastGatewayId
 
-`func (o *Device) GetImsi() string`
+`func (o *Device) GetLastGatewayId() string`
 
-GetImsi returns the Imsi field if non-nil, zero value otherwise.
+GetLastGatewayId returns the LastGatewayId field if non-nil, zero value otherwise.
 
-### GetImsiOk
+### GetLastGatewayIdOk
 
-`func (o *Device) GetImsiOk() (*string, bool)`
+`func (o *Device) GetLastGatewayIdOk() (*string, bool)`
 
-GetImsiOk returns a tuple with the Imsi field if it's non-nil, zero value otherwise
+GetLastGatewayIdOk returns a tuple with the LastGatewayId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetImsi
+### SetLastGatewayId
 
-`func (o *Device) SetImsi(v string)`
+`func (o *Device) SetLastGatewayId(v string)`
 
-SetImsi sets Imsi field to given value.
+SetLastGatewayId sets LastGatewayId field to given value.
 
-### HasImsi
+### HasLastGatewayId
 
-`func (o *Device) HasImsi() bool`
+`func (o *Device) HasLastGatewayId() bool`
 
-HasImsi returns a boolean if a field has been set.
+HasLastGatewayId returns a boolean if a field has been set.
 
-### GetImei
+### GetLastTransport
 
-`func (o *Device) GetImei() string`
+`func (o *Device) GetLastTransport() MessageTransport`
 
-GetImei returns the Imei field if non-nil, zero value otherwise.
+GetLastTransport returns the LastTransport field if non-nil, zero value otherwise.
 
-### GetImeiOk
+### GetLastTransportOk
 
-`func (o *Device) GetImeiOk() (*string, bool)`
+`func (o *Device) GetLastTransportOk() (*MessageTransport, bool)`
 
-GetImeiOk returns a tuple with the Imei field if it's non-nil, zero value otherwise
+GetLastTransportOk returns a tuple with the LastTransport field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetImei
+### SetLastTransport
 
-`func (o *Device) SetImei(v string)`
+`func (o *Device) SetLastTransport(v MessageTransport)`
 
-SetImei sets Imei field to given value.
+SetLastTransport sets LastTransport field to given value.
 
-### HasImei
+### HasLastTransport
 
-`func (o *Device) HasImei() bool`
+`func (o *Device) HasLastTransport() bool`
 
-HasImei returns a boolean if a field has been set.
+HasLastTransport returns a boolean if a field has been set.
 
-### GetNetwork
+### GetLastReceived
 
-`func (o *Device) GetNetwork() NetworkMetadata`
+`func (o *Device) GetLastReceived() string`
 
-GetNetwork returns the Network field if non-nil, zero value otherwise.
+GetLastReceived returns the LastReceived field if non-nil, zero value otherwise.
 
-### GetNetworkOk
+### GetLastReceivedOk
 
-`func (o *Device) GetNetworkOk() (*NetworkMetadata, bool)`
+`func (o *Device) GetLastReceivedOk() (*string, bool)`
 
-GetNetworkOk returns a tuple with the Network field if it's non-nil, zero value otherwise
+GetLastReceivedOk returns a tuple with the LastReceived field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNetwork
+### SetLastReceived
 
-`func (o *Device) SetNetwork(v NetworkMetadata)`
+`func (o *Device) SetLastReceived(v string)`
 
-SetNetwork sets Network field to given value.
+SetLastReceived sets LastReceived field to given value.
 
-### HasNetwork
+### HasLastReceived
 
-`func (o *Device) HasNetwork() bool`
+`func (o *Device) HasLastReceived() bool`
 
-HasNetwork returns a boolean if a field has been set.
+HasLastReceived returns a boolean if a field has been set.
+
+### GetLastPayload
+
+`func (o *Device) GetLastPayload() string`
+
+GetLastPayload returns the LastPayload field if non-nil, zero value otherwise.
+
+### GetLastPayloadOk
+
+`func (o *Device) GetLastPayloadOk() (*string, bool)`
+
+GetLastPayloadOk returns a tuple with the LastPayload field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastPayload
+
+`func (o *Device) SetLastPayload(v string)`
+
+SetLastPayload sets LastPayload field to given value.
+
+### HasLastPayload
+
+`func (o *Device) HasLastPayload() bool`
+
+HasLastPayload returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

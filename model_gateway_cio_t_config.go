@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.1 busy-janay
+API version: 4.4.2 nonviolent-adelbert
 Contact: dev@lab5e.com
 */
 
@@ -17,8 +17,8 @@ import (
 
 // GatewayCIoTConfig struct for GatewayCIoTConfig
 type GatewayCIoTConfig struct {
-	Apn          *string `json:"apn,omitempty"`
-	UdpEndpoint  *string `json:"udpEndpoint,omitempty"`
+	Apn *string `json:"apn,omitempty"`
+	UdpEndpoint *string `json:"udpEndpoint,omitempty"`
 	CoapEndpoint *string `json:"coapEndpoint,omitempty"`
 }
 
@@ -184,3 +184,5 @@ func (v *NullableGatewayCIoTConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

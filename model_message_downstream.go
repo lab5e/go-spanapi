@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.1 busy-janay
+API version: 4.4.2 nonviolent-adelbert
 Contact: dev@lab5e.com
 */
 
@@ -17,15 +17,15 @@ import (
 
 // MessageDownstream Downstream messages are sent from the backend to the devices.
 type MessageDownstream struct {
-	MessageId    *string           `json:"messageId,omitempty"`
-	CollectionId *string           `json:"collectionId,omitempty"`
-	DeviceId     *string           `json:"deviceId,omitempty"`
-	GatewayId    *string           `json:"gatewayId,omitempty"`
-	CreatedTime  *string           `json:"createdTime,omitempty"`
-	SentTime     *string           `json:"sentTime,omitempty"`
-	Transport    *MessageTransport `json:"transport,omitempty"`
-	State        *MessageState     `json:"state,omitempty"`
-	Payload      *string           `json:"payload,omitempty"`
+	MessageId *string `json:"messageId,omitempty"`
+	CollectionId *string `json:"collectionId,omitempty"`
+	DeviceId *string `json:"deviceId,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty"`
+	CreatedTime *string `json:"createdTime,omitempty"`
+	SentTime *string `json:"sentTime,omitempty"`
+	Transport *MessageTransport `json:"transport,omitempty"`
+	State *MessageState `json:"state,omitempty"`
+	Payload *string `json:"payload,omitempty"`
 }
 
 // NewMessageDownstream instantiates a new MessageDownstream object
@@ -408,3 +408,5 @@ func (v *NullableMessageDownstream) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

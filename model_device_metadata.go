@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.1 busy-janay
+API version: 4.4.2 nonviolent-adelbert
 Contact: dev@lab5e.com
 */
 
@@ -17,10 +17,9 @@ import (
 
 // DeviceMetadata This is the metadata for devices.
 type DeviceMetadata struct {
-	SimOperator *NetworkOperator       `json:"simOperator,omitempty"`
-	Ciot        *CellularIoTMetadata   `json:"ciot,omitempty"`
-	Inet        *InetMetadata          `json:"inet,omitempty"`
-	Gateway     *GatewayDeviceMetadata `json:"gateway,omitempty"`
+	Ciot *CellularIoTMetadata `json:"ciot,omitempty"`
+	Inet *InetMetadata `json:"inet,omitempty"`
+	Gateway *GatewayDeviceMetadata `json:"gateway,omitempty"`
 }
 
 // NewDeviceMetadata instantiates a new DeviceMetadata object
@@ -38,38 +37,6 @@ func NewDeviceMetadata() *DeviceMetadata {
 func NewDeviceMetadataWithDefaults() *DeviceMetadata {
 	this := DeviceMetadata{}
 	return &this
-}
-
-// GetSimOperator returns the SimOperator field value if set, zero value otherwise.
-func (o *DeviceMetadata) GetSimOperator() NetworkOperator {
-	if o == nil || o.SimOperator == nil {
-		var ret NetworkOperator
-		return ret
-	}
-	return *o.SimOperator
-}
-
-// GetSimOperatorOk returns a tuple with the SimOperator field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DeviceMetadata) GetSimOperatorOk() (*NetworkOperator, bool) {
-	if o == nil || o.SimOperator == nil {
-		return nil, false
-	}
-	return o.SimOperator, true
-}
-
-// HasSimOperator returns a boolean if a field has been set.
-func (o *DeviceMetadata) HasSimOperator() bool {
-	if o != nil && o.SimOperator != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSimOperator gets a reference to the given NetworkOperator and assigns it to the SimOperator field.
-func (o *DeviceMetadata) SetSimOperator(v NetworkOperator) {
-	o.SimOperator = &v
 }
 
 // GetCiot returns the Ciot field value if set, zero value otherwise.
@@ -170,9 +137,6 @@ func (o *DeviceMetadata) SetGateway(v GatewayDeviceMetadata) {
 
 func (o DeviceMetadata) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.SimOperator != nil {
-		toSerialize["simOperator"] = o.SimOperator
-	}
 	if o.Ciot != nil {
 		toSerialize["ciot"] = o.Ciot
 	}
@@ -220,3 +184,5 @@ func (v *NullableDeviceMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

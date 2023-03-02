@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.1 busy-janay
+API version: 4.4.2 nonviolent-adelbert
 Contact: dev@lab5e.com
 */
 
@@ -19,14 +19,10 @@ import (
 type UpdateDeviceRequest struct {
 	// The collection id for the device. This field is optional and can be omitted if the collection id isn't changed. When changing to a new collection you must be an owner of the other collection, ie an administrator of the team that owns the new collection.
 	CollectionId *string `json:"collectionId,omitempty"`
-	// Deprecated: this is replaced by the Config type The IMSI is the unique ID for the (e|nu|whatever)SIM card on your device. This is the primary identifier for your device on the network.
-	Imsi *string `json:"imsi,omitempty"`
-	// Deprecated: This is replaced by the Config type The IMEI number is the unique ID for your hardware as seen by the network. Obviously you might have a completely different view on things.
-	Imei *string `json:"imei,omitempty"`
 	// Tags are metadata for the device that you can set. These are just strings.
-	Tags     *map[string]string `json:"tags,omitempty"`
-	Firmware *FirmwareMetadata  `json:"firmware,omitempty"`
-	Config   *DeviceConfig      `json:"config,omitempty"`
+	Tags *map[string]string `json:"tags,omitempty"`
+	Firmware *FirmwareMetadata `json:"firmware,omitempty"`
+	Config *DeviceConfig `json:"config,omitempty"`
 }
 
 // NewUpdateDeviceRequest instantiates a new UpdateDeviceRequest object
@@ -76,70 +72,6 @@ func (o *UpdateDeviceRequest) HasCollectionId() bool {
 // SetCollectionId gets a reference to the given string and assigns it to the CollectionId field.
 func (o *UpdateDeviceRequest) SetCollectionId(v string) {
 	o.CollectionId = &v
-}
-
-// GetImsi returns the Imsi field value if set, zero value otherwise.
-func (o *UpdateDeviceRequest) GetImsi() string {
-	if o == nil || o.Imsi == nil {
-		var ret string
-		return ret
-	}
-	return *o.Imsi
-}
-
-// GetImsiOk returns a tuple with the Imsi field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateDeviceRequest) GetImsiOk() (*string, bool) {
-	if o == nil || o.Imsi == nil {
-		return nil, false
-	}
-	return o.Imsi, true
-}
-
-// HasImsi returns a boolean if a field has been set.
-func (o *UpdateDeviceRequest) HasImsi() bool {
-	if o != nil && o.Imsi != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetImsi gets a reference to the given string and assigns it to the Imsi field.
-func (o *UpdateDeviceRequest) SetImsi(v string) {
-	o.Imsi = &v
-}
-
-// GetImei returns the Imei field value if set, zero value otherwise.
-func (o *UpdateDeviceRequest) GetImei() string {
-	if o == nil || o.Imei == nil {
-		var ret string
-		return ret
-	}
-	return *o.Imei
-}
-
-// GetImeiOk returns a tuple with the Imei field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateDeviceRequest) GetImeiOk() (*string, bool) {
-	if o == nil || o.Imei == nil {
-		return nil, false
-	}
-	return o.Imei, true
-}
-
-// HasImei returns a boolean if a field has been set.
-func (o *UpdateDeviceRequest) HasImei() bool {
-	if o != nil && o.Imei != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetImei gets a reference to the given string and assigns it to the Imei field.
-func (o *UpdateDeviceRequest) SetImei(v string) {
-	o.Imei = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -243,12 +175,6 @@ func (o UpdateDeviceRequest) MarshalJSON() ([]byte, error) {
 	if o.CollectionId != nil {
 		toSerialize["collectionId"] = o.CollectionId
 	}
-	if o.Imsi != nil {
-		toSerialize["imsi"] = o.Imsi
-	}
-	if o.Imei != nil {
-		toSerialize["imei"] = o.Imei
-	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
 	}
@@ -296,3 +222,5 @@ func (v *NullableUpdateDeviceRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

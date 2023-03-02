@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.1 busy-janay
+API version: 4.4.2 nonviolent-adelbert
 Contact: dev@lab5e.com
 */
 
@@ -18,18 +18,17 @@ import (
 // Device This a device
 type Device struct {
 	// The device ID is assigned by the backend.
-	DeviceId     *string `json:"deviceId,omitempty"`
+	DeviceId *string `json:"deviceId,omitempty"`
 	CollectionId *string `json:"collectionId,omitempty"`
 	// Tags are metadata for the device that you can set. These are just strings.
-	Tags     *map[string]string `json:"tags,omitempty"`
-	Firmware *FirmwareMetadata  `json:"firmware,omitempty"`
-	Config   *DeviceConfig      `json:"config,omitempty"`
-	Metadata *DeviceMetadata    `json:"metadata,omitempty"`
-	// The IMSI is the unique ID for the (e|nu|whatever)SIM card on your device. This is the primary identifier for your device on the network.  Deprecated: The IMSI is replaced by CellularIoTMetadata
-	Imsi *string `json:"imsi,omitempty"`
-	// The IMEI number is the unique ID for your hardware as seen by the network. Obviously you might have a completely different view on things.  Deprecated: The IMEI is replaced by CellularIoTMetadata
-	Imei    *string          `json:"imei,omitempty"`
-	Network *NetworkMetadata `json:"network,omitempty"`
+	Tags *map[string]string `json:"tags,omitempty"`
+	Firmware *FirmwareMetadata `json:"firmware,omitempty"`
+	Config *DeviceConfig `json:"config,omitempty"`
+	Metadata *DeviceMetadata `json:"metadata,omitempty"`
+	LastGatewayId *string `json:"lastGatewayId,omitempty"`
+	LastTransport *MessageTransport `json:"lastTransport,omitempty"`
+	LastReceived *string `json:"lastReceived,omitempty"`
+	LastPayload *string `json:"lastPayload,omitempty"`
 }
 
 // NewDevice instantiates a new Device object
@@ -38,6 +37,8 @@ type Device struct {
 // will change when the set of required properties is changed
 func NewDevice() *Device {
 	this := Device{}
+	var lastTransport MessageTransport = MESSAGETRANSPORT_UNSPECIFIED
+	this.LastTransport = &lastTransport
 	return &this
 }
 
@@ -46,6 +47,8 @@ func NewDevice() *Device {
 // but it doesn't guarantee that properties required by API are set
 func NewDeviceWithDefaults() *Device {
 	this := Device{}
+	var lastTransport MessageTransport = MESSAGETRANSPORT_UNSPECIFIED
+	this.LastTransport = &lastTransport
 	return &this
 }
 
@@ -241,100 +244,132 @@ func (o *Device) SetMetadata(v DeviceMetadata) {
 	o.Metadata = &v
 }
 
-// GetImsi returns the Imsi field value if set, zero value otherwise.
-func (o *Device) GetImsi() string {
-	if o == nil || o.Imsi == nil {
+// GetLastGatewayId returns the LastGatewayId field value if set, zero value otherwise.
+func (o *Device) GetLastGatewayId() string {
+	if o == nil || o.LastGatewayId == nil {
 		var ret string
 		return ret
 	}
-	return *o.Imsi
+	return *o.LastGatewayId
 }
 
-// GetImsiOk returns a tuple with the Imsi field value if set, nil otherwise
+// GetLastGatewayIdOk returns a tuple with the LastGatewayId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Device) GetImsiOk() (*string, bool) {
-	if o == nil || o.Imsi == nil {
+func (o *Device) GetLastGatewayIdOk() (*string, bool) {
+	if o == nil || o.LastGatewayId == nil {
 		return nil, false
 	}
-	return o.Imsi, true
+	return o.LastGatewayId, true
 }
 
-// HasImsi returns a boolean if a field has been set.
-func (o *Device) HasImsi() bool {
-	if o != nil && o.Imsi != nil {
+// HasLastGatewayId returns a boolean if a field has been set.
+func (o *Device) HasLastGatewayId() bool {
+	if o != nil && o.LastGatewayId != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetImsi gets a reference to the given string and assigns it to the Imsi field.
-func (o *Device) SetImsi(v string) {
-	o.Imsi = &v
+// SetLastGatewayId gets a reference to the given string and assigns it to the LastGatewayId field.
+func (o *Device) SetLastGatewayId(v string) {
+	o.LastGatewayId = &v
 }
 
-// GetImei returns the Imei field value if set, zero value otherwise.
-func (o *Device) GetImei() string {
-	if o == nil || o.Imei == nil {
+// GetLastTransport returns the LastTransport field value if set, zero value otherwise.
+func (o *Device) GetLastTransport() MessageTransport {
+	if o == nil || o.LastTransport == nil {
+		var ret MessageTransport
+		return ret
+	}
+	return *o.LastTransport
+}
+
+// GetLastTransportOk returns a tuple with the LastTransport field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Device) GetLastTransportOk() (*MessageTransport, bool) {
+	if o == nil || o.LastTransport == nil {
+		return nil, false
+	}
+	return o.LastTransport, true
+}
+
+// HasLastTransport returns a boolean if a field has been set.
+func (o *Device) HasLastTransport() bool {
+	if o != nil && o.LastTransport != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastTransport gets a reference to the given MessageTransport and assigns it to the LastTransport field.
+func (o *Device) SetLastTransport(v MessageTransport) {
+	o.LastTransport = &v
+}
+
+// GetLastReceived returns the LastReceived field value if set, zero value otherwise.
+func (o *Device) GetLastReceived() string {
+	if o == nil || o.LastReceived == nil {
 		var ret string
 		return ret
 	}
-	return *o.Imei
+	return *o.LastReceived
 }
 
-// GetImeiOk returns a tuple with the Imei field value if set, nil otherwise
+// GetLastReceivedOk returns a tuple with the LastReceived field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Device) GetImeiOk() (*string, bool) {
-	if o == nil || o.Imei == nil {
+func (o *Device) GetLastReceivedOk() (*string, bool) {
+	if o == nil || o.LastReceived == nil {
 		return nil, false
 	}
-	return o.Imei, true
+	return o.LastReceived, true
 }
 
-// HasImei returns a boolean if a field has been set.
-func (o *Device) HasImei() bool {
-	if o != nil && o.Imei != nil {
+// HasLastReceived returns a boolean if a field has been set.
+func (o *Device) HasLastReceived() bool {
+	if o != nil && o.LastReceived != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetImei gets a reference to the given string and assigns it to the Imei field.
-func (o *Device) SetImei(v string) {
-	o.Imei = &v
+// SetLastReceived gets a reference to the given string and assigns it to the LastReceived field.
+func (o *Device) SetLastReceived(v string) {
+	o.LastReceived = &v
 }
 
-// GetNetwork returns the Network field value if set, zero value otherwise.
-func (o *Device) GetNetwork() NetworkMetadata {
-	if o == nil || o.Network == nil {
-		var ret NetworkMetadata
+// GetLastPayload returns the LastPayload field value if set, zero value otherwise.
+func (o *Device) GetLastPayload() string {
+	if o == nil || o.LastPayload == nil {
+		var ret string
 		return ret
 	}
-	return *o.Network
+	return *o.LastPayload
 }
 
-// GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
+// GetLastPayloadOk returns a tuple with the LastPayload field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Device) GetNetworkOk() (*NetworkMetadata, bool) {
-	if o == nil || o.Network == nil {
+func (o *Device) GetLastPayloadOk() (*string, bool) {
+	if o == nil || o.LastPayload == nil {
 		return nil, false
 	}
-	return o.Network, true
+	return o.LastPayload, true
 }
 
-// HasNetwork returns a boolean if a field has been set.
-func (o *Device) HasNetwork() bool {
-	if o != nil && o.Network != nil {
+// HasLastPayload returns a boolean if a field has been set.
+func (o *Device) HasLastPayload() bool {
+	if o != nil && o.LastPayload != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetNetwork gets a reference to the given NetworkMetadata and assigns it to the Network field.
-func (o *Device) SetNetwork(v NetworkMetadata) {
-	o.Network = &v
+// SetLastPayload gets a reference to the given string and assigns it to the LastPayload field.
+func (o *Device) SetLastPayload(v string) {
+	o.LastPayload = &v
 }
 
 func (o Device) MarshalJSON() ([]byte, error) {
@@ -357,14 +392,17 @@ func (o Device) MarshalJSON() ([]byte, error) {
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
 	}
-	if o.Imsi != nil {
-		toSerialize["imsi"] = o.Imsi
+	if o.LastGatewayId != nil {
+		toSerialize["lastGatewayId"] = o.LastGatewayId
 	}
-	if o.Imei != nil {
-		toSerialize["imei"] = o.Imei
+	if o.LastTransport != nil {
+		toSerialize["lastTransport"] = o.LastTransport
 	}
-	if o.Network != nil {
-		toSerialize["network"] = o.Network
+	if o.LastReceived != nil {
+		toSerialize["lastReceived"] = o.LastReceived
+	}
+	if o.LastPayload != nil {
+		toSerialize["lastPayload"] = o.LastPayload
 	}
 	return json.Marshal(toSerialize)
 }
@@ -404,3 +442,5 @@ func (v *NullableDevice) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.1 busy-janay
+API version: 4.4.2 nonviolent-adelbert
 Contact: dev@lab5e.com
 */
 
@@ -21,14 +21,14 @@ type GatewayType string
 
 // List of GatewayType
 const (
-	GATEWAYTYPE_UNKNOWN    GatewayType = "unknown"
-	GATEWAYTYPE_CIOT       GatewayType = "ciot"
-	GATEWAYTYPE_INET       GatewayType = "inet"
-	GATEWAYTYPE_LORA       GatewayType = "lora"
+	GATEWAYTYPE_UNKNOWN GatewayType = "unknown"
+	GATEWAYTYPE_CIOT GatewayType = "ciot"
+	GATEWAYTYPE_INET GatewayType = "inet"
+	GATEWAYTYPE_LORA GatewayType = "lora"
 	GATEWAYTYPE_OPENTHREAD GatewayType = "openthread"
-	GATEWAYTYPE_ZIGBEE     GatewayType = "zigbee"
-	GATEWAYTYPE_MATTER     GatewayType = "matter"
-	GATEWAYTYPE_CUSTOM     GatewayType = "custom"
+	GATEWAYTYPE_ZIGBEE GatewayType = "zigbee"
+	GATEWAYTYPE_MATTER GatewayType = "matter"
+	GATEWAYTYPE_CUSTOM GatewayType = "custom"
 )
 
 // All allowed values of GatewayType enum
@@ -121,3 +121,4 @@ func (v *NullableGatewayType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

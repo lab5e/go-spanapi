@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.1 busy-janay
+API version: 4.4.2 nonviolent-adelbert
 Contact: dev@lab5e.com
 */
 
@@ -29,11 +29,12 @@ var (
 type BlobsApiService service
 
 type ApiDeleteBlobRequest struct {
-	ctx          context.Context
-	ApiService   *BlobsApiService
+	ctx context.Context
+	ApiService *BlobsApiService
 	collectionId string
-	blobId       string
+	blobId string
 }
+
 
 func (r ApiDeleteBlobRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.DeleteBlobExecute(r)
@@ -44,29 +45,28 @@ DeleteBlob Remove a blob stored on a collection
 
 Remove a blob stored on the collection.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param collectionId
-	@param blobId
-	@return ApiDeleteBlobRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param collectionId
+ @param blobId
+ @return ApiDeleteBlobRequest
 */
 func (a *BlobsApiService) DeleteBlob(ctx context.Context, collectionId string, blobId string) ApiDeleteBlobRequest {
 	return ApiDeleteBlobRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
-		blobId:       blobId,
+		blobId: blobId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *BlobsApiService) DeleteBlobExecute(r ApiDeleteBlobRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BlobsApiService.DeleteBlob")
@@ -185,13 +185,13 @@ func (a *BlobsApiService) DeleteBlobExecute(r ApiDeleteBlobRequest) (map[string]
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -208,10 +208,10 @@ func (a *BlobsApiService) DeleteBlobExecute(r ApiDeleteBlobRequest) (map[string]
 }
 
 type ApiListBlobsRequest struct {
-	ctx          context.Context
-	ApiService   *BlobsApiService
+	ctx context.Context
+	ApiService *BlobsApiService
 	collectionId string
-	limit        *int32
+	limit *int32
 }
 
 func (r ApiListBlobsRequest) Limit(limit int32) ApiListBlobsRequest {
@@ -229,27 +229,26 @@ ListBlobs List the blobs for a collection
 Retrieve a list of all the blobs stored on this collection. Blobs are
 uploaded by the devices through one of the blob endpoints.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param collectionId
-	@return ApiListBlobsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param collectionId
+ @return ApiListBlobsRequest
 */
 func (a *BlobsApiService) ListBlobs(ctx context.Context, collectionId string) ApiListBlobsRequest {
 	return ApiListBlobsRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		collectionId: collectionId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ListBlobResponse
+//  @return ListBlobResponse
 func (a *BlobsApiService) ListBlobsExecute(r ApiListBlobsRequest) (*ListBlobResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListBlobResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListBlobResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BlobsApiService.ListBlobs")
@@ -370,13 +369,13 @@ func (a *BlobsApiService) ListBlobsExecute(r ApiListBlobsRequest) (*ListBlobResp
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		var v Status
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.model = v
+			var v Status
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

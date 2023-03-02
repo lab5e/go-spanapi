@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.1 busy-janay
+API version: 4.4.2 nonviolent-adelbert
 Contact: dev@lab5e.com
 */
 
@@ -18,8 +18,8 @@ import (
 // RetrieveBlobResponse This is not available throught the API, just as a regular HTTP response
 type RetrieveBlobResponse struct {
 	ContentType *string `json:"contentType,omitempty"`
-	Size        *int32  `json:"size,omitempty"`
-	Data        *string `json:"data,omitempty"`
+	Size *int32 `json:"size,omitempty"`
+	Data *string `json:"data,omitempty"`
 }
 
 // NewRetrieveBlobResponse instantiates a new RetrieveBlobResponse object
@@ -184,3 +184,5 @@ func (v *NullableRetrieveBlobResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
