@@ -2,9 +2,10 @@ package apitools
 
 import (
 	"context"
+	"crypto/rand"
+	"encoding/binary"
 	"errors"
 	"fmt"
-	"math/rand"
 	"net/url"
 	"time"
 
@@ -91,7 +92,9 @@ func (m *mqttStream) start() error {
 		return err
 	}
 
-	clientID := fmt.Sprintf("spanapi_%d", rand.Int())
+	buf := make([]byte, 8)
+	rand.Read(buf)
+	clientID := fmt.Sprintf("spanapi_%d", binary.BigEndian.Uint64(buf))
 	if m.config.clientID != "" {
 		clientID = m.config.clientID
 	}
