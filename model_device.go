@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the Device type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Device{}
 
 // Device This a device
 type Device struct {
@@ -54,7 +57,7 @@ func NewDeviceWithDefaults() *Device {
 
 // GetDeviceId returns the DeviceId field value if set, zero value otherwise.
 func (o *Device) GetDeviceId() string {
-	if o == nil || o.DeviceId == nil {
+	if o == nil || IsNil(o.DeviceId) {
 		var ret string
 		return ret
 	}
@@ -64,7 +67,7 @@ func (o *Device) GetDeviceId() string {
 // GetDeviceIdOk returns a tuple with the DeviceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Device) GetDeviceIdOk() (*string, bool) {
-	if o == nil || o.DeviceId == nil {
+	if o == nil || IsNil(o.DeviceId) {
 		return nil, false
 	}
 	return o.DeviceId, true
@@ -72,7 +75,7 @@ func (o *Device) GetDeviceIdOk() (*string, bool) {
 
 // HasDeviceId returns a boolean if a field has been set.
 func (o *Device) HasDeviceId() bool {
-	if o != nil && o.DeviceId != nil {
+	if o != nil && !IsNil(o.DeviceId) {
 		return true
 	}
 
@@ -86,7 +89,7 @@ func (o *Device) SetDeviceId(v string) {
 
 // GetCollectionId returns the CollectionId field value if set, zero value otherwise.
 func (o *Device) GetCollectionId() string {
-	if o == nil || o.CollectionId == nil {
+	if o == nil || IsNil(o.CollectionId) {
 		var ret string
 		return ret
 	}
@@ -96,7 +99,7 @@ func (o *Device) GetCollectionId() string {
 // GetCollectionIdOk returns a tuple with the CollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Device) GetCollectionIdOk() (*string, bool) {
-	if o == nil || o.CollectionId == nil {
+	if o == nil || IsNil(o.CollectionId) {
 		return nil, false
 	}
 	return o.CollectionId, true
@@ -104,7 +107,7 @@ func (o *Device) GetCollectionIdOk() (*string, bool) {
 
 // HasCollectionId returns a boolean if a field has been set.
 func (o *Device) HasCollectionId() bool {
-	if o != nil && o.CollectionId != nil {
+	if o != nil && !IsNil(o.CollectionId) {
 		return true
 	}
 
@@ -118,7 +121,7 @@ func (o *Device) SetCollectionId(v string) {
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *Device) GetTags() map[string]string {
-	if o == nil || o.Tags == nil {
+	if o == nil || IsNil(o.Tags) {
 		var ret map[string]string
 		return ret
 	}
@@ -128,7 +131,7 @@ func (o *Device) GetTags() map[string]string {
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Device) GetTagsOk() (*map[string]string, bool) {
-	if o == nil || o.Tags == nil {
+	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
 	return o.Tags, true
@@ -136,7 +139,7 @@ func (o *Device) GetTagsOk() (*map[string]string, bool) {
 
 // HasTags returns a boolean if a field has been set.
 func (o *Device) HasTags() bool {
-	if o != nil && o.Tags != nil {
+	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
 
@@ -150,7 +153,7 @@ func (o *Device) SetTags(v map[string]string) {
 
 // GetFirmware returns the Firmware field value if set, zero value otherwise.
 func (o *Device) GetFirmware() FirmwareMetadata {
-	if o == nil || o.Firmware == nil {
+	if o == nil || IsNil(o.Firmware) {
 		var ret FirmwareMetadata
 		return ret
 	}
@@ -160,7 +163,7 @@ func (o *Device) GetFirmware() FirmwareMetadata {
 // GetFirmwareOk returns a tuple with the Firmware field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Device) GetFirmwareOk() (*FirmwareMetadata, bool) {
-	if o == nil || o.Firmware == nil {
+	if o == nil || IsNil(o.Firmware) {
 		return nil, false
 	}
 	return o.Firmware, true
@@ -168,7 +171,7 @@ func (o *Device) GetFirmwareOk() (*FirmwareMetadata, bool) {
 
 // HasFirmware returns a boolean if a field has been set.
 func (o *Device) HasFirmware() bool {
-	if o != nil && o.Firmware != nil {
+	if o != nil && !IsNil(o.Firmware) {
 		return true
 	}
 
@@ -182,7 +185,7 @@ func (o *Device) SetFirmware(v FirmwareMetadata) {
 
 // GetConfig returns the Config field value if set, zero value otherwise.
 func (o *Device) GetConfig() DeviceConfig {
-	if o == nil || o.Config == nil {
+	if o == nil || IsNil(o.Config) {
 		var ret DeviceConfig
 		return ret
 	}
@@ -192,7 +195,7 @@ func (o *Device) GetConfig() DeviceConfig {
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Device) GetConfigOk() (*DeviceConfig, bool) {
-	if o == nil || o.Config == nil {
+	if o == nil || IsNil(o.Config) {
 		return nil, false
 	}
 	return o.Config, true
@@ -200,7 +203,7 @@ func (o *Device) GetConfigOk() (*DeviceConfig, bool) {
 
 // HasConfig returns a boolean if a field has been set.
 func (o *Device) HasConfig() bool {
-	if o != nil && o.Config != nil {
+	if o != nil && !IsNil(o.Config) {
 		return true
 	}
 
@@ -214,7 +217,7 @@ func (o *Device) SetConfig(v DeviceConfig) {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *Device) GetMetadata() DeviceMetadata {
-	if o == nil || o.Metadata == nil {
+	if o == nil || IsNil(o.Metadata) {
 		var ret DeviceMetadata
 		return ret
 	}
@@ -224,7 +227,7 @@ func (o *Device) GetMetadata() DeviceMetadata {
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Device) GetMetadataOk() (*DeviceMetadata, bool) {
-	if o == nil || o.Metadata == nil {
+	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
 	return o.Metadata, true
@@ -232,7 +235,7 @@ func (o *Device) GetMetadataOk() (*DeviceMetadata, bool) {
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *Device) HasMetadata() bool {
-	if o != nil && o.Metadata != nil {
+	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
 
@@ -246,7 +249,7 @@ func (o *Device) SetMetadata(v DeviceMetadata) {
 
 // GetLastGatewayId returns the LastGatewayId field value if set, zero value otherwise.
 func (o *Device) GetLastGatewayId() string {
-	if o == nil || o.LastGatewayId == nil {
+	if o == nil || IsNil(o.LastGatewayId) {
 		var ret string
 		return ret
 	}
@@ -256,7 +259,7 @@ func (o *Device) GetLastGatewayId() string {
 // GetLastGatewayIdOk returns a tuple with the LastGatewayId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Device) GetLastGatewayIdOk() (*string, bool) {
-	if o == nil || o.LastGatewayId == nil {
+	if o == nil || IsNil(o.LastGatewayId) {
 		return nil, false
 	}
 	return o.LastGatewayId, true
@@ -264,7 +267,7 @@ func (o *Device) GetLastGatewayIdOk() (*string, bool) {
 
 // HasLastGatewayId returns a boolean if a field has been set.
 func (o *Device) HasLastGatewayId() bool {
-	if o != nil && o.LastGatewayId != nil {
+	if o != nil && !IsNil(o.LastGatewayId) {
 		return true
 	}
 
@@ -278,7 +281,7 @@ func (o *Device) SetLastGatewayId(v string) {
 
 // GetLastTransport returns the LastTransport field value if set, zero value otherwise.
 func (o *Device) GetLastTransport() MessageTransport {
-	if o == nil || o.LastTransport == nil {
+	if o == nil || IsNil(o.LastTransport) {
 		var ret MessageTransport
 		return ret
 	}
@@ -288,7 +291,7 @@ func (o *Device) GetLastTransport() MessageTransport {
 // GetLastTransportOk returns a tuple with the LastTransport field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Device) GetLastTransportOk() (*MessageTransport, bool) {
-	if o == nil || o.LastTransport == nil {
+	if o == nil || IsNil(o.LastTransport) {
 		return nil, false
 	}
 	return o.LastTransport, true
@@ -296,7 +299,7 @@ func (o *Device) GetLastTransportOk() (*MessageTransport, bool) {
 
 // HasLastTransport returns a boolean if a field has been set.
 func (o *Device) HasLastTransport() bool {
-	if o != nil && o.LastTransport != nil {
+	if o != nil && !IsNil(o.LastTransport) {
 		return true
 	}
 
@@ -310,7 +313,7 @@ func (o *Device) SetLastTransport(v MessageTransport) {
 
 // GetLastReceived returns the LastReceived field value if set, zero value otherwise.
 func (o *Device) GetLastReceived() string {
-	if o == nil || o.LastReceived == nil {
+	if o == nil || IsNil(o.LastReceived) {
 		var ret string
 		return ret
 	}
@@ -320,7 +323,7 @@ func (o *Device) GetLastReceived() string {
 // GetLastReceivedOk returns a tuple with the LastReceived field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Device) GetLastReceivedOk() (*string, bool) {
-	if o == nil || o.LastReceived == nil {
+	if o == nil || IsNil(o.LastReceived) {
 		return nil, false
 	}
 	return o.LastReceived, true
@@ -328,7 +331,7 @@ func (o *Device) GetLastReceivedOk() (*string, bool) {
 
 // HasLastReceived returns a boolean if a field has been set.
 func (o *Device) HasLastReceived() bool {
-	if o != nil && o.LastReceived != nil {
+	if o != nil && !IsNil(o.LastReceived) {
 		return true
 	}
 
@@ -342,7 +345,7 @@ func (o *Device) SetLastReceived(v string) {
 
 // GetLastPayload returns the LastPayload field value if set, zero value otherwise.
 func (o *Device) GetLastPayload() string {
-	if o == nil || o.LastPayload == nil {
+	if o == nil || IsNil(o.LastPayload) {
 		var ret string
 		return ret
 	}
@@ -352,7 +355,7 @@ func (o *Device) GetLastPayload() string {
 // GetLastPayloadOk returns a tuple with the LastPayload field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Device) GetLastPayloadOk() (*string, bool) {
-	if o == nil || o.LastPayload == nil {
+	if o == nil || IsNil(o.LastPayload) {
 		return nil, false
 	}
 	return o.LastPayload, true
@@ -360,7 +363,7 @@ func (o *Device) GetLastPayloadOk() (*string, bool) {
 
 // HasLastPayload returns a boolean if a field has been set.
 func (o *Device) HasLastPayload() bool {
-	if o != nil && o.LastPayload != nil {
+	if o != nil && !IsNil(o.LastPayload) {
 		return true
 	}
 
@@ -373,38 +376,46 @@ func (o *Device) SetLastPayload(v string) {
 }
 
 func (o Device) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.DeviceId != nil {
-		toSerialize["deviceId"] = o.DeviceId
-	}
-	if o.CollectionId != nil {
-		toSerialize["collectionId"] = o.CollectionId
-	}
-	if o.Tags != nil {
-		toSerialize["tags"] = o.Tags
-	}
-	if o.Firmware != nil {
-		toSerialize["firmware"] = o.Firmware
-	}
-	if o.Config != nil {
-		toSerialize["config"] = o.Config
-	}
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
-	}
-	if o.LastGatewayId != nil {
-		toSerialize["lastGatewayId"] = o.LastGatewayId
-	}
-	if o.LastTransport != nil {
-		toSerialize["lastTransport"] = o.LastTransport
-	}
-	if o.LastReceived != nil {
-		toSerialize["lastReceived"] = o.LastReceived
-	}
-	if o.LastPayload != nil {
-		toSerialize["lastPayload"] = o.LastPayload
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Device) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DeviceId) {
+		toSerialize["deviceId"] = o.DeviceId
+	}
+	if !IsNil(o.CollectionId) {
+		toSerialize["collectionId"] = o.CollectionId
+	}
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
+	}
+	if !IsNil(o.Firmware) {
+		toSerialize["firmware"] = o.Firmware
+	}
+	if !IsNil(o.Config) {
+		toSerialize["config"] = o.Config
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
+	}
+	if !IsNil(o.LastGatewayId) {
+		toSerialize["lastGatewayId"] = o.LastGatewayId
+	}
+	if !IsNil(o.LastTransport) {
+		toSerialize["lastTransport"] = o.LastTransport
+	}
+	if !IsNil(o.LastReceived) {
+		toSerialize["lastReceived"] = o.LastReceived
+	}
+	if !IsNil(o.LastPayload) {
+		toSerialize["lastPayload"] = o.LastPayload
+	}
+	return toSerialize, nil
 }
 
 type NullableDevice struct {

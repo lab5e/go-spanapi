@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the GatewayInetConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GatewayInetConfig{}
 
 // GatewayInetConfig struct for GatewayInetConfig
 type GatewayInetConfig struct {
@@ -41,7 +44,7 @@ func NewGatewayInetConfigWithDefaults() *GatewayInetConfig {
 
 // GetDtlsEndpoint returns the DtlsEndpoint field value if set, zero value otherwise.
 func (o *GatewayInetConfig) GetDtlsEndpoint() string {
-	if o == nil || o.DtlsEndpoint == nil {
+	if o == nil || IsNil(o.DtlsEndpoint) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *GatewayInetConfig) GetDtlsEndpoint() string {
 // GetDtlsEndpointOk returns a tuple with the DtlsEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayInetConfig) GetDtlsEndpointOk() (*string, bool) {
-	if o == nil || o.DtlsEndpoint == nil {
+	if o == nil || IsNil(o.DtlsEndpoint) {
 		return nil, false
 	}
 	return o.DtlsEndpoint, true
@@ -59,7 +62,7 @@ func (o *GatewayInetConfig) GetDtlsEndpointOk() (*string, bool) {
 
 // HasDtlsEndpoint returns a boolean if a field has been set.
 func (o *GatewayInetConfig) HasDtlsEndpoint() bool {
-	if o != nil && o.DtlsEndpoint != nil {
+	if o != nil && !IsNil(o.DtlsEndpoint) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *GatewayInetConfig) SetDtlsEndpoint(v string) {
 
 // GetCoapEndpoint returns the CoapEndpoint field value if set, zero value otherwise.
 func (o *GatewayInetConfig) GetCoapEndpoint() string {
-	if o == nil || o.CoapEndpoint == nil {
+	if o == nil || IsNil(o.CoapEndpoint) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *GatewayInetConfig) GetCoapEndpoint() string {
 // GetCoapEndpointOk returns a tuple with the CoapEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayInetConfig) GetCoapEndpointOk() (*string, bool) {
-	if o == nil || o.CoapEndpoint == nil {
+	if o == nil || IsNil(o.CoapEndpoint) {
 		return nil, false
 	}
 	return o.CoapEndpoint, true
@@ -91,7 +94,7 @@ func (o *GatewayInetConfig) GetCoapEndpointOk() (*string, bool) {
 
 // HasCoapEndpoint returns a boolean if a field has been set.
 func (o *GatewayInetConfig) HasCoapEndpoint() bool {
-	if o != nil && o.CoapEndpoint != nil {
+	if o != nil && !IsNil(o.CoapEndpoint) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *GatewayInetConfig) SetCoapEndpoint(v string) {
 
 // GetMqttEndpoint returns the MqttEndpoint field value if set, zero value otherwise.
 func (o *GatewayInetConfig) GetMqttEndpoint() string {
-	if o == nil || o.MqttEndpoint == nil {
+	if o == nil || IsNil(o.MqttEndpoint) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *GatewayInetConfig) GetMqttEndpoint() string {
 // GetMqttEndpointOk returns a tuple with the MqttEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayInetConfig) GetMqttEndpointOk() (*string, bool) {
-	if o == nil || o.MqttEndpoint == nil {
+	if o == nil || IsNil(o.MqttEndpoint) {
 		return nil, false
 	}
 	return o.MqttEndpoint, true
@@ -123,7 +126,7 @@ func (o *GatewayInetConfig) GetMqttEndpointOk() (*string, bool) {
 
 // HasMqttEndpoint returns a boolean if a field has been set.
 func (o *GatewayInetConfig) HasMqttEndpoint() bool {
-	if o != nil && o.MqttEndpoint != nil {
+	if o != nil && !IsNil(o.MqttEndpoint) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *GatewayInetConfig) SetMqttEndpoint(v string) {
 }
 
 func (o GatewayInetConfig) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.DtlsEndpoint != nil {
-		toSerialize["dtlsEndpoint"] = o.DtlsEndpoint
-	}
-	if o.CoapEndpoint != nil {
-		toSerialize["coapEndpoint"] = o.CoapEndpoint
-	}
-	if o.MqttEndpoint != nil {
-		toSerialize["mqttEndpoint"] = o.MqttEndpoint
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GatewayInetConfig) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DtlsEndpoint) {
+		toSerialize["dtlsEndpoint"] = o.DtlsEndpoint
+	}
+	if !IsNil(o.CoapEndpoint) {
+		toSerialize["coapEndpoint"] = o.CoapEndpoint
+	}
+	if !IsNil(o.MqttEndpoint) {
+		toSerialize["mqttEndpoint"] = o.MqttEndpoint
+	}
+	return toSerialize, nil
 }
 
 type NullableGatewayInetConfig struct {

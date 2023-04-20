@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,16 +14,12 @@ package spanapi
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // OutputsApiService OutputsApi service
 type OutputsApiService service
@@ -75,7 +71,7 @@ func (a *OutputsApiService) CreateOutputExecute(r ApiCreateOutputRequest) (*Outp
 	}
 
 	localVarPath := localBasePath + "/span/collections/{collectionId}/outputs"
-	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterToString(r.collectionId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterValueToString(r.collectionId, "collectionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -127,9 +123,9 @@ func (a *OutputsApiService) CreateOutputExecute(r ApiCreateOutputRequest) (*Outp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -146,7 +142,8 @@ func (a *OutputsApiService) CreateOutputExecute(r ApiCreateOutputRequest) (*Outp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -156,7 +153,8 @@ func (a *OutputsApiService) CreateOutputExecute(r ApiCreateOutputRequest) (*Outp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -166,7 +164,8 @@ func (a *OutputsApiService) CreateOutputExecute(r ApiCreateOutputRequest) (*Outp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -176,7 +175,8 @@ func (a *OutputsApiService) CreateOutputExecute(r ApiCreateOutputRequest) (*Outp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -186,7 +186,8 @@ func (a *OutputsApiService) CreateOutputExecute(r ApiCreateOutputRequest) (*Outp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -195,7 +196,8 @@ func (a *OutputsApiService) CreateOutputExecute(r ApiCreateOutputRequest) (*Outp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -217,7 +219,6 @@ type ApiDeleteOutputRequest struct {
 	collectionId string
 	outputId string
 }
-
 
 func (r ApiDeleteOutputRequest) Execute() (*Output, *http.Response, error) {
 	return r.ApiService.DeleteOutputExecute(r)
@@ -256,8 +257,8 @@ func (a *OutputsApiService) DeleteOutputExecute(r ApiDeleteOutputRequest) (*Outp
 	}
 
 	localVarPath := localBasePath + "/span/collections/{collectionId}/outputs/{outputId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterToString(r.collectionId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"outputId"+"}", url.PathEscape(parameterToString(r.outputId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterValueToString(r.collectionId, "collectionId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"outputId"+"}", url.PathEscape(parameterValueToString(r.outputId, "outputId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -304,9 +305,9 @@ func (a *OutputsApiService) DeleteOutputExecute(r ApiDeleteOutputRequest) (*Outp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -323,7 +324,8 @@ func (a *OutputsApiService) DeleteOutputExecute(r ApiDeleteOutputRequest) (*Outp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -333,7 +335,8 @@ func (a *OutputsApiService) DeleteOutputExecute(r ApiDeleteOutputRequest) (*Outp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -343,7 +346,8 @@ func (a *OutputsApiService) DeleteOutputExecute(r ApiDeleteOutputRequest) (*Outp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -353,7 +357,8 @@ func (a *OutputsApiService) DeleteOutputExecute(r ApiDeleteOutputRequest) (*Outp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -363,7 +368,8 @@ func (a *OutputsApiService) DeleteOutputExecute(r ApiDeleteOutputRequest) (*Outp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -372,7 +378,8 @@ func (a *OutputsApiService) DeleteOutputExecute(r ApiDeleteOutputRequest) (*Outp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -393,7 +400,6 @@ type ApiListOutputsRequest struct {
 	ApiService *OutputsApiService
 	collectionId string
 }
-
 
 func (r ApiListOutputsRequest) Execute() (*ListOutputResponse, *http.Response, error) {
 	return r.ApiService.ListOutputsExecute(r)
@@ -430,7 +436,7 @@ func (a *OutputsApiService) ListOutputsExecute(r ApiListOutputsRequest) (*ListOu
 	}
 
 	localVarPath := localBasePath + "/span/collections/{collectionId}/outputs"
-	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterToString(r.collectionId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterValueToString(r.collectionId, "collectionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -477,9 +483,9 @@ func (a *OutputsApiService) ListOutputsExecute(r ApiListOutputsRequest) (*ListOu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -496,7 +502,8 @@ func (a *OutputsApiService) ListOutputsExecute(r ApiListOutputsRequest) (*ListOu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -506,7 +513,8 @@ func (a *OutputsApiService) ListOutputsExecute(r ApiListOutputsRequest) (*ListOu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -516,7 +524,8 @@ func (a *OutputsApiService) ListOutputsExecute(r ApiListOutputsRequest) (*ListOu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -526,7 +535,8 @@ func (a *OutputsApiService) ListOutputsExecute(r ApiListOutputsRequest) (*ListOu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -536,7 +546,8 @@ func (a *OutputsApiService) ListOutputsExecute(r ApiListOutputsRequest) (*ListOu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -545,7 +556,8 @@ func (a *OutputsApiService) ListOutputsExecute(r ApiListOutputsRequest) (*ListOu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -567,7 +579,6 @@ type ApiLogsRequest struct {
 	collectionId string
 	outputId string
 }
-
 
 func (r ApiLogsRequest) Execute() (*OutputLogResponse, *http.Response, error) {
 	return r.ApiService.LogsExecute(r)
@@ -606,8 +617,8 @@ func (a *OutputsApiService) LogsExecute(r ApiLogsRequest) (*OutputLogResponse, *
 	}
 
 	localVarPath := localBasePath + "/span/collections/{collectionId}/outputs/{outputId}/logs"
-	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterToString(r.collectionId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"outputId"+"}", url.PathEscape(parameterToString(r.outputId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterValueToString(r.collectionId, "collectionId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"outputId"+"}", url.PathEscape(parameterValueToString(r.outputId, "outputId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -654,9 +665,9 @@ func (a *OutputsApiService) LogsExecute(r ApiLogsRequest) (*OutputLogResponse, *
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -673,7 +684,8 @@ func (a *OutputsApiService) LogsExecute(r ApiLogsRequest) (*OutputLogResponse, *
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -683,7 +695,8 @@ func (a *OutputsApiService) LogsExecute(r ApiLogsRequest) (*OutputLogResponse, *
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -693,7 +706,8 @@ func (a *OutputsApiService) LogsExecute(r ApiLogsRequest) (*OutputLogResponse, *
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -703,7 +717,8 @@ func (a *OutputsApiService) LogsExecute(r ApiLogsRequest) (*OutputLogResponse, *
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -713,7 +728,8 @@ func (a *OutputsApiService) LogsExecute(r ApiLogsRequest) (*OutputLogResponse, *
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -722,7 +738,8 @@ func (a *OutputsApiService) LogsExecute(r ApiLogsRequest) (*OutputLogResponse, *
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -744,7 +761,6 @@ type ApiRetrieveOutputRequest struct {
 	collectionId string
 	outputId string
 }
-
 
 func (r ApiRetrieveOutputRequest) Execute() (*Output, *http.Response, error) {
 	return r.ApiService.RetrieveOutputExecute(r)
@@ -783,8 +799,8 @@ func (a *OutputsApiService) RetrieveOutputExecute(r ApiRetrieveOutputRequest) (*
 	}
 
 	localVarPath := localBasePath + "/span/collections/{collectionId}/outputs/{outputId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterToString(r.collectionId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"outputId"+"}", url.PathEscape(parameterToString(r.outputId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterValueToString(r.collectionId, "collectionId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"outputId"+"}", url.PathEscape(parameterValueToString(r.outputId, "outputId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -831,9 +847,9 @@ func (a *OutputsApiService) RetrieveOutputExecute(r ApiRetrieveOutputRequest) (*
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -850,7 +866,8 @@ func (a *OutputsApiService) RetrieveOutputExecute(r ApiRetrieveOutputRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -860,7 +877,8 @@ func (a *OutputsApiService) RetrieveOutputExecute(r ApiRetrieveOutputRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -870,7 +888,8 @@ func (a *OutputsApiService) RetrieveOutputExecute(r ApiRetrieveOutputRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -880,7 +899,8 @@ func (a *OutputsApiService) RetrieveOutputExecute(r ApiRetrieveOutputRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -890,7 +910,8 @@ func (a *OutputsApiService) RetrieveOutputExecute(r ApiRetrieveOutputRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -899,7 +920,8 @@ func (a *OutputsApiService) RetrieveOutputExecute(r ApiRetrieveOutputRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -921,7 +943,6 @@ type ApiStatusRequest struct {
 	collectionId string
 	outputId string
 }
-
 
 func (r ApiStatusRequest) Execute() (*OutputStatusResponse, *http.Response, error) {
 	return r.ApiService.StatusExecute(r)
@@ -960,8 +981,8 @@ func (a *OutputsApiService) StatusExecute(r ApiStatusRequest) (*OutputStatusResp
 	}
 
 	localVarPath := localBasePath + "/span/collections/{collectionId}/outputs/{outputId}/status"
-	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterToString(r.collectionId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"outputId"+"}", url.PathEscape(parameterToString(r.outputId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterValueToString(r.collectionId, "collectionId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"outputId"+"}", url.PathEscape(parameterValueToString(r.outputId, "outputId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1008,9 +1029,9 @@ func (a *OutputsApiService) StatusExecute(r ApiStatusRequest) (*OutputStatusResp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1027,7 +1048,8 @@ func (a *OutputsApiService) StatusExecute(r ApiStatusRequest) (*OutputStatusResp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1037,7 +1059,8 @@ func (a *OutputsApiService) StatusExecute(r ApiStatusRequest) (*OutputStatusResp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1047,7 +1070,8 @@ func (a *OutputsApiService) StatusExecute(r ApiStatusRequest) (*OutputStatusResp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1057,7 +1081,8 @@ func (a *OutputsApiService) StatusExecute(r ApiStatusRequest) (*OutputStatusResp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1067,7 +1092,8 @@ func (a *OutputsApiService) StatusExecute(r ApiStatusRequest) (*OutputStatusResp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -1076,7 +1102,8 @@ func (a *OutputsApiService) StatusExecute(r ApiStatusRequest) (*OutputStatusResp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1142,8 +1169,8 @@ func (a *OutputsApiService) UpdateOutputExecute(r ApiUpdateOutputRequest) (*Outp
 	}
 
 	localVarPath := localBasePath + "/span/collections/{existingCollectionId}/outputs/{outputId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"existingCollectionId"+"}", url.PathEscape(parameterToString(r.existingCollectionId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"outputId"+"}", url.PathEscape(parameterToString(r.outputId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"existingCollectionId"+"}", url.PathEscape(parameterValueToString(r.existingCollectionId, "existingCollectionId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"outputId"+"}", url.PathEscape(parameterValueToString(r.outputId, "outputId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1195,9 +1222,9 @@ func (a *OutputsApiService) UpdateOutputExecute(r ApiUpdateOutputRequest) (*Outp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1214,7 +1241,8 @@ func (a *OutputsApiService) UpdateOutputExecute(r ApiUpdateOutputRequest) (*Outp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1224,7 +1252,8 @@ func (a *OutputsApiService) UpdateOutputExecute(r ApiUpdateOutputRequest) (*Outp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1234,7 +1263,8 @@ func (a *OutputsApiService) UpdateOutputExecute(r ApiUpdateOutputRequest) (*Outp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1244,7 +1274,8 @@ func (a *OutputsApiService) UpdateOutputExecute(r ApiUpdateOutputRequest) (*Outp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1254,7 +1285,8 @@ func (a *OutputsApiService) UpdateOutputExecute(r ApiUpdateOutputRequest) (*Outp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -1263,7 +1295,8 @@ func (a *OutputsApiService) UpdateOutputExecute(r ApiUpdateOutputRequest) (*Outp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

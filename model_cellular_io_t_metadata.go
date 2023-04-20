@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the CellularIoTMetadata type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CellularIoTMetadata{}
 
 // CellularIoTMetadata This is the metadata for a Cellular IoT device connected via an APN.
 type CellularIoTMetadata struct {
@@ -50,7 +53,7 @@ func NewCellularIoTMetadataWithDefaults() *CellularIoTMetadata {
 
 // GetGatewayId returns the GatewayId field value if set, zero value otherwise.
 func (o *CellularIoTMetadata) GetGatewayId() string {
-	if o == nil || o.GatewayId == nil {
+	if o == nil || IsNil(o.GatewayId) {
 		var ret string
 		return ret
 	}
@@ -60,7 +63,7 @@ func (o *CellularIoTMetadata) GetGatewayId() string {
 // GetGatewayIdOk returns a tuple with the GatewayId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CellularIoTMetadata) GetGatewayIdOk() (*string, bool) {
-	if o == nil || o.GatewayId == nil {
+	if o == nil || IsNil(o.GatewayId) {
 		return nil, false
 	}
 	return o.GatewayId, true
@@ -68,7 +71,7 @@ func (o *CellularIoTMetadata) GetGatewayIdOk() (*string, bool) {
 
 // HasGatewayId returns a boolean if a field has been set.
 func (o *CellularIoTMetadata) HasGatewayId() bool {
-	if o != nil && o.GatewayId != nil {
+	if o != nil && !IsNil(o.GatewayId) {
 		return true
 	}
 
@@ -82,7 +85,7 @@ func (o *CellularIoTMetadata) SetGatewayId(v string) {
 
 // GetAllocatedIp returns the AllocatedIp field value if set, zero value otherwise.
 func (o *CellularIoTMetadata) GetAllocatedIp() string {
-	if o == nil || o.AllocatedIp == nil {
+	if o == nil || IsNil(o.AllocatedIp) {
 		var ret string
 		return ret
 	}
@@ -92,7 +95,7 @@ func (o *CellularIoTMetadata) GetAllocatedIp() string {
 // GetAllocatedIpOk returns a tuple with the AllocatedIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CellularIoTMetadata) GetAllocatedIpOk() (*string, bool) {
-	if o == nil || o.AllocatedIp == nil {
+	if o == nil || IsNil(o.AllocatedIp) {
 		return nil, false
 	}
 	return o.AllocatedIp, true
@@ -100,7 +103,7 @@ func (o *CellularIoTMetadata) GetAllocatedIpOk() (*string, bool) {
 
 // HasAllocatedIp returns a boolean if a field has been set.
 func (o *CellularIoTMetadata) HasAllocatedIp() bool {
-	if o != nil && o.AllocatedIp != nil {
+	if o != nil && !IsNil(o.AllocatedIp) {
 		return true
 	}
 
@@ -114,7 +117,7 @@ func (o *CellularIoTMetadata) SetAllocatedIp(v string) {
 
 // GetAllocatedAt returns the AllocatedAt field value if set, zero value otherwise.
 func (o *CellularIoTMetadata) GetAllocatedAt() string {
-	if o == nil || o.AllocatedAt == nil {
+	if o == nil || IsNil(o.AllocatedAt) {
 		var ret string
 		return ret
 	}
@@ -124,7 +127,7 @@ func (o *CellularIoTMetadata) GetAllocatedAt() string {
 // GetAllocatedAtOk returns a tuple with the AllocatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CellularIoTMetadata) GetAllocatedAtOk() (*string, bool) {
-	if o == nil || o.AllocatedAt == nil {
+	if o == nil || IsNil(o.AllocatedAt) {
 		return nil, false
 	}
 	return o.AllocatedAt, true
@@ -132,7 +135,7 @@ func (o *CellularIoTMetadata) GetAllocatedAtOk() (*string, bool) {
 
 // HasAllocatedAt returns a boolean if a field has been set.
 func (o *CellularIoTMetadata) HasAllocatedAt() bool {
-	if o != nil && o.AllocatedAt != nil {
+	if o != nil && !IsNil(o.AllocatedAt) {
 		return true
 	}
 
@@ -146,7 +149,7 @@ func (o *CellularIoTMetadata) SetAllocatedAt(v string) {
 
 // GetCellId returns the CellId field value if set, zero value otherwise.
 func (o *CellularIoTMetadata) GetCellId() string {
-	if o == nil || o.CellId == nil {
+	if o == nil || IsNil(o.CellId) {
 		var ret string
 		return ret
 	}
@@ -156,7 +159,7 @@ func (o *CellularIoTMetadata) GetCellId() string {
 // GetCellIdOk returns a tuple with the CellId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CellularIoTMetadata) GetCellIdOk() (*string, bool) {
-	if o == nil || o.CellId == nil {
+	if o == nil || IsNil(o.CellId) {
 		return nil, false
 	}
 	return o.CellId, true
@@ -164,7 +167,7 @@ func (o *CellularIoTMetadata) GetCellIdOk() (*string, bool) {
 
 // HasCellId returns a boolean if a field has been set.
 func (o *CellularIoTMetadata) HasCellId() bool {
-	if o != nil && o.CellId != nil {
+	if o != nil && !IsNil(o.CellId) {
 		return true
 	}
 
@@ -178,7 +181,7 @@ func (o *CellularIoTMetadata) SetCellId(v string) {
 
 // GetMcc returns the Mcc field value if set, zero value otherwise.
 func (o *CellularIoTMetadata) GetMcc() int32 {
-	if o == nil || o.Mcc == nil {
+	if o == nil || IsNil(o.Mcc) {
 		var ret int32
 		return ret
 	}
@@ -188,7 +191,7 @@ func (o *CellularIoTMetadata) GetMcc() int32 {
 // GetMccOk returns a tuple with the Mcc field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CellularIoTMetadata) GetMccOk() (*int32, bool) {
-	if o == nil || o.Mcc == nil {
+	if o == nil || IsNil(o.Mcc) {
 		return nil, false
 	}
 	return o.Mcc, true
@@ -196,7 +199,7 @@ func (o *CellularIoTMetadata) GetMccOk() (*int32, bool) {
 
 // HasMcc returns a boolean if a field has been set.
 func (o *CellularIoTMetadata) HasMcc() bool {
-	if o != nil && o.Mcc != nil {
+	if o != nil && !IsNil(o.Mcc) {
 		return true
 	}
 
@@ -210,7 +213,7 @@ func (o *CellularIoTMetadata) SetMcc(v int32) {
 
 // GetMnc returns the Mnc field value if set, zero value otherwise.
 func (o *CellularIoTMetadata) GetMnc() int32 {
-	if o == nil || o.Mnc == nil {
+	if o == nil || IsNil(o.Mnc) {
 		var ret int32
 		return ret
 	}
@@ -220,7 +223,7 @@ func (o *CellularIoTMetadata) GetMnc() int32 {
 // GetMncOk returns a tuple with the Mnc field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CellularIoTMetadata) GetMncOk() (*int32, bool) {
-	if o == nil || o.Mnc == nil {
+	if o == nil || IsNil(o.Mnc) {
 		return nil, false
 	}
 	return o.Mnc, true
@@ -228,7 +231,7 @@ func (o *CellularIoTMetadata) GetMncOk() (*int32, bool) {
 
 // HasMnc returns a boolean if a field has been set.
 func (o *CellularIoTMetadata) HasMnc() bool {
-	if o != nil && o.Mnc != nil {
+	if o != nil && !IsNil(o.Mnc) {
 		return true
 	}
 
@@ -242,7 +245,7 @@ func (o *CellularIoTMetadata) SetMnc(v int32) {
 
 // GetCountry returns the Country field value if set, zero value otherwise.
 func (o *CellularIoTMetadata) GetCountry() string {
-	if o == nil || o.Country == nil {
+	if o == nil || IsNil(o.Country) {
 		var ret string
 		return ret
 	}
@@ -252,7 +255,7 @@ func (o *CellularIoTMetadata) GetCountry() string {
 // GetCountryOk returns a tuple with the Country field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CellularIoTMetadata) GetCountryOk() (*string, bool) {
-	if o == nil || o.Country == nil {
+	if o == nil || IsNil(o.Country) {
 		return nil, false
 	}
 	return o.Country, true
@@ -260,7 +263,7 @@ func (o *CellularIoTMetadata) GetCountryOk() (*string, bool) {
 
 // HasCountry returns a boolean if a field has been set.
 func (o *CellularIoTMetadata) HasCountry() bool {
-	if o != nil && o.Country != nil {
+	if o != nil && !IsNil(o.Country) {
 		return true
 	}
 
@@ -274,7 +277,7 @@ func (o *CellularIoTMetadata) SetCountry(v string) {
 
 // GetNetwork returns the Network field value if set, zero value otherwise.
 func (o *CellularIoTMetadata) GetNetwork() string {
-	if o == nil || o.Network == nil {
+	if o == nil || IsNil(o.Network) {
 		var ret string
 		return ret
 	}
@@ -284,7 +287,7 @@ func (o *CellularIoTMetadata) GetNetwork() string {
 // GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CellularIoTMetadata) GetNetworkOk() (*string, bool) {
-	if o == nil || o.Network == nil {
+	if o == nil || IsNil(o.Network) {
 		return nil, false
 	}
 	return o.Network, true
@@ -292,7 +295,7 @@ func (o *CellularIoTMetadata) GetNetworkOk() (*string, bool) {
 
 // HasNetwork returns a boolean if a field has been set.
 func (o *CellularIoTMetadata) HasNetwork() bool {
-	if o != nil && o.Network != nil {
+	if o != nil && !IsNil(o.Network) {
 		return true
 	}
 
@@ -306,7 +309,7 @@ func (o *CellularIoTMetadata) SetNetwork(v string) {
 
 // GetCountryCode returns the CountryCode field value if set, zero value otherwise.
 func (o *CellularIoTMetadata) GetCountryCode() string {
-	if o == nil || o.CountryCode == nil {
+	if o == nil || IsNil(o.CountryCode) {
 		var ret string
 		return ret
 	}
@@ -316,7 +319,7 @@ func (o *CellularIoTMetadata) GetCountryCode() string {
 // GetCountryCodeOk returns a tuple with the CountryCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CellularIoTMetadata) GetCountryCodeOk() (*string, bool) {
-	if o == nil || o.CountryCode == nil {
+	if o == nil || IsNil(o.CountryCode) {
 		return nil, false
 	}
 	return o.CountryCode, true
@@ -324,7 +327,7 @@ func (o *CellularIoTMetadata) GetCountryCodeOk() (*string, bool) {
 
 // HasCountryCode returns a boolean if a field has been set.
 func (o *CellularIoTMetadata) HasCountryCode() bool {
-	if o != nil && o.CountryCode != nil {
+	if o != nil && !IsNil(o.CountryCode) {
 		return true
 	}
 
@@ -338,7 +341,7 @@ func (o *CellularIoTMetadata) SetCountryCode(v string) {
 
 // GetLastUpdate returns the LastUpdate field value if set, zero value otherwise.
 func (o *CellularIoTMetadata) GetLastUpdate() string {
-	if o == nil || o.LastUpdate == nil {
+	if o == nil || IsNil(o.LastUpdate) {
 		var ret string
 		return ret
 	}
@@ -348,7 +351,7 @@ func (o *CellularIoTMetadata) GetLastUpdate() string {
 // GetLastUpdateOk returns a tuple with the LastUpdate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CellularIoTMetadata) GetLastUpdateOk() (*string, bool) {
-	if o == nil || o.LastUpdate == nil {
+	if o == nil || IsNil(o.LastUpdate) {
 		return nil, false
 	}
 	return o.LastUpdate, true
@@ -356,7 +359,7 @@ func (o *CellularIoTMetadata) GetLastUpdateOk() (*string, bool) {
 
 // HasLastUpdate returns a boolean if a field has been set.
 func (o *CellularIoTMetadata) HasLastUpdate() bool {
-	if o != nil && o.LastUpdate != nil {
+	if o != nil && !IsNil(o.LastUpdate) {
 		return true
 	}
 
@@ -369,38 +372,46 @@ func (o *CellularIoTMetadata) SetLastUpdate(v string) {
 }
 
 func (o CellularIoTMetadata) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.GatewayId != nil {
-		toSerialize["gatewayId"] = o.GatewayId
-	}
-	if o.AllocatedIp != nil {
-		toSerialize["allocatedIp"] = o.AllocatedIp
-	}
-	if o.AllocatedAt != nil {
-		toSerialize["allocatedAt"] = o.AllocatedAt
-	}
-	if o.CellId != nil {
-		toSerialize["cellId"] = o.CellId
-	}
-	if o.Mcc != nil {
-		toSerialize["mcc"] = o.Mcc
-	}
-	if o.Mnc != nil {
-		toSerialize["mnc"] = o.Mnc
-	}
-	if o.Country != nil {
-		toSerialize["country"] = o.Country
-	}
-	if o.Network != nil {
-		toSerialize["network"] = o.Network
-	}
-	if o.CountryCode != nil {
-		toSerialize["countryCode"] = o.CountryCode
-	}
-	if o.LastUpdate != nil {
-		toSerialize["lastUpdate"] = o.LastUpdate
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CellularIoTMetadata) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.GatewayId) {
+		toSerialize["gatewayId"] = o.GatewayId
+	}
+	if !IsNil(o.AllocatedIp) {
+		toSerialize["allocatedIp"] = o.AllocatedIp
+	}
+	if !IsNil(o.AllocatedAt) {
+		toSerialize["allocatedAt"] = o.AllocatedAt
+	}
+	if !IsNil(o.CellId) {
+		toSerialize["cellId"] = o.CellId
+	}
+	if !IsNil(o.Mcc) {
+		toSerialize["mcc"] = o.Mcc
+	}
+	if !IsNil(o.Mnc) {
+		toSerialize["mnc"] = o.Mnc
+	}
+	if !IsNil(o.Country) {
+		toSerialize["country"] = o.Country
+	}
+	if !IsNil(o.Network) {
+		toSerialize["network"] = o.Network
+	}
+	if !IsNil(o.CountryCode) {
+		toSerialize["countryCode"] = o.CountryCode
+	}
+	if !IsNil(o.LastUpdate) {
+		toSerialize["lastUpdate"] = o.LastUpdate
+	}
+	return toSerialize, nil
 }
 
 type NullableCellularIoTMetadata struct {

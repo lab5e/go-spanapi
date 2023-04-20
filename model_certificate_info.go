@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the CertificateInfo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CertificateInfo{}
 
 // CertificateInfo Certificate information
 type CertificateInfo struct {
@@ -40,7 +43,7 @@ func NewCertificateInfoWithDefaults() *CertificateInfo {
 
 // GetCertificateSerial returns the CertificateSerial field value if set, zero value otherwise.
 func (o *CertificateInfo) GetCertificateSerial() string {
-	if o == nil || o.CertificateSerial == nil {
+	if o == nil || IsNil(o.CertificateSerial) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *CertificateInfo) GetCertificateSerial() string {
 // GetCertificateSerialOk returns a tuple with the CertificateSerial field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateInfo) GetCertificateSerialOk() (*string, bool) {
-	if o == nil || o.CertificateSerial == nil {
+	if o == nil || IsNil(o.CertificateSerial) {
 		return nil, false
 	}
 	return o.CertificateSerial, true
@@ -58,7 +61,7 @@ func (o *CertificateInfo) GetCertificateSerialOk() (*string, bool) {
 
 // HasCertificateSerial returns a boolean if a field has been set.
 func (o *CertificateInfo) HasCertificateSerial() bool {
-	if o != nil && o.CertificateSerial != nil {
+	if o != nil && !IsNil(o.CertificateSerial) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *CertificateInfo) SetCertificateSerial(v string) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
 func (o *CertificateInfo) GetExpires() string {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *CertificateInfo) GetExpires() string {
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateInfo) GetExpiresOk() (*string, bool) {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		return nil, false
 	}
 	return o.Expires, true
@@ -90,7 +93,7 @@ func (o *CertificateInfo) GetExpiresOk() (*string, bool) {
 
 // HasExpires returns a boolean if a field has been set.
 func (o *CertificateInfo) HasExpires() bool {
-	if o != nil && o.Expires != nil {
+	if o != nil && !IsNil(o.Expires) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *CertificateInfo) SetExpires(v string) {
 }
 
 func (o CertificateInfo) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CertificateSerial != nil {
-		toSerialize["certificateSerial"] = o.CertificateSerial
-	}
-	if o.Expires != nil {
-		toSerialize["expires"] = o.Expires
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CertificateInfo) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CertificateSerial) {
+		toSerialize["certificateSerial"] = o.CertificateSerial
+	}
+	if !IsNil(o.Expires) {
+		toSerialize["expires"] = o.Expires
+	}
+	return toSerialize, nil
 }
 
 type NullableCertificateInfo struct {

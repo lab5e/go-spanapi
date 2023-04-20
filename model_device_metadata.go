@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the DeviceMetadata type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceMetadata{}
 
 // DeviceMetadata This is the metadata for devices.
 type DeviceMetadata struct {
@@ -41,7 +44,7 @@ func NewDeviceMetadataWithDefaults() *DeviceMetadata {
 
 // GetCiot returns the Ciot field value if set, zero value otherwise.
 func (o *DeviceMetadata) GetCiot() CellularIoTMetadata {
-	if o == nil || o.Ciot == nil {
+	if o == nil || IsNil(o.Ciot) {
 		var ret CellularIoTMetadata
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *DeviceMetadata) GetCiot() CellularIoTMetadata {
 // GetCiotOk returns a tuple with the Ciot field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceMetadata) GetCiotOk() (*CellularIoTMetadata, bool) {
-	if o == nil || o.Ciot == nil {
+	if o == nil || IsNil(o.Ciot) {
 		return nil, false
 	}
 	return o.Ciot, true
@@ -59,7 +62,7 @@ func (o *DeviceMetadata) GetCiotOk() (*CellularIoTMetadata, bool) {
 
 // HasCiot returns a boolean if a field has been set.
 func (o *DeviceMetadata) HasCiot() bool {
-	if o != nil && o.Ciot != nil {
+	if o != nil && !IsNil(o.Ciot) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *DeviceMetadata) SetCiot(v CellularIoTMetadata) {
 
 // GetInet returns the Inet field value if set, zero value otherwise.
 func (o *DeviceMetadata) GetInet() InetMetadata {
-	if o == nil || o.Inet == nil {
+	if o == nil || IsNil(o.Inet) {
 		var ret InetMetadata
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *DeviceMetadata) GetInet() InetMetadata {
 // GetInetOk returns a tuple with the Inet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceMetadata) GetInetOk() (*InetMetadata, bool) {
-	if o == nil || o.Inet == nil {
+	if o == nil || IsNil(o.Inet) {
 		return nil, false
 	}
 	return o.Inet, true
@@ -91,7 +94,7 @@ func (o *DeviceMetadata) GetInetOk() (*InetMetadata, bool) {
 
 // HasInet returns a boolean if a field has been set.
 func (o *DeviceMetadata) HasInet() bool {
-	if o != nil && o.Inet != nil {
+	if o != nil && !IsNil(o.Inet) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *DeviceMetadata) SetInet(v InetMetadata) {
 
 // GetGateway returns the Gateway field value if set, zero value otherwise.
 func (o *DeviceMetadata) GetGateway() GatewayDeviceMetadata {
-	if o == nil || o.Gateway == nil {
+	if o == nil || IsNil(o.Gateway) {
 		var ret GatewayDeviceMetadata
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *DeviceMetadata) GetGateway() GatewayDeviceMetadata {
 // GetGatewayOk returns a tuple with the Gateway field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceMetadata) GetGatewayOk() (*GatewayDeviceMetadata, bool) {
-	if o == nil || o.Gateway == nil {
+	if o == nil || IsNil(o.Gateway) {
 		return nil, false
 	}
 	return o.Gateway, true
@@ -123,7 +126,7 @@ func (o *DeviceMetadata) GetGatewayOk() (*GatewayDeviceMetadata, bool) {
 
 // HasGateway returns a boolean if a field has been set.
 func (o *DeviceMetadata) HasGateway() bool {
-	if o != nil && o.Gateway != nil {
+	if o != nil && !IsNil(o.Gateway) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *DeviceMetadata) SetGateway(v GatewayDeviceMetadata) {
 }
 
 func (o DeviceMetadata) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Ciot != nil {
-		toSerialize["ciot"] = o.Ciot
-	}
-	if o.Inet != nil {
-		toSerialize["inet"] = o.Inet
-	}
-	if o.Gateway != nil {
-		toSerialize["gateway"] = o.Gateway
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceMetadata) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Ciot) {
+		toSerialize["ciot"] = o.Ciot
+	}
+	if !IsNil(o.Inet) {
+		toSerialize["inet"] = o.Inet
+	}
+	if !IsNil(o.Gateway) {
+		toSerialize["gateway"] = o.Gateway
+	}
+	return toSerialize, nil
 }
 
 type NullableDeviceMetadata struct {

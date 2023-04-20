@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the CoAPMetadata type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CoAPMetadata{}
 
 // CoAPMetadata CoAP metadata for messages received through one of the CoAP endpoints
 type CoAPMetadata struct {
@@ -40,7 +43,7 @@ func NewCoAPMetadataWithDefaults() *CoAPMetadata {
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *CoAPMetadata) GetCode() string {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *CoAPMetadata) GetCode() string {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CoAPMetadata) GetCodeOk() (*string, bool) {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		return nil, false
 	}
 	return o.Code, true
@@ -58,7 +61,7 @@ func (o *CoAPMetadata) GetCodeOk() (*string, bool) {
 
 // HasCode returns a boolean if a field has been set.
 func (o *CoAPMetadata) HasCode() bool {
-	if o != nil && o.Code != nil {
+	if o != nil && !IsNil(o.Code) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *CoAPMetadata) SetCode(v string) {
 
 // GetPath returns the Path field value if set, zero value otherwise.
 func (o *CoAPMetadata) GetPath() string {
-	if o == nil || o.Path == nil {
+	if o == nil || IsNil(o.Path) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *CoAPMetadata) GetPath() string {
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CoAPMetadata) GetPathOk() (*string, bool) {
-	if o == nil || o.Path == nil {
+	if o == nil || IsNil(o.Path) {
 		return nil, false
 	}
 	return o.Path, true
@@ -90,7 +93,7 @@ func (o *CoAPMetadata) GetPathOk() (*string, bool) {
 
 // HasPath returns a boolean if a field has been set.
 func (o *CoAPMetadata) HasPath() bool {
-	if o != nil && o.Path != nil {
+	if o != nil && !IsNil(o.Path) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *CoAPMetadata) SetPath(v string) {
 }
 
 func (o CoAPMetadata) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Code != nil {
-		toSerialize["code"] = o.Code
-	}
-	if o.Path != nil {
-		toSerialize["path"] = o.Path
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CoAPMetadata) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Code) {
+		toSerialize["code"] = o.Code
+	}
+	if !IsNil(o.Path) {
+		toSerialize["path"] = o.Path
+	}
+	return toSerialize, nil
 }
 
 type NullableCoAPMetadata struct {

@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -15,8 +15,11 @@ import (
 	"encoding/json"
 )
 
-// InlineObject1 struct for InlineObject1
-type InlineObject1 struct {
+// checks if the UpdateGatewayRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdateGatewayRequest{}
+
+// UpdateGatewayRequest struct for UpdateGatewayRequest
+type UpdateGatewayRequest struct {
 	Name *string `json:"name,omitempty"`
 	CollectionId *string `json:"collectionId,omitempty"`
 	Type *GatewayType `json:"type,omitempty"`
@@ -24,30 +27,30 @@ type InlineObject1 struct {
 	Tags *map[string]string `json:"tags,omitempty"`
 }
 
-// NewInlineObject1 instantiates a new InlineObject1 object
+// NewUpdateGatewayRequest instantiates a new UpdateGatewayRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInlineObject1() *InlineObject1 {
-	this := InlineObject1{}
+func NewUpdateGatewayRequest() *UpdateGatewayRequest {
+	this := UpdateGatewayRequest{}
 	var type_ GatewayType = GATEWAYTYPE_UNKNOWN
 	this.Type = &type_
 	return &this
 }
 
-// NewInlineObject1WithDefaults instantiates a new InlineObject1 object
+// NewUpdateGatewayRequestWithDefaults instantiates a new UpdateGatewayRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewInlineObject1WithDefaults() *InlineObject1 {
-	this := InlineObject1{}
+func NewUpdateGatewayRequestWithDefaults() *UpdateGatewayRequest {
+	this := UpdateGatewayRequest{}
 	var type_ GatewayType = GATEWAYTYPE_UNKNOWN
 	this.Type = &type_
 	return &this
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *InlineObject1) GetName() string {
-	if o == nil || o.Name == nil {
+func (o *UpdateGatewayRequest) GetName() string {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -56,16 +59,16 @@ func (o *InlineObject1) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineObject1) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+func (o *UpdateGatewayRequest) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *InlineObject1) HasName() bool {
-	if o != nil && o.Name != nil {
+func (o *UpdateGatewayRequest) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -73,13 +76,13 @@ func (o *InlineObject1) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *InlineObject1) SetName(v string) {
+func (o *UpdateGatewayRequest) SetName(v string) {
 	o.Name = &v
 }
 
 // GetCollectionId returns the CollectionId field value if set, zero value otherwise.
-func (o *InlineObject1) GetCollectionId() string {
-	if o == nil || o.CollectionId == nil {
+func (o *UpdateGatewayRequest) GetCollectionId() string {
+	if o == nil || IsNil(o.CollectionId) {
 		var ret string
 		return ret
 	}
@@ -88,16 +91,16 @@ func (o *InlineObject1) GetCollectionId() string {
 
 // GetCollectionIdOk returns a tuple with the CollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineObject1) GetCollectionIdOk() (*string, bool) {
-	if o == nil || o.CollectionId == nil {
+func (o *UpdateGatewayRequest) GetCollectionIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CollectionId) {
 		return nil, false
 	}
 	return o.CollectionId, true
 }
 
 // HasCollectionId returns a boolean if a field has been set.
-func (o *InlineObject1) HasCollectionId() bool {
-	if o != nil && o.CollectionId != nil {
+func (o *UpdateGatewayRequest) HasCollectionId() bool {
+	if o != nil && !IsNil(o.CollectionId) {
 		return true
 	}
 
@@ -105,13 +108,13 @@ func (o *InlineObject1) HasCollectionId() bool {
 }
 
 // SetCollectionId gets a reference to the given string and assigns it to the CollectionId field.
-func (o *InlineObject1) SetCollectionId(v string) {
+func (o *UpdateGatewayRequest) SetCollectionId(v string) {
 	o.CollectionId = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *InlineObject1) GetType() GatewayType {
-	if o == nil || o.Type == nil {
+func (o *UpdateGatewayRequest) GetType() GatewayType {
+	if o == nil || IsNil(o.Type) {
 		var ret GatewayType
 		return ret
 	}
@@ -120,16 +123,16 @@ func (o *InlineObject1) GetType() GatewayType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineObject1) GetTypeOk() (*GatewayType, bool) {
-	if o == nil || o.Type == nil {
+func (o *UpdateGatewayRequest) GetTypeOk() (*GatewayType, bool) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *InlineObject1) HasType() bool {
-	if o != nil && o.Type != nil {
+func (o *UpdateGatewayRequest) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -137,13 +140,13 @@ func (o *InlineObject1) HasType() bool {
 }
 
 // SetType gets a reference to the given GatewayType and assigns it to the Type field.
-func (o *InlineObject1) SetType(v GatewayType) {
+func (o *UpdateGatewayRequest) SetType(v GatewayType) {
 	o.Type = &v
 }
 
 // GetConfig returns the Config field value if set, zero value otherwise.
-func (o *InlineObject1) GetConfig() GatewayConfig {
-	if o == nil || o.Config == nil {
+func (o *UpdateGatewayRequest) GetConfig() GatewayConfig {
+	if o == nil || IsNil(o.Config) {
 		var ret GatewayConfig
 		return ret
 	}
@@ -152,16 +155,16 @@ func (o *InlineObject1) GetConfig() GatewayConfig {
 
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineObject1) GetConfigOk() (*GatewayConfig, bool) {
-	if o == nil || o.Config == nil {
+func (o *UpdateGatewayRequest) GetConfigOk() (*GatewayConfig, bool) {
+	if o == nil || IsNil(o.Config) {
 		return nil, false
 	}
 	return o.Config, true
 }
 
 // HasConfig returns a boolean if a field has been set.
-func (o *InlineObject1) HasConfig() bool {
-	if o != nil && o.Config != nil {
+func (o *UpdateGatewayRequest) HasConfig() bool {
+	if o != nil && !IsNil(o.Config) {
 		return true
 	}
 
@@ -169,13 +172,13 @@ func (o *InlineObject1) HasConfig() bool {
 }
 
 // SetConfig gets a reference to the given GatewayConfig and assigns it to the Config field.
-func (o *InlineObject1) SetConfig(v GatewayConfig) {
+func (o *UpdateGatewayRequest) SetConfig(v GatewayConfig) {
 	o.Config = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
-func (o *InlineObject1) GetTags() map[string]string {
-	if o == nil || o.Tags == nil {
+func (o *UpdateGatewayRequest) GetTags() map[string]string {
+	if o == nil || IsNil(o.Tags) {
 		var ret map[string]string
 		return ret
 	}
@@ -184,16 +187,16 @@ func (o *InlineObject1) GetTags() map[string]string {
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineObject1) GetTagsOk() (*map[string]string, bool) {
-	if o == nil || o.Tags == nil {
+func (o *UpdateGatewayRequest) GetTagsOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
 	return o.Tags, true
 }
 
 // HasTags returns a boolean if a field has been set.
-func (o *InlineObject1) HasTags() bool {
-	if o != nil && o.Tags != nil {
+func (o *UpdateGatewayRequest) HasTags() bool {
+	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
 
@@ -201,62 +204,70 @@ func (o *InlineObject1) HasTags() bool {
 }
 
 // SetTags gets a reference to the given map[string]string and assigns it to the Tags field.
-func (o *InlineObject1) SetTags(v map[string]string) {
+func (o *UpdateGatewayRequest) SetTags(v map[string]string) {
 	o.Tags = &v
 }
 
-func (o InlineObject1) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.CollectionId != nil {
-		toSerialize["collectionId"] = o.CollectionId
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if o.Config != nil {
-		toSerialize["config"] = o.Config
-	}
-	if o.Tags != nil {
-		toSerialize["tags"] = o.Tags
+func (o UpdateGatewayRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableInlineObject1 struct {
-	value *InlineObject1
+func (o UpdateGatewayRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.CollectionId) {
+		toSerialize["collectionId"] = o.CollectionId
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Config) {
+		toSerialize["config"] = o.Config
+	}
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
+	}
+	return toSerialize, nil
+}
+
+type NullableUpdateGatewayRequest struct {
+	value *UpdateGatewayRequest
 	isSet bool
 }
 
-func (v NullableInlineObject1) Get() *InlineObject1 {
+func (v NullableUpdateGatewayRequest) Get() *UpdateGatewayRequest {
 	return v.value
 }
 
-func (v *NullableInlineObject1) Set(val *InlineObject1) {
+func (v *NullableUpdateGatewayRequest) Set(val *UpdateGatewayRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableInlineObject1) IsSet() bool {
+func (v NullableUpdateGatewayRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableInlineObject1) Unset() {
+func (v *NullableUpdateGatewayRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableInlineObject1(val *InlineObject1) *NullableInlineObject1 {
-	return &NullableInlineObject1{value: val, isSet: true}
+func NewNullableUpdateGatewayRequest(val *UpdateGatewayRequest) *NullableUpdateGatewayRequest {
+	return &NullableUpdateGatewayRequest{value: val, isSet: true}
 }
 
-func (v NullableInlineObject1) MarshalJSON() ([]byte, error) {
+func (v NullableUpdateGatewayRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableInlineObject1) UnmarshalJSON(src []byte) error {
+func (v *NullableUpdateGatewayRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

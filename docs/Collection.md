@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **TeamId** | Pointer to **string** | The team ID that owns the collection. This field is required. When you create new collections the default is to use your private team ID. | [optional] 
 **Firmware** | Pointer to [**CollectionFirmware**](CollectionFirmware.md) |  | [optional] 
 **Tags** | Pointer to **map[string]string** | Tags for the collection. Tags are metadata fields that you can assign to the collection. | [optional] 
+**UpstreamTimestamps** | Pointer to **[]string** |  | [optional] 
+**DownstreamTimestamps** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -127,6 +129,56 @@ SetTags sets Tags field to given value.
 `func (o *Collection) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### GetUpstreamTimestamps
+
+`func (o *Collection) GetUpstreamTimestamps() []string`
+
+GetUpstreamTimestamps returns the UpstreamTimestamps field if non-nil, zero value otherwise.
+
+### GetUpstreamTimestampsOk
+
+`func (o *Collection) GetUpstreamTimestampsOk() (*[]string, bool)`
+
+GetUpstreamTimestampsOk returns a tuple with the UpstreamTimestamps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpstreamTimestamps
+
+`func (o *Collection) SetUpstreamTimestamps(v []string)`
+
+SetUpstreamTimestamps sets UpstreamTimestamps field to given value.
+
+### HasUpstreamTimestamps
+
+`func (o *Collection) HasUpstreamTimestamps() bool`
+
+HasUpstreamTimestamps returns a boolean if a field has been set.
+
+### GetDownstreamTimestamps
+
+`func (o *Collection) GetDownstreamTimestamps() []string`
+
+GetDownstreamTimestamps returns the DownstreamTimestamps field if non-nil, zero value otherwise.
+
+### GetDownstreamTimestampsOk
+
+`func (o *Collection) GetDownstreamTimestampsOk() (*[]string, bool)`
+
+GetDownstreamTimestampsOk returns a tuple with the DownstreamTimestamps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDownstreamTimestamps
+
+`func (o *Collection) SetDownstreamTimestamps(v []string)`
+
+SetDownstreamTimestamps sets DownstreamTimestamps field to given value.
+
+### HasDownstreamTimestamps
+
+`func (o *Collection) HasDownstreamTimestamps() bool`
+
+HasDownstreamTimestamps returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

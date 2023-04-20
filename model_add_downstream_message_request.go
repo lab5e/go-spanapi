@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the AddDownstreamMessageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AddDownstreamMessageRequest{}
 
 // AddDownstreamMessageRequest This is the request object to send messages out to the devices
 type AddDownstreamMessageRequest struct {
@@ -39,7 +42,7 @@ func NewAddDownstreamMessageRequestWithDefaults() *AddDownstreamMessageRequest {
 
 // GetPayload returns the Payload field value if set, zero value otherwise.
 func (o *AddDownstreamMessageRequest) GetPayload() string {
-	if o == nil || o.Payload == nil {
+	if o == nil || IsNil(o.Payload) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *AddDownstreamMessageRequest) GetPayload() string {
 // GetPayloadOk returns a tuple with the Payload field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AddDownstreamMessageRequest) GetPayloadOk() (*string, bool) {
-	if o == nil || o.Payload == nil {
+	if o == nil || IsNil(o.Payload) {
 		return nil, false
 	}
 	return o.Payload, true
@@ -57,7 +60,7 @@ func (o *AddDownstreamMessageRequest) GetPayloadOk() (*string, bool) {
 
 // HasPayload returns a boolean if a field has been set.
 func (o *AddDownstreamMessageRequest) HasPayload() bool {
-	if o != nil && o.Payload != nil {
+	if o != nil && !IsNil(o.Payload) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *AddDownstreamMessageRequest) SetPayload(v string) {
 }
 
 func (o AddDownstreamMessageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Payload != nil {
-		toSerialize["payload"] = o.Payload
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AddDownstreamMessageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Payload) {
+		toSerialize["payload"] = o.Payload
+	}
+	return toSerialize, nil
 }
 
 type NullableAddDownstreamMessageRequest struct {

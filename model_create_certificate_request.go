@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the CreateCertificateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateCertificateRequest{}
 
 // CreateCertificateRequest Request object to create a new certificate.
 type CreateCertificateRequest struct {
@@ -40,7 +43,7 @@ func NewCreateCertificateRequestWithDefaults() *CreateCertificateRequest {
 
 // GetGatewayId returns the GatewayId field value if set, zero value otherwise.
 func (o *CreateCertificateRequest) GetGatewayId() string {
-	if o == nil || o.GatewayId == nil {
+	if o == nil || IsNil(o.GatewayId) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *CreateCertificateRequest) GetGatewayId() string {
 // GetGatewayIdOk returns a tuple with the GatewayId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateCertificateRequest) GetGatewayIdOk() (*string, bool) {
-	if o == nil || o.GatewayId == nil {
+	if o == nil || IsNil(o.GatewayId) {
 		return nil, false
 	}
 	return o.GatewayId, true
@@ -58,7 +61,7 @@ func (o *CreateCertificateRequest) GetGatewayIdOk() (*string, bool) {
 
 // HasGatewayId returns a boolean if a field has been set.
 func (o *CreateCertificateRequest) HasGatewayId() bool {
-	if o != nil && o.GatewayId != nil {
+	if o != nil && !IsNil(o.GatewayId) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *CreateCertificateRequest) SetGatewayId(v string) {
 
 // GetDeviceId returns the DeviceId field value if set, zero value otherwise.
 func (o *CreateCertificateRequest) GetDeviceId() string {
-	if o == nil || o.DeviceId == nil {
+	if o == nil || IsNil(o.DeviceId) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *CreateCertificateRequest) GetDeviceId() string {
 // GetDeviceIdOk returns a tuple with the DeviceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateCertificateRequest) GetDeviceIdOk() (*string, bool) {
-	if o == nil || o.DeviceId == nil {
+	if o == nil || IsNil(o.DeviceId) {
 		return nil, false
 	}
 	return o.DeviceId, true
@@ -90,7 +93,7 @@ func (o *CreateCertificateRequest) GetDeviceIdOk() (*string, bool) {
 
 // HasDeviceId returns a boolean if a field has been set.
 func (o *CreateCertificateRequest) HasDeviceId() bool {
-	if o != nil && o.DeviceId != nil {
+	if o != nil && !IsNil(o.DeviceId) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *CreateCertificateRequest) SetDeviceId(v string) {
 }
 
 func (o CreateCertificateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.GatewayId != nil {
-		toSerialize["gatewayId"] = o.GatewayId
-	}
-	if o.DeviceId != nil {
-		toSerialize["deviceId"] = o.DeviceId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CreateCertificateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.GatewayId) {
+		toSerialize["gatewayId"] = o.GatewayId
+	}
+	if !IsNil(o.DeviceId) {
+		toSerialize["deviceId"] = o.DeviceId
+	}
+	return toSerialize, nil
 }
 
 type NullableCreateCertificateRequest struct {

@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the DeviceConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceConfig{}
 
 // DeviceConfig This is the configuration for the device via the various gateways.
 type DeviceConfig struct {
@@ -42,7 +45,7 @@ func NewDeviceConfigWithDefaults() *DeviceConfig {
 
 // GetCiot returns the Ciot field value if set, zero value otherwise.
 func (o *DeviceConfig) GetCiot() CellularIoTConfig {
-	if o == nil || o.Ciot == nil {
+	if o == nil || IsNil(o.Ciot) {
 		var ret CellularIoTConfig
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *DeviceConfig) GetCiot() CellularIoTConfig {
 // GetCiotOk returns a tuple with the Ciot field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceConfig) GetCiotOk() (*CellularIoTConfig, bool) {
-	if o == nil || o.Ciot == nil {
+	if o == nil || IsNil(o.Ciot) {
 		return nil, false
 	}
 	return o.Ciot, true
@@ -60,7 +63,7 @@ func (o *DeviceConfig) GetCiotOk() (*CellularIoTConfig, bool) {
 
 // HasCiot returns a boolean if a field has been set.
 func (o *DeviceConfig) HasCiot() bool {
-	if o != nil && o.Ciot != nil {
+	if o != nil && !IsNil(o.Ciot) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *DeviceConfig) SetCiot(v CellularIoTConfig) {
 
 // GetInet returns the Inet field value if set, zero value otherwise.
 func (o *DeviceConfig) GetInet() map[string]interface{} {
-	if o == nil || o.Inet == nil {
+	if o == nil || IsNil(o.Inet) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -84,15 +87,15 @@ func (o *DeviceConfig) GetInet() map[string]interface{} {
 // GetInetOk returns a tuple with the Inet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceConfig) GetInetOk() (map[string]interface{}, bool) {
-	if o == nil || o.Inet == nil {
-		return nil, false
+	if o == nil || IsNil(o.Inet) {
+		return map[string]interface{}{}, false
 	}
 	return o.Inet, true
 }
 
 // HasInet returns a boolean if a field has been set.
 func (o *DeviceConfig) HasInet() bool {
-	if o != nil && o.Inet != nil {
+	if o != nil && !IsNil(o.Inet) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *DeviceConfig) SetInet(v map[string]interface{}) {
 
 // GetGateway returns the Gateway field value if set, zero value otherwise.
 func (o *DeviceConfig) GetGateway() map[string]GatewayDeviceConfig {
-	if o == nil || o.Gateway == nil {
+	if o == nil || IsNil(o.Gateway) {
 		var ret map[string]GatewayDeviceConfig
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *DeviceConfig) GetGateway() map[string]GatewayDeviceConfig {
 // GetGatewayOk returns a tuple with the Gateway field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceConfig) GetGatewayOk() (*map[string]GatewayDeviceConfig, bool) {
-	if o == nil || o.Gateway == nil {
+	if o == nil || IsNil(o.Gateway) {
 		return nil, false
 	}
 	return o.Gateway, true
@@ -124,7 +127,7 @@ func (o *DeviceConfig) GetGatewayOk() (*map[string]GatewayDeviceConfig, bool) {
 
 // HasGateway returns a boolean if a field has been set.
 func (o *DeviceConfig) HasGateway() bool {
-	if o != nil && o.Gateway != nil {
+	if o != nil && !IsNil(o.Gateway) {
 		return true
 	}
 
@@ -137,17 +140,25 @@ func (o *DeviceConfig) SetGateway(v map[string]GatewayDeviceConfig) {
 }
 
 func (o DeviceConfig) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Ciot != nil {
-		toSerialize["ciot"] = o.Ciot
-	}
-	if o.Inet != nil {
-		toSerialize["inet"] = o.Inet
-	}
-	if o.Gateway != nil {
-		toSerialize["gateway"] = o.Gateway
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceConfig) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Ciot) {
+		toSerialize["ciot"] = o.Ciot
+	}
+	if !IsNil(o.Inet) {
+		toSerialize["inet"] = o.Inet
+	}
+	if !IsNil(o.Gateway) {
+		toSerialize["gateway"] = o.Gateway
+	}
+	return toSerialize, nil
 }
 
 type NullableDeviceConfig struct {

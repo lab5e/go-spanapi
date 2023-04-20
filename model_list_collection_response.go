@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the ListCollectionResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ListCollectionResponse{}
 
 // ListCollectionResponse Collection list. The list contains all the collections you have access to.
 type ListCollectionResponse struct {
@@ -39,7 +42,7 @@ func NewListCollectionResponseWithDefaults() *ListCollectionResponse {
 
 // GetCollections returns the Collections field value if set, zero value otherwise.
 func (o *ListCollectionResponse) GetCollections() []Collection {
-	if o == nil || o.Collections == nil {
+	if o == nil || IsNil(o.Collections) {
 		var ret []Collection
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ListCollectionResponse) GetCollections() []Collection {
 // GetCollectionsOk returns a tuple with the Collections field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListCollectionResponse) GetCollectionsOk() ([]Collection, bool) {
-	if o == nil || o.Collections == nil {
+	if o == nil || IsNil(o.Collections) {
 		return nil, false
 	}
 	return o.Collections, true
@@ -57,7 +60,7 @@ func (o *ListCollectionResponse) GetCollectionsOk() ([]Collection, bool) {
 
 // HasCollections returns a boolean if a field has been set.
 func (o *ListCollectionResponse) HasCollections() bool {
-	if o != nil && o.Collections != nil {
+	if o != nil && !IsNil(o.Collections) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ListCollectionResponse) SetCollections(v []Collection) {
 }
 
 func (o ListCollectionResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Collections != nil {
-		toSerialize["collections"] = o.Collections
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ListCollectionResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Collections) {
+		toSerialize["collections"] = o.Collections
+	}
+	return toSerialize, nil
 }
 
 type NullableListCollectionResponse struct {

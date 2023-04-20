@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the MessageUpstream type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MessageUpstream{}
 
 // MessageUpstream This is the messages sent from the device to the backend service
 type MessageUpstream struct {
@@ -49,7 +52,7 @@ func NewMessageUpstreamWithDefaults() *MessageUpstream {
 
 // GetMessageId returns the MessageId field value if set, zero value otherwise.
 func (o *MessageUpstream) GetMessageId() string {
-	if o == nil || o.MessageId == nil {
+	if o == nil || IsNil(o.MessageId) {
 		var ret string
 		return ret
 	}
@@ -59,7 +62,7 @@ func (o *MessageUpstream) GetMessageId() string {
 // GetMessageIdOk returns a tuple with the MessageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MessageUpstream) GetMessageIdOk() (*string, bool) {
-	if o == nil || o.MessageId == nil {
+	if o == nil || IsNil(o.MessageId) {
 		return nil, false
 	}
 	return o.MessageId, true
@@ -67,7 +70,7 @@ func (o *MessageUpstream) GetMessageIdOk() (*string, bool) {
 
 // HasMessageId returns a boolean if a field has been set.
 func (o *MessageUpstream) HasMessageId() bool {
-	if o != nil && o.MessageId != nil {
+	if o != nil && !IsNil(o.MessageId) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *MessageUpstream) SetMessageId(v string) {
 
 // GetCollectionId returns the CollectionId field value if set, zero value otherwise.
 func (o *MessageUpstream) GetCollectionId() string {
-	if o == nil || o.CollectionId == nil {
+	if o == nil || IsNil(o.CollectionId) {
 		var ret string
 		return ret
 	}
@@ -91,7 +94,7 @@ func (o *MessageUpstream) GetCollectionId() string {
 // GetCollectionIdOk returns a tuple with the CollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MessageUpstream) GetCollectionIdOk() (*string, bool) {
-	if o == nil || o.CollectionId == nil {
+	if o == nil || IsNil(o.CollectionId) {
 		return nil, false
 	}
 	return o.CollectionId, true
@@ -99,7 +102,7 @@ func (o *MessageUpstream) GetCollectionIdOk() (*string, bool) {
 
 // HasCollectionId returns a boolean if a field has been set.
 func (o *MessageUpstream) HasCollectionId() bool {
-	if o != nil && o.CollectionId != nil {
+	if o != nil && !IsNil(o.CollectionId) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *MessageUpstream) SetCollectionId(v string) {
 
 // GetDeviceId returns the DeviceId field value if set, zero value otherwise.
 func (o *MessageUpstream) GetDeviceId() string {
-	if o == nil || o.DeviceId == nil {
+	if o == nil || IsNil(o.DeviceId) {
 		var ret string
 		return ret
 	}
@@ -123,7 +126,7 @@ func (o *MessageUpstream) GetDeviceId() string {
 // GetDeviceIdOk returns a tuple with the DeviceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MessageUpstream) GetDeviceIdOk() (*string, bool) {
-	if o == nil || o.DeviceId == nil {
+	if o == nil || IsNil(o.DeviceId) {
 		return nil, false
 	}
 	return o.DeviceId, true
@@ -131,7 +134,7 @@ func (o *MessageUpstream) GetDeviceIdOk() (*string, bool) {
 
 // HasDeviceId returns a boolean if a field has been set.
 func (o *MessageUpstream) HasDeviceId() bool {
-	if o != nil && o.DeviceId != nil {
+	if o != nil && !IsNil(o.DeviceId) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *MessageUpstream) SetDeviceId(v string) {
 
 // GetGatewayId returns the GatewayId field value if set, zero value otherwise.
 func (o *MessageUpstream) GetGatewayId() string {
-	if o == nil || o.GatewayId == nil {
+	if o == nil || IsNil(o.GatewayId) {
 		var ret string
 		return ret
 	}
@@ -155,7 +158,7 @@ func (o *MessageUpstream) GetGatewayId() string {
 // GetGatewayIdOk returns a tuple with the GatewayId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MessageUpstream) GetGatewayIdOk() (*string, bool) {
-	if o == nil || o.GatewayId == nil {
+	if o == nil || IsNil(o.GatewayId) {
 		return nil, false
 	}
 	return o.GatewayId, true
@@ -163,7 +166,7 @@ func (o *MessageUpstream) GetGatewayIdOk() (*string, bool) {
 
 // HasGatewayId returns a boolean if a field has been set.
 func (o *MessageUpstream) HasGatewayId() bool {
-	if o != nil && o.GatewayId != nil {
+	if o != nil && !IsNil(o.GatewayId) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *MessageUpstream) SetGatewayId(v string) {
 
 // GetTransport returns the Transport field value if set, zero value otherwise.
 func (o *MessageUpstream) GetTransport() MessageTransport {
-	if o == nil || o.Transport == nil {
+	if o == nil || IsNil(o.Transport) {
 		var ret MessageTransport
 		return ret
 	}
@@ -187,7 +190,7 @@ func (o *MessageUpstream) GetTransport() MessageTransport {
 // GetTransportOk returns a tuple with the Transport field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MessageUpstream) GetTransportOk() (*MessageTransport, bool) {
-	if o == nil || o.Transport == nil {
+	if o == nil || IsNil(o.Transport) {
 		return nil, false
 	}
 	return o.Transport, true
@@ -195,7 +198,7 @@ func (o *MessageUpstream) GetTransportOk() (*MessageTransport, bool) {
 
 // HasTransport returns a boolean if a field has been set.
 func (o *MessageUpstream) HasTransport() bool {
-	if o != nil && o.Transport != nil {
+	if o != nil && !IsNil(o.Transport) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *MessageUpstream) SetTransport(v MessageTransport) {
 
 // GetReceived returns the Received field value if set, zero value otherwise.
 func (o *MessageUpstream) GetReceived() string {
-	if o == nil || o.Received == nil {
+	if o == nil || IsNil(o.Received) {
 		var ret string
 		return ret
 	}
@@ -219,7 +222,7 @@ func (o *MessageUpstream) GetReceived() string {
 // GetReceivedOk returns a tuple with the Received field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MessageUpstream) GetReceivedOk() (*string, bool) {
-	if o == nil || o.Received == nil {
+	if o == nil || IsNil(o.Received) {
 		return nil, false
 	}
 	return o.Received, true
@@ -227,7 +230,7 @@ func (o *MessageUpstream) GetReceivedOk() (*string, bool) {
 
 // HasReceived returns a boolean if a field has been set.
 func (o *MessageUpstream) HasReceived() bool {
-	if o != nil && o.Received != nil {
+	if o != nil && !IsNil(o.Received) {
 		return true
 	}
 
@@ -241,7 +244,7 @@ func (o *MessageUpstream) SetReceived(v string) {
 
 // GetPayload returns the Payload field value if set, zero value otherwise.
 func (o *MessageUpstream) GetPayload() string {
-	if o == nil || o.Payload == nil {
+	if o == nil || IsNil(o.Payload) {
 		var ret string
 		return ret
 	}
@@ -251,7 +254,7 @@ func (o *MessageUpstream) GetPayload() string {
 // GetPayloadOk returns a tuple with the Payload field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MessageUpstream) GetPayloadOk() (*string, bool) {
-	if o == nil || o.Payload == nil {
+	if o == nil || IsNil(o.Payload) {
 		return nil, false
 	}
 	return o.Payload, true
@@ -259,7 +262,7 @@ func (o *MessageUpstream) GetPayloadOk() (*string, bool) {
 
 // HasPayload returns a boolean if a field has been set.
 func (o *MessageUpstream) HasPayload() bool {
-	if o != nil && o.Payload != nil {
+	if o != nil && !IsNil(o.Payload) {
 		return true
 	}
 
@@ -272,29 +275,37 @@ func (o *MessageUpstream) SetPayload(v string) {
 }
 
 func (o MessageUpstream) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.MessageId != nil {
-		toSerialize["messageId"] = o.MessageId
-	}
-	if o.CollectionId != nil {
-		toSerialize["collectionId"] = o.CollectionId
-	}
-	if o.DeviceId != nil {
-		toSerialize["deviceId"] = o.DeviceId
-	}
-	if o.GatewayId != nil {
-		toSerialize["gatewayId"] = o.GatewayId
-	}
-	if o.Transport != nil {
-		toSerialize["transport"] = o.Transport
-	}
-	if o.Received != nil {
-		toSerialize["received"] = o.Received
-	}
-	if o.Payload != nil {
-		toSerialize["payload"] = o.Payload
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MessageUpstream) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.MessageId) {
+		toSerialize["messageId"] = o.MessageId
+	}
+	if !IsNil(o.CollectionId) {
+		toSerialize["collectionId"] = o.CollectionId
+	}
+	if !IsNil(o.DeviceId) {
+		toSerialize["deviceId"] = o.DeviceId
+	}
+	if !IsNil(o.GatewayId) {
+		toSerialize["gatewayId"] = o.GatewayId
+	}
+	if !IsNil(o.Transport) {
+		toSerialize["transport"] = o.Transport
+	}
+	if !IsNil(o.Received) {
+		toSerialize["received"] = o.Received
+	}
+	if !IsNil(o.Payload) {
+		toSerialize["payload"] = o.Payload
+	}
+	return toSerialize, nil
 }
 
 type NullableMessageUpstream struct {

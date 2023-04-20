@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the GatewayCIoTConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GatewayCIoTConfig{}
 
 // GatewayCIoTConfig struct for GatewayCIoTConfig
 type GatewayCIoTConfig struct {
@@ -41,7 +44,7 @@ func NewGatewayCIoTConfigWithDefaults() *GatewayCIoTConfig {
 
 // GetApn returns the Apn field value if set, zero value otherwise.
 func (o *GatewayCIoTConfig) GetApn() string {
-	if o == nil || o.Apn == nil {
+	if o == nil || IsNil(o.Apn) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *GatewayCIoTConfig) GetApn() string {
 // GetApnOk returns a tuple with the Apn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCIoTConfig) GetApnOk() (*string, bool) {
-	if o == nil || o.Apn == nil {
+	if o == nil || IsNil(o.Apn) {
 		return nil, false
 	}
 	return o.Apn, true
@@ -59,7 +62,7 @@ func (o *GatewayCIoTConfig) GetApnOk() (*string, bool) {
 
 // HasApn returns a boolean if a field has been set.
 func (o *GatewayCIoTConfig) HasApn() bool {
-	if o != nil && o.Apn != nil {
+	if o != nil && !IsNil(o.Apn) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *GatewayCIoTConfig) SetApn(v string) {
 
 // GetUdpEndpoint returns the UdpEndpoint field value if set, zero value otherwise.
 func (o *GatewayCIoTConfig) GetUdpEndpoint() string {
-	if o == nil || o.UdpEndpoint == nil {
+	if o == nil || IsNil(o.UdpEndpoint) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *GatewayCIoTConfig) GetUdpEndpoint() string {
 // GetUdpEndpointOk returns a tuple with the UdpEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCIoTConfig) GetUdpEndpointOk() (*string, bool) {
-	if o == nil || o.UdpEndpoint == nil {
+	if o == nil || IsNil(o.UdpEndpoint) {
 		return nil, false
 	}
 	return o.UdpEndpoint, true
@@ -91,7 +94,7 @@ func (o *GatewayCIoTConfig) GetUdpEndpointOk() (*string, bool) {
 
 // HasUdpEndpoint returns a boolean if a field has been set.
 func (o *GatewayCIoTConfig) HasUdpEndpoint() bool {
-	if o != nil && o.UdpEndpoint != nil {
+	if o != nil && !IsNil(o.UdpEndpoint) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *GatewayCIoTConfig) SetUdpEndpoint(v string) {
 
 // GetCoapEndpoint returns the CoapEndpoint field value if set, zero value otherwise.
 func (o *GatewayCIoTConfig) GetCoapEndpoint() string {
-	if o == nil || o.CoapEndpoint == nil {
+	if o == nil || IsNil(o.CoapEndpoint) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *GatewayCIoTConfig) GetCoapEndpoint() string {
 // GetCoapEndpointOk returns a tuple with the CoapEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCIoTConfig) GetCoapEndpointOk() (*string, bool) {
-	if o == nil || o.CoapEndpoint == nil {
+	if o == nil || IsNil(o.CoapEndpoint) {
 		return nil, false
 	}
 	return o.CoapEndpoint, true
@@ -123,7 +126,7 @@ func (o *GatewayCIoTConfig) GetCoapEndpointOk() (*string, bool) {
 
 // HasCoapEndpoint returns a boolean if a field has been set.
 func (o *GatewayCIoTConfig) HasCoapEndpoint() bool {
-	if o != nil && o.CoapEndpoint != nil {
+	if o != nil && !IsNil(o.CoapEndpoint) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *GatewayCIoTConfig) SetCoapEndpoint(v string) {
 }
 
 func (o GatewayCIoTConfig) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Apn != nil {
-		toSerialize["apn"] = o.Apn
-	}
-	if o.UdpEndpoint != nil {
-		toSerialize["udpEndpoint"] = o.UdpEndpoint
-	}
-	if o.CoapEndpoint != nil {
-		toSerialize["coapEndpoint"] = o.CoapEndpoint
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GatewayCIoTConfig) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Apn) {
+		toSerialize["apn"] = o.Apn
+	}
+	if !IsNil(o.UdpEndpoint) {
+		toSerialize["udpEndpoint"] = o.UdpEndpoint
+	}
+	if !IsNil(o.CoapEndpoint) {
+		toSerialize["coapEndpoint"] = o.CoapEndpoint
+	}
+	return toSerialize, nil
 }
 
 type NullableGatewayCIoTConfig struct {

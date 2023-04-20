@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the UpdateOutputRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdateOutputRequest{}
 
 // UpdateOutputRequest Request type to update outputs
 type UpdateOutputRequest struct {
@@ -47,7 +50,7 @@ func NewUpdateOutputRequestWithDefaults() *UpdateOutputRequest {
 
 // GetCollectionId returns the CollectionId field value if set, zero value otherwise.
 func (o *UpdateOutputRequest) GetCollectionId() string {
-	if o == nil || o.CollectionId == nil {
+	if o == nil || IsNil(o.CollectionId) {
 		var ret string
 		return ret
 	}
@@ -57,7 +60,7 @@ func (o *UpdateOutputRequest) GetCollectionId() string {
 // GetCollectionIdOk returns a tuple with the CollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateOutputRequest) GetCollectionIdOk() (*string, bool) {
-	if o == nil || o.CollectionId == nil {
+	if o == nil || IsNil(o.CollectionId) {
 		return nil, false
 	}
 	return o.CollectionId, true
@@ -65,7 +68,7 @@ func (o *UpdateOutputRequest) GetCollectionIdOk() (*string, bool) {
 
 // HasCollectionId returns a boolean if a field has been set.
 func (o *UpdateOutputRequest) HasCollectionId() bool {
-	if o != nil && o.CollectionId != nil {
+	if o != nil && !IsNil(o.CollectionId) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *UpdateOutputRequest) SetCollectionId(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *UpdateOutputRequest) GetType() OutputType {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret OutputType
 		return ret
 	}
@@ -89,7 +92,7 @@ func (o *UpdateOutputRequest) GetType() OutputType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateOutputRequest) GetTypeOk() (*OutputType, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -97,7 +100,7 @@ func (o *UpdateOutputRequest) GetTypeOk() (*OutputType, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *UpdateOutputRequest) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *UpdateOutputRequest) SetType(v OutputType) {
 
 // GetConfig returns the Config field value if set, zero value otherwise.
 func (o *UpdateOutputRequest) GetConfig() OutputConfig {
-	if o == nil || o.Config == nil {
+	if o == nil || IsNil(o.Config) {
 		var ret OutputConfig
 		return ret
 	}
@@ -121,7 +124,7 @@ func (o *UpdateOutputRequest) GetConfig() OutputConfig {
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateOutputRequest) GetConfigOk() (*OutputConfig, bool) {
-	if o == nil || o.Config == nil {
+	if o == nil || IsNil(o.Config) {
 		return nil, false
 	}
 	return o.Config, true
@@ -129,7 +132,7 @@ func (o *UpdateOutputRequest) GetConfigOk() (*OutputConfig, bool) {
 
 // HasConfig returns a boolean if a field has been set.
 func (o *UpdateOutputRequest) HasConfig() bool {
-	if o != nil && o.Config != nil {
+	if o != nil && !IsNil(o.Config) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *UpdateOutputRequest) SetConfig(v OutputConfig) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *UpdateOutputRequest) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -153,7 +156,7 @@ func (o *UpdateOutputRequest) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateOutputRequest) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -161,7 +164,7 @@ func (o *UpdateOutputRequest) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *UpdateOutputRequest) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *UpdateOutputRequest) SetEnabled(v bool) {
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *UpdateOutputRequest) GetTags() map[string]string {
-	if o == nil || o.Tags == nil {
+	if o == nil || IsNil(o.Tags) {
 		var ret map[string]string
 		return ret
 	}
@@ -185,7 +188,7 @@ func (o *UpdateOutputRequest) GetTags() map[string]string {
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateOutputRequest) GetTagsOk() (*map[string]string, bool) {
-	if o == nil || o.Tags == nil {
+	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
 	return o.Tags, true
@@ -193,7 +196,7 @@ func (o *UpdateOutputRequest) GetTagsOk() (*map[string]string, bool) {
 
 // HasTags returns a boolean if a field has been set.
 func (o *UpdateOutputRequest) HasTags() bool {
-	if o != nil && o.Tags != nil {
+	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
 
@@ -206,23 +209,31 @@ func (o *UpdateOutputRequest) SetTags(v map[string]string) {
 }
 
 func (o UpdateOutputRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CollectionId != nil {
-		toSerialize["collectionId"] = o.CollectionId
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if o.Config != nil {
-		toSerialize["config"] = o.Config
-	}
-	if o.Enabled != nil {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if o.Tags != nil {
-		toSerialize["tags"] = o.Tags
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UpdateOutputRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CollectionId) {
+		toSerialize["collectionId"] = o.CollectionId
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Config) {
+		toSerialize["config"] = o.Config
+	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
+	}
+	return toSerialize, nil
 }
 
 type NullableUpdateOutputRequest struct {

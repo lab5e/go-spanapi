@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the ListBlobResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ListBlobResponse{}
 
 // ListBlobResponse Response object when listing blobs for a collection
 type ListBlobResponse struct {
@@ -39,7 +42,7 @@ func NewListBlobResponseWithDefaults() *ListBlobResponse {
 
 // GetBlobs returns the Blobs field value if set, zero value otherwise.
 func (o *ListBlobResponse) GetBlobs() []Blob {
-	if o == nil || o.Blobs == nil {
+	if o == nil || IsNil(o.Blobs) {
 		var ret []Blob
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ListBlobResponse) GetBlobs() []Blob {
 // GetBlobsOk returns a tuple with the Blobs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListBlobResponse) GetBlobsOk() ([]Blob, bool) {
-	if o == nil || o.Blobs == nil {
+	if o == nil || IsNil(o.Blobs) {
 		return nil, false
 	}
 	return o.Blobs, true
@@ -57,7 +60,7 @@ func (o *ListBlobResponse) GetBlobsOk() ([]Blob, bool) {
 
 // HasBlobs returns a boolean if a field has been set.
 func (o *ListBlobResponse) HasBlobs() bool {
-	if o != nil && o.Blobs != nil {
+	if o != nil && !IsNil(o.Blobs) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ListBlobResponse) SetBlobs(v []Blob) {
 }
 
 func (o ListBlobResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Blobs != nil {
-		toSerialize["blobs"] = o.Blobs
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ListBlobResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Blobs) {
+		toSerialize["blobs"] = o.Blobs
+	}
+	return toSerialize, nil
 }
 
 type NullableListBlobResponse struct {

@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the GatewayConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GatewayConfig{}
 
 // GatewayConfig struct for GatewayConfig
 type GatewayConfig struct {
@@ -41,7 +44,7 @@ func NewGatewayConfigWithDefaults() *GatewayConfig {
 
 // GetCiot returns the Ciot field value if set, zero value otherwise.
 func (o *GatewayConfig) GetCiot() GatewayCIoTConfig {
-	if o == nil || o.Ciot == nil {
+	if o == nil || IsNil(o.Ciot) {
 		var ret GatewayCIoTConfig
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *GatewayConfig) GetCiot() GatewayCIoTConfig {
 // GetCiotOk returns a tuple with the Ciot field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayConfig) GetCiotOk() (*GatewayCIoTConfig, bool) {
-	if o == nil || o.Ciot == nil {
+	if o == nil || IsNil(o.Ciot) {
 		return nil, false
 	}
 	return o.Ciot, true
@@ -59,7 +62,7 @@ func (o *GatewayConfig) GetCiotOk() (*GatewayCIoTConfig, bool) {
 
 // HasCiot returns a boolean if a field has been set.
 func (o *GatewayConfig) HasCiot() bool {
-	if o != nil && o.Ciot != nil {
+	if o != nil && !IsNil(o.Ciot) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *GatewayConfig) SetCiot(v GatewayCIoTConfig) {
 
 // GetInet returns the Inet field value if set, zero value otherwise.
 func (o *GatewayConfig) GetInet() GatewayInetConfig {
-	if o == nil || o.Inet == nil {
+	if o == nil || IsNil(o.Inet) {
 		var ret GatewayInetConfig
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *GatewayConfig) GetInet() GatewayInetConfig {
 // GetInetOk returns a tuple with the Inet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayConfig) GetInetOk() (*GatewayInetConfig, bool) {
-	if o == nil || o.Inet == nil {
+	if o == nil || IsNil(o.Inet) {
 		return nil, false
 	}
 	return o.Inet, true
@@ -91,7 +94,7 @@ func (o *GatewayConfig) GetInetOk() (*GatewayInetConfig, bool) {
 
 // HasInet returns a boolean if a field has been set.
 func (o *GatewayConfig) HasInet() bool {
-	if o != nil && o.Inet != nil {
+	if o != nil && !IsNil(o.Inet) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *GatewayConfig) SetInet(v GatewayInetConfig) {
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *GatewayConfig) GetUser() GatewayCustomConfig {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		var ret GatewayCustomConfig
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *GatewayConfig) GetUser() GatewayCustomConfig {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayConfig) GetUserOk() (*GatewayCustomConfig, bool) {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		return nil, false
 	}
 	return o.User, true
@@ -123,7 +126,7 @@ func (o *GatewayConfig) GetUserOk() (*GatewayCustomConfig, bool) {
 
 // HasUser returns a boolean if a field has been set.
 func (o *GatewayConfig) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && !IsNil(o.User) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *GatewayConfig) SetUser(v GatewayCustomConfig) {
 }
 
 func (o GatewayConfig) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Ciot != nil {
-		toSerialize["ciot"] = o.Ciot
-	}
-	if o.Inet != nil {
-		toSerialize["inet"] = o.Inet
-	}
-	if o.User != nil {
-		toSerialize["user"] = o.User
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GatewayConfig) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Ciot) {
+		toSerialize["ciot"] = o.Ciot
+	}
+	if !IsNil(o.Inet) {
+		toSerialize["inet"] = o.Inet
+	}
+	if !IsNil(o.User) {
+		toSerialize["user"] = o.User
+	}
+	return toSerialize, nil
 }
 
 type NullableGatewayConfig struct {

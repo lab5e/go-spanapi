@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the OutputLogEntry type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OutputLogEntry{}
 
 // OutputLogEntry Log entries for outputs
 type OutputLogEntry struct {
@@ -41,7 +44,7 @@ func NewOutputLogEntryWithDefaults() *OutputLogEntry {
 
 // GetTime returns the Time field value if set, zero value otherwise.
 func (o *OutputLogEntry) GetTime() string {
-	if o == nil || o.Time == nil {
+	if o == nil || IsNil(o.Time) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *OutputLogEntry) GetTime() string {
 // GetTimeOk returns a tuple with the Time field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputLogEntry) GetTimeOk() (*string, bool) {
-	if o == nil || o.Time == nil {
+	if o == nil || IsNil(o.Time) {
 		return nil, false
 	}
 	return o.Time, true
@@ -59,7 +62,7 @@ func (o *OutputLogEntry) GetTimeOk() (*string, bool) {
 
 // HasTime returns a boolean if a field has been set.
 func (o *OutputLogEntry) HasTime() bool {
-	if o != nil && o.Time != nil {
+	if o != nil && !IsNil(o.Time) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *OutputLogEntry) SetTime(v string) {
 
 // GetMessage returns the Message field value if set, zero value otherwise.
 func (o *OutputLogEntry) GetMessage() string {
-	if o == nil || o.Message == nil {
+	if o == nil || IsNil(o.Message) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *OutputLogEntry) GetMessage() string {
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputLogEntry) GetMessageOk() (*string, bool) {
-	if o == nil || o.Message == nil {
+	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
 	return o.Message, true
@@ -91,7 +94,7 @@ func (o *OutputLogEntry) GetMessageOk() (*string, bool) {
 
 // HasMessage returns a boolean if a field has been set.
 func (o *OutputLogEntry) HasMessage() bool {
-	if o != nil && o.Message != nil {
+	if o != nil && !IsNil(o.Message) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *OutputLogEntry) SetMessage(v string) {
 
 // GetRepeated returns the Repeated field value if set, zero value otherwise.
 func (o *OutputLogEntry) GetRepeated() int32 {
-	if o == nil || o.Repeated == nil {
+	if o == nil || IsNil(o.Repeated) {
 		var ret int32
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *OutputLogEntry) GetRepeated() int32 {
 // GetRepeatedOk returns a tuple with the Repeated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputLogEntry) GetRepeatedOk() (*int32, bool) {
-	if o == nil || o.Repeated == nil {
+	if o == nil || IsNil(o.Repeated) {
 		return nil, false
 	}
 	return o.Repeated, true
@@ -123,7 +126,7 @@ func (o *OutputLogEntry) GetRepeatedOk() (*int32, bool) {
 
 // HasRepeated returns a boolean if a field has been set.
 func (o *OutputLogEntry) HasRepeated() bool {
-	if o != nil && o.Repeated != nil {
+	if o != nil && !IsNil(o.Repeated) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *OutputLogEntry) SetRepeated(v int32) {
 }
 
 func (o OutputLogEntry) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Time != nil {
-		toSerialize["time"] = o.Time
-	}
-	if o.Message != nil {
-		toSerialize["message"] = o.Message
-	}
-	if o.Repeated != nil {
-		toSerialize["repeated"] = o.Repeated
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OutputLogEntry) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Time) {
+		toSerialize["time"] = o.Time
+	}
+	if !IsNil(o.Message) {
+		toSerialize["message"] = o.Message
+	}
+	if !IsNil(o.Repeated) {
+		toSerialize["repeated"] = o.Repeated
+	}
+	return toSerialize, nil
 }
 
 type NullableOutputLogEntry struct {

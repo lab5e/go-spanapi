@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the Blob type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Blob{}
 
 // Blob This is a blob (binary large object) that the devices might upload to the service. This is messages that are typically too large to handle like regular status and sensor values, typically media files. The content type might be derived from the first few bytes of the blob and could possibly be incorrect.  Download the blob by accessing the blob URL field. This will work like a regular HTTP request for your client. Authentication is required as always.
 type Blob struct {
@@ -47,7 +50,7 @@ func NewBlobWithDefaults() *Blob {
 
 // GetBlobId returns the BlobId field value if set, zero value otherwise.
 func (o *Blob) GetBlobId() string {
-	if o == nil || o.BlobId == nil {
+	if o == nil || IsNil(o.BlobId) {
 		var ret string
 		return ret
 	}
@@ -57,7 +60,7 @@ func (o *Blob) GetBlobId() string {
 // GetBlobIdOk returns a tuple with the BlobId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Blob) GetBlobIdOk() (*string, bool) {
-	if o == nil || o.BlobId == nil {
+	if o == nil || IsNil(o.BlobId) {
 		return nil, false
 	}
 	return o.BlobId, true
@@ -65,7 +68,7 @@ func (o *Blob) GetBlobIdOk() (*string, bool) {
 
 // HasBlobId returns a boolean if a field has been set.
 func (o *Blob) HasBlobId() bool {
-	if o != nil && o.BlobId != nil {
+	if o != nil && !IsNil(o.BlobId) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *Blob) SetBlobId(v string) {
 
 // GetBlobPath returns the BlobPath field value if set, zero value otherwise.
 func (o *Blob) GetBlobPath() string {
-	if o == nil || o.BlobPath == nil {
+	if o == nil || IsNil(o.BlobPath) {
 		var ret string
 		return ret
 	}
@@ -89,7 +92,7 @@ func (o *Blob) GetBlobPath() string {
 // GetBlobPathOk returns a tuple with the BlobPath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Blob) GetBlobPathOk() (*string, bool) {
-	if o == nil || o.BlobPath == nil {
+	if o == nil || IsNil(o.BlobPath) {
 		return nil, false
 	}
 	return o.BlobPath, true
@@ -97,7 +100,7 @@ func (o *Blob) GetBlobPathOk() (*string, bool) {
 
 // HasBlobPath returns a boolean if a field has been set.
 func (o *Blob) HasBlobPath() bool {
-	if o != nil && o.BlobPath != nil {
+	if o != nil && !IsNil(o.BlobPath) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *Blob) SetBlobPath(v string) {
 
 // GetContentType returns the ContentType field value if set, zero value otherwise.
 func (o *Blob) GetContentType() string {
-	if o == nil || o.ContentType == nil {
+	if o == nil || IsNil(o.ContentType) {
 		var ret string
 		return ret
 	}
@@ -121,7 +124,7 @@ func (o *Blob) GetContentType() string {
 // GetContentTypeOk returns a tuple with the ContentType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Blob) GetContentTypeOk() (*string, bool) {
-	if o == nil || o.ContentType == nil {
+	if o == nil || IsNil(o.ContentType) {
 		return nil, false
 	}
 	return o.ContentType, true
@@ -129,7 +132,7 @@ func (o *Blob) GetContentTypeOk() (*string, bool) {
 
 // HasContentType returns a boolean if a field has been set.
 func (o *Blob) HasContentType() bool {
-	if o != nil && o.ContentType != nil {
+	if o != nil && !IsNil(o.ContentType) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *Blob) SetContentType(v string) {
 
 // GetSize returns the Size field value if set, zero value otherwise.
 func (o *Blob) GetSize() string {
-	if o == nil || o.Size == nil {
+	if o == nil || IsNil(o.Size) {
 		var ret string
 		return ret
 	}
@@ -153,7 +156,7 @@ func (o *Blob) GetSize() string {
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Blob) GetSizeOk() (*string, bool) {
-	if o == nil || o.Size == nil {
+	if o == nil || IsNil(o.Size) {
 		return nil, false
 	}
 	return o.Size, true
@@ -161,7 +164,7 @@ func (o *Blob) GetSizeOk() (*string, bool) {
 
 // HasSize returns a boolean if a field has been set.
 func (o *Blob) HasSize() bool {
-	if o != nil && o.Size != nil {
+	if o != nil && !IsNil(o.Size) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *Blob) SetSize(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *Blob) GetCreated() string {
-	if o == nil || o.Created == nil {
+	if o == nil || IsNil(o.Created) {
 		var ret string
 		return ret
 	}
@@ -185,7 +188,7 @@ func (o *Blob) GetCreated() string {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Blob) GetCreatedOk() (*string, bool) {
-	if o == nil || o.Created == nil {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -193,7 +196,7 @@ func (o *Blob) GetCreatedOk() (*string, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *Blob) HasCreated() bool {
-	if o != nil && o.Created != nil {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -207,7 +210,7 @@ func (o *Blob) SetCreated(v string) {
 
 // GetCollectionId returns the CollectionId field value if set, zero value otherwise.
 func (o *Blob) GetCollectionId() string {
-	if o == nil || o.CollectionId == nil {
+	if o == nil || IsNil(o.CollectionId) {
 		var ret string
 		return ret
 	}
@@ -217,7 +220,7 @@ func (o *Blob) GetCollectionId() string {
 // GetCollectionIdOk returns a tuple with the CollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Blob) GetCollectionIdOk() (*string, bool) {
-	if o == nil || o.CollectionId == nil {
+	if o == nil || IsNil(o.CollectionId) {
 		return nil, false
 	}
 	return o.CollectionId, true
@@ -225,7 +228,7 @@ func (o *Blob) GetCollectionIdOk() (*string, bool) {
 
 // HasCollectionId returns a boolean if a field has been set.
 func (o *Blob) HasCollectionId() bool {
-	if o != nil && o.CollectionId != nil {
+	if o != nil && !IsNil(o.CollectionId) {
 		return true
 	}
 
@@ -239,7 +242,7 @@ func (o *Blob) SetCollectionId(v string) {
 
 // GetDeviceId returns the DeviceId field value if set, zero value otherwise.
 func (o *Blob) GetDeviceId() string {
-	if o == nil || o.DeviceId == nil {
+	if o == nil || IsNil(o.DeviceId) {
 		var ret string
 		return ret
 	}
@@ -249,7 +252,7 @@ func (o *Blob) GetDeviceId() string {
 // GetDeviceIdOk returns a tuple with the DeviceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Blob) GetDeviceIdOk() (*string, bool) {
-	if o == nil || o.DeviceId == nil {
+	if o == nil || IsNil(o.DeviceId) {
 		return nil, false
 	}
 	return o.DeviceId, true
@@ -257,7 +260,7 @@ func (o *Blob) GetDeviceIdOk() (*string, bool) {
 
 // HasDeviceId returns a boolean if a field has been set.
 func (o *Blob) HasDeviceId() bool {
-	if o != nil && o.DeviceId != nil {
+	if o != nil && !IsNil(o.DeviceId) {
 		return true
 	}
 
@@ -271,7 +274,7 @@ func (o *Blob) SetDeviceId(v string) {
 
 // GetGatewayId returns the GatewayId field value if set, zero value otherwise.
 func (o *Blob) GetGatewayId() string {
-	if o == nil || o.GatewayId == nil {
+	if o == nil || IsNil(o.GatewayId) {
 		var ret string
 		return ret
 	}
@@ -281,7 +284,7 @@ func (o *Blob) GetGatewayId() string {
 // GetGatewayIdOk returns a tuple with the GatewayId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Blob) GetGatewayIdOk() (*string, bool) {
-	if o == nil || o.GatewayId == nil {
+	if o == nil || IsNil(o.GatewayId) {
 		return nil, false
 	}
 	return o.GatewayId, true
@@ -289,7 +292,7 @@ func (o *Blob) GetGatewayIdOk() (*string, bool) {
 
 // HasGatewayId returns a boolean if a field has been set.
 func (o *Blob) HasGatewayId() bool {
-	if o != nil && o.GatewayId != nil {
+	if o != nil && !IsNil(o.GatewayId) {
 		return true
 	}
 
@@ -303,7 +306,7 @@ func (o *Blob) SetGatewayId(v string) {
 
 // GetProperties returns the Properties field value if set, zero value otherwise.
 func (o *Blob) GetProperties() map[string]string {
-	if o == nil || o.Properties == nil {
+	if o == nil || IsNil(o.Properties) {
 		var ret map[string]string
 		return ret
 	}
@@ -313,7 +316,7 @@ func (o *Blob) GetProperties() map[string]string {
 // GetPropertiesOk returns a tuple with the Properties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Blob) GetPropertiesOk() (*map[string]string, bool) {
-	if o == nil || o.Properties == nil {
+	if o == nil || IsNil(o.Properties) {
 		return nil, false
 	}
 	return o.Properties, true
@@ -321,7 +324,7 @@ func (o *Blob) GetPropertiesOk() (*map[string]string, bool) {
 
 // HasProperties returns a boolean if a field has been set.
 func (o *Blob) HasProperties() bool {
-	if o != nil && o.Properties != nil {
+	if o != nil && !IsNil(o.Properties) {
 		return true
 	}
 
@@ -334,35 +337,43 @@ func (o *Blob) SetProperties(v map[string]string) {
 }
 
 func (o Blob) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.BlobId != nil {
-		toSerialize["blobId"] = o.BlobId
-	}
-	if o.BlobPath != nil {
-		toSerialize["blobPath"] = o.BlobPath
-	}
-	if o.ContentType != nil {
-		toSerialize["contentType"] = o.ContentType
-	}
-	if o.Size != nil {
-		toSerialize["size"] = o.Size
-	}
-	if o.Created != nil {
-		toSerialize["created"] = o.Created
-	}
-	if o.CollectionId != nil {
-		toSerialize["collectionId"] = o.CollectionId
-	}
-	if o.DeviceId != nil {
-		toSerialize["deviceId"] = o.DeviceId
-	}
-	if o.GatewayId != nil {
-		toSerialize["gatewayId"] = o.GatewayId
-	}
-	if o.Properties != nil {
-		toSerialize["properties"] = o.Properties
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Blob) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BlobId) {
+		toSerialize["blobId"] = o.BlobId
+	}
+	if !IsNil(o.BlobPath) {
+		toSerialize["blobPath"] = o.BlobPath
+	}
+	if !IsNil(o.ContentType) {
+		toSerialize["contentType"] = o.ContentType
+	}
+	if !IsNil(o.Size) {
+		toSerialize["size"] = o.Size
+	}
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !IsNil(o.CollectionId) {
+		toSerialize["collectionId"] = o.CollectionId
+	}
+	if !IsNil(o.DeviceId) {
+		toSerialize["deviceId"] = o.DeviceId
+	}
+	if !IsNil(o.GatewayId) {
+		toSerialize["gatewayId"] = o.GatewayId
+	}
+	if !IsNil(o.Properties) {
+		toSerialize["properties"] = o.Properties
+	}
+	return toSerialize, nil
 }
 
 type NullableBlob struct {

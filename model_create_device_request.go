@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the CreateDeviceRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateDeviceRequest{}
 
 // CreateDeviceRequest Request object to create new devices
 type CreateDeviceRequest struct {
@@ -43,7 +46,7 @@ func NewCreateDeviceRequestWithDefaults() *CreateDeviceRequest {
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *CreateDeviceRequest) GetTags() map[string]string {
-	if o == nil || o.Tags == nil {
+	if o == nil || IsNil(o.Tags) {
 		var ret map[string]string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *CreateDeviceRequest) GetTags() map[string]string {
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateDeviceRequest) GetTagsOk() (*map[string]string, bool) {
-	if o == nil || o.Tags == nil {
+	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
 	return o.Tags, true
@@ -61,7 +64,7 @@ func (o *CreateDeviceRequest) GetTagsOk() (*map[string]string, bool) {
 
 // HasTags returns a boolean if a field has been set.
 func (o *CreateDeviceRequest) HasTags() bool {
-	if o != nil && o.Tags != nil {
+	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *CreateDeviceRequest) SetTags(v map[string]string) {
 
 // GetFirmware returns the Firmware field value if set, zero value otherwise.
 func (o *CreateDeviceRequest) GetFirmware() FirmwareMetadata {
-	if o == nil || o.Firmware == nil {
+	if o == nil || IsNil(o.Firmware) {
 		var ret FirmwareMetadata
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *CreateDeviceRequest) GetFirmware() FirmwareMetadata {
 // GetFirmwareOk returns a tuple with the Firmware field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateDeviceRequest) GetFirmwareOk() (*FirmwareMetadata, bool) {
-	if o == nil || o.Firmware == nil {
+	if o == nil || IsNil(o.Firmware) {
 		return nil, false
 	}
 	return o.Firmware, true
@@ -93,7 +96,7 @@ func (o *CreateDeviceRequest) GetFirmwareOk() (*FirmwareMetadata, bool) {
 
 // HasFirmware returns a boolean if a field has been set.
 func (o *CreateDeviceRequest) HasFirmware() bool {
-	if o != nil && o.Firmware != nil {
+	if o != nil && !IsNil(o.Firmware) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *CreateDeviceRequest) SetFirmware(v FirmwareMetadata) {
 
 // GetConfig returns the Config field value if set, zero value otherwise.
 func (o *CreateDeviceRequest) GetConfig() DeviceConfig {
-	if o == nil || o.Config == nil {
+	if o == nil || IsNil(o.Config) {
 		var ret DeviceConfig
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *CreateDeviceRequest) GetConfig() DeviceConfig {
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateDeviceRequest) GetConfigOk() (*DeviceConfig, bool) {
-	if o == nil || o.Config == nil {
+	if o == nil || IsNil(o.Config) {
 		return nil, false
 	}
 	return o.Config, true
@@ -125,7 +128,7 @@ func (o *CreateDeviceRequest) GetConfigOk() (*DeviceConfig, bool) {
 
 // HasConfig returns a boolean if a field has been set.
 func (o *CreateDeviceRequest) HasConfig() bool {
-	if o != nil && o.Config != nil {
+	if o != nil && !IsNil(o.Config) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *CreateDeviceRequest) SetConfig(v DeviceConfig) {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *CreateDeviceRequest) GetMetadata() DeviceMetadata {
-	if o == nil || o.Metadata == nil {
+	if o == nil || IsNil(o.Metadata) {
 		var ret DeviceMetadata
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *CreateDeviceRequest) GetMetadata() DeviceMetadata {
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateDeviceRequest) GetMetadataOk() (*DeviceMetadata, bool) {
-	if o == nil || o.Metadata == nil {
+	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
 	return o.Metadata, true
@@ -157,7 +160,7 @@ func (o *CreateDeviceRequest) GetMetadataOk() (*DeviceMetadata, bool) {
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *CreateDeviceRequest) HasMetadata() bool {
-	if o != nil && o.Metadata != nil {
+	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
 
@@ -170,20 +173,28 @@ func (o *CreateDeviceRequest) SetMetadata(v DeviceMetadata) {
 }
 
 func (o CreateDeviceRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Tags != nil {
-		toSerialize["tags"] = o.Tags
-	}
-	if o.Firmware != nil {
-		toSerialize["firmware"] = o.Firmware
-	}
-	if o.Config != nil {
-		toSerialize["config"] = o.Config
-	}
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CreateDeviceRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
+	}
+	if !IsNil(o.Firmware) {
+		toSerialize["firmware"] = o.Firmware
+	}
+	if !IsNil(o.Config) {
+		toSerialize["config"] = o.Config
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
+	}
+	return toSerialize, nil
 }
 
 type NullableCreateDeviceRequest struct {

@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,16 +14,12 @@ package spanapi
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // GatewaysApiService GatewaysApi service
 type GatewaysApiService service
@@ -32,10 +28,10 @@ type ApiCreateGatewayRequest struct {
 	ctx context.Context
 	ApiService *GatewaysApiService
 	collectionId string
-	body *InlineObject
+	body *CreateGatewayRequest
 }
 
-func (r ApiCreateGatewayRequest) Body(body InlineObject) ApiCreateGatewayRequest {
+func (r ApiCreateGatewayRequest) Body(body CreateGatewayRequest) ApiCreateGatewayRequest {
 	r.body = &body
 	return r
 }
@@ -77,7 +73,7 @@ func (a *GatewaysApiService) CreateGatewayExecute(r ApiCreateGatewayRequest) (*G
 	}
 
 	localVarPath := localBasePath + "/span/collections/{collectionId}/gateways"
-	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterToString(r.collectionId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterValueToString(r.collectionId, "collectionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -129,9 +125,9 @@ func (a *GatewaysApiService) CreateGatewayExecute(r ApiCreateGatewayRequest) (*G
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -148,7 +144,8 @@ func (a *GatewaysApiService) CreateGatewayExecute(r ApiCreateGatewayRequest) (*G
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -158,7 +155,8 @@ func (a *GatewaysApiService) CreateGatewayExecute(r ApiCreateGatewayRequest) (*G
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,7 +166,8 @@ func (a *GatewaysApiService) CreateGatewayExecute(r ApiCreateGatewayRequest) (*G
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -178,7 +177,8 @@ func (a *GatewaysApiService) CreateGatewayExecute(r ApiCreateGatewayRequest) (*G
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -188,7 +188,8 @@ func (a *GatewaysApiService) CreateGatewayExecute(r ApiCreateGatewayRequest) (*G
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -197,7 +198,8 @@ func (a *GatewaysApiService) CreateGatewayExecute(r ApiCreateGatewayRequest) (*G
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -219,7 +221,6 @@ type ApiDeleteGatewayRequest struct {
 	collectionId string
 	gatewayId string
 }
-
 
 func (r ApiDeleteGatewayRequest) Execute() (*Gateway, *http.Response, error) {
 	return r.ApiService.DeleteGatewayExecute(r)
@@ -260,8 +261,8 @@ func (a *GatewaysApiService) DeleteGatewayExecute(r ApiDeleteGatewayRequest) (*G
 	}
 
 	localVarPath := localBasePath + "/span/collections/{collectionId}/gateways/{gatewayId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterToString(r.collectionId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayId"+"}", url.PathEscape(parameterToString(r.gatewayId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterValueToString(r.collectionId, "collectionId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gatewayId"+"}", url.PathEscape(parameterValueToString(r.gatewayId, "gatewayId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -308,9 +309,9 @@ func (a *GatewaysApiService) DeleteGatewayExecute(r ApiDeleteGatewayRequest) (*G
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -327,7 +328,8 @@ func (a *GatewaysApiService) DeleteGatewayExecute(r ApiDeleteGatewayRequest) (*G
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -337,7 +339,8 @@ func (a *GatewaysApiService) DeleteGatewayExecute(r ApiDeleteGatewayRequest) (*G
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -347,7 +350,8 @@ func (a *GatewaysApiService) DeleteGatewayExecute(r ApiDeleteGatewayRequest) (*G
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -357,7 +361,8 @@ func (a *GatewaysApiService) DeleteGatewayExecute(r ApiDeleteGatewayRequest) (*G
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -367,7 +372,8 @@ func (a *GatewaysApiService) DeleteGatewayExecute(r ApiDeleteGatewayRequest) (*G
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -376,7 +382,8 @@ func (a *GatewaysApiService) DeleteGatewayExecute(r ApiDeleteGatewayRequest) (*G
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -398,7 +405,6 @@ type ApiGatewayCertificatesRequest struct {
 	collectionId string
 	gatewayId string
 }
-
 
 func (r ApiGatewayCertificatesRequest) Execute() (*GatewayCertificateResponse, *http.Response, error) {
 	return r.ApiService.GatewayCertificatesExecute(r)
@@ -437,8 +443,8 @@ func (a *GatewaysApiService) GatewayCertificatesExecute(r ApiGatewayCertificates
 	}
 
 	localVarPath := localBasePath + "/span/collections/{collectionId}/gateways/{gatewayId}/certs"
-	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterToString(r.collectionId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayId"+"}", url.PathEscape(parameterToString(r.gatewayId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterValueToString(r.collectionId, "collectionId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gatewayId"+"}", url.PathEscape(parameterValueToString(r.gatewayId, "gatewayId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -485,9 +491,9 @@ func (a *GatewaysApiService) GatewayCertificatesExecute(r ApiGatewayCertificates
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -504,7 +510,8 @@ func (a *GatewaysApiService) GatewayCertificatesExecute(r ApiGatewayCertificates
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -514,7 +521,8 @@ func (a *GatewaysApiService) GatewayCertificatesExecute(r ApiGatewayCertificates
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -524,7 +532,8 @@ func (a *GatewaysApiService) GatewayCertificatesExecute(r ApiGatewayCertificates
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -534,7 +543,8 @@ func (a *GatewaysApiService) GatewayCertificatesExecute(r ApiGatewayCertificates
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -544,7 +554,8 @@ func (a *GatewaysApiService) GatewayCertificatesExecute(r ApiGatewayCertificates
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -553,7 +564,8 @@ func (a *GatewaysApiService) GatewayCertificatesExecute(r ApiGatewayCertificates
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -574,7 +586,6 @@ type ApiListGatewaysRequest struct {
 	ApiService *GatewaysApiService
 	collectionId string
 }
-
 
 func (r ApiListGatewaysRequest) Execute() (*ListGatewayResponse, *http.Response, error) {
 	return r.ApiService.ListGatewaysExecute(r)
@@ -613,7 +624,7 @@ func (a *GatewaysApiService) ListGatewaysExecute(r ApiListGatewaysRequest) (*Lis
 	}
 
 	localVarPath := localBasePath + "/span/collections/{collectionId}/gateways"
-	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterToString(r.collectionId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterValueToString(r.collectionId, "collectionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -660,9 +671,9 @@ func (a *GatewaysApiService) ListGatewaysExecute(r ApiListGatewaysRequest) (*Lis
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -679,7 +690,8 @@ func (a *GatewaysApiService) ListGatewaysExecute(r ApiListGatewaysRequest) (*Lis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -689,7 +701,8 @@ func (a *GatewaysApiService) ListGatewaysExecute(r ApiListGatewaysRequest) (*Lis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -699,7 +712,8 @@ func (a *GatewaysApiService) ListGatewaysExecute(r ApiListGatewaysRequest) (*Lis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -709,7 +723,8 @@ func (a *GatewaysApiService) ListGatewaysExecute(r ApiListGatewaysRequest) (*Lis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -719,7 +734,8 @@ func (a *GatewaysApiService) ListGatewaysExecute(r ApiListGatewaysRequest) (*Lis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -728,7 +744,8 @@ func (a *GatewaysApiService) ListGatewaysExecute(r ApiListGatewaysRequest) (*Lis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -750,7 +767,6 @@ type ApiRetrieveGatewayRequest struct {
 	collectionId string
 	gatewayId string
 }
-
 
 func (r ApiRetrieveGatewayRequest) Execute() (*Gateway, *http.Response, error) {
 	return r.ApiService.RetrieveGatewayExecute(r)
@@ -791,8 +807,8 @@ func (a *GatewaysApiService) RetrieveGatewayExecute(r ApiRetrieveGatewayRequest)
 	}
 
 	localVarPath := localBasePath + "/span/collections/{collectionId}/gateways/{gatewayId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterToString(r.collectionId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayId"+"}", url.PathEscape(parameterToString(r.gatewayId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterValueToString(r.collectionId, "collectionId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gatewayId"+"}", url.PathEscape(parameterValueToString(r.gatewayId, "gatewayId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -839,9 +855,9 @@ func (a *GatewaysApiService) RetrieveGatewayExecute(r ApiRetrieveGatewayRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -858,7 +874,8 @@ func (a *GatewaysApiService) RetrieveGatewayExecute(r ApiRetrieveGatewayRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -868,7 +885,8 @@ func (a *GatewaysApiService) RetrieveGatewayExecute(r ApiRetrieveGatewayRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -878,7 +896,8 @@ func (a *GatewaysApiService) RetrieveGatewayExecute(r ApiRetrieveGatewayRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -888,7 +907,8 @@ func (a *GatewaysApiService) RetrieveGatewayExecute(r ApiRetrieveGatewayRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -898,7 +918,8 @@ func (a *GatewaysApiService) RetrieveGatewayExecute(r ApiRetrieveGatewayRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -907,7 +928,8 @@ func (a *GatewaysApiService) RetrieveGatewayExecute(r ApiRetrieveGatewayRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -928,10 +950,10 @@ type ApiUpdateGatewayRequest struct {
 	ApiService *GatewaysApiService
 	existingCollectionId string
 	gatewayId string
-	body *InlineObject1
+	body *UpdateGatewayRequest
 }
 
-func (r ApiUpdateGatewayRequest) Body(body InlineObject1) ApiUpdateGatewayRequest {
+func (r ApiUpdateGatewayRequest) Body(body UpdateGatewayRequest) ApiUpdateGatewayRequest {
 	r.body = &body
 	return r
 }
@@ -975,8 +997,8 @@ func (a *GatewaysApiService) UpdateGatewayExecute(r ApiUpdateGatewayRequest) (*G
 	}
 
 	localVarPath := localBasePath + "/span/collections/{existingCollectionId}/gateways/{gatewayId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"existingCollectionId"+"}", url.PathEscape(parameterToString(r.existingCollectionId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"gatewayId"+"}", url.PathEscape(parameterToString(r.gatewayId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"existingCollectionId"+"}", url.PathEscape(parameterValueToString(r.existingCollectionId, "existingCollectionId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gatewayId"+"}", url.PathEscape(parameterValueToString(r.gatewayId, "gatewayId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1028,9 +1050,9 @@ func (a *GatewaysApiService) UpdateGatewayExecute(r ApiUpdateGatewayRequest) (*G
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1047,7 +1069,8 @@ func (a *GatewaysApiService) UpdateGatewayExecute(r ApiUpdateGatewayRequest) (*G
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1057,7 +1080,8 @@ func (a *GatewaysApiService) UpdateGatewayExecute(r ApiUpdateGatewayRequest) (*G
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1067,7 +1091,8 @@ func (a *GatewaysApiService) UpdateGatewayExecute(r ApiUpdateGatewayRequest) (*G
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1077,7 +1102,8 @@ func (a *GatewaysApiService) UpdateGatewayExecute(r ApiUpdateGatewayRequest) (*G
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1087,7 +1113,8 @@ func (a *GatewaysApiService) UpdateGatewayExecute(r ApiUpdateGatewayRequest) (*G
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -1096,7 +1123,8 @@ func (a *GatewaysApiService) UpdateGatewayExecute(r ApiUpdateGatewayRequest) (*G
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the CollectionFirmware type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CollectionFirmware{}
 
 // CollectionFirmware This is the firmware configuration for a collection.
 type CollectionFirmware struct {
@@ -47,7 +50,7 @@ func NewCollectionFirmwareWithDefaults() *CollectionFirmware {
 
 // GetCurrentFirmwareId returns the CurrentFirmwareId field value if set, zero value otherwise.
 func (o *CollectionFirmware) GetCurrentFirmwareId() string {
-	if o == nil || o.CurrentFirmwareId == nil {
+	if o == nil || IsNil(o.CurrentFirmwareId) {
 		var ret string
 		return ret
 	}
@@ -57,7 +60,7 @@ func (o *CollectionFirmware) GetCurrentFirmwareId() string {
 // GetCurrentFirmwareIdOk returns a tuple with the CurrentFirmwareId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CollectionFirmware) GetCurrentFirmwareIdOk() (*string, bool) {
-	if o == nil || o.CurrentFirmwareId == nil {
+	if o == nil || IsNil(o.CurrentFirmwareId) {
 		return nil, false
 	}
 	return o.CurrentFirmwareId, true
@@ -65,7 +68,7 @@ func (o *CollectionFirmware) GetCurrentFirmwareIdOk() (*string, bool) {
 
 // HasCurrentFirmwareId returns a boolean if a field has been set.
 func (o *CollectionFirmware) HasCurrentFirmwareId() bool {
-	if o != nil && o.CurrentFirmwareId != nil {
+	if o != nil && !IsNil(o.CurrentFirmwareId) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *CollectionFirmware) SetCurrentFirmwareId(v string) {
 
 // GetTargetFirmwareId returns the TargetFirmwareId field value if set, zero value otherwise.
 func (o *CollectionFirmware) GetTargetFirmwareId() string {
-	if o == nil || o.TargetFirmwareId == nil {
+	if o == nil || IsNil(o.TargetFirmwareId) {
 		var ret string
 		return ret
 	}
@@ -89,7 +92,7 @@ func (o *CollectionFirmware) GetTargetFirmwareId() string {
 // GetTargetFirmwareIdOk returns a tuple with the TargetFirmwareId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CollectionFirmware) GetTargetFirmwareIdOk() (*string, bool) {
-	if o == nil || o.TargetFirmwareId == nil {
+	if o == nil || IsNil(o.TargetFirmwareId) {
 		return nil, false
 	}
 	return o.TargetFirmwareId, true
@@ -97,7 +100,7 @@ func (o *CollectionFirmware) GetTargetFirmwareIdOk() (*string, bool) {
 
 // HasTargetFirmwareId returns a boolean if a field has been set.
 func (o *CollectionFirmware) HasTargetFirmwareId() bool {
-	if o != nil && o.TargetFirmwareId != nil {
+	if o != nil && !IsNil(o.TargetFirmwareId) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *CollectionFirmware) SetTargetFirmwareId(v string) {
 
 // GetManagement returns the Management field value if set, zero value otherwise.
 func (o *CollectionFirmware) GetManagement() FirmwareManagement {
-	if o == nil || o.Management == nil {
+	if o == nil || IsNil(o.Management) {
 		var ret FirmwareManagement
 		return ret
 	}
@@ -121,7 +124,7 @@ func (o *CollectionFirmware) GetManagement() FirmwareManagement {
 // GetManagementOk returns a tuple with the Management field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CollectionFirmware) GetManagementOk() (*FirmwareManagement, bool) {
-	if o == nil || o.Management == nil {
+	if o == nil || IsNil(o.Management) {
 		return nil, false
 	}
 	return o.Management, true
@@ -129,7 +132,7 @@ func (o *CollectionFirmware) GetManagementOk() (*FirmwareManagement, bool) {
 
 // HasManagement returns a boolean if a field has been set.
 func (o *CollectionFirmware) HasManagement() bool {
-	if o != nil && o.Management != nil {
+	if o != nil && !IsNil(o.Management) {
 		return true
 	}
 
@@ -142,17 +145,25 @@ func (o *CollectionFirmware) SetManagement(v FirmwareManagement) {
 }
 
 func (o CollectionFirmware) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CurrentFirmwareId != nil {
-		toSerialize["currentFirmwareId"] = o.CurrentFirmwareId
-	}
-	if o.TargetFirmwareId != nil {
-		toSerialize["targetFirmwareId"] = o.TargetFirmwareId
-	}
-	if o.Management != nil {
-		toSerialize["management"] = o.Management
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CollectionFirmware) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CurrentFirmwareId) {
+		toSerialize["currentFirmwareId"] = o.CurrentFirmwareId
+	}
+	if !IsNil(o.TargetFirmwareId) {
+		toSerialize["targetFirmwareId"] = o.TargetFirmwareId
+	}
+	if !IsNil(o.Management) {
+		toSerialize["management"] = o.Management
+	}
+	return toSerialize, nil
 }
 
 type NullableCollectionFirmware struct {

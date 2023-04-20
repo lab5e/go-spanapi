@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/lab5e/go-spanapi"
 )
 
 func main() {
@@ -96,7 +96,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/lab5e/go-spanapi"
 )
 
 func main() {
@@ -166,7 +166,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/lab5e/go-spanapi"
 )
 
 func main() {
@@ -244,7 +244,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/lab5e/go-spanapi"
 )
 
 func main() {
@@ -290,9 +290,11 @@ Other parameters are passed through a pointer to a apiListCollectionsRequest str
 
 ## RetrieveCollection
 
-> Collection RetrieveCollection(ctx, collectionId).Execute()
+> Collection RetrieveCollection(ctx, collectionId).Upstream(upstream).Downstream(downstream).Execute()
 
 Retrieve collection
+
+
 
 ### Example
 
@@ -303,15 +305,17 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/lab5e/go-spanapi"
 )
 
 func main() {
     collectionId := "collectionId_example" // string | The collection ID of the collection you are requesting
+    upstream := true // bool |  (optional)
+    downstream := true // bool |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CollectionsApi.RetrieveCollection(context.Background(), collectionId).Execute()
+    resp, r, err := apiClient.CollectionsApi.RetrieveCollection(context.Background(), collectionId).Upstream(upstream).Downstream(downstream).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.RetrieveCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -337,6 +341,8 @@ Other parameters are passed through a pointer to a apiRetrieveCollectionRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **upstream** | **bool** |  | 
+ **downstream** | **bool** |  | 
 
 ### Return type
 
@@ -373,7 +379,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/lab5e/go-spanapi"
 )
 
 func main() {

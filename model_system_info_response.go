@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the SystemInfoResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SystemInfoResponse{}
 
 // SystemInfoResponse Response object for system information. This contains system-level information.
 type SystemInfoResponse struct {
@@ -44,7 +47,7 @@ func NewSystemInfoResponseWithDefaults() *SystemInfoResponse {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *SystemInfoResponse) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *SystemInfoResponse) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SystemInfoResponse) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -62,7 +65,7 @@ func (o *SystemInfoResponse) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *SystemInfoResponse) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *SystemInfoResponse) SetVersion(v string) {
 
 // GetBuildDate returns the BuildDate field value if set, zero value otherwise.
 func (o *SystemInfoResponse) GetBuildDate() string {
-	if o == nil || o.BuildDate == nil {
+	if o == nil || IsNil(o.BuildDate) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *SystemInfoResponse) GetBuildDate() string {
 // GetBuildDateOk returns a tuple with the BuildDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SystemInfoResponse) GetBuildDateOk() (*string, bool) {
-	if o == nil || o.BuildDate == nil {
+	if o == nil || IsNil(o.BuildDate) {
 		return nil, false
 	}
 	return o.BuildDate, true
@@ -94,7 +97,7 @@ func (o *SystemInfoResponse) GetBuildDateOk() (*string, bool) {
 
 // HasBuildDate returns a boolean if a field has been set.
 func (o *SystemInfoResponse) HasBuildDate() bool {
-	if o != nil && o.BuildDate != nil {
+	if o != nil && !IsNil(o.BuildDate) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *SystemInfoResponse) SetBuildDate(v string) {
 
 // GetReleaseName returns the ReleaseName field value if set, zero value otherwise.
 func (o *SystemInfoResponse) GetReleaseName() string {
-	if o == nil || o.ReleaseName == nil {
+	if o == nil || IsNil(o.ReleaseName) {
 		var ret string
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *SystemInfoResponse) GetReleaseName() string {
 // GetReleaseNameOk returns a tuple with the ReleaseName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SystemInfoResponse) GetReleaseNameOk() (*string, bool) {
-	if o == nil || o.ReleaseName == nil {
+	if o == nil || IsNil(o.ReleaseName) {
 		return nil, false
 	}
 	return o.ReleaseName, true
@@ -126,7 +129,7 @@ func (o *SystemInfoResponse) GetReleaseNameOk() (*string, bool) {
 
 // HasReleaseName returns a boolean if a field has been set.
 func (o *SystemInfoResponse) HasReleaseName() bool {
-	if o != nil && o.ReleaseName != nil {
+	if o != nil && !IsNil(o.ReleaseName) {
 		return true
 	}
 
@@ -139,17 +142,25 @@ func (o *SystemInfoResponse) SetReleaseName(v string) {
 }
 
 func (o SystemInfoResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
-	}
-	if o.BuildDate != nil {
-		toSerialize["buildDate"] = o.BuildDate
-	}
-	if o.ReleaseName != nil {
-		toSerialize["releaseName"] = o.ReleaseName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SystemInfoResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.BuildDate) {
+		toSerialize["buildDate"] = o.BuildDate
+	}
+	if !IsNil(o.ReleaseName) {
+		toSerialize["releaseName"] = o.ReleaseName
+	}
+	return toSerialize, nil
 }
 
 type NullableSystemInfoResponse struct {

@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the UDPMetadata type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UDPMetadata{}
 
 // UDPMetadata UDP metadata for messages receveied through one of the UDP endpoints
 type UDPMetadata struct {
@@ -40,7 +43,7 @@ func NewUDPMetadataWithDefaults() *UDPMetadata {
 
 // GetLocalPort returns the LocalPort field value if set, zero value otherwise.
 func (o *UDPMetadata) GetLocalPort() int32 {
-	if o == nil || o.LocalPort == nil {
+	if o == nil || IsNil(o.LocalPort) {
 		var ret int32
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *UDPMetadata) GetLocalPort() int32 {
 // GetLocalPortOk returns a tuple with the LocalPort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UDPMetadata) GetLocalPortOk() (*int32, bool) {
-	if o == nil || o.LocalPort == nil {
+	if o == nil || IsNil(o.LocalPort) {
 		return nil, false
 	}
 	return o.LocalPort, true
@@ -58,7 +61,7 @@ func (o *UDPMetadata) GetLocalPortOk() (*int32, bool) {
 
 // HasLocalPort returns a boolean if a field has been set.
 func (o *UDPMetadata) HasLocalPort() bool {
-	if o != nil && o.LocalPort != nil {
+	if o != nil && !IsNil(o.LocalPort) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *UDPMetadata) SetLocalPort(v int32) {
 
 // GetRemotePort returns the RemotePort field value if set, zero value otherwise.
 func (o *UDPMetadata) GetRemotePort() int32 {
-	if o == nil || o.RemotePort == nil {
+	if o == nil || IsNil(o.RemotePort) {
 		var ret int32
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *UDPMetadata) GetRemotePort() int32 {
 // GetRemotePortOk returns a tuple with the RemotePort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UDPMetadata) GetRemotePortOk() (*int32, bool) {
-	if o == nil || o.RemotePort == nil {
+	if o == nil || IsNil(o.RemotePort) {
 		return nil, false
 	}
 	return o.RemotePort, true
@@ -90,7 +93,7 @@ func (o *UDPMetadata) GetRemotePortOk() (*int32, bool) {
 
 // HasRemotePort returns a boolean if a field has been set.
 func (o *UDPMetadata) HasRemotePort() bool {
-	if o != nil && o.RemotePort != nil {
+	if o != nil && !IsNil(o.RemotePort) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *UDPMetadata) SetRemotePort(v int32) {
 }
 
 func (o UDPMetadata) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.LocalPort != nil {
-		toSerialize["localPort"] = o.LocalPort
-	}
-	if o.RemotePort != nil {
-		toSerialize["remotePort"] = o.RemotePort
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UDPMetadata) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.LocalPort) {
+		toSerialize["localPort"] = o.LocalPort
+	}
+	if !IsNil(o.RemotePort) {
+		toSerialize["remotePort"] = o.RemotePort
+	}
+	return toSerialize, nil
 }
 
 type NullableUDPMetadata struct {

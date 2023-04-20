@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the GatewayDeviceMetadata type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GatewayDeviceMetadata{}
 
 // GatewayDeviceMetadata Metadata for devices connected via user-managed gateways. This metadata shows the configuration for the last message transmission
 type GatewayDeviceMetadata struct {
@@ -41,7 +44,7 @@ func NewGatewayDeviceMetadataWithDefaults() *GatewayDeviceMetadata {
 
 // GetGatewayId returns the GatewayId field value if set, zero value otherwise.
 func (o *GatewayDeviceMetadata) GetGatewayId() string {
-	if o == nil || o.GatewayId == nil {
+	if o == nil || IsNil(o.GatewayId) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *GatewayDeviceMetadata) GetGatewayId() string {
 // GetGatewayIdOk returns a tuple with the GatewayId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayDeviceMetadata) GetGatewayIdOk() (*string, bool) {
-	if o == nil || o.GatewayId == nil {
+	if o == nil || IsNil(o.GatewayId) {
 		return nil, false
 	}
 	return o.GatewayId, true
@@ -59,7 +62,7 @@ func (o *GatewayDeviceMetadata) GetGatewayIdOk() (*string, bool) {
 
 // HasGatewayId returns a boolean if a field has been set.
 func (o *GatewayDeviceMetadata) HasGatewayId() bool {
-	if o != nil && o.GatewayId != nil {
+	if o != nil && !IsNil(o.GatewayId) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *GatewayDeviceMetadata) SetGatewayId(v string) {
 
 // GetLastUpdate returns the LastUpdate field value if set, zero value otherwise.
 func (o *GatewayDeviceMetadata) GetLastUpdate() string {
-	if o == nil || o.LastUpdate == nil {
+	if o == nil || IsNil(o.LastUpdate) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *GatewayDeviceMetadata) GetLastUpdate() string {
 // GetLastUpdateOk returns a tuple with the LastUpdate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayDeviceMetadata) GetLastUpdateOk() (*string, bool) {
-	if o == nil || o.LastUpdate == nil {
+	if o == nil || IsNil(o.LastUpdate) {
 		return nil, false
 	}
 	return o.LastUpdate, true
@@ -91,7 +94,7 @@ func (o *GatewayDeviceMetadata) GetLastUpdateOk() (*string, bool) {
 
 // HasLastUpdate returns a boolean if a field has been set.
 func (o *GatewayDeviceMetadata) HasLastUpdate() bool {
-	if o != nil && o.LastUpdate != nil {
+	if o != nil && !IsNil(o.LastUpdate) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *GatewayDeviceMetadata) SetLastUpdate(v string) {
 
 // GetParams returns the Params field value if set, zero value otherwise.
 func (o *GatewayDeviceMetadata) GetParams() map[string]string {
-	if o == nil || o.Params == nil {
+	if o == nil || IsNil(o.Params) {
 		var ret map[string]string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *GatewayDeviceMetadata) GetParams() map[string]string {
 // GetParamsOk returns a tuple with the Params field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayDeviceMetadata) GetParamsOk() (*map[string]string, bool) {
-	if o == nil || o.Params == nil {
+	if o == nil || IsNil(o.Params) {
 		return nil, false
 	}
 	return o.Params, true
@@ -123,7 +126,7 @@ func (o *GatewayDeviceMetadata) GetParamsOk() (*map[string]string, bool) {
 
 // HasParams returns a boolean if a field has been set.
 func (o *GatewayDeviceMetadata) HasParams() bool {
-	if o != nil && o.Params != nil {
+	if o != nil && !IsNil(o.Params) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *GatewayDeviceMetadata) SetParams(v map[string]string) {
 }
 
 func (o GatewayDeviceMetadata) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.GatewayId != nil {
-		toSerialize["gatewayId"] = o.GatewayId
-	}
-	if o.LastUpdate != nil {
-		toSerialize["lastUpdate"] = o.LastUpdate
-	}
-	if o.Params != nil {
-		toSerialize["params"] = o.Params
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GatewayDeviceMetadata) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.GatewayId) {
+		toSerialize["gatewayId"] = o.GatewayId
+	}
+	if !IsNil(o.LastUpdate) {
+		toSerialize["lastUpdate"] = o.LastUpdate
+	}
+	if !IsNil(o.Params) {
+		toSerialize["params"] = o.Params
+	}
+	return toSerialize, nil
 }
 
 type NullableGatewayDeviceMetadata struct {

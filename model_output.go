@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the Output type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Output{}
 
 // Output Output resource. The configuration depends on the kind of output type. There are five outputs: Webhooks, UDP forwarding, IFTTT events, MQTT client and MQTT broker. The MQTT broker output is just used to configure the built-in MQTT broker in Span.
 type Output struct {
@@ -48,7 +51,7 @@ func NewOutputWithDefaults() *Output {
 
 // GetOutputId returns the OutputId field value if set, zero value otherwise.
 func (o *Output) GetOutputId() string {
-	if o == nil || o.OutputId == nil {
+	if o == nil || IsNil(o.OutputId) {
 		var ret string
 		return ret
 	}
@@ -58,7 +61,7 @@ func (o *Output) GetOutputId() string {
 // GetOutputIdOk returns a tuple with the OutputId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Output) GetOutputIdOk() (*string, bool) {
-	if o == nil || o.OutputId == nil {
+	if o == nil || IsNil(o.OutputId) {
 		return nil, false
 	}
 	return o.OutputId, true
@@ -66,7 +69,7 @@ func (o *Output) GetOutputIdOk() (*string, bool) {
 
 // HasOutputId returns a boolean if a field has been set.
 func (o *Output) HasOutputId() bool {
-	if o != nil && o.OutputId != nil {
+	if o != nil && !IsNil(o.OutputId) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *Output) SetOutputId(v string) {
 
 // GetCollectionId returns the CollectionId field value if set, zero value otherwise.
 func (o *Output) GetCollectionId() string {
-	if o == nil || o.CollectionId == nil {
+	if o == nil || IsNil(o.CollectionId) {
 		var ret string
 		return ret
 	}
@@ -90,7 +93,7 @@ func (o *Output) GetCollectionId() string {
 // GetCollectionIdOk returns a tuple with the CollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Output) GetCollectionIdOk() (*string, bool) {
-	if o == nil || o.CollectionId == nil {
+	if o == nil || IsNil(o.CollectionId) {
 		return nil, false
 	}
 	return o.CollectionId, true
@@ -98,7 +101,7 @@ func (o *Output) GetCollectionIdOk() (*string, bool) {
 
 // HasCollectionId returns a boolean if a field has been set.
 func (o *Output) HasCollectionId() bool {
-	if o != nil && o.CollectionId != nil {
+	if o != nil && !IsNil(o.CollectionId) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *Output) SetCollectionId(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Output) GetType() OutputType {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret OutputType
 		return ret
 	}
@@ -122,7 +125,7 @@ func (o *Output) GetType() OutputType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Output) GetTypeOk() (*OutputType, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -130,7 +133,7 @@ func (o *Output) GetTypeOk() (*OutputType, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *Output) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *Output) SetType(v OutputType) {
 
 // GetConfig returns the Config field value if set, zero value otherwise.
 func (o *Output) GetConfig() OutputConfig {
-	if o == nil || o.Config == nil {
+	if o == nil || IsNil(o.Config) {
 		var ret OutputConfig
 		return ret
 	}
@@ -154,7 +157,7 @@ func (o *Output) GetConfig() OutputConfig {
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Output) GetConfigOk() (*OutputConfig, bool) {
-	if o == nil || o.Config == nil {
+	if o == nil || IsNil(o.Config) {
 		return nil, false
 	}
 	return o.Config, true
@@ -162,7 +165,7 @@ func (o *Output) GetConfigOk() (*OutputConfig, bool) {
 
 // HasConfig returns a boolean if a field has been set.
 func (o *Output) HasConfig() bool {
-	if o != nil && o.Config != nil {
+	if o != nil && !IsNil(o.Config) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *Output) SetConfig(v OutputConfig) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *Output) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -186,7 +189,7 @@ func (o *Output) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Output) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -194,7 +197,7 @@ func (o *Output) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *Output) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *Output) SetEnabled(v bool) {
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *Output) GetTags() map[string]string {
-	if o == nil || o.Tags == nil {
+	if o == nil || IsNil(o.Tags) {
 		var ret map[string]string
 		return ret
 	}
@@ -218,7 +221,7 @@ func (o *Output) GetTags() map[string]string {
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Output) GetTagsOk() (*map[string]string, bool) {
-	if o == nil || o.Tags == nil {
+	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
 	return o.Tags, true
@@ -226,7 +229,7 @@ func (o *Output) GetTagsOk() (*map[string]string, bool) {
 
 // HasTags returns a boolean if a field has been set.
 func (o *Output) HasTags() bool {
-	if o != nil && o.Tags != nil {
+	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
 
@@ -239,26 +242,34 @@ func (o *Output) SetTags(v map[string]string) {
 }
 
 func (o Output) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.OutputId != nil {
-		toSerialize["outputId"] = o.OutputId
-	}
-	if o.CollectionId != nil {
-		toSerialize["collectionId"] = o.CollectionId
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if o.Config != nil {
-		toSerialize["config"] = o.Config
-	}
-	if o.Enabled != nil {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if o.Tags != nil {
-		toSerialize["tags"] = o.Tags
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Output) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.OutputId) {
+		toSerialize["outputId"] = o.OutputId
+	}
+	if !IsNil(o.CollectionId) {
+		toSerialize["collectionId"] = o.CollectionId
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Config) {
+		toSerialize["config"] = o.Config
+	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
+	}
+	return toSerialize, nil
 }
 
 type NullableOutput struct {

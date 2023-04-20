@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the GatewayMetadata type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GatewayMetadata{}
 
 // GatewayMetadata Metadata for gateway transports. The actual contents varies from gateway to gateway
 type GatewayMetadata struct {
@@ -39,7 +42,7 @@ func NewGatewayMetadataWithDefaults() *GatewayMetadata {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *GatewayMetadata) GetMetadata() map[string]string {
-	if o == nil || o.Metadata == nil {
+	if o == nil || IsNil(o.Metadata) {
 		var ret map[string]string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *GatewayMetadata) GetMetadata() map[string]string {
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayMetadata) GetMetadataOk() (*map[string]string, bool) {
-	if o == nil || o.Metadata == nil {
+	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
 	return o.Metadata, true
@@ -57,7 +60,7 @@ func (o *GatewayMetadata) GetMetadataOk() (*map[string]string, bool) {
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *GatewayMetadata) HasMetadata() bool {
-	if o != nil && o.Metadata != nil {
+	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *GatewayMetadata) SetMetadata(v map[string]string) {
 }
 
 func (o GatewayMetadata) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GatewayMetadata) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
+	}
+	return toSerialize, nil
 }
 
 type NullableGatewayMetadata struct {

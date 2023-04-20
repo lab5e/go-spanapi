@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the InetMetadata type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InetMetadata{}
 
 // InetMetadata Metadata for devices connected via the internet gateway. This metadata shows the configuration for the last message transmission.
 type InetMetadata struct {
@@ -42,7 +45,7 @@ func NewInetMetadataWithDefaults() *InetMetadata {
 
 // GetGatewayId returns the GatewayId field value if set, zero value otherwise.
 func (o *InetMetadata) GetGatewayId() string {
-	if o == nil || o.GatewayId == nil {
+	if o == nil || IsNil(o.GatewayId) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *InetMetadata) GetGatewayId() string {
 // GetGatewayIdOk returns a tuple with the GatewayId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InetMetadata) GetGatewayIdOk() (*string, bool) {
-	if o == nil || o.GatewayId == nil {
+	if o == nil || IsNil(o.GatewayId) {
 		return nil, false
 	}
 	return o.GatewayId, true
@@ -60,7 +63,7 @@ func (o *InetMetadata) GetGatewayIdOk() (*string, bool) {
 
 // HasGatewayId returns a boolean if a field has been set.
 func (o *InetMetadata) HasGatewayId() bool {
-	if o != nil && o.GatewayId != nil {
+	if o != nil && !IsNil(o.GatewayId) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *InetMetadata) SetGatewayId(v string) {
 
 // GetLastUpdate returns the LastUpdate field value if set, zero value otherwise.
 func (o *InetMetadata) GetLastUpdate() string {
-	if o == nil || o.LastUpdate == nil {
+	if o == nil || IsNil(o.LastUpdate) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *InetMetadata) GetLastUpdate() string {
 // GetLastUpdateOk returns a tuple with the LastUpdate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InetMetadata) GetLastUpdateOk() (*string, bool) {
-	if o == nil || o.LastUpdate == nil {
+	if o == nil || IsNil(o.LastUpdate) {
 		return nil, false
 	}
 	return o.LastUpdate, true
@@ -92,7 +95,7 @@ func (o *InetMetadata) GetLastUpdateOk() (*string, bool) {
 
 // HasLastUpdate returns a boolean if a field has been set.
 func (o *InetMetadata) HasLastUpdate() bool {
-	if o != nil && o.LastUpdate != nil {
+	if o != nil && !IsNil(o.LastUpdate) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *InetMetadata) SetLastUpdate(v string) {
 
 // GetRemoteAddress returns the RemoteAddress field value if set, zero value otherwise.
 func (o *InetMetadata) GetRemoteAddress() string {
-	if o == nil || o.RemoteAddress == nil {
+	if o == nil || IsNil(o.RemoteAddress) {
 		var ret string
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *InetMetadata) GetRemoteAddress() string {
 // GetRemoteAddressOk returns a tuple with the RemoteAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InetMetadata) GetRemoteAddressOk() (*string, bool) {
-	if o == nil || o.RemoteAddress == nil {
+	if o == nil || IsNil(o.RemoteAddress) {
 		return nil, false
 	}
 	return o.RemoteAddress, true
@@ -124,7 +127,7 @@ func (o *InetMetadata) GetRemoteAddressOk() (*string, bool) {
 
 // HasRemoteAddress returns a boolean if a field has been set.
 func (o *InetMetadata) HasRemoteAddress() bool {
-	if o != nil && o.RemoteAddress != nil {
+	if o != nil && !IsNil(o.RemoteAddress) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *InetMetadata) SetRemoteAddress(v string) {
 
 // GetCertificateSerial returns the CertificateSerial field value if set, zero value otherwise.
 func (o *InetMetadata) GetCertificateSerial() string {
-	if o == nil || o.CertificateSerial == nil {
+	if o == nil || IsNil(o.CertificateSerial) {
 		var ret string
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *InetMetadata) GetCertificateSerial() string {
 // GetCertificateSerialOk returns a tuple with the CertificateSerial field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InetMetadata) GetCertificateSerialOk() (*string, bool) {
-	if o == nil || o.CertificateSerial == nil {
+	if o == nil || IsNil(o.CertificateSerial) {
 		return nil, false
 	}
 	return o.CertificateSerial, true
@@ -156,7 +159,7 @@ func (o *InetMetadata) GetCertificateSerialOk() (*string, bool) {
 
 // HasCertificateSerial returns a boolean if a field has been set.
 func (o *InetMetadata) HasCertificateSerial() bool {
-	if o != nil && o.CertificateSerial != nil {
+	if o != nil && !IsNil(o.CertificateSerial) {
 		return true
 	}
 
@@ -169,20 +172,28 @@ func (o *InetMetadata) SetCertificateSerial(v string) {
 }
 
 func (o InetMetadata) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.GatewayId != nil {
-		toSerialize["gatewayId"] = o.GatewayId
-	}
-	if o.LastUpdate != nil {
-		toSerialize["lastUpdate"] = o.LastUpdate
-	}
-	if o.RemoteAddress != nil {
-		toSerialize["remoteAddress"] = o.RemoteAddress
-	}
-	if o.CertificateSerial != nil {
-		toSerialize["certificateSerial"] = o.CertificateSerial
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InetMetadata) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.GatewayId) {
+		toSerialize["gatewayId"] = o.GatewayId
+	}
+	if !IsNil(o.LastUpdate) {
+		toSerialize["lastUpdate"] = o.LastUpdate
+	}
+	if !IsNil(o.RemoteAddress) {
+		toSerialize["remoteAddress"] = o.RemoteAddress
+	}
+	if !IsNil(o.CertificateSerial) {
+		toSerialize["certificateSerial"] = o.CertificateSerial
+	}
+	return toSerialize, nil
 }
 
 type NullableInetMetadata struct {

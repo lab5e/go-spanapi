@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the Firmware type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Firmware{}
 
 // Firmware Firmware images aren't served back out through the API, only the metadata.
 type Firmware struct {
@@ -51,7 +54,7 @@ func NewFirmwareWithDefaults() *Firmware {
 
 // GetImageId returns the ImageId field value if set, zero value otherwise.
 func (o *Firmware) GetImageId() string {
-	if o == nil || o.ImageId == nil {
+	if o == nil || IsNil(o.ImageId) {
 		var ret string
 		return ret
 	}
@@ -61,7 +64,7 @@ func (o *Firmware) GetImageId() string {
 // GetImageIdOk returns a tuple with the ImageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Firmware) GetImageIdOk() (*string, bool) {
-	if o == nil || o.ImageId == nil {
+	if o == nil || IsNil(o.ImageId) {
 		return nil, false
 	}
 	return o.ImageId, true
@@ -69,7 +72,7 @@ func (o *Firmware) GetImageIdOk() (*string, bool) {
 
 // HasImageId returns a boolean if a field has been set.
 func (o *Firmware) HasImageId() bool {
-	if o != nil && o.ImageId != nil {
+	if o != nil && !IsNil(o.ImageId) {
 		return true
 	}
 
@@ -83,7 +86,7 @@ func (o *Firmware) SetImageId(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *Firmware) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -93,7 +96,7 @@ func (o *Firmware) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Firmware) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -101,7 +104,7 @@ func (o *Firmware) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *Firmware) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -115,7 +118,7 @@ func (o *Firmware) SetVersion(v string) {
 
 // GetFilename returns the Filename field value if set, zero value otherwise.
 func (o *Firmware) GetFilename() string {
-	if o == nil || o.Filename == nil {
+	if o == nil || IsNil(o.Filename) {
 		var ret string
 		return ret
 	}
@@ -125,7 +128,7 @@ func (o *Firmware) GetFilename() string {
 // GetFilenameOk returns a tuple with the Filename field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Firmware) GetFilenameOk() (*string, bool) {
-	if o == nil || o.Filename == nil {
+	if o == nil || IsNil(o.Filename) {
 		return nil, false
 	}
 	return o.Filename, true
@@ -133,7 +136,7 @@ func (o *Firmware) GetFilenameOk() (*string, bool) {
 
 // HasFilename returns a boolean if a field has been set.
 func (o *Firmware) HasFilename() bool {
-	if o != nil && o.Filename != nil {
+	if o != nil && !IsNil(o.Filename) {
 		return true
 	}
 
@@ -147,7 +150,7 @@ func (o *Firmware) SetFilename(v string) {
 
 // GetSha256 returns the Sha256 field value if set, zero value otherwise.
 func (o *Firmware) GetSha256() string {
-	if o == nil || o.Sha256 == nil {
+	if o == nil || IsNil(o.Sha256) {
 		var ret string
 		return ret
 	}
@@ -157,7 +160,7 @@ func (o *Firmware) GetSha256() string {
 // GetSha256Ok returns a tuple with the Sha256 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Firmware) GetSha256Ok() (*string, bool) {
-	if o == nil || o.Sha256 == nil {
+	if o == nil || IsNil(o.Sha256) {
 		return nil, false
 	}
 	return o.Sha256, true
@@ -165,7 +168,7 @@ func (o *Firmware) GetSha256Ok() (*string, bool) {
 
 // HasSha256 returns a boolean if a field has been set.
 func (o *Firmware) HasSha256() bool {
-	if o != nil && o.Sha256 != nil {
+	if o != nil && !IsNil(o.Sha256) {
 		return true
 	}
 
@@ -179,7 +182,7 @@ func (o *Firmware) SetSha256(v string) {
 
 // GetLength returns the Length field value if set, zero value otherwise.
 func (o *Firmware) GetLength() int32 {
-	if o == nil || o.Length == nil {
+	if o == nil || IsNil(o.Length) {
 		var ret int32
 		return ret
 	}
@@ -189,7 +192,7 @@ func (o *Firmware) GetLength() int32 {
 // GetLengthOk returns a tuple with the Length field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Firmware) GetLengthOk() (*int32, bool) {
-	if o == nil || o.Length == nil {
+	if o == nil || IsNil(o.Length) {
 		return nil, false
 	}
 	return o.Length, true
@@ -197,7 +200,7 @@ func (o *Firmware) GetLengthOk() (*int32, bool) {
 
 // HasLength returns a boolean if a field has been set.
 func (o *Firmware) HasLength() bool {
-	if o != nil && o.Length != nil {
+	if o != nil && !IsNil(o.Length) {
 		return true
 	}
 
@@ -211,7 +214,7 @@ func (o *Firmware) SetLength(v int32) {
 
 // GetCollectionId returns the CollectionId field value if set, zero value otherwise.
 func (o *Firmware) GetCollectionId() string {
-	if o == nil || o.CollectionId == nil {
+	if o == nil || IsNil(o.CollectionId) {
 		var ret string
 		return ret
 	}
@@ -221,7 +224,7 @@ func (o *Firmware) GetCollectionId() string {
 // GetCollectionIdOk returns a tuple with the CollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Firmware) GetCollectionIdOk() (*string, bool) {
-	if o == nil || o.CollectionId == nil {
+	if o == nil || IsNil(o.CollectionId) {
 		return nil, false
 	}
 	return o.CollectionId, true
@@ -229,7 +232,7 @@ func (o *Firmware) GetCollectionIdOk() (*string, bool) {
 
 // HasCollectionId returns a boolean if a field has been set.
 func (o *Firmware) HasCollectionId() bool {
-	if o != nil && o.CollectionId != nil {
+	if o != nil && !IsNil(o.CollectionId) {
 		return true
 	}
 
@@ -243,7 +246,7 @@ func (o *Firmware) SetCollectionId(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *Firmware) GetCreated() string {
-	if o == nil || o.Created == nil {
+	if o == nil || IsNil(o.Created) {
 		var ret string
 		return ret
 	}
@@ -253,7 +256,7 @@ func (o *Firmware) GetCreated() string {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Firmware) GetCreatedOk() (*string, bool) {
-	if o == nil || o.Created == nil {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -261,7 +264,7 @@ func (o *Firmware) GetCreatedOk() (*string, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *Firmware) HasCreated() bool {
-	if o != nil && o.Created != nil {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -275,7 +278,7 @@ func (o *Firmware) SetCreated(v string) {
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *Firmware) GetTags() map[string]string {
-	if o == nil || o.Tags == nil {
+	if o == nil || IsNil(o.Tags) {
 		var ret map[string]string
 		return ret
 	}
@@ -285,7 +288,7 @@ func (o *Firmware) GetTags() map[string]string {
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Firmware) GetTagsOk() (*map[string]string, bool) {
-	if o == nil || o.Tags == nil {
+	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
 	return o.Tags, true
@@ -293,7 +296,7 @@ func (o *Firmware) GetTagsOk() (*map[string]string, bool) {
 
 // HasTags returns a boolean if a field has been set.
 func (o *Firmware) HasTags() bool {
-	if o != nil && o.Tags != nil {
+	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
 
@@ -306,32 +309,40 @@ func (o *Firmware) SetTags(v map[string]string) {
 }
 
 func (o Firmware) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ImageId != nil {
-		toSerialize["imageId"] = o.ImageId
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
-	}
-	if o.Filename != nil {
-		toSerialize["filename"] = o.Filename
-	}
-	if o.Sha256 != nil {
-		toSerialize["sha256"] = o.Sha256
-	}
-	if o.Length != nil {
-		toSerialize["length"] = o.Length
-	}
-	if o.CollectionId != nil {
-		toSerialize["collectionId"] = o.CollectionId
-	}
-	if o.Created != nil {
-		toSerialize["created"] = o.Created
-	}
-	if o.Tags != nil {
-		toSerialize["tags"] = o.Tags
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Firmware) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ImageId) {
+		toSerialize["imageId"] = o.ImageId
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.Filename) {
+		toSerialize["filename"] = o.Filename
+	}
+	if !IsNil(o.Sha256) {
+		toSerialize["sha256"] = o.Sha256
+	}
+	if !IsNil(o.Length) {
+		toSerialize["length"] = o.Length
+	}
+	if !IsNil(o.CollectionId) {
+		toSerialize["collectionId"] = o.CollectionId
+	}
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
+	}
+	return toSerialize, nil
 }
 
 type NullableFirmware struct {

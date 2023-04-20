@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the MQTTMetadata type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MQTTMetadata{}
 
 // MQTTMetadata MQTT metadata for messages received through one of the MQTT endpoints. This is an EXPERIMENTAL feature.
 type MQTTMetadata struct {
@@ -39,7 +42,7 @@ func NewMQTTMetadataWithDefaults() *MQTTMetadata {
 
 // GetTopic returns the Topic field value if set, zero value otherwise.
 func (o *MQTTMetadata) GetTopic() string {
-	if o == nil || o.Topic == nil {
+	if o == nil || IsNil(o.Topic) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *MQTTMetadata) GetTopic() string {
 // GetTopicOk returns a tuple with the Topic field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MQTTMetadata) GetTopicOk() (*string, bool) {
-	if o == nil || o.Topic == nil {
+	if o == nil || IsNil(o.Topic) {
 		return nil, false
 	}
 	return o.Topic, true
@@ -57,7 +60,7 @@ func (o *MQTTMetadata) GetTopicOk() (*string, bool) {
 
 // HasTopic returns a boolean if a field has been set.
 func (o *MQTTMetadata) HasTopic() bool {
-	if o != nil && o.Topic != nil {
+	if o != nil && !IsNil(o.Topic) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *MQTTMetadata) SetTopic(v string) {
 }
 
 func (o MQTTMetadata) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Topic != nil {
-		toSerialize["topic"] = o.Topic
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MQTTMetadata) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Topic) {
+		toSerialize["topic"] = o.Topic
+	}
+	return toSerialize, nil
 }
 
 type NullableMQTTMetadata struct {

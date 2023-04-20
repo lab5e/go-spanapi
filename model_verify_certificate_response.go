@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the VerifyCertificateResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VerifyCertificateResponse{}
 
 // VerifyCertificateResponse Response when verifying a certificate. The valid flag is set to true when the certificate is valid. Any errors will be added to the errors array.
 type VerifyCertificateResponse struct {
@@ -40,7 +43,7 @@ func NewVerifyCertificateResponseWithDefaults() *VerifyCertificateResponse {
 
 // GetValid returns the Valid field value if set, zero value otherwise.
 func (o *VerifyCertificateResponse) GetValid() bool {
-	if o == nil || o.Valid == nil {
+	if o == nil || IsNil(o.Valid) {
 		var ret bool
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *VerifyCertificateResponse) GetValid() bool {
 // GetValidOk returns a tuple with the Valid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VerifyCertificateResponse) GetValidOk() (*bool, bool) {
-	if o == nil || o.Valid == nil {
+	if o == nil || IsNil(o.Valid) {
 		return nil, false
 	}
 	return o.Valid, true
@@ -58,7 +61,7 @@ func (o *VerifyCertificateResponse) GetValidOk() (*bool, bool) {
 
 // HasValid returns a boolean if a field has been set.
 func (o *VerifyCertificateResponse) HasValid() bool {
-	if o != nil && o.Valid != nil {
+	if o != nil && !IsNil(o.Valid) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *VerifyCertificateResponse) SetValid(v bool) {
 
 // GetErrors returns the Errors field value if set, zero value otherwise.
 func (o *VerifyCertificateResponse) GetErrors() []string {
-	if o == nil || o.Errors == nil {
+	if o == nil || IsNil(o.Errors) {
 		var ret []string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *VerifyCertificateResponse) GetErrors() []string {
 // GetErrorsOk returns a tuple with the Errors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VerifyCertificateResponse) GetErrorsOk() ([]string, bool) {
-	if o == nil || o.Errors == nil {
+	if o == nil || IsNil(o.Errors) {
 		return nil, false
 	}
 	return o.Errors, true
@@ -90,7 +93,7 @@ func (o *VerifyCertificateResponse) GetErrorsOk() ([]string, bool) {
 
 // HasErrors returns a boolean if a field has been set.
 func (o *VerifyCertificateResponse) HasErrors() bool {
-	if o != nil && o.Errors != nil {
+	if o != nil && !IsNil(o.Errors) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *VerifyCertificateResponse) SetErrors(v []string) {
 }
 
 func (o VerifyCertificateResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Valid != nil {
-		toSerialize["valid"] = o.Valid
-	}
-	if o.Errors != nil {
-		toSerialize["errors"] = o.Errors
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VerifyCertificateResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Valid) {
+		toSerialize["valid"] = o.Valid
+	}
+	if !IsNil(o.Errors) {
+		toSerialize["errors"] = o.Errors
+	}
+	return toSerialize, nil
 }
 
 type NullableVerifyCertificateResponse struct {

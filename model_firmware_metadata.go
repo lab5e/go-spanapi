@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the FirmwareMetadata type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FirmwareMetadata{}
 
 // FirmwareMetadata Metadata about firmware on devices.
 type FirmwareMetadata struct {
@@ -47,7 +50,7 @@ func NewFirmwareMetadataWithDefaults() *FirmwareMetadata {
 
 // GetCurrentFirmwareId returns the CurrentFirmwareId field value if set, zero value otherwise.
 func (o *FirmwareMetadata) GetCurrentFirmwareId() string {
-	if o == nil || o.CurrentFirmwareId == nil {
+	if o == nil || IsNil(o.CurrentFirmwareId) {
 		var ret string
 		return ret
 	}
@@ -57,7 +60,7 @@ func (o *FirmwareMetadata) GetCurrentFirmwareId() string {
 // GetCurrentFirmwareIdOk returns a tuple with the CurrentFirmwareId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FirmwareMetadata) GetCurrentFirmwareIdOk() (*string, bool) {
-	if o == nil || o.CurrentFirmwareId == nil {
+	if o == nil || IsNil(o.CurrentFirmwareId) {
 		return nil, false
 	}
 	return o.CurrentFirmwareId, true
@@ -65,7 +68,7 @@ func (o *FirmwareMetadata) GetCurrentFirmwareIdOk() (*string, bool) {
 
 // HasCurrentFirmwareId returns a boolean if a field has been set.
 func (o *FirmwareMetadata) HasCurrentFirmwareId() bool {
-	if o != nil && o.CurrentFirmwareId != nil {
+	if o != nil && !IsNil(o.CurrentFirmwareId) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *FirmwareMetadata) SetCurrentFirmwareId(v string) {
 
 // GetTargetFirmwareId returns the TargetFirmwareId field value if set, zero value otherwise.
 func (o *FirmwareMetadata) GetTargetFirmwareId() string {
-	if o == nil || o.TargetFirmwareId == nil {
+	if o == nil || IsNil(o.TargetFirmwareId) {
 		var ret string
 		return ret
 	}
@@ -89,7 +92,7 @@ func (o *FirmwareMetadata) GetTargetFirmwareId() string {
 // GetTargetFirmwareIdOk returns a tuple with the TargetFirmwareId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FirmwareMetadata) GetTargetFirmwareIdOk() (*string, bool) {
-	if o == nil || o.TargetFirmwareId == nil {
+	if o == nil || IsNil(o.TargetFirmwareId) {
 		return nil, false
 	}
 	return o.TargetFirmwareId, true
@@ -97,7 +100,7 @@ func (o *FirmwareMetadata) GetTargetFirmwareIdOk() (*string, bool) {
 
 // HasTargetFirmwareId returns a boolean if a field has been set.
 func (o *FirmwareMetadata) HasTargetFirmwareId() bool {
-	if o != nil && o.TargetFirmwareId != nil {
+	if o != nil && !IsNil(o.TargetFirmwareId) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *FirmwareMetadata) SetTargetFirmwareId(v string) {
 
 // GetFirmwareVersion returns the FirmwareVersion field value if set, zero value otherwise.
 func (o *FirmwareMetadata) GetFirmwareVersion() string {
-	if o == nil || o.FirmwareVersion == nil {
+	if o == nil || IsNil(o.FirmwareVersion) {
 		var ret string
 		return ret
 	}
@@ -121,7 +124,7 @@ func (o *FirmwareMetadata) GetFirmwareVersion() string {
 // GetFirmwareVersionOk returns a tuple with the FirmwareVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FirmwareMetadata) GetFirmwareVersionOk() (*string, bool) {
-	if o == nil || o.FirmwareVersion == nil {
+	if o == nil || IsNil(o.FirmwareVersion) {
 		return nil, false
 	}
 	return o.FirmwareVersion, true
@@ -129,7 +132,7 @@ func (o *FirmwareMetadata) GetFirmwareVersionOk() (*string, bool) {
 
 // HasFirmwareVersion returns a boolean if a field has been set.
 func (o *FirmwareMetadata) HasFirmwareVersion() bool {
-	if o != nil && o.FirmwareVersion != nil {
+	if o != nil && !IsNil(o.FirmwareVersion) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *FirmwareMetadata) SetFirmwareVersion(v string) {
 
 // GetSerialNumber returns the SerialNumber field value if set, zero value otherwise.
 func (o *FirmwareMetadata) GetSerialNumber() string {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		var ret string
 		return ret
 	}
@@ -153,7 +156,7 @@ func (o *FirmwareMetadata) GetSerialNumber() string {
 // GetSerialNumberOk returns a tuple with the SerialNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FirmwareMetadata) GetSerialNumberOk() (*string, bool) {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		return nil, false
 	}
 	return o.SerialNumber, true
@@ -161,7 +164,7 @@ func (o *FirmwareMetadata) GetSerialNumberOk() (*string, bool) {
 
 // HasSerialNumber returns a boolean if a field has been set.
 func (o *FirmwareMetadata) HasSerialNumber() bool {
-	if o != nil && o.SerialNumber != nil {
+	if o != nil && !IsNil(o.SerialNumber) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *FirmwareMetadata) SetSerialNumber(v string) {
 
 // GetModelNumber returns the ModelNumber field value if set, zero value otherwise.
 func (o *FirmwareMetadata) GetModelNumber() string {
-	if o == nil || o.ModelNumber == nil {
+	if o == nil || IsNil(o.ModelNumber) {
 		var ret string
 		return ret
 	}
@@ -185,7 +188,7 @@ func (o *FirmwareMetadata) GetModelNumber() string {
 // GetModelNumberOk returns a tuple with the ModelNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FirmwareMetadata) GetModelNumberOk() (*string, bool) {
-	if o == nil || o.ModelNumber == nil {
+	if o == nil || IsNil(o.ModelNumber) {
 		return nil, false
 	}
 	return o.ModelNumber, true
@@ -193,7 +196,7 @@ func (o *FirmwareMetadata) GetModelNumberOk() (*string, bool) {
 
 // HasModelNumber returns a boolean if a field has been set.
 func (o *FirmwareMetadata) HasModelNumber() bool {
-	if o != nil && o.ModelNumber != nil {
+	if o != nil && !IsNil(o.ModelNumber) {
 		return true
 	}
 
@@ -207,7 +210,7 @@ func (o *FirmwareMetadata) SetModelNumber(v string) {
 
 // GetManufacturer returns the Manufacturer field value if set, zero value otherwise.
 func (o *FirmwareMetadata) GetManufacturer() string {
-	if o == nil || o.Manufacturer == nil {
+	if o == nil || IsNil(o.Manufacturer) {
 		var ret string
 		return ret
 	}
@@ -217,7 +220,7 @@ func (o *FirmwareMetadata) GetManufacturer() string {
 // GetManufacturerOk returns a tuple with the Manufacturer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FirmwareMetadata) GetManufacturerOk() (*string, bool) {
-	if o == nil || o.Manufacturer == nil {
+	if o == nil || IsNil(o.Manufacturer) {
 		return nil, false
 	}
 	return o.Manufacturer, true
@@ -225,7 +228,7 @@ func (o *FirmwareMetadata) GetManufacturerOk() (*string, bool) {
 
 // HasManufacturer returns a boolean if a field has been set.
 func (o *FirmwareMetadata) HasManufacturer() bool {
-	if o != nil && o.Manufacturer != nil {
+	if o != nil && !IsNil(o.Manufacturer) {
 		return true
 	}
 
@@ -239,7 +242,7 @@ func (o *FirmwareMetadata) SetManufacturer(v string) {
 
 // GetState returns the State field value if set, zero value otherwise.
 func (o *FirmwareMetadata) GetState() string {
-	if o == nil || o.State == nil {
+	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
 	}
@@ -249,7 +252,7 @@ func (o *FirmwareMetadata) GetState() string {
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FirmwareMetadata) GetStateOk() (*string, bool) {
-	if o == nil || o.State == nil {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
 	return o.State, true
@@ -257,7 +260,7 @@ func (o *FirmwareMetadata) GetStateOk() (*string, bool) {
 
 // HasState returns a boolean if a field has been set.
 func (o *FirmwareMetadata) HasState() bool {
-	if o != nil && o.State != nil {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
@@ -271,7 +274,7 @@ func (o *FirmwareMetadata) SetState(v string) {
 
 // GetStateMessage returns the StateMessage field value if set, zero value otherwise.
 func (o *FirmwareMetadata) GetStateMessage() string {
-	if o == nil || o.StateMessage == nil {
+	if o == nil || IsNil(o.StateMessage) {
 		var ret string
 		return ret
 	}
@@ -281,7 +284,7 @@ func (o *FirmwareMetadata) GetStateMessage() string {
 // GetStateMessageOk returns a tuple with the StateMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FirmwareMetadata) GetStateMessageOk() (*string, bool) {
-	if o == nil || o.StateMessage == nil {
+	if o == nil || IsNil(o.StateMessage) {
 		return nil, false
 	}
 	return o.StateMessage, true
@@ -289,7 +292,7 @@ func (o *FirmwareMetadata) GetStateMessageOk() (*string, bool) {
 
 // HasStateMessage returns a boolean if a field has been set.
 func (o *FirmwareMetadata) HasStateMessage() bool {
-	if o != nil && o.StateMessage != nil {
+	if o != nil && !IsNil(o.StateMessage) {
 		return true
 	}
 
@@ -302,32 +305,40 @@ func (o *FirmwareMetadata) SetStateMessage(v string) {
 }
 
 func (o FirmwareMetadata) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CurrentFirmwareId != nil {
-		toSerialize["currentFirmwareId"] = o.CurrentFirmwareId
-	}
-	if o.TargetFirmwareId != nil {
-		toSerialize["targetFirmwareId"] = o.TargetFirmwareId
-	}
-	if o.FirmwareVersion != nil {
-		toSerialize["firmwareVersion"] = o.FirmwareVersion
-	}
-	if o.SerialNumber != nil {
-		toSerialize["serialNumber"] = o.SerialNumber
-	}
-	if o.ModelNumber != nil {
-		toSerialize["modelNumber"] = o.ModelNumber
-	}
-	if o.Manufacturer != nil {
-		toSerialize["manufacturer"] = o.Manufacturer
-	}
-	if o.State != nil {
-		toSerialize["state"] = o.State
-	}
-	if o.StateMessage != nil {
-		toSerialize["stateMessage"] = o.StateMessage
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o FirmwareMetadata) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CurrentFirmwareId) {
+		toSerialize["currentFirmwareId"] = o.CurrentFirmwareId
+	}
+	if !IsNil(o.TargetFirmwareId) {
+		toSerialize["targetFirmwareId"] = o.TargetFirmwareId
+	}
+	if !IsNil(o.FirmwareVersion) {
+		toSerialize["firmwareVersion"] = o.FirmwareVersion
+	}
+	if !IsNil(o.SerialNumber) {
+		toSerialize["serialNumber"] = o.SerialNumber
+	}
+	if !IsNil(o.ModelNumber) {
+		toSerialize["modelNumber"] = o.ModelNumber
+	}
+	if !IsNil(o.Manufacturer) {
+		toSerialize["manufacturer"] = o.Manufacturer
+	}
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
+	if !IsNil(o.StateMessage) {
+		toSerialize["stateMessage"] = o.StateMessage
+	}
+	return toSerialize, nil
 }
 
 type NullableFirmwareMetadata struct {

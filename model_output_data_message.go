@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the OutputDataMessage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OutputDataMessage{}
 
 // OutputDataMessage The output data message contains payload plus metadata for a payload received from a device.
 type OutputDataMessage struct {
@@ -54,7 +57,7 @@ func NewOutputDataMessageWithDefaults() *OutputDataMessage {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *OutputDataMessage) GetType() OutputMessageType {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret OutputMessageType
 		return ret
 	}
@@ -64,7 +67,7 @@ func (o *OutputDataMessage) GetType() OutputMessageType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputDataMessage) GetTypeOk() (*OutputMessageType, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -72,7 +75,7 @@ func (o *OutputDataMessage) GetTypeOk() (*OutputMessageType, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *OutputDataMessage) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -86,7 +89,7 @@ func (o *OutputDataMessage) SetType(v OutputMessageType) {
 
 // GetDevice returns the Device field value if set, zero value otherwise.
 func (o *OutputDataMessage) GetDevice() Device {
-	if o == nil || o.Device == nil {
+	if o == nil || IsNil(o.Device) {
 		var ret Device
 		return ret
 	}
@@ -96,7 +99,7 @@ func (o *OutputDataMessage) GetDevice() Device {
 // GetDeviceOk returns a tuple with the Device field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputDataMessage) GetDeviceOk() (*Device, bool) {
-	if o == nil || o.Device == nil {
+	if o == nil || IsNil(o.Device) {
 		return nil, false
 	}
 	return o.Device, true
@@ -104,7 +107,7 @@ func (o *OutputDataMessage) GetDeviceOk() (*Device, bool) {
 
 // HasDevice returns a boolean if a field has been set.
 func (o *OutputDataMessage) HasDevice() bool {
-	if o != nil && o.Device != nil {
+	if o != nil && !IsNil(o.Device) {
 		return true
 	}
 
@@ -118,7 +121,7 @@ func (o *OutputDataMessage) SetDevice(v Device) {
 
 // GetPayload returns the Payload field value if set, zero value otherwise.
 func (o *OutputDataMessage) GetPayload() string {
-	if o == nil || o.Payload == nil {
+	if o == nil || IsNil(o.Payload) {
 		var ret string
 		return ret
 	}
@@ -128,7 +131,7 @@ func (o *OutputDataMessage) GetPayload() string {
 // GetPayloadOk returns a tuple with the Payload field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputDataMessage) GetPayloadOk() (*string, bool) {
-	if o == nil || o.Payload == nil {
+	if o == nil || IsNil(o.Payload) {
 		return nil, false
 	}
 	return o.Payload, true
@@ -136,7 +139,7 @@ func (o *OutputDataMessage) GetPayloadOk() (*string, bool) {
 
 // HasPayload returns a boolean if a field has been set.
 func (o *OutputDataMessage) HasPayload() bool {
-	if o != nil && o.Payload != nil {
+	if o != nil && !IsNil(o.Payload) {
 		return true
 	}
 
@@ -150,7 +153,7 @@ func (o *OutputDataMessage) SetPayload(v string) {
 
 // GetReceived returns the Received field value if set, zero value otherwise.
 func (o *OutputDataMessage) GetReceived() string {
-	if o == nil || o.Received == nil {
+	if o == nil || IsNil(o.Received) {
 		var ret string
 		return ret
 	}
@@ -160,7 +163,7 @@ func (o *OutputDataMessage) GetReceived() string {
 // GetReceivedOk returns a tuple with the Received field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputDataMessage) GetReceivedOk() (*string, bool) {
-	if o == nil || o.Received == nil {
+	if o == nil || IsNil(o.Received) {
 		return nil, false
 	}
 	return o.Received, true
@@ -168,7 +171,7 @@ func (o *OutputDataMessage) GetReceivedOk() (*string, bool) {
 
 // HasReceived returns a boolean if a field has been set.
 func (o *OutputDataMessage) HasReceived() bool {
-	if o != nil && o.Received != nil {
+	if o != nil && !IsNil(o.Received) {
 		return true
 	}
 
@@ -182,7 +185,7 @@ func (o *OutputDataMessage) SetReceived(v string) {
 
 // GetTransport returns the Transport field value if set, zero value otherwise.
 func (o *OutputDataMessage) GetTransport() string {
-	if o == nil || o.Transport == nil {
+	if o == nil || IsNil(o.Transport) {
 		var ret string
 		return ret
 	}
@@ -192,7 +195,7 @@ func (o *OutputDataMessage) GetTransport() string {
 // GetTransportOk returns a tuple with the Transport field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputDataMessage) GetTransportOk() (*string, bool) {
-	if o == nil || o.Transport == nil {
+	if o == nil || IsNil(o.Transport) {
 		return nil, false
 	}
 	return o.Transport, true
@@ -200,7 +203,7 @@ func (o *OutputDataMessage) GetTransportOk() (*string, bool) {
 
 // HasTransport returns a boolean if a field has been set.
 func (o *OutputDataMessage) HasTransport() bool {
-	if o != nil && o.Transport != nil {
+	if o != nil && !IsNil(o.Transport) {
 		return true
 	}
 
@@ -214,7 +217,7 @@ func (o *OutputDataMessage) SetTransport(v string) {
 
 // GetUdpMetaData returns the UdpMetaData field value if set, zero value otherwise.
 func (o *OutputDataMessage) GetUdpMetaData() UDPMetadata {
-	if o == nil || o.UdpMetaData == nil {
+	if o == nil || IsNil(o.UdpMetaData) {
 		var ret UDPMetadata
 		return ret
 	}
@@ -224,7 +227,7 @@ func (o *OutputDataMessage) GetUdpMetaData() UDPMetadata {
 // GetUdpMetaDataOk returns a tuple with the UdpMetaData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputDataMessage) GetUdpMetaDataOk() (*UDPMetadata, bool) {
-	if o == nil || o.UdpMetaData == nil {
+	if o == nil || IsNil(o.UdpMetaData) {
 		return nil, false
 	}
 	return o.UdpMetaData, true
@@ -232,7 +235,7 @@ func (o *OutputDataMessage) GetUdpMetaDataOk() (*UDPMetadata, bool) {
 
 // HasUdpMetaData returns a boolean if a field has been set.
 func (o *OutputDataMessage) HasUdpMetaData() bool {
-	if o != nil && o.UdpMetaData != nil {
+	if o != nil && !IsNil(o.UdpMetaData) {
 		return true
 	}
 
@@ -246,7 +249,7 @@ func (o *OutputDataMessage) SetUdpMetaData(v UDPMetadata) {
 
 // GetCoapMetaData returns the CoapMetaData field value if set, zero value otherwise.
 func (o *OutputDataMessage) GetCoapMetaData() CoAPMetadata {
-	if o == nil || o.CoapMetaData == nil {
+	if o == nil || IsNil(o.CoapMetaData) {
 		var ret CoAPMetadata
 		return ret
 	}
@@ -256,7 +259,7 @@ func (o *OutputDataMessage) GetCoapMetaData() CoAPMetadata {
 // GetCoapMetaDataOk returns a tuple with the CoapMetaData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputDataMessage) GetCoapMetaDataOk() (*CoAPMetadata, bool) {
-	if o == nil || o.CoapMetaData == nil {
+	if o == nil || IsNil(o.CoapMetaData) {
 		return nil, false
 	}
 	return o.CoapMetaData, true
@@ -264,7 +267,7 @@ func (o *OutputDataMessage) GetCoapMetaDataOk() (*CoAPMetadata, bool) {
 
 // HasCoapMetaData returns a boolean if a field has been set.
 func (o *OutputDataMessage) HasCoapMetaData() bool {
-	if o != nil && o.CoapMetaData != nil {
+	if o != nil && !IsNil(o.CoapMetaData) {
 		return true
 	}
 
@@ -278,7 +281,7 @@ func (o *OutputDataMessage) SetCoapMetaData(v CoAPMetadata) {
 
 // GetMessageId returns the MessageId field value if set, zero value otherwise.
 func (o *OutputDataMessage) GetMessageId() string {
-	if o == nil || o.MessageId == nil {
+	if o == nil || IsNil(o.MessageId) {
 		var ret string
 		return ret
 	}
@@ -288,7 +291,7 @@ func (o *OutputDataMessage) GetMessageId() string {
 // GetMessageIdOk returns a tuple with the MessageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputDataMessage) GetMessageIdOk() (*string, bool) {
-	if o == nil || o.MessageId == nil {
+	if o == nil || IsNil(o.MessageId) {
 		return nil, false
 	}
 	return o.MessageId, true
@@ -296,7 +299,7 @@ func (o *OutputDataMessage) GetMessageIdOk() (*string, bool) {
 
 // HasMessageId returns a boolean if a field has been set.
 func (o *OutputDataMessage) HasMessageId() bool {
-	if o != nil && o.MessageId != nil {
+	if o != nil && !IsNil(o.MessageId) {
 		return true
 	}
 
@@ -310,7 +313,7 @@ func (o *OutputDataMessage) SetMessageId(v string) {
 
 // GetMqttMetaData returns the MqttMetaData field value if set, zero value otherwise.
 func (o *OutputDataMessage) GetMqttMetaData() MQTTMetadata {
-	if o == nil || o.MqttMetaData == nil {
+	if o == nil || IsNil(o.MqttMetaData) {
 		var ret MQTTMetadata
 		return ret
 	}
@@ -320,7 +323,7 @@ func (o *OutputDataMessage) GetMqttMetaData() MQTTMetadata {
 // GetMqttMetaDataOk returns a tuple with the MqttMetaData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputDataMessage) GetMqttMetaDataOk() (*MQTTMetadata, bool) {
-	if o == nil || o.MqttMetaData == nil {
+	if o == nil || IsNil(o.MqttMetaData) {
 		return nil, false
 	}
 	return o.MqttMetaData, true
@@ -328,7 +331,7 @@ func (o *OutputDataMessage) GetMqttMetaDataOk() (*MQTTMetadata, bool) {
 
 // HasMqttMetaData returns a boolean if a field has been set.
 func (o *OutputDataMessage) HasMqttMetaData() bool {
-	if o != nil && o.MqttMetaData != nil {
+	if o != nil && !IsNil(o.MqttMetaData) {
 		return true
 	}
 
@@ -342,7 +345,7 @@ func (o *OutputDataMessage) SetMqttMetaData(v MQTTMetadata) {
 
 // GetGatewayMetaData returns the GatewayMetaData field value if set, zero value otherwise.
 func (o *OutputDataMessage) GetGatewayMetaData() GatewayMetadata {
-	if o == nil || o.GatewayMetaData == nil {
+	if o == nil || IsNil(o.GatewayMetaData) {
 		var ret GatewayMetadata
 		return ret
 	}
@@ -352,7 +355,7 @@ func (o *OutputDataMessage) GetGatewayMetaData() GatewayMetadata {
 // GetGatewayMetaDataOk returns a tuple with the GatewayMetaData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputDataMessage) GetGatewayMetaDataOk() (*GatewayMetadata, bool) {
-	if o == nil || o.GatewayMetaData == nil {
+	if o == nil || IsNil(o.GatewayMetaData) {
 		return nil, false
 	}
 	return o.GatewayMetaData, true
@@ -360,7 +363,7 @@ func (o *OutputDataMessage) GetGatewayMetaDataOk() (*GatewayMetadata, bool) {
 
 // HasGatewayMetaData returns a boolean if a field has been set.
 func (o *OutputDataMessage) HasGatewayMetaData() bool {
-	if o != nil && o.GatewayMetaData != nil {
+	if o != nil && !IsNil(o.GatewayMetaData) {
 		return true
 	}
 
@@ -374,7 +377,7 @@ func (o *OutputDataMessage) SetGatewayMetaData(v GatewayMetadata) {
 
 // GetGatewayId returns the GatewayId field value if set, zero value otherwise.
 func (o *OutputDataMessage) GetGatewayId() string {
-	if o == nil || o.GatewayId == nil {
+	if o == nil || IsNil(o.GatewayId) {
 		var ret string
 		return ret
 	}
@@ -384,7 +387,7 @@ func (o *OutputDataMessage) GetGatewayId() string {
 // GetGatewayIdOk returns a tuple with the GatewayId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputDataMessage) GetGatewayIdOk() (*string, bool) {
-	if o == nil || o.GatewayId == nil {
+	if o == nil || IsNil(o.GatewayId) {
 		return nil, false
 	}
 	return o.GatewayId, true
@@ -392,7 +395,7 @@ func (o *OutputDataMessage) GetGatewayIdOk() (*string, bool) {
 
 // HasGatewayId returns a boolean if a field has been set.
 func (o *OutputDataMessage) HasGatewayId() bool {
-	if o != nil && o.GatewayId != nil {
+	if o != nil && !IsNil(o.GatewayId) {
 		return true
 	}
 
@@ -405,41 +408,49 @@ func (o *OutputDataMessage) SetGatewayId(v string) {
 }
 
 func (o OutputDataMessage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if o.Device != nil {
-		toSerialize["device"] = o.Device
-	}
-	if o.Payload != nil {
-		toSerialize["payload"] = o.Payload
-	}
-	if o.Received != nil {
-		toSerialize["received"] = o.Received
-	}
-	if o.Transport != nil {
-		toSerialize["transport"] = o.Transport
-	}
-	if o.UdpMetaData != nil {
-		toSerialize["udpMetaData"] = o.UdpMetaData
-	}
-	if o.CoapMetaData != nil {
-		toSerialize["coapMetaData"] = o.CoapMetaData
-	}
-	if o.MessageId != nil {
-		toSerialize["messageId"] = o.MessageId
-	}
-	if o.MqttMetaData != nil {
-		toSerialize["mqttMetaData"] = o.MqttMetaData
-	}
-	if o.GatewayMetaData != nil {
-		toSerialize["gatewayMetaData"] = o.GatewayMetaData
-	}
-	if o.GatewayId != nil {
-		toSerialize["gatewayId"] = o.GatewayId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OutputDataMessage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Device) {
+		toSerialize["device"] = o.Device
+	}
+	if !IsNil(o.Payload) {
+		toSerialize["payload"] = o.Payload
+	}
+	if !IsNil(o.Received) {
+		toSerialize["received"] = o.Received
+	}
+	if !IsNil(o.Transport) {
+		toSerialize["transport"] = o.Transport
+	}
+	if !IsNil(o.UdpMetaData) {
+		toSerialize["udpMetaData"] = o.UdpMetaData
+	}
+	if !IsNil(o.CoapMetaData) {
+		toSerialize["coapMetaData"] = o.CoapMetaData
+	}
+	if !IsNil(o.MessageId) {
+		toSerialize["messageId"] = o.MessageId
+	}
+	if !IsNil(o.MqttMetaData) {
+		toSerialize["mqttMetaData"] = o.MqttMetaData
+	}
+	if !IsNil(o.GatewayMetaData) {
+		toSerialize["gatewayMetaData"] = o.GatewayMetaData
+	}
+	if !IsNil(o.GatewayId) {
+		toSerialize["gatewayId"] = o.GatewayId
+	}
+	return toSerialize, nil
 }
 
 type NullableOutputDataMessage struct {

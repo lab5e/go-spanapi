@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the CertificateChainResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CertificateChainResponse{}
 
 // CertificateChainResponse Response when retrieving a certificate chain
 type CertificateChainResponse struct {
@@ -39,7 +42,7 @@ func NewCertificateChainResponseWithDefaults() *CertificateChainResponse {
 
 // GetChain returns the Chain field value if set, zero value otherwise.
 func (o *CertificateChainResponse) GetChain() string {
-	if o == nil || o.Chain == nil {
+	if o == nil || IsNil(o.Chain) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *CertificateChainResponse) GetChain() string {
 // GetChainOk returns a tuple with the Chain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateChainResponse) GetChainOk() (*string, bool) {
-	if o == nil || o.Chain == nil {
+	if o == nil || IsNil(o.Chain) {
 		return nil, false
 	}
 	return o.Chain, true
@@ -57,7 +60,7 @@ func (o *CertificateChainResponse) GetChainOk() (*string, bool) {
 
 // HasChain returns a boolean if a field has been set.
 func (o *CertificateChainResponse) HasChain() bool {
-	if o != nil && o.Chain != nil {
+	if o != nil && !IsNil(o.Chain) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *CertificateChainResponse) SetChain(v string) {
 }
 
 func (o CertificateChainResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Chain != nil {
-		toSerialize["chain"] = o.Chain
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CertificateChainResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Chain) {
+		toSerialize["chain"] = o.Chain
+	}
+	return toSerialize, nil
 }
 
 type NullableCertificateChainResponse struct {

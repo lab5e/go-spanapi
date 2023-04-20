@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the UpdateFirmwareRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdateFirmwareRequest{}
 
 // UpdateFirmwareRequest This is the request object when updating the firmware image
 type UpdateFirmwareRequest struct {
@@ -41,7 +44,7 @@ func NewUpdateFirmwareRequestWithDefaults() *UpdateFirmwareRequest {
 
 // GetCollectionId returns the CollectionId field value if set, zero value otherwise.
 func (o *UpdateFirmwareRequest) GetCollectionId() string {
-	if o == nil || o.CollectionId == nil {
+	if o == nil || IsNil(o.CollectionId) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *UpdateFirmwareRequest) GetCollectionId() string {
 // GetCollectionIdOk returns a tuple with the CollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateFirmwareRequest) GetCollectionIdOk() (*string, bool) {
-	if o == nil || o.CollectionId == nil {
+	if o == nil || IsNil(o.CollectionId) {
 		return nil, false
 	}
 	return o.CollectionId, true
@@ -59,7 +62,7 @@ func (o *UpdateFirmwareRequest) GetCollectionIdOk() (*string, bool) {
 
 // HasCollectionId returns a boolean if a field has been set.
 func (o *UpdateFirmwareRequest) HasCollectionId() bool {
-	if o != nil && o.CollectionId != nil {
+	if o != nil && !IsNil(o.CollectionId) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *UpdateFirmwareRequest) SetCollectionId(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *UpdateFirmwareRequest) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *UpdateFirmwareRequest) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateFirmwareRequest) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -91,7 +94,7 @@ func (o *UpdateFirmwareRequest) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *UpdateFirmwareRequest) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *UpdateFirmwareRequest) SetVersion(v string) {
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *UpdateFirmwareRequest) GetTags() map[string]string {
-	if o == nil || o.Tags == nil {
+	if o == nil || IsNil(o.Tags) {
 		var ret map[string]string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *UpdateFirmwareRequest) GetTags() map[string]string {
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateFirmwareRequest) GetTagsOk() (*map[string]string, bool) {
-	if o == nil || o.Tags == nil {
+	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
 	return o.Tags, true
@@ -123,7 +126,7 @@ func (o *UpdateFirmwareRequest) GetTagsOk() (*map[string]string, bool) {
 
 // HasTags returns a boolean if a field has been set.
 func (o *UpdateFirmwareRequest) HasTags() bool {
-	if o != nil && o.Tags != nil {
+	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *UpdateFirmwareRequest) SetTags(v map[string]string) {
 }
 
 func (o UpdateFirmwareRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CollectionId != nil {
-		toSerialize["collectionId"] = o.CollectionId
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
-	}
-	if o.Tags != nil {
-		toSerialize["tags"] = o.Tags
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UpdateFirmwareRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CollectionId) {
+		toSerialize["collectionId"] = o.CollectionId
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
+	}
+	return toSerialize, nil
 }
 
 type NullableUpdateFirmwareRequest struct {

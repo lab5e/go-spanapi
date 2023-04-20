@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the SignCertificateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignCertificateRequest{}
 
 // SignCertificateRequest Request certificate signing
 type SignCertificateRequest struct {
@@ -41,7 +44,7 @@ func NewSignCertificateRequestWithDefaults() *SignCertificateRequest {
 
 // GetGatewayId returns the GatewayId field value if set, zero value otherwise.
 func (o *SignCertificateRequest) GetGatewayId() string {
-	if o == nil || o.GatewayId == nil {
+	if o == nil || IsNil(o.GatewayId) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *SignCertificateRequest) GetGatewayId() string {
 // GetGatewayIdOk returns a tuple with the GatewayId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignCertificateRequest) GetGatewayIdOk() (*string, bool) {
-	if o == nil || o.GatewayId == nil {
+	if o == nil || IsNil(o.GatewayId) {
 		return nil, false
 	}
 	return o.GatewayId, true
@@ -59,7 +62,7 @@ func (o *SignCertificateRequest) GetGatewayIdOk() (*string, bool) {
 
 // HasGatewayId returns a boolean if a field has been set.
 func (o *SignCertificateRequest) HasGatewayId() bool {
-	if o != nil && o.GatewayId != nil {
+	if o != nil && !IsNil(o.GatewayId) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *SignCertificateRequest) SetGatewayId(v string) {
 
 // GetDeviceId returns the DeviceId field value if set, zero value otherwise.
 func (o *SignCertificateRequest) GetDeviceId() string {
-	if o == nil || o.DeviceId == nil {
+	if o == nil || IsNil(o.DeviceId) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *SignCertificateRequest) GetDeviceId() string {
 // GetDeviceIdOk returns a tuple with the DeviceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignCertificateRequest) GetDeviceIdOk() (*string, bool) {
-	if o == nil || o.DeviceId == nil {
+	if o == nil || IsNil(o.DeviceId) {
 		return nil, false
 	}
 	return o.DeviceId, true
@@ -91,7 +94,7 @@ func (o *SignCertificateRequest) GetDeviceIdOk() (*string, bool) {
 
 // HasDeviceId returns a boolean if a field has been set.
 func (o *SignCertificateRequest) HasDeviceId() bool {
-	if o != nil && o.DeviceId != nil {
+	if o != nil && !IsNil(o.DeviceId) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *SignCertificateRequest) SetDeviceId(v string) {
 
 // GetCsr returns the Csr field value if set, zero value otherwise.
 func (o *SignCertificateRequest) GetCsr() string {
-	if o == nil || o.Csr == nil {
+	if o == nil || IsNil(o.Csr) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *SignCertificateRequest) GetCsr() string {
 // GetCsrOk returns a tuple with the Csr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignCertificateRequest) GetCsrOk() (*string, bool) {
-	if o == nil || o.Csr == nil {
+	if o == nil || IsNil(o.Csr) {
 		return nil, false
 	}
 	return o.Csr, true
@@ -123,7 +126,7 @@ func (o *SignCertificateRequest) GetCsrOk() (*string, bool) {
 
 // HasCsr returns a boolean if a field has been set.
 func (o *SignCertificateRequest) HasCsr() bool {
-	if o != nil && o.Csr != nil {
+	if o != nil && !IsNil(o.Csr) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *SignCertificateRequest) SetCsr(v string) {
 }
 
 func (o SignCertificateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.GatewayId != nil {
-		toSerialize["gatewayId"] = o.GatewayId
-	}
-	if o.DeviceId != nil {
-		toSerialize["deviceId"] = o.DeviceId
-	}
-	if o.Csr != nil {
-		toSerialize["csr"] = o.Csr
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignCertificateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.GatewayId) {
+		toSerialize["gatewayId"] = o.GatewayId
+	}
+	if !IsNil(o.DeviceId) {
+		toSerialize["deviceId"] = o.DeviceId
+	}
+	if !IsNil(o.Csr) {
+		toSerialize["csr"] = o.Csr
+	}
+	return toSerialize, nil
 }
 
 type NullableSignCertificateRequest struct {

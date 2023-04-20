@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the ListUpstreamMessagesResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ListUpstreamMessagesResponse{}
 
 // ListUpstreamMessagesResponse Response object when listing upstream messages
 type ListUpstreamMessagesResponse struct {
@@ -39,7 +42,7 @@ func NewListUpstreamMessagesResponseWithDefaults() *ListUpstreamMessagesResponse
 
 // GetMessages returns the Messages field value if set, zero value otherwise.
 func (o *ListUpstreamMessagesResponse) GetMessages() []MessageUpstream {
-	if o == nil || o.Messages == nil {
+	if o == nil || IsNil(o.Messages) {
 		var ret []MessageUpstream
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ListUpstreamMessagesResponse) GetMessages() []MessageUpstream {
 // GetMessagesOk returns a tuple with the Messages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListUpstreamMessagesResponse) GetMessagesOk() ([]MessageUpstream, bool) {
-	if o == nil || o.Messages == nil {
+	if o == nil || IsNil(o.Messages) {
 		return nil, false
 	}
 	return o.Messages, true
@@ -57,7 +60,7 @@ func (o *ListUpstreamMessagesResponse) GetMessagesOk() ([]MessageUpstream, bool)
 
 // HasMessages returns a boolean if a field has been set.
 func (o *ListUpstreamMessagesResponse) HasMessages() bool {
-	if o != nil && o.Messages != nil {
+	if o != nil && !IsNil(o.Messages) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ListUpstreamMessagesResponse) SetMessages(v []MessageUpstream) {
 }
 
 func (o ListUpstreamMessagesResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Messages != nil {
-		toSerialize["messages"] = o.Messages
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ListUpstreamMessagesResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Messages) {
+		toSerialize["messages"] = o.Messages
+	}
+	return toSerialize, nil
 }
 
 type NullableListUpstreamMessagesResponse struct {

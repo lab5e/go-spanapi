@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,16 +14,12 @@ package spanapi
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // FotaApiService FotaApi service
 type FotaApiService service
@@ -34,7 +30,6 @@ type ApiClearFirmwareErrorRequest struct {
 	collectionId string
 	deviceId string
 }
-
 
 func (r ApiClearFirmwareErrorRequest) Execute() (*ClearFirmwareErrorResponse, *http.Response, error) {
 	return r.ApiService.ClearFirmwareErrorExecute(r)
@@ -73,8 +68,8 @@ func (a *FotaApiService) ClearFirmwareErrorExecute(r ApiClearFirmwareErrorReques
 	}
 
 	localVarPath := localBasePath + "/span/collections/{collectionId}/devices/{deviceId}/fwerror"
-	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterToString(r.collectionId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"deviceId"+"}", url.PathEscape(parameterToString(r.deviceId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterValueToString(r.collectionId, "collectionId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deviceId"+"}", url.PathEscape(parameterValueToString(r.deviceId, "deviceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -121,9 +116,9 @@ func (a *FotaApiService) ClearFirmwareErrorExecute(r ApiClearFirmwareErrorReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -140,7 +135,8 @@ func (a *FotaApiService) ClearFirmwareErrorExecute(r ApiClearFirmwareErrorReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -150,7 +146,8 @@ func (a *FotaApiService) ClearFirmwareErrorExecute(r ApiClearFirmwareErrorReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -160,7 +157,8 @@ func (a *FotaApiService) ClearFirmwareErrorExecute(r ApiClearFirmwareErrorReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -170,7 +168,8 @@ func (a *FotaApiService) ClearFirmwareErrorExecute(r ApiClearFirmwareErrorReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -180,7 +179,8 @@ func (a *FotaApiService) ClearFirmwareErrorExecute(r ApiClearFirmwareErrorReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -189,7 +189,8 @@ func (a *FotaApiService) ClearFirmwareErrorExecute(r ApiClearFirmwareErrorReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -252,7 +253,7 @@ func (a *FotaApiService) CreateFirmwareExecute(r ApiCreateFirmwareRequest) (*Fir
 	}
 
 	localVarPath := localBasePath + "/span/collections/{collectionId}/firmware"
-	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterToString(r.collectionId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterValueToString(r.collectionId, "collectionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -304,9 +305,9 @@ func (a *FotaApiService) CreateFirmwareExecute(r ApiCreateFirmwareRequest) (*Fir
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -323,7 +324,8 @@ func (a *FotaApiService) CreateFirmwareExecute(r ApiCreateFirmwareRequest) (*Fir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -333,7 +335,8 @@ func (a *FotaApiService) CreateFirmwareExecute(r ApiCreateFirmwareRequest) (*Fir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -343,7 +346,8 @@ func (a *FotaApiService) CreateFirmwareExecute(r ApiCreateFirmwareRequest) (*Fir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -353,7 +357,8 @@ func (a *FotaApiService) CreateFirmwareExecute(r ApiCreateFirmwareRequest) (*Fir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -363,7 +368,8 @@ func (a *FotaApiService) CreateFirmwareExecute(r ApiCreateFirmwareRequest) (*Fir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -372,7 +378,8 @@ func (a *FotaApiService) CreateFirmwareExecute(r ApiCreateFirmwareRequest) (*Fir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -394,7 +401,6 @@ type ApiDeleteFirmwareRequest struct {
 	collectionId string
 	imageId string
 }
-
 
 func (r ApiDeleteFirmwareRequest) Execute() (*Firmware, *http.Response, error) {
 	return r.ApiService.DeleteFirmwareExecute(r)
@@ -433,8 +439,8 @@ func (a *FotaApiService) DeleteFirmwareExecute(r ApiDeleteFirmwareRequest) (*Fir
 	}
 
 	localVarPath := localBasePath + "/span/collections/{collectionId}/firmware/{imageId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterToString(r.collectionId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"imageId"+"}", url.PathEscape(parameterToString(r.imageId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterValueToString(r.collectionId, "collectionId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"imageId"+"}", url.PathEscape(parameterValueToString(r.imageId, "imageId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -481,9 +487,9 @@ func (a *FotaApiService) DeleteFirmwareExecute(r ApiDeleteFirmwareRequest) (*Fir
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -500,7 +506,8 @@ func (a *FotaApiService) DeleteFirmwareExecute(r ApiDeleteFirmwareRequest) (*Fir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -510,7 +517,8 @@ func (a *FotaApiService) DeleteFirmwareExecute(r ApiDeleteFirmwareRequest) (*Fir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -520,7 +528,8 @@ func (a *FotaApiService) DeleteFirmwareExecute(r ApiDeleteFirmwareRequest) (*Fir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -530,7 +539,8 @@ func (a *FotaApiService) DeleteFirmwareExecute(r ApiDeleteFirmwareRequest) (*Fir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -540,7 +550,8 @@ func (a *FotaApiService) DeleteFirmwareExecute(r ApiDeleteFirmwareRequest) (*Fir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -549,7 +560,8 @@ func (a *FotaApiService) DeleteFirmwareExecute(r ApiDeleteFirmwareRequest) (*Fir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -571,7 +583,6 @@ type ApiFirmwareUsageRequest struct {
 	collectionId string
 	imageId string
 }
-
 
 func (r ApiFirmwareUsageRequest) Execute() (*FirmwareUsageResponse, *http.Response, error) {
 	return r.ApiService.FirmwareUsageExecute(r)
@@ -610,8 +621,8 @@ func (a *FotaApiService) FirmwareUsageExecute(r ApiFirmwareUsageRequest) (*Firmw
 	}
 
 	localVarPath := localBasePath + "/span/collections/{collectionId}/firmware/{imageId}/usage"
-	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterToString(r.collectionId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"imageId"+"}", url.PathEscape(parameterToString(r.imageId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterValueToString(r.collectionId, "collectionId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"imageId"+"}", url.PathEscape(parameterValueToString(r.imageId, "imageId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -658,9 +669,9 @@ func (a *FotaApiService) FirmwareUsageExecute(r ApiFirmwareUsageRequest) (*Firmw
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -677,7 +688,8 @@ func (a *FotaApiService) FirmwareUsageExecute(r ApiFirmwareUsageRequest) (*Firmw
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -687,7 +699,8 @@ func (a *FotaApiService) FirmwareUsageExecute(r ApiFirmwareUsageRequest) (*Firmw
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -697,7 +710,8 @@ func (a *FotaApiService) FirmwareUsageExecute(r ApiFirmwareUsageRequest) (*Firmw
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -707,7 +721,8 @@ func (a *FotaApiService) FirmwareUsageExecute(r ApiFirmwareUsageRequest) (*Firmw
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -717,7 +732,8 @@ func (a *FotaApiService) FirmwareUsageExecute(r ApiFirmwareUsageRequest) (*Firmw
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -726,7 +742,8 @@ func (a *FotaApiService) FirmwareUsageExecute(r ApiFirmwareUsageRequest) (*Firmw
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -747,7 +764,6 @@ type ApiListFirmwareRequest struct {
 	ApiService *FotaApiService
 	collectionId string
 }
-
 
 func (r ApiListFirmwareRequest) Execute() (*ListFirmwareResponse, *http.Response, error) {
 	return r.ApiService.ListFirmwareExecute(r)
@@ -784,7 +800,7 @@ func (a *FotaApiService) ListFirmwareExecute(r ApiListFirmwareRequest) (*ListFir
 	}
 
 	localVarPath := localBasePath + "/span/collections/{collectionId}/firmware"
-	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterToString(r.collectionId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterValueToString(r.collectionId, "collectionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -831,9 +847,9 @@ func (a *FotaApiService) ListFirmwareExecute(r ApiListFirmwareRequest) (*ListFir
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -850,7 +866,8 @@ func (a *FotaApiService) ListFirmwareExecute(r ApiListFirmwareRequest) (*ListFir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -860,7 +877,8 @@ func (a *FotaApiService) ListFirmwareExecute(r ApiListFirmwareRequest) (*ListFir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -870,7 +888,8 @@ func (a *FotaApiService) ListFirmwareExecute(r ApiListFirmwareRequest) (*ListFir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -880,7 +899,8 @@ func (a *FotaApiService) ListFirmwareExecute(r ApiListFirmwareRequest) (*ListFir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -890,7 +910,8 @@ func (a *FotaApiService) ListFirmwareExecute(r ApiListFirmwareRequest) (*ListFir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -899,7 +920,8 @@ func (a *FotaApiService) ListFirmwareExecute(r ApiListFirmwareRequest) (*ListFir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -921,7 +943,6 @@ type ApiRetrieveFirmwareRequest struct {
 	collectionId string
 	imageId string
 }
-
 
 func (r ApiRetrieveFirmwareRequest) Execute() (*Firmware, *http.Response, error) {
 	return r.ApiService.RetrieveFirmwareExecute(r)
@@ -960,8 +981,8 @@ func (a *FotaApiService) RetrieveFirmwareExecute(r ApiRetrieveFirmwareRequest) (
 	}
 
 	localVarPath := localBasePath + "/span/collections/{collectionId}/firmware/{imageId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterToString(r.collectionId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"imageId"+"}", url.PathEscape(parameterToString(r.imageId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"collectionId"+"}", url.PathEscape(parameterValueToString(r.collectionId, "collectionId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"imageId"+"}", url.PathEscape(parameterValueToString(r.imageId, "imageId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1008,9 +1029,9 @@ func (a *FotaApiService) RetrieveFirmwareExecute(r ApiRetrieveFirmwareRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1027,7 +1048,8 @@ func (a *FotaApiService) RetrieveFirmwareExecute(r ApiRetrieveFirmwareRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1037,7 +1059,8 @@ func (a *FotaApiService) RetrieveFirmwareExecute(r ApiRetrieveFirmwareRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1047,7 +1070,8 @@ func (a *FotaApiService) RetrieveFirmwareExecute(r ApiRetrieveFirmwareRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1057,7 +1081,8 @@ func (a *FotaApiService) RetrieveFirmwareExecute(r ApiRetrieveFirmwareRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1067,7 +1092,8 @@ func (a *FotaApiService) RetrieveFirmwareExecute(r ApiRetrieveFirmwareRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -1076,7 +1102,8 @@ func (a *FotaApiService) RetrieveFirmwareExecute(r ApiRetrieveFirmwareRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1145,8 +1172,8 @@ func (a *FotaApiService) UpdateFirmwareExecute(r ApiUpdateFirmwareRequest) (*Fir
 	}
 
 	localVarPath := localBasePath + "/span/collections/{existingCollectionId}/firmware/{imageId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"existingCollectionId"+"}", url.PathEscape(parameterToString(r.existingCollectionId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"imageId"+"}", url.PathEscape(parameterToString(r.imageId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"existingCollectionId"+"}", url.PathEscape(parameterValueToString(r.existingCollectionId, "existingCollectionId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"imageId"+"}", url.PathEscape(parameterValueToString(r.imageId, "imageId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1198,9 +1225,9 @@ func (a *FotaApiService) UpdateFirmwareExecute(r ApiUpdateFirmwareRequest) (*Fir
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1217,7 +1244,8 @@ func (a *FotaApiService) UpdateFirmwareExecute(r ApiUpdateFirmwareRequest) (*Fir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1227,7 +1255,8 @@ func (a *FotaApiService) UpdateFirmwareExecute(r ApiUpdateFirmwareRequest) (*Fir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1237,7 +1266,8 @@ func (a *FotaApiService) UpdateFirmwareExecute(r ApiUpdateFirmwareRequest) (*Fir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1247,7 +1277,8 @@ func (a *FotaApiService) UpdateFirmwareExecute(r ApiUpdateFirmwareRequest) (*Fir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1257,7 +1288,8 @@ func (a *FotaApiService) UpdateFirmwareExecute(r ApiUpdateFirmwareRequest) (*Fir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -1266,7 +1298,8 @@ func (a *FotaApiService) UpdateFirmwareExecute(r ApiUpdateFirmwareRequest) (*Fir
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

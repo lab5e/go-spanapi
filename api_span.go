@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,15 +14,11 @@ package spanapi
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // SpanApiService SpanApi service
 type SpanApiService service
@@ -31,7 +27,6 @@ type ApiGetSystemInfoRequest struct {
 	ctx context.Context
 	ApiService *SpanApiService
 }
-
 
 func (r ApiGetSystemInfoRequest) Execute() (*SystemInfoResponse, *http.Response, error) {
 	return r.ApiService.GetSystemInfoExecute(r)
@@ -115,9 +110,9 @@ func (a *SpanApiService) GetSystemInfoExecute(r ApiGetSystemInfoRequest) (*Syste
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -134,7 +129,8 @@ func (a *SpanApiService) GetSystemInfoExecute(r ApiGetSystemInfoRequest) (*Syste
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -144,7 +140,8 @@ func (a *SpanApiService) GetSystemInfoExecute(r ApiGetSystemInfoRequest) (*Syste
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -154,7 +151,8 @@ func (a *SpanApiService) GetSystemInfoExecute(r ApiGetSystemInfoRequest) (*Syste
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -164,7 +162,8 @@ func (a *SpanApiService) GetSystemInfoExecute(r ApiGetSystemInfoRequest) (*Syste
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -174,7 +173,8 @@ func (a *SpanApiService) GetSystemInfoExecute(r ApiGetSystemInfoRequest) (*Syste
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v Status
@@ -183,7 +183,8 @@ func (a *SpanApiService) GetSystemInfoExecute(r ApiGetSystemInfoRequest) (*Syste
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

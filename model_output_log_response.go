@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the OutputLogResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OutputLogResponse{}
 
 // OutputLogResponse List logs for output
 type OutputLogResponse struct {
@@ -39,7 +42,7 @@ func NewOutputLogResponseWithDefaults() *OutputLogResponse {
 
 // GetLogs returns the Logs field value if set, zero value otherwise.
 func (o *OutputLogResponse) GetLogs() []OutputLogEntry {
-	if o == nil || o.Logs == nil {
+	if o == nil || IsNil(o.Logs) {
 		var ret []OutputLogEntry
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *OutputLogResponse) GetLogs() []OutputLogEntry {
 // GetLogsOk returns a tuple with the Logs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputLogResponse) GetLogsOk() ([]OutputLogEntry, bool) {
-	if o == nil || o.Logs == nil {
+	if o == nil || IsNil(o.Logs) {
 		return nil, false
 	}
 	return o.Logs, true
@@ -57,7 +60,7 @@ func (o *OutputLogResponse) GetLogsOk() ([]OutputLogEntry, bool) {
 
 // HasLogs returns a boolean if a field has been set.
 func (o *OutputLogResponse) HasLogs() bool {
-	if o != nil && o.Logs != nil {
+	if o != nil && !IsNil(o.Logs) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *OutputLogResponse) SetLogs(v []OutputLogEntry) {
 }
 
 func (o OutputLogResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Logs != nil {
-		toSerialize["logs"] = o.Logs
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OutputLogResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Logs) {
+		toSerialize["logs"] = o.Logs
+	}
+	return toSerialize, nil
 }
 
 type NullableOutputLogResponse struct {

@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Collection type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Collection{}
+
 // Collection This is a collection
 type Collection struct {
 	// The ID of the collection. This is assigned by the backend.
@@ -24,6 +27,8 @@ type Collection struct {
 	Firmware *CollectionFirmware `json:"firmware,omitempty"`
 	// Tags for the collection. Tags are metadata fields that you can assign to the collection.
 	Tags *map[string]string `json:"tags,omitempty"`
+	UpstreamTimestamps []string `json:"upstreamTimestamps,omitempty"`
+	DownstreamTimestamps []string `json:"downstreamTimestamps,omitempty"`
 }
 
 // NewCollection instantiates a new Collection object
@@ -45,7 +50,7 @@ func NewCollectionWithDefaults() *Collection {
 
 // GetCollectionId returns the CollectionId field value if set, zero value otherwise.
 func (o *Collection) GetCollectionId() string {
-	if o == nil || o.CollectionId == nil {
+	if o == nil || IsNil(o.CollectionId) {
 		var ret string
 		return ret
 	}
@@ -55,7 +60,7 @@ func (o *Collection) GetCollectionId() string {
 // GetCollectionIdOk returns a tuple with the CollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Collection) GetCollectionIdOk() (*string, bool) {
-	if o == nil || o.CollectionId == nil {
+	if o == nil || IsNil(o.CollectionId) {
 		return nil, false
 	}
 	return o.CollectionId, true
@@ -63,7 +68,7 @@ func (o *Collection) GetCollectionIdOk() (*string, bool) {
 
 // HasCollectionId returns a boolean if a field has been set.
 func (o *Collection) HasCollectionId() bool {
-	if o != nil && o.CollectionId != nil {
+	if o != nil && !IsNil(o.CollectionId) {
 		return true
 	}
 
@@ -77,7 +82,7 @@ func (o *Collection) SetCollectionId(v string) {
 
 // GetTeamId returns the TeamId field value if set, zero value otherwise.
 func (o *Collection) GetTeamId() string {
-	if o == nil || o.TeamId == nil {
+	if o == nil || IsNil(o.TeamId) {
 		var ret string
 		return ret
 	}
@@ -87,7 +92,7 @@ func (o *Collection) GetTeamId() string {
 // GetTeamIdOk returns a tuple with the TeamId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Collection) GetTeamIdOk() (*string, bool) {
-	if o == nil || o.TeamId == nil {
+	if o == nil || IsNil(o.TeamId) {
 		return nil, false
 	}
 	return o.TeamId, true
@@ -95,7 +100,7 @@ func (o *Collection) GetTeamIdOk() (*string, bool) {
 
 // HasTeamId returns a boolean if a field has been set.
 func (o *Collection) HasTeamId() bool {
-	if o != nil && o.TeamId != nil {
+	if o != nil && !IsNil(o.TeamId) {
 		return true
 	}
 
@@ -109,7 +114,7 @@ func (o *Collection) SetTeamId(v string) {
 
 // GetFirmware returns the Firmware field value if set, zero value otherwise.
 func (o *Collection) GetFirmware() CollectionFirmware {
-	if o == nil || o.Firmware == nil {
+	if o == nil || IsNil(o.Firmware) {
 		var ret CollectionFirmware
 		return ret
 	}
@@ -119,7 +124,7 @@ func (o *Collection) GetFirmware() CollectionFirmware {
 // GetFirmwareOk returns a tuple with the Firmware field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Collection) GetFirmwareOk() (*CollectionFirmware, bool) {
-	if o == nil || o.Firmware == nil {
+	if o == nil || IsNil(o.Firmware) {
 		return nil, false
 	}
 	return o.Firmware, true
@@ -127,7 +132,7 @@ func (o *Collection) GetFirmwareOk() (*CollectionFirmware, bool) {
 
 // HasFirmware returns a boolean if a field has been set.
 func (o *Collection) HasFirmware() bool {
-	if o != nil && o.Firmware != nil {
+	if o != nil && !IsNil(o.Firmware) {
 		return true
 	}
 
@@ -141,7 +146,7 @@ func (o *Collection) SetFirmware(v CollectionFirmware) {
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *Collection) GetTags() map[string]string {
-	if o == nil || o.Tags == nil {
+	if o == nil || IsNil(o.Tags) {
 		var ret map[string]string
 		return ret
 	}
@@ -151,7 +156,7 @@ func (o *Collection) GetTags() map[string]string {
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Collection) GetTagsOk() (*map[string]string, bool) {
-	if o == nil || o.Tags == nil {
+	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
 	return o.Tags, true
@@ -159,7 +164,7 @@ func (o *Collection) GetTagsOk() (*map[string]string, bool) {
 
 // HasTags returns a boolean if a field has been set.
 func (o *Collection) HasTags() bool {
-	if o != nil && o.Tags != nil {
+	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
 
@@ -171,21 +176,99 @@ func (o *Collection) SetTags(v map[string]string) {
 	o.Tags = &v
 }
 
+// GetUpstreamTimestamps returns the UpstreamTimestamps field value if set, zero value otherwise.
+func (o *Collection) GetUpstreamTimestamps() []string {
+	if o == nil || IsNil(o.UpstreamTimestamps) {
+		var ret []string
+		return ret
+	}
+	return o.UpstreamTimestamps
+}
+
+// GetUpstreamTimestampsOk returns a tuple with the UpstreamTimestamps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Collection) GetUpstreamTimestampsOk() ([]string, bool) {
+	if o == nil || IsNil(o.UpstreamTimestamps) {
+		return nil, false
+	}
+	return o.UpstreamTimestamps, true
+}
+
+// HasUpstreamTimestamps returns a boolean if a field has been set.
+func (o *Collection) HasUpstreamTimestamps() bool {
+	if o != nil && !IsNil(o.UpstreamTimestamps) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpstreamTimestamps gets a reference to the given []string and assigns it to the UpstreamTimestamps field.
+func (o *Collection) SetUpstreamTimestamps(v []string) {
+	o.UpstreamTimestamps = v
+}
+
+// GetDownstreamTimestamps returns the DownstreamTimestamps field value if set, zero value otherwise.
+func (o *Collection) GetDownstreamTimestamps() []string {
+	if o == nil || IsNil(o.DownstreamTimestamps) {
+		var ret []string
+		return ret
+	}
+	return o.DownstreamTimestamps
+}
+
+// GetDownstreamTimestampsOk returns a tuple with the DownstreamTimestamps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Collection) GetDownstreamTimestampsOk() ([]string, bool) {
+	if o == nil || IsNil(o.DownstreamTimestamps) {
+		return nil, false
+	}
+	return o.DownstreamTimestamps, true
+}
+
+// HasDownstreamTimestamps returns a boolean if a field has been set.
+func (o *Collection) HasDownstreamTimestamps() bool {
+	if o != nil && !IsNil(o.DownstreamTimestamps) {
+		return true
+	}
+
+	return false
+}
+
+// SetDownstreamTimestamps gets a reference to the given []string and assigns it to the DownstreamTimestamps field.
+func (o *Collection) SetDownstreamTimestamps(v []string) {
+	o.DownstreamTimestamps = v
+}
+
 func (o Collection) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CollectionId != nil {
-		toSerialize["collectionId"] = o.CollectionId
-	}
-	if o.TeamId != nil {
-		toSerialize["teamId"] = o.TeamId
-	}
-	if o.Firmware != nil {
-		toSerialize["firmware"] = o.Firmware
-	}
-	if o.Tags != nil {
-		toSerialize["tags"] = o.Tags
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Collection) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CollectionId) {
+		toSerialize["collectionId"] = o.CollectionId
+	}
+	if !IsNil(o.TeamId) {
+		toSerialize["teamId"] = o.TeamId
+	}
+	if !IsNil(o.Firmware) {
+		toSerialize["firmware"] = o.Firmware
+	}
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
+	}
+	if !IsNil(o.UpstreamTimestamps) {
+		toSerialize["upstreamTimestamps"] = o.UpstreamTimestamps
+	}
+	if !IsNil(o.DownstreamTimestamps) {
+		toSerialize["downstreamTimestamps"] = o.DownstreamTimestamps
+	}
+	return toSerialize, nil
 }
 
 type NullableCollection struct {

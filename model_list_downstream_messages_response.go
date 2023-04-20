@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the ListDownstreamMessagesResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ListDownstreamMessagesResponse{}
 
 // ListDownstreamMessagesResponse Response object when listing downstream messages
 type ListDownstreamMessagesResponse struct {
@@ -39,7 +42,7 @@ func NewListDownstreamMessagesResponseWithDefaults() *ListDownstreamMessagesResp
 
 // GetMessages returns the Messages field value if set, zero value otherwise.
 func (o *ListDownstreamMessagesResponse) GetMessages() []MessageDownstream {
-	if o == nil || o.Messages == nil {
+	if o == nil || IsNil(o.Messages) {
 		var ret []MessageDownstream
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ListDownstreamMessagesResponse) GetMessages() []MessageDownstream {
 // GetMessagesOk returns a tuple with the Messages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListDownstreamMessagesResponse) GetMessagesOk() ([]MessageDownstream, bool) {
-	if o == nil || o.Messages == nil {
+	if o == nil || IsNil(o.Messages) {
 		return nil, false
 	}
 	return o.Messages, true
@@ -57,7 +60,7 @@ func (o *ListDownstreamMessagesResponse) GetMessagesOk() ([]MessageDownstream, b
 
 // HasMessages returns a boolean if a field has been set.
 func (o *ListDownstreamMessagesResponse) HasMessages() bool {
-	if o != nil && o.Messages != nil {
+	if o != nil && !IsNil(o.Messages) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ListDownstreamMessagesResponse) SetMessages(v []MessageDownstream) {
 }
 
 func (o ListDownstreamMessagesResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Messages != nil {
-		toSerialize["messages"] = o.Messages
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ListDownstreamMessagesResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Messages) {
+		toSerialize["messages"] = o.Messages
+	}
+	return toSerialize, nil
 }
 
 type NullableListDownstreamMessagesResponse struct {

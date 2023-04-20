@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the SignCertificateResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignCertificateResponse{}
 
 // SignCertificateResponse Response when signing a certificate
 type SignCertificateResponse struct {
@@ -40,7 +43,7 @@ func NewSignCertificateResponseWithDefaults() *SignCertificateResponse {
 
 // GetCertificate returns the Certificate field value if set, zero value otherwise.
 func (o *SignCertificateResponse) GetCertificate() string {
-	if o == nil || o.Certificate == nil {
+	if o == nil || IsNil(o.Certificate) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *SignCertificateResponse) GetCertificate() string {
 // GetCertificateOk returns a tuple with the Certificate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignCertificateResponse) GetCertificateOk() (*string, bool) {
-	if o == nil || o.Certificate == nil {
+	if o == nil || IsNil(o.Certificate) {
 		return nil, false
 	}
 	return o.Certificate, true
@@ -58,7 +61,7 @@ func (o *SignCertificateResponse) GetCertificateOk() (*string, bool) {
 
 // HasCertificate returns a boolean if a field has been set.
 func (o *SignCertificateResponse) HasCertificate() bool {
-	if o != nil && o.Certificate != nil {
+	if o != nil && !IsNil(o.Certificate) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *SignCertificateResponse) SetCertificate(v string) {
 
 // GetChain returns the Chain field value if set, zero value otherwise.
 func (o *SignCertificateResponse) GetChain() string {
-	if o == nil || o.Chain == nil {
+	if o == nil || IsNil(o.Chain) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *SignCertificateResponse) GetChain() string {
 // GetChainOk returns a tuple with the Chain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignCertificateResponse) GetChainOk() (*string, bool) {
-	if o == nil || o.Chain == nil {
+	if o == nil || IsNil(o.Chain) {
 		return nil, false
 	}
 	return o.Chain, true
@@ -90,7 +93,7 @@ func (o *SignCertificateResponse) GetChainOk() (*string, bool) {
 
 // HasChain returns a boolean if a field has been set.
 func (o *SignCertificateResponse) HasChain() bool {
-	if o != nil && o.Chain != nil {
+	if o != nil && !IsNil(o.Chain) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *SignCertificateResponse) SetChain(v string) {
 }
 
 func (o SignCertificateResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Certificate != nil {
-		toSerialize["certificate"] = o.Certificate
-	}
-	if o.Chain != nil {
-		toSerialize["chain"] = o.Chain
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignCertificateResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Certificate) {
+		toSerialize["certificate"] = o.Certificate
+	}
+	if !IsNil(o.Chain) {
+		toSerialize["chain"] = o.Chain
+	}
+	return toSerialize, nil
 }
 
 type NullableSignCertificateResponse struct {

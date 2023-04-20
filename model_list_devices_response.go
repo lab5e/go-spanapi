@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the ListDevicesResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ListDevicesResponse{}
 
 // ListDevicesResponse List device response
 type ListDevicesResponse struct {
@@ -39,7 +42,7 @@ func NewListDevicesResponseWithDefaults() *ListDevicesResponse {
 
 // GetDevices returns the Devices field value if set, zero value otherwise.
 func (o *ListDevicesResponse) GetDevices() []Device {
-	if o == nil || o.Devices == nil {
+	if o == nil || IsNil(o.Devices) {
 		var ret []Device
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ListDevicesResponse) GetDevices() []Device {
 // GetDevicesOk returns a tuple with the Devices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListDevicesResponse) GetDevicesOk() ([]Device, bool) {
-	if o == nil || o.Devices == nil {
+	if o == nil || IsNil(o.Devices) {
 		return nil, false
 	}
 	return o.Devices, true
@@ -57,7 +60,7 @@ func (o *ListDevicesResponse) GetDevicesOk() ([]Device, bool) {
 
 // HasDevices returns a boolean if a field has been set.
 func (o *ListDevicesResponse) HasDevices() bool {
-	if o != nil && o.Devices != nil {
+	if o != nil && !IsNil(o.Devices) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ListDevicesResponse) SetDevices(v []Device) {
 }
 
 func (o ListDevicesResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Devices != nil {
-		toSerialize["devices"] = o.Devices
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ListDevicesResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Devices) {
+		toSerialize["devices"] = o.Devices
+	}
+	return toSerialize, nil
 }
 
 type NullableListDevicesResponse struct {

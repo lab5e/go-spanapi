@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the Gateway type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Gateway{}
 
 // Gateway A gateway is a connection between devices and Span
 type Gateway struct {
@@ -54,7 +57,7 @@ func NewGatewayWithDefaults() *Gateway {
 
 // GetGatewayId returns the GatewayId field value if set, zero value otherwise.
 func (o *Gateway) GetGatewayId() string {
-	if o == nil || o.GatewayId == nil {
+	if o == nil || IsNil(o.GatewayId) {
 		var ret string
 		return ret
 	}
@@ -64,7 +67,7 @@ func (o *Gateway) GetGatewayId() string {
 // GetGatewayIdOk returns a tuple with the GatewayId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetGatewayIdOk() (*string, bool) {
-	if o == nil || o.GatewayId == nil {
+	if o == nil || IsNil(o.GatewayId) {
 		return nil, false
 	}
 	return o.GatewayId, true
@@ -72,7 +75,7 @@ func (o *Gateway) GetGatewayIdOk() (*string, bool) {
 
 // HasGatewayId returns a boolean if a field has been set.
 func (o *Gateway) HasGatewayId() bool {
-	if o != nil && o.GatewayId != nil {
+	if o != nil && !IsNil(o.GatewayId) {
 		return true
 	}
 
@@ -86,7 +89,7 @@ func (o *Gateway) SetGatewayId(v string) {
 
 // GetCollectionId returns the CollectionId field value if set, zero value otherwise.
 func (o *Gateway) GetCollectionId() string {
-	if o == nil || o.CollectionId == nil {
+	if o == nil || IsNil(o.CollectionId) {
 		var ret string
 		return ret
 	}
@@ -96,7 +99,7 @@ func (o *Gateway) GetCollectionId() string {
 // GetCollectionIdOk returns a tuple with the CollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetCollectionIdOk() (*string, bool) {
-	if o == nil || o.CollectionId == nil {
+	if o == nil || IsNil(o.CollectionId) {
 		return nil, false
 	}
 	return o.CollectionId, true
@@ -104,7 +107,7 @@ func (o *Gateway) GetCollectionIdOk() (*string, bool) {
 
 // HasCollectionId returns a boolean if a field has been set.
 func (o *Gateway) HasCollectionId() bool {
-	if o != nil && o.CollectionId != nil {
+	if o != nil && !IsNil(o.CollectionId) {
 		return true
 	}
 
@@ -118,7 +121,7 @@ func (o *Gateway) SetCollectionId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Gateway) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -128,7 +131,7 @@ func (o *Gateway) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -136,7 +139,7 @@ func (o *Gateway) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *Gateway) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -150,7 +153,7 @@ func (o *Gateway) SetName(v string) {
 
 // GetBuiltIn returns the BuiltIn field value if set, zero value otherwise.
 func (o *Gateway) GetBuiltIn() bool {
-	if o == nil || o.BuiltIn == nil {
+	if o == nil || IsNil(o.BuiltIn) {
 		var ret bool
 		return ret
 	}
@@ -160,7 +163,7 @@ func (o *Gateway) GetBuiltIn() bool {
 // GetBuiltInOk returns a tuple with the BuiltIn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetBuiltInOk() (*bool, bool) {
-	if o == nil || o.BuiltIn == nil {
+	if o == nil || IsNil(o.BuiltIn) {
 		return nil, false
 	}
 	return o.BuiltIn, true
@@ -168,7 +171,7 @@ func (o *Gateway) GetBuiltInOk() (*bool, bool) {
 
 // HasBuiltIn returns a boolean if a field has been set.
 func (o *Gateway) HasBuiltIn() bool {
-	if o != nil && o.BuiltIn != nil {
+	if o != nil && !IsNil(o.BuiltIn) {
 		return true
 	}
 
@@ -182,7 +185,7 @@ func (o *Gateway) SetBuiltIn(v bool) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Gateway) GetType() GatewayType {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret GatewayType
 		return ret
 	}
@@ -192,7 +195,7 @@ func (o *Gateway) GetType() GatewayType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetTypeOk() (*GatewayType, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -200,7 +203,7 @@ func (o *Gateway) GetTypeOk() (*GatewayType, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *Gateway) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -214,7 +217,7 @@ func (o *Gateway) SetType(v GatewayType) {
 
 // GetConfig returns the Config field value if set, zero value otherwise.
 func (o *Gateway) GetConfig() GatewayConfig {
-	if o == nil || o.Config == nil {
+	if o == nil || IsNil(o.Config) {
 		var ret GatewayConfig
 		return ret
 	}
@@ -224,7 +227,7 @@ func (o *Gateway) GetConfig() GatewayConfig {
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetConfigOk() (*GatewayConfig, bool) {
-	if o == nil || o.Config == nil {
+	if o == nil || IsNil(o.Config) {
 		return nil, false
 	}
 	return o.Config, true
@@ -232,7 +235,7 @@ func (o *Gateway) GetConfigOk() (*GatewayConfig, bool) {
 
 // HasConfig returns a boolean if a field has been set.
 func (o *Gateway) HasConfig() bool {
-	if o != nil && o.Config != nil {
+	if o != nil && !IsNil(o.Config) {
 		return true
 	}
 
@@ -246,7 +249,7 @@ func (o *Gateway) SetConfig(v GatewayConfig) {
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *Gateway) GetTags() map[string]string {
-	if o == nil || o.Tags == nil {
+	if o == nil || IsNil(o.Tags) {
 		var ret map[string]string
 		return ret
 	}
@@ -256,7 +259,7 @@ func (o *Gateway) GetTags() map[string]string {
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetTagsOk() (*map[string]string, bool) {
-	if o == nil || o.Tags == nil {
+	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
 	return o.Tags, true
@@ -264,7 +267,7 @@ func (o *Gateway) GetTagsOk() (*map[string]string, bool) {
 
 // HasTags returns a boolean if a field has been set.
 func (o *Gateway) HasTags() bool {
-	if o != nil && o.Tags != nil {
+	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
 
@@ -278,7 +281,7 @@ func (o *Gateway) SetTags(v map[string]string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *Gateway) GetStatus() GatewayStatus {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret GatewayStatus
 		return ret
 	}
@@ -288,7 +291,7 @@ func (o *Gateway) GetStatus() GatewayStatus {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetStatusOk() (*GatewayStatus, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -296,7 +299,7 @@ func (o *Gateway) GetStatusOk() (*GatewayStatus, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *Gateway) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -309,32 +312,40 @@ func (o *Gateway) SetStatus(v GatewayStatus) {
 }
 
 func (o Gateway) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.GatewayId != nil {
-		toSerialize["gatewayId"] = o.GatewayId
-	}
-	if o.CollectionId != nil {
-		toSerialize["collectionId"] = o.CollectionId
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.BuiltIn != nil {
-		toSerialize["builtIn"] = o.BuiltIn
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if o.Config != nil {
-		toSerialize["config"] = o.Config
-	}
-	if o.Tags != nil {
-		toSerialize["tags"] = o.Tags
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Gateway) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.GatewayId) {
+		toSerialize["gatewayId"] = o.GatewayId
+	}
+	if !IsNil(o.CollectionId) {
+		toSerialize["collectionId"] = o.CollectionId
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.BuiltIn) {
+		toSerialize["builtIn"] = o.BuiltIn
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Config) {
+		toSerialize["config"] = o.Config
+	}
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	return toSerialize, nil
 }
 
 type NullableGateway struct {

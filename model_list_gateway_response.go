@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the ListGatewayResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ListGatewayResponse{}
 
 // ListGatewayResponse Response when listing gateways
 type ListGatewayResponse struct {
@@ -39,7 +42,7 @@ func NewListGatewayResponseWithDefaults() *ListGatewayResponse {
 
 // GetGateways returns the Gateways field value if set, zero value otherwise.
 func (o *ListGatewayResponse) GetGateways() []Gateway {
-	if o == nil || o.Gateways == nil {
+	if o == nil || IsNil(o.Gateways) {
 		var ret []Gateway
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ListGatewayResponse) GetGateways() []Gateway {
 // GetGatewaysOk returns a tuple with the Gateways field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListGatewayResponse) GetGatewaysOk() ([]Gateway, bool) {
-	if o == nil || o.Gateways == nil {
+	if o == nil || IsNil(o.Gateways) {
 		return nil, false
 	}
 	return o.Gateways, true
@@ -57,7 +60,7 @@ func (o *ListGatewayResponse) GetGatewaysOk() ([]Gateway, bool) {
 
 // HasGateways returns a boolean if a field has been set.
 func (o *ListGatewayResponse) HasGateways() bool {
-	if o != nil && o.Gateways != nil {
+	if o != nil && !IsNil(o.Gateways) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ListGatewayResponse) SetGateways(v []Gateway) {
 }
 
 func (o ListGatewayResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Gateways != nil {
-		toSerialize["gateways"] = o.Gateways
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ListGatewayResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Gateways) {
+		toSerialize["gateways"] = o.Gateways
+	}
+	return toSerialize, nil
 }
 
 type NullableListGatewayResponse struct {

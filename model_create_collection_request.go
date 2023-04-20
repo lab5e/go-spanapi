@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the CreateCollectionRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateCollectionRequest{}
 
 // CreateCollectionRequest Request object when creating a collection. The collect ID is assigned by the service.
 type CreateCollectionRequest struct {
@@ -43,7 +46,7 @@ func NewCreateCollectionRequestWithDefaults() *CreateCollectionRequest {
 
 // GetTeamId returns the TeamId field value if set, zero value otherwise.
 func (o *CreateCollectionRequest) GetTeamId() string {
-	if o == nil || o.TeamId == nil {
+	if o == nil || IsNil(o.TeamId) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *CreateCollectionRequest) GetTeamId() string {
 // GetTeamIdOk returns a tuple with the TeamId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateCollectionRequest) GetTeamIdOk() (*string, bool) {
-	if o == nil || o.TeamId == nil {
+	if o == nil || IsNil(o.TeamId) {
 		return nil, false
 	}
 	return o.TeamId, true
@@ -61,7 +64,7 @@ func (o *CreateCollectionRequest) GetTeamIdOk() (*string, bool) {
 
 // HasTeamId returns a boolean if a field has been set.
 func (o *CreateCollectionRequest) HasTeamId() bool {
-	if o != nil && o.TeamId != nil {
+	if o != nil && !IsNil(o.TeamId) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *CreateCollectionRequest) SetTeamId(v string) {
 
 // GetFirmware returns the Firmware field value if set, zero value otherwise.
 func (o *CreateCollectionRequest) GetFirmware() CollectionFirmware {
-	if o == nil || o.Firmware == nil {
+	if o == nil || IsNil(o.Firmware) {
 		var ret CollectionFirmware
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *CreateCollectionRequest) GetFirmware() CollectionFirmware {
 // GetFirmwareOk returns a tuple with the Firmware field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateCollectionRequest) GetFirmwareOk() (*CollectionFirmware, bool) {
-	if o == nil || o.Firmware == nil {
+	if o == nil || IsNil(o.Firmware) {
 		return nil, false
 	}
 	return o.Firmware, true
@@ -93,7 +96,7 @@ func (o *CreateCollectionRequest) GetFirmwareOk() (*CollectionFirmware, bool) {
 
 // HasFirmware returns a boolean if a field has been set.
 func (o *CreateCollectionRequest) HasFirmware() bool {
-	if o != nil && o.Firmware != nil {
+	if o != nil && !IsNil(o.Firmware) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *CreateCollectionRequest) SetFirmware(v CollectionFirmware) {
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *CreateCollectionRequest) GetTags() map[string]string {
-	if o == nil || o.Tags == nil {
+	if o == nil || IsNil(o.Tags) {
 		var ret map[string]string
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *CreateCollectionRequest) GetTags() map[string]string {
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateCollectionRequest) GetTagsOk() (*map[string]string, bool) {
-	if o == nil || o.Tags == nil {
+	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
 	return o.Tags, true
@@ -125,7 +128,7 @@ func (o *CreateCollectionRequest) GetTagsOk() (*map[string]string, bool) {
 
 // HasTags returns a boolean if a field has been set.
 func (o *CreateCollectionRequest) HasTags() bool {
-	if o != nil && o.Tags != nil {
+	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
 
@@ -138,17 +141,25 @@ func (o *CreateCollectionRequest) SetTags(v map[string]string) {
 }
 
 func (o CreateCollectionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.TeamId != nil {
-		toSerialize["teamId"] = o.TeamId
-	}
-	if o.Firmware != nil {
-		toSerialize["firmware"] = o.Firmware
-	}
-	if o.Tags != nil {
-		toSerialize["tags"] = o.Tags
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CreateCollectionRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TeamId) {
+		toSerialize["teamId"] = o.TeamId
+	}
+	if !IsNil(o.Firmware) {
+		toSerialize["firmware"] = o.Firmware
+	}
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
+	}
+	return toSerialize, nil
 }
 
 type NullableCreateCollectionRequest struct {

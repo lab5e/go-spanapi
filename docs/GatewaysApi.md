@@ -30,12 +30,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/lab5e/go-spanapi"
 )
 
 func main() {
     collectionId := "collectionId_example" // string | 
-    body := *openapiclient.NewInlineObject() // InlineObject | 
+    body := *openapiclient.NewCreateGatewayRequest() // CreateGatewayRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -65,7 +65,7 @@ Other parameters are passed through a pointer to a apiCreateGatewayRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**InlineObject**](InlineObject.md) |  | 
+ **body** | [**CreateGatewayRequest**](CreateGatewayRequest.md) |  | 
 
 ### Return type
 
@@ -102,7 +102,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/lab5e/go-spanapi"
 )
 
 func main() {
@@ -173,7 +173,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/lab5e/go-spanapi"
 )
 
 func main() {
@@ -246,7 +246,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/lab5e/go-spanapi"
 )
 
 func main() {
@@ -316,7 +316,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/lab5e/go-spanapi"
 )
 
 func main() {
@@ -389,13 +389,13 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/lab5e/go-spanapi"
 )
 
 func main() {
     existingCollectionId := "existingCollectionId_example" // string | 
     gatewayId := "gatewayId_example" // string | 
-    body := *openapiclient.NewInlineObject1() // InlineObject1 | 
+    body := *openapiclient.NewUpdateGatewayRequest() // UpdateGatewayRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | [**InlineObject1**](InlineObject1.md) |  | 
+ **body** | [**UpdateGatewayRequest**](UpdateGatewayRequest.md) |  | 
 
 ### Return type
 

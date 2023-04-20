@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the ListFirmwareResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ListFirmwareResponse{}
 
 // ListFirmwareResponse List firmware response
 type ListFirmwareResponse struct {
@@ -39,7 +42,7 @@ func NewListFirmwareResponseWithDefaults() *ListFirmwareResponse {
 
 // GetImages returns the Images field value if set, zero value otherwise.
 func (o *ListFirmwareResponse) GetImages() []Firmware {
-	if o == nil || o.Images == nil {
+	if o == nil || IsNil(o.Images) {
 		var ret []Firmware
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ListFirmwareResponse) GetImages() []Firmware {
 // GetImagesOk returns a tuple with the Images field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListFirmwareResponse) GetImagesOk() ([]Firmware, bool) {
-	if o == nil || o.Images == nil {
+	if o == nil || IsNil(o.Images) {
 		return nil, false
 	}
 	return o.Images, true
@@ -57,7 +60,7 @@ func (o *ListFirmwareResponse) GetImagesOk() ([]Firmware, bool) {
 
 // HasImages returns a boolean if a field has been set.
 func (o *ListFirmwareResponse) HasImages() bool {
-	if o != nil && o.Images != nil {
+	if o != nil && !IsNil(o.Images) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ListFirmwareResponse) SetImages(v []Firmware) {
 }
 
 func (o ListFirmwareResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Images != nil {
-		toSerialize["images"] = o.Images
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ListFirmwareResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Images) {
+		toSerialize["images"] = o.Images
+	}
+	return toSerialize, nil
 }
 
 type NullableListFirmwareResponse struct {

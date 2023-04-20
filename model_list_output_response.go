@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the ListOutputResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ListOutputResponse{}
 
 // ListOutputResponse List outputs
 type ListOutputResponse struct {
@@ -40,7 +43,7 @@ func NewListOutputResponseWithDefaults() *ListOutputResponse {
 
 // GetCollectionId returns the CollectionId field value if set, zero value otherwise.
 func (o *ListOutputResponse) GetCollectionId() string {
-	if o == nil || o.CollectionId == nil {
+	if o == nil || IsNil(o.CollectionId) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ListOutputResponse) GetCollectionId() string {
 // GetCollectionIdOk returns a tuple with the CollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListOutputResponse) GetCollectionIdOk() (*string, bool) {
-	if o == nil || o.CollectionId == nil {
+	if o == nil || IsNil(o.CollectionId) {
 		return nil, false
 	}
 	return o.CollectionId, true
@@ -58,7 +61,7 @@ func (o *ListOutputResponse) GetCollectionIdOk() (*string, bool) {
 
 // HasCollectionId returns a boolean if a field has been set.
 func (o *ListOutputResponse) HasCollectionId() bool {
-	if o != nil && o.CollectionId != nil {
+	if o != nil && !IsNil(o.CollectionId) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ListOutputResponse) SetCollectionId(v string) {
 
 // GetOutputs returns the Outputs field value if set, zero value otherwise.
 func (o *ListOutputResponse) GetOutputs() []Output {
-	if o == nil || o.Outputs == nil {
+	if o == nil || IsNil(o.Outputs) {
 		var ret []Output
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ListOutputResponse) GetOutputs() []Output {
 // GetOutputsOk returns a tuple with the Outputs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListOutputResponse) GetOutputsOk() ([]Output, bool) {
-	if o == nil || o.Outputs == nil {
+	if o == nil || IsNil(o.Outputs) {
 		return nil, false
 	}
 	return o.Outputs, true
@@ -90,7 +93,7 @@ func (o *ListOutputResponse) GetOutputsOk() ([]Output, bool) {
 
 // HasOutputs returns a boolean if a field has been set.
 func (o *ListOutputResponse) HasOutputs() bool {
-	if o != nil && o.Outputs != nil {
+	if o != nil && !IsNil(o.Outputs) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *ListOutputResponse) SetOutputs(v []Output) {
 }
 
 func (o ListOutputResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CollectionId != nil {
-		toSerialize["collectionId"] = o.CollectionId
-	}
-	if o.Outputs != nil {
-		toSerialize["outputs"] = o.Outputs
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ListOutputResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CollectionId) {
+		toSerialize["collectionId"] = o.CollectionId
+	}
+	if !IsNil(o.Outputs) {
+		toSerialize["outputs"] = o.Outputs
+	}
+	return toSerialize, nil
 }
 
 type NullableListOutputResponse struct {

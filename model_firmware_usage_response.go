@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the FirmwareUsageResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FirmwareUsageResponse{}
 
 // FirmwareUsageResponse Firmware usage report
 type FirmwareUsageResponse struct {
@@ -41,7 +44,7 @@ func NewFirmwareUsageResponseWithDefaults() *FirmwareUsageResponse {
 
 // GetImageId returns the ImageId field value if set, zero value otherwise.
 func (o *FirmwareUsageResponse) GetImageId() string {
-	if o == nil || o.ImageId == nil {
+	if o == nil || IsNil(o.ImageId) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *FirmwareUsageResponse) GetImageId() string {
 // GetImageIdOk returns a tuple with the ImageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FirmwareUsageResponse) GetImageIdOk() (*string, bool) {
-	if o == nil || o.ImageId == nil {
+	if o == nil || IsNil(o.ImageId) {
 		return nil, false
 	}
 	return o.ImageId, true
@@ -59,7 +62,7 @@ func (o *FirmwareUsageResponse) GetImageIdOk() (*string, bool) {
 
 // HasImageId returns a boolean if a field has been set.
 func (o *FirmwareUsageResponse) HasImageId() bool {
-	if o != nil && o.ImageId != nil {
+	if o != nil && !IsNil(o.ImageId) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *FirmwareUsageResponse) SetImageId(v string) {
 
 // GetTargeted returns the Targeted field value if set, zero value otherwise.
 func (o *FirmwareUsageResponse) GetTargeted() []string {
-	if o == nil || o.Targeted == nil {
+	if o == nil || IsNil(o.Targeted) {
 		var ret []string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *FirmwareUsageResponse) GetTargeted() []string {
 // GetTargetedOk returns a tuple with the Targeted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FirmwareUsageResponse) GetTargetedOk() ([]string, bool) {
-	if o == nil || o.Targeted == nil {
+	if o == nil || IsNil(o.Targeted) {
 		return nil, false
 	}
 	return o.Targeted, true
@@ -91,7 +94,7 @@ func (o *FirmwareUsageResponse) GetTargetedOk() ([]string, bool) {
 
 // HasTargeted returns a boolean if a field has been set.
 func (o *FirmwareUsageResponse) HasTargeted() bool {
-	if o != nil && o.Targeted != nil {
+	if o != nil && !IsNil(o.Targeted) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *FirmwareUsageResponse) SetTargeted(v []string) {
 
 // GetCurrent returns the Current field value if set, zero value otherwise.
 func (o *FirmwareUsageResponse) GetCurrent() []string {
-	if o == nil || o.Current == nil {
+	if o == nil || IsNil(o.Current) {
 		var ret []string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *FirmwareUsageResponse) GetCurrent() []string {
 // GetCurrentOk returns a tuple with the Current field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FirmwareUsageResponse) GetCurrentOk() ([]string, bool) {
-	if o == nil || o.Current == nil {
+	if o == nil || IsNil(o.Current) {
 		return nil, false
 	}
 	return o.Current, true
@@ -123,7 +126,7 @@ func (o *FirmwareUsageResponse) GetCurrentOk() ([]string, bool) {
 
 // HasCurrent returns a boolean if a field has been set.
 func (o *FirmwareUsageResponse) HasCurrent() bool {
-	if o != nil && o.Current != nil {
+	if o != nil && !IsNil(o.Current) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *FirmwareUsageResponse) SetCurrent(v []string) {
 }
 
 func (o FirmwareUsageResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ImageId != nil {
-		toSerialize["imageId"] = o.ImageId
-	}
-	if o.Targeted != nil {
-		toSerialize["targeted"] = o.Targeted
-	}
-	if o.Current != nil {
-		toSerialize["current"] = o.Current
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o FirmwareUsageResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ImageId) {
+		toSerialize["imageId"] = o.ImageId
+	}
+	if !IsNil(o.Targeted) {
+		toSerialize["targeted"] = o.Targeted
+	}
+	if !IsNil(o.Current) {
+		toSerialize["current"] = o.Current
+	}
+	return toSerialize, nil
 }
 
 type NullableFirmwareUsageResponse struct {

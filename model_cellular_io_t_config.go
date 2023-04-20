@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the CellularIoTConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CellularIoTConfig{}
 
 // CellularIoTConfig This is the cellular IOT config
 type CellularIoTConfig struct {
@@ -41,7 +44,7 @@ func NewCellularIoTConfigWithDefaults() *CellularIoTConfig {
 
 // GetImsi returns the Imsi field value if set, zero value otherwise.
 func (o *CellularIoTConfig) GetImsi() string {
-	if o == nil || o.Imsi == nil {
+	if o == nil || IsNil(o.Imsi) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *CellularIoTConfig) GetImsi() string {
 // GetImsiOk returns a tuple with the Imsi field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CellularIoTConfig) GetImsiOk() (*string, bool) {
-	if o == nil || o.Imsi == nil {
+	if o == nil || IsNil(o.Imsi) {
 		return nil, false
 	}
 	return o.Imsi, true
@@ -59,7 +62,7 @@ func (o *CellularIoTConfig) GetImsiOk() (*string, bool) {
 
 // HasImsi returns a boolean if a field has been set.
 func (o *CellularIoTConfig) HasImsi() bool {
-	if o != nil && o.Imsi != nil {
+	if o != nil && !IsNil(o.Imsi) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *CellularIoTConfig) SetImsi(v string) {
 
 // GetImei returns the Imei field value if set, zero value otherwise.
 func (o *CellularIoTConfig) GetImei() string {
-	if o == nil || o.Imei == nil {
+	if o == nil || IsNil(o.Imei) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *CellularIoTConfig) GetImei() string {
 // GetImeiOk returns a tuple with the Imei field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CellularIoTConfig) GetImeiOk() (*string, bool) {
-	if o == nil || o.Imei == nil {
+	if o == nil || IsNil(o.Imei) {
 		return nil, false
 	}
 	return o.Imei, true
@@ -91,7 +94,7 @@ func (o *CellularIoTConfig) GetImeiOk() (*string, bool) {
 
 // HasImei returns a boolean if a field has been set.
 func (o *CellularIoTConfig) HasImei() bool {
-	if o != nil && o.Imei != nil {
+	if o != nil && !IsNil(o.Imei) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *CellularIoTConfig) SetImei(v string) {
 }
 
 func (o CellularIoTConfig) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Imsi != nil {
-		toSerialize["imsi"] = o.Imsi
-	}
-	if o.Imei != nil {
-		toSerialize["imei"] = o.Imei
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CellularIoTConfig) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Imsi) {
+		toSerialize["imsi"] = o.Imsi
+	}
+	if !IsNil(o.Imei) {
+		toSerialize["imei"] = o.Imei
+	}
+	return toSerialize, nil
 }
 
 type NullableCellularIoTConfig struct {

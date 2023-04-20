@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the ClearFirmwareErrorResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClearFirmwareErrorResponse{}
 
 // ClearFirmwareErrorResponse Clear firmware error response object
 type ClearFirmwareErrorResponse struct {
@@ -39,7 +42,7 @@ func NewClearFirmwareErrorResponseWithDefaults() *ClearFirmwareErrorResponse {
 
 // GetResult returns the Result field value if set, zero value otherwise.
 func (o *ClearFirmwareErrorResponse) GetResult() string {
-	if o == nil || o.Result == nil {
+	if o == nil || IsNil(o.Result) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ClearFirmwareErrorResponse) GetResult() string {
 // GetResultOk returns a tuple with the Result field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClearFirmwareErrorResponse) GetResultOk() (*string, bool) {
-	if o == nil || o.Result == nil {
+	if o == nil || IsNil(o.Result) {
 		return nil, false
 	}
 	return o.Result, true
@@ -57,7 +60,7 @@ func (o *ClearFirmwareErrorResponse) GetResultOk() (*string, bool) {
 
 // HasResult returns a boolean if a field has been set.
 func (o *ClearFirmwareErrorResponse) HasResult() bool {
-	if o != nil && o.Result != nil {
+	if o != nil && !IsNil(o.Result) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ClearFirmwareErrorResponse) SetResult(v string) {
 }
 
 func (o ClearFirmwareErrorResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Result != nil {
-		toSerialize["result"] = o.Result
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClearFirmwareErrorResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Result) {
+		toSerialize["result"] = o.Result
+	}
+	return toSerialize, nil
 }
 
 type NullableClearFirmwareErrorResponse struct {

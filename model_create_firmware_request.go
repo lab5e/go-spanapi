@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the CreateFirmwareRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateFirmwareRequest{}
 
 // CreateFirmwareRequest Create a new firmware image
 type CreateFirmwareRequest struct {
@@ -42,7 +45,7 @@ func NewCreateFirmwareRequestWithDefaults() *CreateFirmwareRequest {
 
 // GetImage returns the Image field value if set, zero value otherwise.
 func (o *CreateFirmwareRequest) GetImage() string {
-	if o == nil || o.Image == nil {
+	if o == nil || IsNil(o.Image) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *CreateFirmwareRequest) GetImage() string {
 // GetImageOk returns a tuple with the Image field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateFirmwareRequest) GetImageOk() (*string, bool) {
-	if o == nil || o.Image == nil {
+	if o == nil || IsNil(o.Image) {
 		return nil, false
 	}
 	return o.Image, true
@@ -60,7 +63,7 @@ func (o *CreateFirmwareRequest) GetImageOk() (*string, bool) {
 
 // HasImage returns a boolean if a field has been set.
 func (o *CreateFirmwareRequest) HasImage() bool {
-	if o != nil && o.Image != nil {
+	if o != nil && !IsNil(o.Image) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *CreateFirmwareRequest) SetImage(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *CreateFirmwareRequest) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *CreateFirmwareRequest) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateFirmwareRequest) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -92,7 +95,7 @@ func (o *CreateFirmwareRequest) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *CreateFirmwareRequest) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *CreateFirmwareRequest) SetVersion(v string) {
 
 // GetFilename returns the Filename field value if set, zero value otherwise.
 func (o *CreateFirmwareRequest) GetFilename() string {
-	if o == nil || o.Filename == nil {
+	if o == nil || IsNil(o.Filename) {
 		var ret string
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *CreateFirmwareRequest) GetFilename() string {
 // GetFilenameOk returns a tuple with the Filename field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateFirmwareRequest) GetFilenameOk() (*string, bool) {
-	if o == nil || o.Filename == nil {
+	if o == nil || IsNil(o.Filename) {
 		return nil, false
 	}
 	return o.Filename, true
@@ -124,7 +127,7 @@ func (o *CreateFirmwareRequest) GetFilenameOk() (*string, bool) {
 
 // HasFilename returns a boolean if a field has been set.
 func (o *CreateFirmwareRequest) HasFilename() bool {
-	if o != nil && o.Filename != nil {
+	if o != nil && !IsNil(o.Filename) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *CreateFirmwareRequest) SetFilename(v string) {
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *CreateFirmwareRequest) GetTags() map[string]string {
-	if o == nil || o.Tags == nil {
+	if o == nil || IsNil(o.Tags) {
 		var ret map[string]string
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *CreateFirmwareRequest) GetTags() map[string]string {
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateFirmwareRequest) GetTagsOk() (*map[string]string, bool) {
-	if o == nil || o.Tags == nil {
+	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
 	return o.Tags, true
@@ -156,7 +159,7 @@ func (o *CreateFirmwareRequest) GetTagsOk() (*map[string]string, bool) {
 
 // HasTags returns a boolean if a field has been set.
 func (o *CreateFirmwareRequest) HasTags() bool {
-	if o != nil && o.Tags != nil {
+	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
 
@@ -169,20 +172,28 @@ func (o *CreateFirmwareRequest) SetTags(v map[string]string) {
 }
 
 func (o CreateFirmwareRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Image != nil {
-		toSerialize["image"] = o.Image
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
-	}
-	if o.Filename != nil {
-		toSerialize["filename"] = o.Filename
-	}
-	if o.Tags != nil {
-		toSerialize["tags"] = o.Tags
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CreateFirmwareRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Image) {
+		toSerialize["image"] = o.Image
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.Filename) {
+		toSerialize["filename"] = o.Filename
+	}
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
+	}
+	return toSerialize, nil
 }
 
 type NullableCreateFirmwareRequest struct {

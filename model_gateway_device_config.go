@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the GatewayDeviceConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GatewayDeviceConfig{}
 
 // GatewayDeviceConfig Configuration parameters for a device in a user-managed gateway. The configuration parameters depends on the type of gateway.
 type GatewayDeviceConfig struct {
@@ -41,7 +44,7 @@ func NewGatewayDeviceConfigWithDefaults() *GatewayDeviceConfig {
 
 // GetGatewayId returns the GatewayId field value if set, zero value otherwise.
 func (o *GatewayDeviceConfig) GetGatewayId() string {
-	if o == nil || o.GatewayId == nil {
+	if o == nil || IsNil(o.GatewayId) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *GatewayDeviceConfig) GetGatewayId() string {
 // GetGatewayIdOk returns a tuple with the GatewayId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayDeviceConfig) GetGatewayIdOk() (*string, bool) {
-	if o == nil || o.GatewayId == nil {
+	if o == nil || IsNil(o.GatewayId) {
 		return nil, false
 	}
 	return o.GatewayId, true
@@ -59,7 +62,7 @@ func (o *GatewayDeviceConfig) GetGatewayIdOk() (*string, bool) {
 
 // HasGatewayId returns a boolean if a field has been set.
 func (o *GatewayDeviceConfig) HasGatewayId() bool {
-	if o != nil && o.GatewayId != nil {
+	if o != nil && !IsNil(o.GatewayId) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *GatewayDeviceConfig) SetGatewayId(v string) {
 
 // GetParams returns the Params field value if set, zero value otherwise.
 func (o *GatewayDeviceConfig) GetParams() map[string]string {
-	if o == nil || o.Params == nil {
+	if o == nil || IsNil(o.Params) {
 		var ret map[string]string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *GatewayDeviceConfig) GetParams() map[string]string {
 // GetParamsOk returns a tuple with the Params field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayDeviceConfig) GetParamsOk() (*map[string]string, bool) {
-	if o == nil || o.Params == nil {
+	if o == nil || IsNil(o.Params) {
 		return nil, false
 	}
 	return o.Params, true
@@ -91,7 +94,7 @@ func (o *GatewayDeviceConfig) GetParamsOk() (*map[string]string, bool) {
 
 // HasParams returns a boolean if a field has been set.
 func (o *GatewayDeviceConfig) HasParams() bool {
-	if o != nil && o.Params != nil {
+	if o != nil && !IsNil(o.Params) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *GatewayDeviceConfig) SetParams(v map[string]string) {
 }
 
 func (o GatewayDeviceConfig) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.GatewayId != nil {
-		toSerialize["gatewayId"] = o.GatewayId
-	}
-	if o.Params != nil {
-		toSerialize["params"] = o.Params
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GatewayDeviceConfig) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.GatewayId) {
+		toSerialize["gatewayId"] = o.GatewayId
+	}
+	if !IsNil(o.Params) {
+		toSerialize["params"] = o.Params
+	}
+	return toSerialize, nil
 }
 
 type NullableGatewayDeviceConfig struct {

@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the DeviceCertificateResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceCertificateResponse{}
 
 // DeviceCertificateResponse Response object for certificate info resource
 type DeviceCertificateResponse struct {
@@ -39,7 +42,7 @@ func NewDeviceCertificateResponseWithDefaults() *DeviceCertificateResponse {
 
 // GetCertificates returns the Certificates field value if set, zero value otherwise.
 func (o *DeviceCertificateResponse) GetCertificates() []CertificateInfo {
-	if o == nil || o.Certificates == nil {
+	if o == nil || IsNil(o.Certificates) {
 		var ret []CertificateInfo
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *DeviceCertificateResponse) GetCertificates() []CertificateInfo {
 // GetCertificatesOk returns a tuple with the Certificates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceCertificateResponse) GetCertificatesOk() ([]CertificateInfo, bool) {
-	if o == nil || o.Certificates == nil {
+	if o == nil || IsNil(o.Certificates) {
 		return nil, false
 	}
 	return o.Certificates, true
@@ -57,7 +60,7 @@ func (o *DeviceCertificateResponse) GetCertificatesOk() ([]CertificateInfo, bool
 
 // HasCertificates returns a boolean if a field has been set.
 func (o *DeviceCertificateResponse) HasCertificates() bool {
-	if o != nil && o.Certificates != nil {
+	if o != nil && !IsNil(o.Certificates) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *DeviceCertificateResponse) SetCertificates(v []CertificateInfo) {
 }
 
 func (o DeviceCertificateResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Certificates != nil {
-		toSerialize["certificates"] = o.Certificates
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceCertificateResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Certificates) {
+		toSerialize["certificates"] = o.Certificates
+	}
+	return toSerialize, nil
 }
 
 type NullableDeviceCertificateResponse struct {

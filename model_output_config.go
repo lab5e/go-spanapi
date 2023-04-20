@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the OutputConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OutputConfig{}
 
 // OutputConfig Configuration for outputs.
 type OutputConfig struct {
@@ -59,7 +62,7 @@ func NewOutputConfigWithDefaults() *OutputConfig {
 
 // GetUrl returns the Url field value if set, zero value otherwise.
 func (o *OutputConfig) GetUrl() string {
-	if o == nil || o.Url == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
@@ -69,7 +72,7 @@ func (o *OutputConfig) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputConfig) GetUrlOk() (*string, bool) {
-	if o == nil || o.Url == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
 	return o.Url, true
@@ -77,7 +80,7 @@ func (o *OutputConfig) GetUrlOk() (*string, bool) {
 
 // HasUrl returns a boolean if a field has been set.
 func (o *OutputConfig) HasUrl() bool {
-	if o != nil && o.Url != nil {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
@@ -91,7 +94,7 @@ func (o *OutputConfig) SetUrl(v string) {
 
 // GetBasicAuthUser returns the BasicAuthUser field value if set, zero value otherwise.
 func (o *OutputConfig) GetBasicAuthUser() string {
-	if o == nil || o.BasicAuthUser == nil {
+	if o == nil || IsNil(o.BasicAuthUser) {
 		var ret string
 		return ret
 	}
@@ -101,7 +104,7 @@ func (o *OutputConfig) GetBasicAuthUser() string {
 // GetBasicAuthUserOk returns a tuple with the BasicAuthUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputConfig) GetBasicAuthUserOk() (*string, bool) {
-	if o == nil || o.BasicAuthUser == nil {
+	if o == nil || IsNil(o.BasicAuthUser) {
 		return nil, false
 	}
 	return o.BasicAuthUser, true
@@ -109,7 +112,7 @@ func (o *OutputConfig) GetBasicAuthUserOk() (*string, bool) {
 
 // HasBasicAuthUser returns a boolean if a field has been set.
 func (o *OutputConfig) HasBasicAuthUser() bool {
-	if o != nil && o.BasicAuthUser != nil {
+	if o != nil && !IsNil(o.BasicAuthUser) {
 		return true
 	}
 
@@ -123,7 +126,7 @@ func (o *OutputConfig) SetBasicAuthUser(v string) {
 
 // GetBasicAuthPass returns the BasicAuthPass field value if set, zero value otherwise.
 func (o *OutputConfig) GetBasicAuthPass() string {
-	if o == nil || o.BasicAuthPass == nil {
+	if o == nil || IsNil(o.BasicAuthPass) {
 		var ret string
 		return ret
 	}
@@ -133,7 +136,7 @@ func (o *OutputConfig) GetBasicAuthPass() string {
 // GetBasicAuthPassOk returns a tuple with the BasicAuthPass field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputConfig) GetBasicAuthPassOk() (*string, bool) {
-	if o == nil || o.BasicAuthPass == nil {
+	if o == nil || IsNil(o.BasicAuthPass) {
 		return nil, false
 	}
 	return o.BasicAuthPass, true
@@ -141,7 +144,7 @@ func (o *OutputConfig) GetBasicAuthPassOk() (*string, bool) {
 
 // HasBasicAuthPass returns a boolean if a field has been set.
 func (o *OutputConfig) HasBasicAuthPass() bool {
-	if o != nil && o.BasicAuthPass != nil {
+	if o != nil && !IsNil(o.BasicAuthPass) {
 		return true
 	}
 
@@ -155,7 +158,7 @@ func (o *OutputConfig) SetBasicAuthPass(v string) {
 
 // GetCustomHeaderName returns the CustomHeaderName field value if set, zero value otherwise.
 func (o *OutputConfig) GetCustomHeaderName() string {
-	if o == nil || o.CustomHeaderName == nil {
+	if o == nil || IsNil(o.CustomHeaderName) {
 		var ret string
 		return ret
 	}
@@ -165,7 +168,7 @@ func (o *OutputConfig) GetCustomHeaderName() string {
 // GetCustomHeaderNameOk returns a tuple with the CustomHeaderName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputConfig) GetCustomHeaderNameOk() (*string, bool) {
-	if o == nil || o.CustomHeaderName == nil {
+	if o == nil || IsNil(o.CustomHeaderName) {
 		return nil, false
 	}
 	return o.CustomHeaderName, true
@@ -173,7 +176,7 @@ func (o *OutputConfig) GetCustomHeaderNameOk() (*string, bool) {
 
 // HasCustomHeaderName returns a boolean if a field has been set.
 func (o *OutputConfig) HasCustomHeaderName() bool {
-	if o != nil && o.CustomHeaderName != nil {
+	if o != nil && !IsNil(o.CustomHeaderName) {
 		return true
 	}
 
@@ -187,7 +190,7 @@ func (o *OutputConfig) SetCustomHeaderName(v string) {
 
 // GetCustomHeaderValue returns the CustomHeaderValue field value if set, zero value otherwise.
 func (o *OutputConfig) GetCustomHeaderValue() string {
-	if o == nil || o.CustomHeaderValue == nil {
+	if o == nil || IsNil(o.CustomHeaderValue) {
 		var ret string
 		return ret
 	}
@@ -197,7 +200,7 @@ func (o *OutputConfig) GetCustomHeaderValue() string {
 // GetCustomHeaderValueOk returns a tuple with the CustomHeaderValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputConfig) GetCustomHeaderValueOk() (*string, bool) {
-	if o == nil || o.CustomHeaderValue == nil {
+	if o == nil || IsNil(o.CustomHeaderValue) {
 		return nil, false
 	}
 	return o.CustomHeaderValue, true
@@ -205,7 +208,7 @@ func (o *OutputConfig) GetCustomHeaderValueOk() (*string, bool) {
 
 // HasCustomHeaderValue returns a boolean if a field has been set.
 func (o *OutputConfig) HasCustomHeaderValue() bool {
-	if o != nil && o.CustomHeaderValue != nil {
+	if o != nil && !IsNil(o.CustomHeaderValue) {
 		return true
 	}
 
@@ -219,7 +222,7 @@ func (o *OutputConfig) SetCustomHeaderValue(v string) {
 
 // GetHost returns the Host field value if set, zero value otherwise.
 func (o *OutputConfig) GetHost() string {
-	if o == nil || o.Host == nil {
+	if o == nil || IsNil(o.Host) {
 		var ret string
 		return ret
 	}
@@ -229,7 +232,7 @@ func (o *OutputConfig) GetHost() string {
 // GetHostOk returns a tuple with the Host field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputConfig) GetHostOk() (*string, bool) {
-	if o == nil || o.Host == nil {
+	if o == nil || IsNil(o.Host) {
 		return nil, false
 	}
 	return o.Host, true
@@ -237,7 +240,7 @@ func (o *OutputConfig) GetHostOk() (*string, bool) {
 
 // HasHost returns a boolean if a field has been set.
 func (o *OutputConfig) HasHost() bool {
-	if o != nil && o.Host != nil {
+	if o != nil && !IsNil(o.Host) {
 		return true
 	}
 
@@ -251,7 +254,7 @@ func (o *OutputConfig) SetHost(v string) {
 
 // GetPort returns the Port field value if set, zero value otherwise.
 func (o *OutputConfig) GetPort() int32 {
-	if o == nil || o.Port == nil {
+	if o == nil || IsNil(o.Port) {
 		var ret int32
 		return ret
 	}
@@ -261,7 +264,7 @@ func (o *OutputConfig) GetPort() int32 {
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputConfig) GetPortOk() (*int32, bool) {
-	if o == nil || o.Port == nil {
+	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
 	return o.Port, true
@@ -269,7 +272,7 @@ func (o *OutputConfig) GetPortOk() (*int32, bool) {
 
 // HasPort returns a boolean if a field has been set.
 func (o *OutputConfig) HasPort() bool {
-	if o != nil && o.Port != nil {
+	if o != nil && !IsNil(o.Port) {
 		return true
 	}
 
@@ -283,7 +286,7 @@ func (o *OutputConfig) SetPort(v int32) {
 
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *OutputConfig) GetKey() string {
-	if o == nil || o.Key == nil {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
@@ -293,7 +296,7 @@ func (o *OutputConfig) GetKey() string {
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputConfig) GetKeyOk() (*string, bool) {
-	if o == nil || o.Key == nil {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
 	return o.Key, true
@@ -301,7 +304,7 @@ func (o *OutputConfig) GetKeyOk() (*string, bool) {
 
 // HasKey returns a boolean if a field has been set.
 func (o *OutputConfig) HasKey() bool {
-	if o != nil && o.Key != nil {
+	if o != nil && !IsNil(o.Key) {
 		return true
 	}
 
@@ -315,7 +318,7 @@ func (o *OutputConfig) SetKey(v string) {
 
 // GetEventName returns the EventName field value if set, zero value otherwise.
 func (o *OutputConfig) GetEventName() string {
-	if o == nil || o.EventName == nil {
+	if o == nil || IsNil(o.EventName) {
 		var ret string
 		return ret
 	}
@@ -325,7 +328,7 @@ func (o *OutputConfig) GetEventName() string {
 // GetEventNameOk returns a tuple with the EventName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputConfig) GetEventNameOk() (*string, bool) {
-	if o == nil || o.EventName == nil {
+	if o == nil || IsNil(o.EventName) {
 		return nil, false
 	}
 	return o.EventName, true
@@ -333,7 +336,7 @@ func (o *OutputConfig) GetEventNameOk() (*string, bool) {
 
 // HasEventName returns a boolean if a field has been set.
 func (o *OutputConfig) HasEventName() bool {
-	if o != nil && o.EventName != nil {
+	if o != nil && !IsNil(o.EventName) {
 		return true
 	}
 
@@ -347,7 +350,7 @@ func (o *OutputConfig) SetEventName(v string) {
 
 // GetAsIsPayload returns the AsIsPayload field value if set, zero value otherwise.
 func (o *OutputConfig) GetAsIsPayload() bool {
-	if o == nil || o.AsIsPayload == nil {
+	if o == nil || IsNil(o.AsIsPayload) {
 		var ret bool
 		return ret
 	}
@@ -357,7 +360,7 @@ func (o *OutputConfig) GetAsIsPayload() bool {
 // GetAsIsPayloadOk returns a tuple with the AsIsPayload field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputConfig) GetAsIsPayloadOk() (*bool, bool) {
-	if o == nil || o.AsIsPayload == nil {
+	if o == nil || IsNil(o.AsIsPayload) {
 		return nil, false
 	}
 	return o.AsIsPayload, true
@@ -365,7 +368,7 @@ func (o *OutputConfig) GetAsIsPayloadOk() (*bool, bool) {
 
 // HasAsIsPayload returns a boolean if a field has been set.
 func (o *OutputConfig) HasAsIsPayload() bool {
-	if o != nil && o.AsIsPayload != nil {
+	if o != nil && !IsNil(o.AsIsPayload) {
 		return true
 	}
 
@@ -379,7 +382,7 @@ func (o *OutputConfig) SetAsIsPayload(v bool) {
 
 // GetEndpoint returns the Endpoint field value if set, zero value otherwise.
 func (o *OutputConfig) GetEndpoint() string {
-	if o == nil || o.Endpoint == nil {
+	if o == nil || IsNil(o.Endpoint) {
 		var ret string
 		return ret
 	}
@@ -389,7 +392,7 @@ func (o *OutputConfig) GetEndpoint() string {
 // GetEndpointOk returns a tuple with the Endpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputConfig) GetEndpointOk() (*string, bool) {
-	if o == nil || o.Endpoint == nil {
+	if o == nil || IsNil(o.Endpoint) {
 		return nil, false
 	}
 	return o.Endpoint, true
@@ -397,7 +400,7 @@ func (o *OutputConfig) GetEndpointOk() (*string, bool) {
 
 // HasEndpoint returns a boolean if a field has been set.
 func (o *OutputConfig) HasEndpoint() bool {
-	if o != nil && o.Endpoint != nil {
+	if o != nil && !IsNil(o.Endpoint) {
 		return true
 	}
 
@@ -411,7 +414,7 @@ func (o *OutputConfig) SetEndpoint(v string) {
 
 // GetDisableCertCheck returns the DisableCertCheck field value if set, zero value otherwise.
 func (o *OutputConfig) GetDisableCertCheck() bool {
-	if o == nil || o.DisableCertCheck == nil {
+	if o == nil || IsNil(o.DisableCertCheck) {
 		var ret bool
 		return ret
 	}
@@ -421,7 +424,7 @@ func (o *OutputConfig) GetDisableCertCheck() bool {
 // GetDisableCertCheckOk returns a tuple with the DisableCertCheck field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputConfig) GetDisableCertCheckOk() (*bool, bool) {
-	if o == nil || o.DisableCertCheck == nil {
+	if o == nil || IsNil(o.DisableCertCheck) {
 		return nil, false
 	}
 	return o.DisableCertCheck, true
@@ -429,7 +432,7 @@ func (o *OutputConfig) GetDisableCertCheckOk() (*bool, bool) {
 
 // HasDisableCertCheck returns a boolean if a field has been set.
 func (o *OutputConfig) HasDisableCertCheck() bool {
-	if o != nil && o.DisableCertCheck != nil {
+	if o != nil && !IsNil(o.DisableCertCheck) {
 		return true
 	}
 
@@ -443,7 +446,7 @@ func (o *OutputConfig) SetDisableCertCheck(v bool) {
 
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *OutputConfig) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -453,7 +456,7 @@ func (o *OutputConfig) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputConfig) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
 	return o.Username, true
@@ -461,7 +464,7 @@ func (o *OutputConfig) GetUsernameOk() (*string, bool) {
 
 // HasUsername returns a boolean if a field has been set.
 func (o *OutputConfig) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
@@ -475,7 +478,7 @@ func (o *OutputConfig) SetUsername(v string) {
 
 // GetPassword returns the Password field value if set, zero value otherwise.
 func (o *OutputConfig) GetPassword() string {
-	if o == nil || o.Password == nil {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
@@ -485,7 +488,7 @@ func (o *OutputConfig) GetPassword() string {
 // GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputConfig) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
 	return o.Password, true
@@ -493,7 +496,7 @@ func (o *OutputConfig) GetPasswordOk() (*string, bool) {
 
 // HasPassword returns a boolean if a field has been set.
 func (o *OutputConfig) HasPassword() bool {
-	if o != nil && o.Password != nil {
+	if o != nil && !IsNil(o.Password) {
 		return true
 	}
 
@@ -507,7 +510,7 @@ func (o *OutputConfig) SetPassword(v string) {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *OutputConfig) GetClientId() string {
-	if o == nil || o.ClientId == nil {
+	if o == nil || IsNil(o.ClientId) {
 		var ret string
 		return ret
 	}
@@ -517,7 +520,7 @@ func (o *OutputConfig) GetClientId() string {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputConfig) GetClientIdOk() (*string, bool) {
-	if o == nil || o.ClientId == nil {
+	if o == nil || IsNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -525,7 +528,7 @@ func (o *OutputConfig) GetClientIdOk() (*string, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *OutputConfig) HasClientId() bool {
-	if o != nil && o.ClientId != nil {
+	if o != nil && !IsNil(o.ClientId) {
 		return true
 	}
 
@@ -539,7 +542,7 @@ func (o *OutputConfig) SetClientId(v string) {
 
 // GetTopicName returns the TopicName field value if set, zero value otherwise.
 func (o *OutputConfig) GetTopicName() string {
-	if o == nil || o.TopicName == nil {
+	if o == nil || IsNil(o.TopicName) {
 		var ret string
 		return ret
 	}
@@ -549,7 +552,7 @@ func (o *OutputConfig) GetTopicName() string {
 // GetTopicNameOk returns a tuple with the TopicName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputConfig) GetTopicNameOk() (*string, bool) {
-	if o == nil || o.TopicName == nil {
+	if o == nil || IsNil(o.TopicName) {
 		return nil, false
 	}
 	return o.TopicName, true
@@ -557,7 +560,7 @@ func (o *OutputConfig) GetTopicNameOk() (*string, bool) {
 
 // HasTopicName returns a boolean if a field has been set.
 func (o *OutputConfig) HasTopicName() bool {
-	if o != nil && o.TopicName != nil {
+	if o != nil && !IsNil(o.TopicName) {
 		return true
 	}
 
@@ -571,7 +574,7 @@ func (o *OutputConfig) SetTopicName(v string) {
 
 // GetTopicTemplate returns the TopicTemplate field value if set, zero value otherwise.
 func (o *OutputConfig) GetTopicTemplate() string {
-	if o == nil || o.TopicTemplate == nil {
+	if o == nil || IsNil(o.TopicTemplate) {
 		var ret string
 		return ret
 	}
@@ -581,7 +584,7 @@ func (o *OutputConfig) GetTopicTemplate() string {
 // GetTopicTemplateOk returns a tuple with the TopicTemplate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputConfig) GetTopicTemplateOk() (*string, bool) {
-	if o == nil || o.TopicTemplate == nil {
+	if o == nil || IsNil(o.TopicTemplate) {
 		return nil, false
 	}
 	return o.TopicTemplate, true
@@ -589,7 +592,7 @@ func (o *OutputConfig) GetTopicTemplateOk() (*string, bool) {
 
 // HasTopicTemplate returns a boolean if a field has been set.
 func (o *OutputConfig) HasTopicTemplate() bool {
-	if o != nil && o.TopicTemplate != nil {
+	if o != nil && !IsNil(o.TopicTemplate) {
 		return true
 	}
 
@@ -603,7 +606,7 @@ func (o *OutputConfig) SetTopicTemplate(v string) {
 
 // GetPayloadFormat returns the PayloadFormat field value if set, zero value otherwise.
 func (o *OutputConfig) GetPayloadFormat() string {
-	if o == nil || o.PayloadFormat == nil {
+	if o == nil || IsNil(o.PayloadFormat) {
 		var ret string
 		return ret
 	}
@@ -613,7 +616,7 @@ func (o *OutputConfig) GetPayloadFormat() string {
 // GetPayloadFormatOk returns a tuple with the PayloadFormat field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputConfig) GetPayloadFormatOk() (*string, bool) {
-	if o == nil || o.PayloadFormat == nil {
+	if o == nil || IsNil(o.PayloadFormat) {
 		return nil, false
 	}
 	return o.PayloadFormat, true
@@ -621,7 +624,7 @@ func (o *OutputConfig) GetPayloadFormatOk() (*string, bool) {
 
 // HasPayloadFormat returns a boolean if a field has been set.
 func (o *OutputConfig) HasPayloadFormat() bool {
-	if o != nil && o.PayloadFormat != nil {
+	if o != nil && !IsNil(o.PayloadFormat) {
 		return true
 	}
 
@@ -635,7 +638,7 @@ func (o *OutputConfig) SetPayloadFormat(v string) {
 
 // GetPayloadTemplate returns the PayloadTemplate field value if set, zero value otherwise.
 func (o *OutputConfig) GetPayloadTemplate() string {
-	if o == nil || o.PayloadTemplate == nil {
+	if o == nil || IsNil(o.PayloadTemplate) {
 		var ret string
 		return ret
 	}
@@ -645,7 +648,7 @@ func (o *OutputConfig) GetPayloadTemplate() string {
 // GetPayloadTemplateOk returns a tuple with the PayloadTemplate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutputConfig) GetPayloadTemplateOk() (*string, bool) {
-	if o == nil || o.PayloadTemplate == nil {
+	if o == nil || IsNil(o.PayloadTemplate) {
 		return nil, false
 	}
 	return o.PayloadTemplate, true
@@ -653,7 +656,7 @@ func (o *OutputConfig) GetPayloadTemplateOk() (*string, bool) {
 
 // HasPayloadTemplate returns a boolean if a field has been set.
 func (o *OutputConfig) HasPayloadTemplate() bool {
-	if o != nil && o.PayloadTemplate != nil {
+	if o != nil && !IsNil(o.PayloadTemplate) {
 		return true
 	}
 
@@ -666,65 +669,73 @@ func (o *OutputConfig) SetPayloadTemplate(v string) {
 }
 
 func (o OutputConfig) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Url != nil {
-		toSerialize["url"] = o.Url
-	}
-	if o.BasicAuthUser != nil {
-		toSerialize["basicAuthUser"] = o.BasicAuthUser
-	}
-	if o.BasicAuthPass != nil {
-		toSerialize["basicAuthPass"] = o.BasicAuthPass
-	}
-	if o.CustomHeaderName != nil {
-		toSerialize["customHeaderName"] = o.CustomHeaderName
-	}
-	if o.CustomHeaderValue != nil {
-		toSerialize["customHeaderValue"] = o.CustomHeaderValue
-	}
-	if o.Host != nil {
-		toSerialize["host"] = o.Host
-	}
-	if o.Port != nil {
-		toSerialize["port"] = o.Port
-	}
-	if o.Key != nil {
-		toSerialize["key"] = o.Key
-	}
-	if o.EventName != nil {
-		toSerialize["eventName"] = o.EventName
-	}
-	if o.AsIsPayload != nil {
-		toSerialize["asIsPayload"] = o.AsIsPayload
-	}
-	if o.Endpoint != nil {
-		toSerialize["endpoint"] = o.Endpoint
-	}
-	if o.DisableCertCheck != nil {
-		toSerialize["disableCertCheck"] = o.DisableCertCheck
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
-	if o.ClientId != nil {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if o.TopicName != nil {
-		toSerialize["topicName"] = o.TopicName
-	}
-	if o.TopicTemplate != nil {
-		toSerialize["topicTemplate"] = o.TopicTemplate
-	}
-	if o.PayloadFormat != nil {
-		toSerialize["payloadFormat"] = o.PayloadFormat
-	}
-	if o.PayloadTemplate != nil {
-		toSerialize["payloadTemplate"] = o.PayloadTemplate
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OutputConfig) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	if !IsNil(o.BasicAuthUser) {
+		toSerialize["basicAuthUser"] = o.BasicAuthUser
+	}
+	if !IsNil(o.BasicAuthPass) {
+		toSerialize["basicAuthPass"] = o.BasicAuthPass
+	}
+	if !IsNil(o.CustomHeaderName) {
+		toSerialize["customHeaderName"] = o.CustomHeaderName
+	}
+	if !IsNil(o.CustomHeaderValue) {
+		toSerialize["customHeaderValue"] = o.CustomHeaderValue
+	}
+	if !IsNil(o.Host) {
+		toSerialize["host"] = o.Host
+	}
+	if !IsNil(o.Port) {
+		toSerialize["port"] = o.Port
+	}
+	if !IsNil(o.Key) {
+		toSerialize["key"] = o.Key
+	}
+	if !IsNil(o.EventName) {
+		toSerialize["eventName"] = o.EventName
+	}
+	if !IsNil(o.AsIsPayload) {
+		toSerialize["asIsPayload"] = o.AsIsPayload
+	}
+	if !IsNil(o.Endpoint) {
+		toSerialize["endpoint"] = o.Endpoint
+	}
+	if !IsNil(o.DisableCertCheck) {
+		toSerialize["disableCertCheck"] = o.DisableCertCheck
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
+	}
+	if !IsNil(o.ClientId) {
+		toSerialize["clientId"] = o.ClientId
+	}
+	if !IsNil(o.TopicName) {
+		toSerialize["topicName"] = o.TopicName
+	}
+	if !IsNil(o.TopicTemplate) {
+		toSerialize["topicTemplate"] = o.TopicTemplate
+	}
+	if !IsNil(o.PayloadFormat) {
+		toSerialize["payloadFormat"] = o.PayloadFormat
+	}
+	if !IsNil(o.PayloadTemplate) {
+		toSerialize["payloadTemplate"] = o.PayloadTemplate
+	}
+	return toSerialize, nil
 }
 
 type NullableOutputConfig struct {

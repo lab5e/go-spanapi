@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the DeleteDownstreamMessageResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeleteDownstreamMessageResponse{}
 
 // DeleteDownstreamMessageResponse Response object when deleting a downstream message
 type DeleteDownstreamMessageResponse struct {
@@ -39,7 +42,7 @@ func NewDeleteDownstreamMessageResponseWithDefaults() *DeleteDownstreamMessageRe
 
 // GetMessageId returns the MessageId field value if set, zero value otherwise.
 func (o *DeleteDownstreamMessageResponse) GetMessageId() string {
-	if o == nil || o.MessageId == nil {
+	if o == nil || IsNil(o.MessageId) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *DeleteDownstreamMessageResponse) GetMessageId() string {
 // GetMessageIdOk returns a tuple with the MessageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeleteDownstreamMessageResponse) GetMessageIdOk() (*string, bool) {
-	if o == nil || o.MessageId == nil {
+	if o == nil || IsNil(o.MessageId) {
 		return nil, false
 	}
 	return o.MessageId, true
@@ -57,7 +60,7 @@ func (o *DeleteDownstreamMessageResponse) GetMessageIdOk() (*string, bool) {
 
 // HasMessageId returns a boolean if a field has been set.
 func (o *DeleteDownstreamMessageResponse) HasMessageId() bool {
-	if o != nil && o.MessageId != nil {
+	if o != nil && !IsNil(o.MessageId) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *DeleteDownstreamMessageResponse) SetMessageId(v string) {
 }
 
 func (o DeleteDownstreamMessageResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.MessageId != nil {
-		toSerialize["messageId"] = o.MessageId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeleteDownstreamMessageResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.MessageId) {
+		toSerialize["messageId"] = o.MessageId
+	}
+	return toSerialize, nil
 }
 
 type NullableDeleteDownstreamMessageResponse struct {

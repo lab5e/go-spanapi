@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 nonviolent-adelbert
+API version: 4.4.2 larger-lashanda
 Contact: dev@lab5e.com
 */
 
@@ -14,6 +14,9 @@ package spanapi
 import (
 	"encoding/json"
 )
+
+// checks if the RetrieveBlobResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RetrieveBlobResponse{}
 
 // RetrieveBlobResponse This is not available throught the API, just as a regular HTTP response
 type RetrieveBlobResponse struct {
@@ -41,7 +44,7 @@ func NewRetrieveBlobResponseWithDefaults() *RetrieveBlobResponse {
 
 // GetContentType returns the ContentType field value if set, zero value otherwise.
 func (o *RetrieveBlobResponse) GetContentType() string {
-	if o == nil || o.ContentType == nil {
+	if o == nil || IsNil(o.ContentType) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *RetrieveBlobResponse) GetContentType() string {
 // GetContentTypeOk returns a tuple with the ContentType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RetrieveBlobResponse) GetContentTypeOk() (*string, bool) {
-	if o == nil || o.ContentType == nil {
+	if o == nil || IsNil(o.ContentType) {
 		return nil, false
 	}
 	return o.ContentType, true
@@ -59,7 +62,7 @@ func (o *RetrieveBlobResponse) GetContentTypeOk() (*string, bool) {
 
 // HasContentType returns a boolean if a field has been set.
 func (o *RetrieveBlobResponse) HasContentType() bool {
-	if o != nil && o.ContentType != nil {
+	if o != nil && !IsNil(o.ContentType) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *RetrieveBlobResponse) SetContentType(v string) {
 
 // GetSize returns the Size field value if set, zero value otherwise.
 func (o *RetrieveBlobResponse) GetSize() int32 {
-	if o == nil || o.Size == nil {
+	if o == nil || IsNil(o.Size) {
 		var ret int32
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *RetrieveBlobResponse) GetSize() int32 {
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RetrieveBlobResponse) GetSizeOk() (*int32, bool) {
-	if o == nil || o.Size == nil {
+	if o == nil || IsNil(o.Size) {
 		return nil, false
 	}
 	return o.Size, true
@@ -91,7 +94,7 @@ func (o *RetrieveBlobResponse) GetSizeOk() (*int32, bool) {
 
 // HasSize returns a boolean if a field has been set.
 func (o *RetrieveBlobResponse) HasSize() bool {
-	if o != nil && o.Size != nil {
+	if o != nil && !IsNil(o.Size) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *RetrieveBlobResponse) SetSize(v int32) {
 
 // GetData returns the Data field value if set, zero value otherwise.
 func (o *RetrieveBlobResponse) GetData() string {
-	if o == nil || o.Data == nil {
+	if o == nil || IsNil(o.Data) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *RetrieveBlobResponse) GetData() string {
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RetrieveBlobResponse) GetDataOk() (*string, bool) {
-	if o == nil || o.Data == nil {
+	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
 	return o.Data, true
@@ -123,7 +126,7 @@ func (o *RetrieveBlobResponse) GetDataOk() (*string, bool) {
 
 // HasData returns a boolean if a field has been set.
 func (o *RetrieveBlobResponse) HasData() bool {
-	if o != nil && o.Data != nil {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *RetrieveBlobResponse) SetData(v string) {
 }
 
 func (o RetrieveBlobResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ContentType != nil {
-		toSerialize["contentType"] = o.ContentType
-	}
-	if o.Size != nil {
-		toSerialize["size"] = o.Size
-	}
-	if o.Data != nil {
-		toSerialize["data"] = o.Data
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RetrieveBlobResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ContentType) {
+		toSerialize["contentType"] = o.ContentType
+	}
+	if !IsNil(o.Size) {
+		toSerialize["size"] = o.Size
+	}
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
+	return toSerialize, nil
 }
 
 type NullableRetrieveBlobResponse struct {
