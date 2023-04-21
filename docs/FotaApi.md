@@ -91,6 +91,8 @@ Name | Type | Description  | Notes
 
 Create firmware
 
+
+
 ### Example
 
 ```go

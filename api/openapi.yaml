@@ -6,7 +6,7 @@ info:
     url: https://lab5e.com
   description: "API for device, collection, output and firmware management"
   title: The Span API
-  version: 4.4.2 larger-lashanda
+  version: 4.5.0 overwrought-dorla
 servers:
 - url: https://api.lab5e.com/
 security:
@@ -1791,6 +1791,9 @@ paths:
       tags:
       - fota
     post:
+      description: |-
+        Firmware images must have unique version numbers and have an unique checksum. The checksum is
+        calculated when the firmware image is uploaded.
       operationId: CreateFirmware
       parameters:
       - in: path

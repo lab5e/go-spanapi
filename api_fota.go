@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.4.2 larger-lashanda
+API version: 4.5.0 overwrought-dorla
 Contact: dev@lab5e.com
 */
 
@@ -224,6 +224,9 @@ func (r ApiCreateFirmwareRequest) Execute() (*Firmware, *http.Response, error) {
 
 /*
 CreateFirmware Create firmware
+
+Firmware images must have unique version numbers and have an unique checksum. The checksum is
+calculated when the firmware image is uploaded.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param collectionId
