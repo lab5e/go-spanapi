@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ListCollectionData**](CollectionsApi.md#ListCollectionData) | **Get** /span/collections/{collectionId}/data | Retrieve data from devices
 [**ListCollections**](CollectionsApi.md#ListCollections) | **Get** /span/collections | List collections
 [**RetrieveCollection**](CollectionsApi.md#RetrieveCollection) | **Get** /span/collections/{collectionId} | Retrieve collection
+[**RetrieveCollectionStats**](CollectionsApi.md#RetrieveCollectionStats) | **Get** /span/collections/{collectionId}/stats | Retrieve collection statistics
 [**UpdateCollection**](CollectionsApi.md#UpdateCollection) | **Patch** /span/collections/{collectionId} | Update collection
 
 
@@ -347,6 +348,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Collection**](Collection.md)
+
+### Authorization
+
+[APIToken](../README.md#APIToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RetrieveCollectionStats
+
+> CollectionStats RetrieveCollectionStats(ctx, collectionId).Execute()
+
+Retrieve collection statistics
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/lab5e/go-spanapi"
+)
+
+func main() {
+    collectionId := "collectionId_example" // string | The collection ID of the collection you are requesting
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CollectionsApi.RetrieveCollectionStats(context.Background(), collectionId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionsApi.RetrieveCollectionStats``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RetrieveCollectionStats`: CollectionStats
+    fmt.Fprintf(os.Stdout, "Response from `CollectionsApi.RetrieveCollectionStats`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**collectionId** | **string** | The collection ID of the collection you are requesting | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRetrieveCollectionStatsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**CollectionStats**](CollectionStats.md)
 
 ### Authorization
 

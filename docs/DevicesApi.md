@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**ListDownstreamMessages**](DevicesApi.md#ListDownstreamMessages) | **Get** /span/collections/{collectionId}/devices/{deviceId}/outbox | List the messages in the outbox
 [**ListUpstreamMessages**](DevicesApi.md#ListUpstreamMessages) | **Get** /span/collections/{collectionId}/devices/{deviceId}/inbox | List incoming messages
 [**RetrieveDevice**](DevicesApi.md#RetrieveDevice) | **Get** /span/collections/{collectionId}/devices/{deviceId} | Retrieve device
+[**RetrieveDeviceStats**](DevicesApi.md#RetrieveDeviceStats) | **Get** /span/collections/{collectionId}/devices/{deviceId}/stats | Retrieve device statistics
 [**UpdateDevice**](DevicesApi.md#UpdateDevice) | **Patch** /span/collections/{existingCollectionId}/devices/{deviceId} | Update device
 
 
@@ -712,7 +713,7 @@ import (
 
 func main() {
     collectionId := "collectionId_example" // string | This is the containing collection
-    deviceId := "deviceId_example" // string | The device ID is assigned by the backend.
+    deviceId := "deviceId_example" // string | The device identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -733,7 +734,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **collectionId** | **string** | This is the containing collection | 
-**deviceId** | **string** | The device ID is assigned by the backend. | 
+**deviceId** | **string** | The device identifier | 
 
 ### Other Parameters
 
@@ -748,6 +749,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Device**](Device.md)
+
+### Authorization
+
+[APIToken](../README.md#APIToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RetrieveDeviceStats
+
+> DeviceStats RetrieveDeviceStats(ctx, collectionId, deviceId).Execute()
+
+Retrieve device statistics
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/lab5e/go-spanapi"
+)
+
+func main() {
+    collectionId := "collectionId_example" // string | This is the containing collection
+    deviceId := "deviceId_example" // string | The device identifier
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DevicesApi.RetrieveDeviceStats(context.Background(), collectionId, deviceId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DevicesApi.RetrieveDeviceStats``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RetrieveDeviceStats`: DeviceStats
+    fmt.Fprintf(os.Stdout, "Response from `DevicesApi.RetrieveDeviceStats`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**collectionId** | **string** | This is the containing collection | 
+**deviceId** | **string** | The device identifier | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRetrieveDeviceStatsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**DeviceStats**](DeviceStats.md)
 
 ### Authorization
 

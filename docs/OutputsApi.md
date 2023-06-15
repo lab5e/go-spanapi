@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ListOutputs**](OutputsApi.md#ListOutputs) | **Get** /span/collections/{collectionId}/outputs | List outputs
 [**Logs**](OutputsApi.md#Logs) | **Get** /span/collections/{collectionId}/outputs/{outputId}/logs | Output logs
 [**RetrieveOutput**](OutputsApi.md#RetrieveOutput) | **Get** /span/collections/{collectionId}/outputs/{outputId} | Retrieve output
+[**RetrieveOutputStats**](OutputsApi.md#RetrieveOutputStats) | **Get** /span/collections/{collectionId}/outputs/{outputId}/stats | Retrieve output statistics
 [**Status**](OutputsApi.md#Status) | **Get** /span/collections/{collectionId}/outputs/{outputId}/status | Output status
 [**UpdateOutput**](OutputsApi.md#UpdateOutput) | **Patch** /span/collections/{existingCollectionId}/outputs/{outputId} | Update output
 
@@ -350,6 +351,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Output**](Output.md)
+
+### Authorization
+
+[APIToken](../README.md#APIToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RetrieveOutputStats
+
+> OutputStats RetrieveOutputStats(ctx, collectionId, outputId).Execute()
+
+Retrieve output statistics
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/lab5e/go-spanapi"
+)
+
+func main() {
+    collectionId := "collectionId_example" // string | 
+    outputId := "outputId_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutputsApi.RetrieveOutputStats(context.Background(), collectionId, outputId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutputsApi.RetrieveOutputStats``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RetrieveOutputStats`: OutputStats
+    fmt.Fprintf(os.Stdout, "Response from `OutputsApi.RetrieveOutputStats`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**collectionId** | **string** |  | 
+**outputId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRetrieveOutputStatsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**OutputStats**](OutputStats.md)
 
 ### Authorization
 

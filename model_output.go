@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.5.0 overwrought-dorla
+API version: 4.6.0 truthful-holli
 Contact: dev@lab5e.com
 */
 

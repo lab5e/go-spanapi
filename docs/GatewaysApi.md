@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**GatewayCertificates**](GatewaysApi.md#GatewayCertificates) | **Get** /span/collections/{collectionId}/gateways/{gatewayId}/certs | Get issued certificate(s) for gateway
 [**ListGateways**](GatewaysApi.md#ListGateways) | **Get** /span/collections/{collectionId}/gateways | List gateways
 [**RetrieveGateway**](GatewaysApi.md#RetrieveGateway) | **Get** /span/collections/{collectionId}/gateways/{gatewayId} | Retrieve gateway
+[**RetrieveGatewayStats**](GatewaysApi.md#RetrieveGatewayStats) | **Get** /span/collections/{collectionId}/gateways/{gatewayId}/stats | Retrieve gateway statistics
 [**UpdateGateway**](GatewaysApi.md#UpdateGateway) | **Patch** /span/collections/{existingCollectionId}/gateways/{gatewayId} | Update gateway
 
 
@@ -357,6 +358,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Gateway**](Gateway.md)
+
+### Authorization
+
+[APIToken](../README.md#APIToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RetrieveGatewayStats
+
+> GatewayStats RetrieveGatewayStats(ctx, collectionId, gatewayId).Execute()
+
+Retrieve gateway statistics
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/lab5e/go-spanapi"
+)
+
+func main() {
+    collectionId := "collectionId_example" // string | 
+    gatewayId := "gatewayId_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.GatewaysApi.RetrieveGatewayStats(context.Background(), collectionId, gatewayId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `GatewaysApi.RetrieveGatewayStats``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RetrieveGatewayStats`: GatewayStats
+    fmt.Fprintf(os.Stdout, "Response from `GatewaysApi.RetrieveGatewayStats`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**collectionId** | **string** |  | 
+**gatewayId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRetrieveGatewayStatsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**GatewayStats**](GatewayStats.md)
 
 ### Authorization
 
