@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.6.0 truthful-holli
+API version: 4.6.1 squirming-codi
 Contact: dev@lab5e.com
 */
 
@@ -42,7 +42,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the The Span API API v4.6.0 truthful-holli
+// APIClient manages communication with the The Span API API v4.6.1 squirming-codi
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
