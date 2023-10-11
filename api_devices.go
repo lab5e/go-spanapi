@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.6.1 squirming-codi
+API version: 4.7.0 actionable-aryanna
 Contact: dev@lab5e.com
 */
 
@@ -2208,6 +2208,10 @@ access to both collections. A note on gateway configurations: Empty gateway
 configuration blocks are deleted. If the configuration block contains a
 gateway ID it will be updated  with the new values. All values must be
 submitted in the request.
+If a device is moved out of the collection and it references a gateway in
+the configuration the operation will fail. Devices that are moved from one
+collection to another and references gateway configurations must be updated
+before they are moved.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param existingCollectionId

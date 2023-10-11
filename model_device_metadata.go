@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.6.1 squirming-codi
+API version: 4.7.0 actionable-aryanna
 Contact: dev@lab5e.com
 */
 

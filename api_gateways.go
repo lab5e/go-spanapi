@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.6.1 squirming-codi
+API version: 4.7.0 actionable-aryanna
 Contact: dev@lab5e.com
 */
 
@@ -1149,7 +1149,10 @@ func (r ApiUpdateGatewayRequest) Execute() (*Gateway, *http.Response, error) {
 /*
 UpdateGateway Update gateway
 
-Update a gateway in Span
+Update configuration for a gateway. If you want to remove or move a gateway
+from the collection the devices in the collection must not have any gateway
+configuration. The certificates for the gateway are unchanged when the
+gateway is moved.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param existingCollectionId
