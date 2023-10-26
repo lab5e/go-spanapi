@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **Network** | Pointer to **string** |  | [optional] 
 **CountryCode** | Pointer to **string** |  | [optional] 
 **LastUpdate** | Pointer to **string** |  | [optional] 
+**LastImsi** | Pointer to **string** |  | [optional] 
+**LastImei** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -283,6 +285,56 @@ SetLastUpdate sets LastUpdate field to given value.
 `func (o *CellularIoTMetadata) HasLastUpdate() bool`
 
 HasLastUpdate returns a boolean if a field has been set.
+
+### GetLastImsi
+
+`func (o *CellularIoTMetadata) GetLastImsi() string`
+
+GetLastImsi returns the LastImsi field if non-nil, zero value otherwise.
+
+### GetLastImsiOk
+
+`func (o *CellularIoTMetadata) GetLastImsiOk() (*string, bool)`
+
+GetLastImsiOk returns a tuple with the LastImsi field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastImsi
+
+`func (o *CellularIoTMetadata) SetLastImsi(v string)`
+
+SetLastImsi sets LastImsi field to given value.
+
+### HasLastImsi
+
+`func (o *CellularIoTMetadata) HasLastImsi() bool`
+
+HasLastImsi returns a boolean if a field has been set.
+
+### GetLastImei
+
+`func (o *CellularIoTMetadata) GetLastImei() string`
+
+GetLastImei returns the LastImei field if non-nil, zero value otherwise.
+
+### GetLastImeiOk
+
+`func (o *CellularIoTMetadata) GetLastImeiOk() (*string, bool)`
+
+GetLastImeiOk returns a tuple with the LastImei field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastImei
+
+`func (o *CellularIoTMetadata) SetLastImei(v string)`
+
+SetLastImei sets LastImei field to given value.
+
+### HasLastImei
+
+`func (o *CellularIoTMetadata) HasLastImei() bool`
+
+HasLastImei returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

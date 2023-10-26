@@ -6,7 +6,7 @@ info:
     url: https://lab5e.com
   description: "API for device, collection, output and firmware management"
   title: The Span API
-  version: 4.7.0 actionable-aryanna
+  version: 4.8.0 indecipherable-ferman
 servers:
 - url: https://api.lab5e.com/
 security:
@@ -3552,12 +3552,8 @@ components:
           title: The IMSI is the unique ID for the (e|nu|whatever)SIM card
           type: string
         imei:
-          description: |-
-            on your device. This is the primary identifier for your
-            device on the network.
-
-            The IMEI number is the unique ID for your hardware as
           format: int64
+          title: The IMEI number is the unique ID for your hardware as
           type: string
       title: CellularIOTConfig
       type: object
@@ -3565,6 +3561,7 @@ components:
       description: This is the metadata for a Cellular IoT device connected via an
         APN.
       example:
+        lastImei: lastImei
         country: country
         mnc: 6
         countryCode: countryCode
@@ -3573,6 +3570,7 @@ components:
         cellId: cellId
         mcc: 0
         gatewayId: gatewayId
+        lastImsi: lastImsi
         allocatedAt: allocatedAt
         network: network
       properties:
@@ -3612,6 +3610,15 @@ components:
           type: string
         lastUpdate:
           format: int64
+          title: Last update timestamp
+          type: string
+        lastImsi:
+          format: int64
+          title: Last used IMSI
+          type: string
+        lastImei:
+          format: int64
+          title: Last used IMEI
           type: string
       title: CellularIOTMetadata
       type: object
@@ -3860,6 +3867,7 @@ components:
         lastPayload: lastPayload
         metadata:
           ciot:
+            lastImei: lastImei
             country: country
             mnc: 6
             countryCode: countryCode
@@ -3868,6 +3876,7 @@ components:
             cellId: cellId
             mcc: 0
             gatewayId: gatewayId
+            lastImsi: lastImsi
             allocatedAt: allocatedAt
             network: network
           inet:
@@ -3990,6 +3999,7 @@ components:
       description: This is the metadata for devices.
       example:
         ciot:
+          lastImei: lastImei
           country: country
           mnc: 6
           countryCode: countryCode
@@ -3998,6 +4008,7 @@ components:
           cellId: cellId
           mcc: 0
           gatewayId: gatewayId
+          lastImsi: lastImsi
           allocatedAt: allocatedAt
           network: network
         inet:
@@ -4518,6 +4529,7 @@ components:
             lastPayload: lastPayload
             metadata:
               ciot:
+                lastImei: lastImei
                 country: country
                 mnc: 6
                 countryCode: countryCode
@@ -4526,6 +4538,7 @@ components:
                 cellId: cellId
                 mcc: 0
                 gatewayId: gatewayId
+                lastImsi: lastImsi
                 allocatedAt: allocatedAt
                 network: network
               inet:
@@ -4585,6 +4598,7 @@ components:
             lastPayload: lastPayload
             metadata:
               ciot:
+                lastImei: lastImei
                 country: country
                 mnc: 6
                 countryCode: countryCode
@@ -4593,6 +4607,7 @@ components:
                 cellId: cellId
                 mcc: 0
                 gatewayId: gatewayId
+                lastImsi: lastImsi
                 allocatedAt: allocatedAt
                 network: network
               inet:
@@ -4649,6 +4664,7 @@ components:
         - lastPayload: lastPayload
           metadata:
             ciot:
+              lastImei: lastImei
               country: country
               mnc: 6
               countryCode: countryCode
@@ -4657,6 +4673,7 @@ components:
               cellId: cellId
               mcc: 0
               gatewayId: gatewayId
+              lastImsi: lastImsi
               allocatedAt: allocatedAt
               network: network
             inet:
@@ -4698,6 +4715,7 @@ components:
         - lastPayload: lastPayload
           metadata:
             ciot:
+              lastImei: lastImei
               country: country
               mnc: 6
               countryCode: countryCode
@@ -4706,6 +4724,7 @@ components:
               cellId: cellId
               mcc: 0
               gatewayId: gatewayId
+              lastImsi: lastImsi
               allocatedAt: allocatedAt
               network: network
             inet:
@@ -5214,6 +5233,7 @@ components:
           lastPayload: lastPayload
           metadata:
             ciot:
+              lastImei: lastImei
               country: country
               mnc: 6
               countryCode: countryCode
@@ -5222,6 +5242,7 @@ components:
               cellId: cellId
               mcc: 0
               gatewayId: gatewayId
+              lastImsi: lastImsi
               allocatedAt: allocatedAt
               network: network
             inet:
@@ -5583,6 +5604,7 @@ components:
       example:
         metadata:
           ciot:
+            lastImei: lastImei
             country: country
             mnc: 6
             countryCode: countryCode
@@ -5591,6 +5613,7 @@ components:
             cellId: cellId
             mcc: 0
             gatewayId: gatewayId
+            lastImsi: lastImsi
             allocatedAt: allocatedAt
             network: network
           inet:

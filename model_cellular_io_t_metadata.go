@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.7.0 actionable-aryanna
+API version: 4.8.0 indecipherable-ferman
 Contact: dev@lab5e.com
 */
 
@@ -32,6 +32,8 @@ type CellularIoTMetadata struct {
 	Network *string `json:"network,omitempty"`
 	CountryCode *string `json:"countryCode,omitempty"`
 	LastUpdate *string `json:"lastUpdate,omitempty"`
+	LastImsi *string `json:"lastImsi,omitempty"`
+	LastImei *string `json:"lastImei,omitempty"`
 }
 
 // NewCellularIoTMetadata instantiates a new CellularIoTMetadata object
@@ -371,6 +373,70 @@ func (o *CellularIoTMetadata) SetLastUpdate(v string) {
 	o.LastUpdate = &v
 }
 
+// GetLastImsi returns the LastImsi field value if set, zero value otherwise.
+func (o *CellularIoTMetadata) GetLastImsi() string {
+	if o == nil || IsNil(o.LastImsi) {
+		var ret string
+		return ret
+	}
+	return *o.LastImsi
+}
+
+// GetLastImsiOk returns a tuple with the LastImsi field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CellularIoTMetadata) GetLastImsiOk() (*string, bool) {
+	if o == nil || IsNil(o.LastImsi) {
+		return nil, false
+	}
+	return o.LastImsi, true
+}
+
+// HasLastImsi returns a boolean if a field has been set.
+func (o *CellularIoTMetadata) HasLastImsi() bool {
+	if o != nil && !IsNil(o.LastImsi) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastImsi gets a reference to the given string and assigns it to the LastImsi field.
+func (o *CellularIoTMetadata) SetLastImsi(v string) {
+	o.LastImsi = &v
+}
+
+// GetLastImei returns the LastImei field value if set, zero value otherwise.
+func (o *CellularIoTMetadata) GetLastImei() string {
+	if o == nil || IsNil(o.LastImei) {
+		var ret string
+		return ret
+	}
+	return *o.LastImei
+}
+
+// GetLastImeiOk returns a tuple with the LastImei field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CellularIoTMetadata) GetLastImeiOk() (*string, bool) {
+	if o == nil || IsNil(o.LastImei) {
+		return nil, false
+	}
+	return o.LastImei, true
+}
+
+// HasLastImei returns a boolean if a field has been set.
+func (o *CellularIoTMetadata) HasLastImei() bool {
+	if o != nil && !IsNil(o.LastImei) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastImei gets a reference to the given string and assigns it to the LastImei field.
+func (o *CellularIoTMetadata) SetLastImei(v string) {
+	o.LastImei = &v
+}
+
 func (o CellularIoTMetadata) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -410,6 +476,12 @@ func (o CellularIoTMetadata) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LastUpdate) {
 		toSerialize["lastUpdate"] = o.LastUpdate
+	}
+	if !IsNil(o.LastImsi) {
+		toSerialize["lastImsi"] = o.LastImsi
+	}
+	if !IsNil(o.LastImei) {
+		toSerialize["lastImei"] = o.LastImei
 	}
 	return toSerialize, nil
 }

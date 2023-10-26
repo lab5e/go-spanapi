@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.7.0 actionable-aryanna
+API version: 4.8.0 indecipherable-ferman
 Contact: dev@lab5e.com
 */
 
@@ -21,7 +21,6 @@ var _ MappedNullable = &CellularIoTConfig{}
 // CellularIoTConfig This is the cellular IOT config
 type CellularIoTConfig struct {
 	Imsi *string `json:"imsi,omitempty"`
-	// on your device. This is the primary identifier for your device on the network.  The IMEI number is the unique ID for your hardware as
 	Imei *string `json:"imei,omitempty"`
 }
 
