@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.8.0 indecipherable-ferman
+API version: 4.9.5 spattered-kelvin
 Contact: dev@lab5e.com
 */
 

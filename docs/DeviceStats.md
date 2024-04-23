@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BytesUpstreamMb** | Pointer to **float32** |  | [optional] 
-**BytesDownstreamMb** | Pointer to **float32** |  | [optional] 
-**MessagesUpstream** | Pointer to **int32** |  | [optional] 
-**MessagesDownstream** | Pointer to **int32** |  | [optional] 
+**BytesUpstream** | Pointer to **string** |  | [optional] 
+**BytesDownstream** | Pointer to **string** |  | [optional] 
+**MessagesUpstream** | Pointer to **string** |  | [optional] 
+**MessagesDownstream** | Pointer to **string** |  | [optional] 
 **SessionCount** | Pointer to **int32** |  | [optional] 
 
 ## Methods
@@ -29,72 +29,72 @@ NewDeviceStatsWithDefaults instantiates a new DeviceStats object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetBytesUpstreamMb
+### GetBytesUpstream
 
-`func (o *DeviceStats) GetBytesUpstreamMb() float32`
+`func (o *DeviceStats) GetBytesUpstream() string`
 
-GetBytesUpstreamMb returns the BytesUpstreamMb field if non-nil, zero value otherwise.
+GetBytesUpstream returns the BytesUpstream field if non-nil, zero value otherwise.
 
-### GetBytesUpstreamMbOk
+### GetBytesUpstreamOk
 
-`func (o *DeviceStats) GetBytesUpstreamMbOk() (*float32, bool)`
+`func (o *DeviceStats) GetBytesUpstreamOk() (*string, bool)`
 
-GetBytesUpstreamMbOk returns a tuple with the BytesUpstreamMb field if it's non-nil, zero value otherwise
+GetBytesUpstreamOk returns a tuple with the BytesUpstream field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBytesUpstreamMb
+### SetBytesUpstream
 
-`func (o *DeviceStats) SetBytesUpstreamMb(v float32)`
+`func (o *DeviceStats) SetBytesUpstream(v string)`
 
-SetBytesUpstreamMb sets BytesUpstreamMb field to given value.
+SetBytesUpstream sets BytesUpstream field to given value.
 
-### HasBytesUpstreamMb
+### HasBytesUpstream
 
-`func (o *DeviceStats) HasBytesUpstreamMb() bool`
+`func (o *DeviceStats) HasBytesUpstream() bool`
 
-HasBytesUpstreamMb returns a boolean if a field has been set.
+HasBytesUpstream returns a boolean if a field has been set.
 
-### GetBytesDownstreamMb
+### GetBytesDownstream
 
-`func (o *DeviceStats) GetBytesDownstreamMb() float32`
+`func (o *DeviceStats) GetBytesDownstream() string`
 
-GetBytesDownstreamMb returns the BytesDownstreamMb field if non-nil, zero value otherwise.
+GetBytesDownstream returns the BytesDownstream field if non-nil, zero value otherwise.
 
-### GetBytesDownstreamMbOk
+### GetBytesDownstreamOk
 
-`func (o *DeviceStats) GetBytesDownstreamMbOk() (*float32, bool)`
+`func (o *DeviceStats) GetBytesDownstreamOk() (*string, bool)`
 
-GetBytesDownstreamMbOk returns a tuple with the BytesDownstreamMb field if it's non-nil, zero value otherwise
+GetBytesDownstreamOk returns a tuple with the BytesDownstream field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBytesDownstreamMb
+### SetBytesDownstream
 
-`func (o *DeviceStats) SetBytesDownstreamMb(v float32)`
+`func (o *DeviceStats) SetBytesDownstream(v string)`
 
-SetBytesDownstreamMb sets BytesDownstreamMb field to given value.
+SetBytesDownstream sets BytesDownstream field to given value.
 
-### HasBytesDownstreamMb
+### HasBytesDownstream
 
-`func (o *DeviceStats) HasBytesDownstreamMb() bool`
+`func (o *DeviceStats) HasBytesDownstream() bool`
 
-HasBytesDownstreamMb returns a boolean if a field has been set.
+HasBytesDownstream returns a boolean if a field has been set.
 
 ### GetMessagesUpstream
 
-`func (o *DeviceStats) GetMessagesUpstream() int32`
+`func (o *DeviceStats) GetMessagesUpstream() string`
 
 GetMessagesUpstream returns the MessagesUpstream field if non-nil, zero value otherwise.
 
 ### GetMessagesUpstreamOk
 
-`func (o *DeviceStats) GetMessagesUpstreamOk() (*int32, bool)`
+`func (o *DeviceStats) GetMessagesUpstreamOk() (*string, bool)`
 
 GetMessagesUpstreamOk returns a tuple with the MessagesUpstream field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessagesUpstream
 
-`func (o *DeviceStats) SetMessagesUpstream(v int32)`
+`func (o *DeviceStats) SetMessagesUpstream(v string)`
 
 SetMessagesUpstream sets MessagesUpstream field to given value.
 
@@ -106,20 +106,20 @@ HasMessagesUpstream returns a boolean if a field has been set.
 
 ### GetMessagesDownstream
 
-`func (o *DeviceStats) GetMessagesDownstream() int32`
+`func (o *DeviceStats) GetMessagesDownstream() string`
 
 GetMessagesDownstream returns the MessagesDownstream field if non-nil, zero value otherwise.
 
 ### GetMessagesDownstreamOk
 
-`func (o *DeviceStats) GetMessagesDownstreamOk() (*int32, bool)`
+`func (o *DeviceStats) GetMessagesDownstreamOk() (*string, bool)`
 
 GetMessagesDownstreamOk returns a tuple with the MessagesDownstream field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessagesDownstream
 
-`func (o *DeviceStats) SetMessagesDownstream(v int32)`
+`func (o *DeviceStats) SetMessagesDownstream(v string)`
 
 SetMessagesDownstream sets MessagesDownstream field to given value.
 

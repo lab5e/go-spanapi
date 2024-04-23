@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.8.0 indecipherable-ferman
+API version: 4.9.5 spattered-kelvin
 Contact: dev@lab5e.com
 */
 
@@ -20,10 +20,10 @@ var _ MappedNullable = &DeviceStats{}
 
 // DeviceStats This is the statistics for a single device
 type DeviceStats struct {
-	BytesUpstreamMb *float32 `json:"bytesUpstreamMb,omitempty"`
-	BytesDownstreamMb *float32 `json:"bytesDownstreamMb,omitempty"`
-	MessagesUpstream *int32 `json:"messagesUpstream,omitempty"`
-	MessagesDownstream *int32 `json:"messagesDownstream,omitempty"`
+	BytesUpstream *string `json:"bytesUpstream,omitempty"`
+	BytesDownstream *string `json:"bytesDownstream,omitempty"`
+	MessagesUpstream *string `json:"messagesUpstream,omitempty"`
+	MessagesDownstream *string `json:"messagesDownstream,omitempty"`
 	SessionCount *int32 `json:"sessionCount,omitempty"`
 }
 
@@ -44,74 +44,74 @@ func NewDeviceStatsWithDefaults() *DeviceStats {
 	return &this
 }
 
-// GetBytesUpstreamMb returns the BytesUpstreamMb field value if set, zero value otherwise.
-func (o *DeviceStats) GetBytesUpstreamMb() float32 {
-	if o == nil || IsNil(o.BytesUpstreamMb) {
-		var ret float32
+// GetBytesUpstream returns the BytesUpstream field value if set, zero value otherwise.
+func (o *DeviceStats) GetBytesUpstream() string {
+	if o == nil || IsNil(o.BytesUpstream) {
+		var ret string
 		return ret
 	}
-	return *o.BytesUpstreamMb
+	return *o.BytesUpstream
 }
 
-// GetBytesUpstreamMbOk returns a tuple with the BytesUpstreamMb field value if set, nil otherwise
+// GetBytesUpstreamOk returns a tuple with the BytesUpstream field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceStats) GetBytesUpstreamMbOk() (*float32, bool) {
-	if o == nil || IsNil(o.BytesUpstreamMb) {
+func (o *DeviceStats) GetBytesUpstreamOk() (*string, bool) {
+	if o == nil || IsNil(o.BytesUpstream) {
 		return nil, false
 	}
-	return o.BytesUpstreamMb, true
+	return o.BytesUpstream, true
 }
 
-// HasBytesUpstreamMb returns a boolean if a field has been set.
-func (o *DeviceStats) HasBytesUpstreamMb() bool {
-	if o != nil && !IsNil(o.BytesUpstreamMb) {
+// HasBytesUpstream returns a boolean if a field has been set.
+func (o *DeviceStats) HasBytesUpstream() bool {
+	if o != nil && !IsNil(o.BytesUpstream) {
 		return true
 	}
 
 	return false
 }
 
-// SetBytesUpstreamMb gets a reference to the given float32 and assigns it to the BytesUpstreamMb field.
-func (o *DeviceStats) SetBytesUpstreamMb(v float32) {
-	o.BytesUpstreamMb = &v
+// SetBytesUpstream gets a reference to the given string and assigns it to the BytesUpstream field.
+func (o *DeviceStats) SetBytesUpstream(v string) {
+	o.BytesUpstream = &v
 }
 
-// GetBytesDownstreamMb returns the BytesDownstreamMb field value if set, zero value otherwise.
-func (o *DeviceStats) GetBytesDownstreamMb() float32 {
-	if o == nil || IsNil(o.BytesDownstreamMb) {
-		var ret float32
+// GetBytesDownstream returns the BytesDownstream field value if set, zero value otherwise.
+func (o *DeviceStats) GetBytesDownstream() string {
+	if o == nil || IsNil(o.BytesDownstream) {
+		var ret string
 		return ret
 	}
-	return *o.BytesDownstreamMb
+	return *o.BytesDownstream
 }
 
-// GetBytesDownstreamMbOk returns a tuple with the BytesDownstreamMb field value if set, nil otherwise
+// GetBytesDownstreamOk returns a tuple with the BytesDownstream field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceStats) GetBytesDownstreamMbOk() (*float32, bool) {
-	if o == nil || IsNil(o.BytesDownstreamMb) {
+func (o *DeviceStats) GetBytesDownstreamOk() (*string, bool) {
+	if o == nil || IsNil(o.BytesDownstream) {
 		return nil, false
 	}
-	return o.BytesDownstreamMb, true
+	return o.BytesDownstream, true
 }
 
-// HasBytesDownstreamMb returns a boolean if a field has been set.
-func (o *DeviceStats) HasBytesDownstreamMb() bool {
-	if o != nil && !IsNil(o.BytesDownstreamMb) {
+// HasBytesDownstream returns a boolean if a field has been set.
+func (o *DeviceStats) HasBytesDownstream() bool {
+	if o != nil && !IsNil(o.BytesDownstream) {
 		return true
 	}
 
 	return false
 }
 
-// SetBytesDownstreamMb gets a reference to the given float32 and assigns it to the BytesDownstreamMb field.
-func (o *DeviceStats) SetBytesDownstreamMb(v float32) {
-	o.BytesDownstreamMb = &v
+// SetBytesDownstream gets a reference to the given string and assigns it to the BytesDownstream field.
+func (o *DeviceStats) SetBytesDownstream(v string) {
+	o.BytesDownstream = &v
 }
 
 // GetMessagesUpstream returns the MessagesUpstream field value if set, zero value otherwise.
-func (o *DeviceStats) GetMessagesUpstream() int32 {
+func (o *DeviceStats) GetMessagesUpstream() string {
 	if o == nil || IsNil(o.MessagesUpstream) {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.MessagesUpstream
@@ -119,7 +119,7 @@ func (o *DeviceStats) GetMessagesUpstream() int32 {
 
 // GetMessagesUpstreamOk returns a tuple with the MessagesUpstream field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceStats) GetMessagesUpstreamOk() (*int32, bool) {
+func (o *DeviceStats) GetMessagesUpstreamOk() (*string, bool) {
 	if o == nil || IsNil(o.MessagesUpstream) {
 		return nil, false
 	}
@@ -135,15 +135,15 @@ func (o *DeviceStats) HasMessagesUpstream() bool {
 	return false
 }
 
-// SetMessagesUpstream gets a reference to the given int32 and assigns it to the MessagesUpstream field.
-func (o *DeviceStats) SetMessagesUpstream(v int32) {
+// SetMessagesUpstream gets a reference to the given string and assigns it to the MessagesUpstream field.
+func (o *DeviceStats) SetMessagesUpstream(v string) {
 	o.MessagesUpstream = &v
 }
 
 // GetMessagesDownstream returns the MessagesDownstream field value if set, zero value otherwise.
-func (o *DeviceStats) GetMessagesDownstream() int32 {
+func (o *DeviceStats) GetMessagesDownstream() string {
 	if o == nil || IsNil(o.MessagesDownstream) {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.MessagesDownstream
@@ -151,7 +151,7 @@ func (o *DeviceStats) GetMessagesDownstream() int32 {
 
 // GetMessagesDownstreamOk returns a tuple with the MessagesDownstream field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceStats) GetMessagesDownstreamOk() (*int32, bool) {
+func (o *DeviceStats) GetMessagesDownstreamOk() (*string, bool) {
 	if o == nil || IsNil(o.MessagesDownstream) {
 		return nil, false
 	}
@@ -167,8 +167,8 @@ func (o *DeviceStats) HasMessagesDownstream() bool {
 	return false
 }
 
-// SetMessagesDownstream gets a reference to the given int32 and assigns it to the MessagesDownstream field.
-func (o *DeviceStats) SetMessagesDownstream(v int32) {
+// SetMessagesDownstream gets a reference to the given string and assigns it to the MessagesDownstream field.
+func (o *DeviceStats) SetMessagesDownstream(v string) {
 	o.MessagesDownstream = &v
 }
 
@@ -214,11 +214,11 @@ func (o DeviceStats) MarshalJSON() ([]byte, error) {
 
 func (o DeviceStats) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.BytesUpstreamMb) {
-		toSerialize["bytesUpstreamMb"] = o.BytesUpstreamMb
+	if !IsNil(o.BytesUpstream) {
+		toSerialize["bytesUpstream"] = o.BytesUpstream
 	}
-	if !IsNil(o.BytesDownstreamMb) {
-		toSerialize["bytesDownstreamMb"] = o.BytesDownstreamMb
+	if !IsNil(o.BytesDownstream) {
+		toSerialize["bytesDownstream"] = o.BytesDownstream
 	}
 	if !IsNil(o.MessagesUpstream) {
 		toSerialize["messagesUpstream"] = o.MessagesUpstream

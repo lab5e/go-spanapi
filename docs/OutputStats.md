@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ForwardErrors** | Pointer to **int32** |  | [optional] 
-**MessagesForwarded** | Pointer to **int32** |  | [optional] 
-**BytesForwardedMb** | Pointer to **float32** |  | [optional] 
+**MessagesForwarded** | Pointer to **string** |  | [optional] 
+**BytesForwarded** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -54,20 +54,20 @@ HasForwardErrors returns a boolean if a field has been set.
 
 ### GetMessagesForwarded
 
-`func (o *OutputStats) GetMessagesForwarded() int32`
+`func (o *OutputStats) GetMessagesForwarded() string`
 
 GetMessagesForwarded returns the MessagesForwarded field if non-nil, zero value otherwise.
 
 ### GetMessagesForwardedOk
 
-`func (o *OutputStats) GetMessagesForwardedOk() (*int32, bool)`
+`func (o *OutputStats) GetMessagesForwardedOk() (*string, bool)`
 
 GetMessagesForwardedOk returns a tuple with the MessagesForwarded field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessagesForwarded
 
-`func (o *OutputStats) SetMessagesForwarded(v int32)`
+`func (o *OutputStats) SetMessagesForwarded(v string)`
 
 SetMessagesForwarded sets MessagesForwarded field to given value.
 
@@ -77,30 +77,30 @@ SetMessagesForwarded sets MessagesForwarded field to given value.
 
 HasMessagesForwarded returns a boolean if a field has been set.
 
-### GetBytesForwardedMb
+### GetBytesForwarded
 
-`func (o *OutputStats) GetBytesForwardedMb() float32`
+`func (o *OutputStats) GetBytesForwarded() string`
 
-GetBytesForwardedMb returns the BytesForwardedMb field if non-nil, zero value otherwise.
+GetBytesForwarded returns the BytesForwarded field if non-nil, zero value otherwise.
 
-### GetBytesForwardedMbOk
+### GetBytesForwardedOk
 
-`func (o *OutputStats) GetBytesForwardedMbOk() (*float32, bool)`
+`func (o *OutputStats) GetBytesForwardedOk() (*string, bool)`
 
-GetBytesForwardedMbOk returns a tuple with the BytesForwardedMb field if it's non-nil, zero value otherwise
+GetBytesForwardedOk returns a tuple with the BytesForwarded field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBytesForwardedMb
+### SetBytesForwarded
 
-`func (o *OutputStats) SetBytesForwardedMb(v float32)`
+`func (o *OutputStats) SetBytesForwarded(v string)`
 
-SetBytesForwardedMb sets BytesForwardedMb field to given value.
+SetBytesForwarded sets BytesForwarded field to given value.
 
-### HasBytesForwardedMb
+### HasBytesForwarded
 
-`func (o *OutputStats) HasBytesForwardedMb() bool`
+`func (o *OutputStats) HasBytesForwarded() bool`
 
-HasBytesForwardedMb returns a boolean if a field has been set.
+HasBytesForwarded returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

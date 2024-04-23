@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MessagesUpstream** | Pointer to **int32** |  | [optional] 
-**MessagesDownstream** | Pointer to **int32** |  | [optional] 
-**BytesUpstreamMb** | Pointer to **float32** |  | [optional] 
-**BytesDownstreamMb** | Pointer to **float32** |  | [optional] 
+**MessagesUpstream** | Pointer to **string** |  | [optional] 
+**MessagesDownstream** | Pointer to **string** |  | [optional] 
+**BytesUpstream** | Pointer to **string** |  | [optional] 
+**BytesDownstream** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetMessagesUpstream
 
-`func (o *GatewayStats) GetMessagesUpstream() int32`
+`func (o *GatewayStats) GetMessagesUpstream() string`
 
 GetMessagesUpstream returns the MessagesUpstream field if non-nil, zero value otherwise.
 
 ### GetMessagesUpstreamOk
 
-`func (o *GatewayStats) GetMessagesUpstreamOk() (*int32, bool)`
+`func (o *GatewayStats) GetMessagesUpstreamOk() (*string, bool)`
 
 GetMessagesUpstreamOk returns a tuple with the MessagesUpstream field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessagesUpstream
 
-`func (o *GatewayStats) SetMessagesUpstream(v int32)`
+`func (o *GatewayStats) SetMessagesUpstream(v string)`
 
 SetMessagesUpstream sets MessagesUpstream field to given value.
 
@@ -55,20 +55,20 @@ HasMessagesUpstream returns a boolean if a field has been set.
 
 ### GetMessagesDownstream
 
-`func (o *GatewayStats) GetMessagesDownstream() int32`
+`func (o *GatewayStats) GetMessagesDownstream() string`
 
 GetMessagesDownstream returns the MessagesDownstream field if non-nil, zero value otherwise.
 
 ### GetMessagesDownstreamOk
 
-`func (o *GatewayStats) GetMessagesDownstreamOk() (*int32, bool)`
+`func (o *GatewayStats) GetMessagesDownstreamOk() (*string, bool)`
 
 GetMessagesDownstreamOk returns a tuple with the MessagesDownstream field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessagesDownstream
 
-`func (o *GatewayStats) SetMessagesDownstream(v int32)`
+`func (o *GatewayStats) SetMessagesDownstream(v string)`
 
 SetMessagesDownstream sets MessagesDownstream field to given value.
 
@@ -78,55 +78,55 @@ SetMessagesDownstream sets MessagesDownstream field to given value.
 
 HasMessagesDownstream returns a boolean if a field has been set.
 
-### GetBytesUpstreamMb
+### GetBytesUpstream
 
-`func (o *GatewayStats) GetBytesUpstreamMb() float32`
+`func (o *GatewayStats) GetBytesUpstream() string`
 
-GetBytesUpstreamMb returns the BytesUpstreamMb field if non-nil, zero value otherwise.
+GetBytesUpstream returns the BytesUpstream field if non-nil, zero value otherwise.
 
-### GetBytesUpstreamMbOk
+### GetBytesUpstreamOk
 
-`func (o *GatewayStats) GetBytesUpstreamMbOk() (*float32, bool)`
+`func (o *GatewayStats) GetBytesUpstreamOk() (*string, bool)`
 
-GetBytesUpstreamMbOk returns a tuple with the BytesUpstreamMb field if it's non-nil, zero value otherwise
+GetBytesUpstreamOk returns a tuple with the BytesUpstream field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBytesUpstreamMb
+### SetBytesUpstream
 
-`func (o *GatewayStats) SetBytesUpstreamMb(v float32)`
+`func (o *GatewayStats) SetBytesUpstream(v string)`
 
-SetBytesUpstreamMb sets BytesUpstreamMb field to given value.
+SetBytesUpstream sets BytesUpstream field to given value.
 
-### HasBytesUpstreamMb
+### HasBytesUpstream
 
-`func (o *GatewayStats) HasBytesUpstreamMb() bool`
+`func (o *GatewayStats) HasBytesUpstream() bool`
 
-HasBytesUpstreamMb returns a boolean if a field has been set.
+HasBytesUpstream returns a boolean if a field has been set.
 
-### GetBytesDownstreamMb
+### GetBytesDownstream
 
-`func (o *GatewayStats) GetBytesDownstreamMb() float32`
+`func (o *GatewayStats) GetBytesDownstream() string`
 
-GetBytesDownstreamMb returns the BytesDownstreamMb field if non-nil, zero value otherwise.
+GetBytesDownstream returns the BytesDownstream field if non-nil, zero value otherwise.
 
-### GetBytesDownstreamMbOk
+### GetBytesDownstreamOk
 
-`func (o *GatewayStats) GetBytesDownstreamMbOk() (*float32, bool)`
+`func (o *GatewayStats) GetBytesDownstreamOk() (*string, bool)`
 
-GetBytesDownstreamMbOk returns a tuple with the BytesDownstreamMb field if it's non-nil, zero value otherwise
+GetBytesDownstreamOk returns a tuple with the BytesDownstream field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBytesDownstreamMb
+### SetBytesDownstream
 
-`func (o *GatewayStats) SetBytesDownstreamMb(v float32)`
+`func (o *GatewayStats) SetBytesDownstream(v string)`
 
-SetBytesDownstreamMb sets BytesDownstreamMb field to given value.
+SetBytesDownstream sets BytesDownstream field to given value.
 
-### HasBytesDownstreamMb
+### HasBytesDownstream
 
-`func (o *GatewayStats) HasBytesDownstreamMb() bool`
+`func (o *GatewayStats) HasBytesDownstream() bool`
 
-HasBytesDownstreamMb returns a boolean if a field has been set.
+HasBytesDownstream returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.8.0 indecipherable-ferman
+API version: 4.9.5 spattered-kelvin
 Contact: dev@lab5e.com
 */
 
@@ -20,7 +20,7 @@ var _ MappedNullable = &BlobStats{}
 
 // BlobStats Statistics for a single blob
 type BlobStats struct {
-	BlobBytesMb *float32 `json:"blobBytesMb,omitempty"`
+	BlobBytes *string `json:"blobBytes,omitempty"`
 }
 
 // NewBlobStats instantiates a new BlobStats object
@@ -40,36 +40,36 @@ func NewBlobStatsWithDefaults() *BlobStats {
 	return &this
 }
 
-// GetBlobBytesMb returns the BlobBytesMb field value if set, zero value otherwise.
-func (o *BlobStats) GetBlobBytesMb() float32 {
-	if o == nil || IsNil(o.BlobBytesMb) {
-		var ret float32
+// GetBlobBytes returns the BlobBytes field value if set, zero value otherwise.
+func (o *BlobStats) GetBlobBytes() string {
+	if o == nil || IsNil(o.BlobBytes) {
+		var ret string
 		return ret
 	}
-	return *o.BlobBytesMb
+	return *o.BlobBytes
 }
 
-// GetBlobBytesMbOk returns a tuple with the BlobBytesMb field value if set, nil otherwise
+// GetBlobBytesOk returns a tuple with the BlobBytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BlobStats) GetBlobBytesMbOk() (*float32, bool) {
-	if o == nil || IsNil(o.BlobBytesMb) {
+func (o *BlobStats) GetBlobBytesOk() (*string, bool) {
+	if o == nil || IsNil(o.BlobBytes) {
 		return nil, false
 	}
-	return o.BlobBytesMb, true
+	return o.BlobBytes, true
 }
 
-// HasBlobBytesMb returns a boolean if a field has been set.
-func (o *BlobStats) HasBlobBytesMb() bool {
-	if o != nil && !IsNil(o.BlobBytesMb) {
+// HasBlobBytes returns a boolean if a field has been set.
+func (o *BlobStats) HasBlobBytes() bool {
+	if o != nil && !IsNil(o.BlobBytes) {
 		return true
 	}
 
 	return false
 }
 
-// SetBlobBytesMb gets a reference to the given float32 and assigns it to the BlobBytesMb field.
-func (o *BlobStats) SetBlobBytesMb(v float32) {
-	o.BlobBytesMb = &v
+// SetBlobBytes gets a reference to the given string and assigns it to the BlobBytes field.
+func (o *BlobStats) SetBlobBytes(v string) {
+	o.BlobBytes = &v
 }
 
 func (o BlobStats) MarshalJSON() ([]byte, error) {
@@ -82,8 +82,8 @@ func (o BlobStats) MarshalJSON() ([]byte, error) {
 
 func (o BlobStats) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.BlobBytesMb) {
-		toSerialize["blobBytesMb"] = o.BlobBytesMb
+	if !IsNil(o.BlobBytes) {
+		toSerialize["blobBytes"] = o.BlobBytes
 	}
 	return toSerialize, nil
 }

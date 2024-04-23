@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.8.0 indecipherable-ferman
+API version: 4.9.5 spattered-kelvin
 Contact: dev@lab5e.com
 */
 
@@ -21,8 +21,8 @@ var _ MappedNullable = &OutputStats{}
 // OutputStats Statistics for a single data router
 type OutputStats struct {
 	ForwardErrors *int32 `json:"forwardErrors,omitempty"`
-	MessagesForwarded *int32 `json:"messagesForwarded,omitempty"`
-	BytesForwardedMb *float32 `json:"bytesForwardedMb,omitempty"`
+	MessagesForwarded *string `json:"messagesForwarded,omitempty"`
+	BytesForwarded *string `json:"bytesForwarded,omitempty"`
 }
 
 // NewOutputStats instantiates a new OutputStats object
@@ -75,9 +75,9 @@ func (o *OutputStats) SetForwardErrors(v int32) {
 }
 
 // GetMessagesForwarded returns the MessagesForwarded field value if set, zero value otherwise.
-func (o *OutputStats) GetMessagesForwarded() int32 {
+func (o *OutputStats) GetMessagesForwarded() string {
 	if o == nil || IsNil(o.MessagesForwarded) {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.MessagesForwarded
@@ -85,7 +85,7 @@ func (o *OutputStats) GetMessagesForwarded() int32 {
 
 // GetMessagesForwardedOk returns a tuple with the MessagesForwarded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OutputStats) GetMessagesForwardedOk() (*int32, bool) {
+func (o *OutputStats) GetMessagesForwardedOk() (*string, bool) {
 	if o == nil || IsNil(o.MessagesForwarded) {
 		return nil, false
 	}
@@ -101,41 +101,41 @@ func (o *OutputStats) HasMessagesForwarded() bool {
 	return false
 }
 
-// SetMessagesForwarded gets a reference to the given int32 and assigns it to the MessagesForwarded field.
-func (o *OutputStats) SetMessagesForwarded(v int32) {
+// SetMessagesForwarded gets a reference to the given string and assigns it to the MessagesForwarded field.
+func (o *OutputStats) SetMessagesForwarded(v string) {
 	o.MessagesForwarded = &v
 }
 
-// GetBytesForwardedMb returns the BytesForwardedMb field value if set, zero value otherwise.
-func (o *OutputStats) GetBytesForwardedMb() float32 {
-	if o == nil || IsNil(o.BytesForwardedMb) {
-		var ret float32
+// GetBytesForwarded returns the BytesForwarded field value if set, zero value otherwise.
+func (o *OutputStats) GetBytesForwarded() string {
+	if o == nil || IsNil(o.BytesForwarded) {
+		var ret string
 		return ret
 	}
-	return *o.BytesForwardedMb
+	return *o.BytesForwarded
 }
 
-// GetBytesForwardedMbOk returns a tuple with the BytesForwardedMb field value if set, nil otherwise
+// GetBytesForwardedOk returns a tuple with the BytesForwarded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OutputStats) GetBytesForwardedMbOk() (*float32, bool) {
-	if o == nil || IsNil(o.BytesForwardedMb) {
+func (o *OutputStats) GetBytesForwardedOk() (*string, bool) {
+	if o == nil || IsNil(o.BytesForwarded) {
 		return nil, false
 	}
-	return o.BytesForwardedMb, true
+	return o.BytesForwarded, true
 }
 
-// HasBytesForwardedMb returns a boolean if a field has been set.
-func (o *OutputStats) HasBytesForwardedMb() bool {
-	if o != nil && !IsNil(o.BytesForwardedMb) {
+// HasBytesForwarded returns a boolean if a field has been set.
+func (o *OutputStats) HasBytesForwarded() bool {
+	if o != nil && !IsNil(o.BytesForwarded) {
 		return true
 	}
 
 	return false
 }
 
-// SetBytesForwardedMb gets a reference to the given float32 and assigns it to the BytesForwardedMb field.
-func (o *OutputStats) SetBytesForwardedMb(v float32) {
-	o.BytesForwardedMb = &v
+// SetBytesForwarded gets a reference to the given string and assigns it to the BytesForwarded field.
+func (o *OutputStats) SetBytesForwarded(v string) {
+	o.BytesForwarded = &v
 }
 
 func (o OutputStats) MarshalJSON() ([]byte, error) {
@@ -154,8 +154,8 @@ func (o OutputStats) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MessagesForwarded) {
 		toSerialize["messagesForwarded"] = o.MessagesForwarded
 	}
-	if !IsNil(o.BytesForwardedMb) {
-		toSerialize["bytesForwardedMb"] = o.BytesForwardedMb
+	if !IsNil(o.BytesForwarded) {
+		toSerialize["bytesForwarded"] = o.BytesForwarded
 	}
 	return toSerialize, nil
 }

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BlobBytesMb** | Pointer to **float32** |  | [optional] 
+**BlobBytes** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -25,30 +25,30 @@ NewBlobStatsWithDefaults instantiates a new BlobStats object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetBlobBytesMb
+### GetBlobBytes
 
-`func (o *BlobStats) GetBlobBytesMb() float32`
+`func (o *BlobStats) GetBlobBytes() string`
 
-GetBlobBytesMb returns the BlobBytesMb field if non-nil, zero value otherwise.
+GetBlobBytes returns the BlobBytes field if non-nil, zero value otherwise.
 
-### GetBlobBytesMbOk
+### GetBlobBytesOk
 
-`func (o *BlobStats) GetBlobBytesMbOk() (*float32, bool)`
+`func (o *BlobStats) GetBlobBytesOk() (*string, bool)`
 
-GetBlobBytesMbOk returns a tuple with the BlobBytesMb field if it's non-nil, zero value otherwise
+GetBlobBytesOk returns a tuple with the BlobBytes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBlobBytesMb
+### SetBlobBytes
 
-`func (o *BlobStats) SetBlobBytesMb(v float32)`
+`func (o *BlobStats) SetBlobBytes(v string)`
 
-SetBlobBytesMb sets BlobBytesMb field to given value.
+SetBlobBytes sets BlobBytes field to given value.
 
-### HasBlobBytesMb
+### HasBlobBytes
 
-`func (o *BlobStats) HasBlobBytesMb() bool`
+`func (o *BlobStats) HasBlobBytes() bool`
 
-HasBlobBytesMb returns a boolean if a field has been set.
+HasBlobBytes returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

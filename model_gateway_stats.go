@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.8.0 indecipherable-ferman
+API version: 4.9.5 spattered-kelvin
 Contact: dev@lab5e.com
 */
 
@@ -20,10 +20,10 @@ var _ MappedNullable = &GatewayStats{}
 
 // GatewayStats This is statistics for a single gateway
 type GatewayStats struct {
-	MessagesUpstream *int32 `json:"messagesUpstream,omitempty"`
-	MessagesDownstream *int32 `json:"messagesDownstream,omitempty"`
-	BytesUpstreamMb *float32 `json:"bytesUpstreamMb,omitempty"`
-	BytesDownstreamMb *float32 `json:"bytesDownstreamMb,omitempty"`
+	MessagesUpstream *string `json:"messagesUpstream,omitempty"`
+	MessagesDownstream *string `json:"messagesDownstream,omitempty"`
+	BytesUpstream *string `json:"bytesUpstream,omitempty"`
+	BytesDownstream *string `json:"bytesDownstream,omitempty"`
 }
 
 // NewGatewayStats instantiates a new GatewayStats object
@@ -44,9 +44,9 @@ func NewGatewayStatsWithDefaults() *GatewayStats {
 }
 
 // GetMessagesUpstream returns the MessagesUpstream field value if set, zero value otherwise.
-func (o *GatewayStats) GetMessagesUpstream() int32 {
+func (o *GatewayStats) GetMessagesUpstream() string {
 	if o == nil || IsNil(o.MessagesUpstream) {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.MessagesUpstream
@@ -54,7 +54,7 @@ func (o *GatewayStats) GetMessagesUpstream() int32 {
 
 // GetMessagesUpstreamOk returns a tuple with the MessagesUpstream field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayStats) GetMessagesUpstreamOk() (*int32, bool) {
+func (o *GatewayStats) GetMessagesUpstreamOk() (*string, bool) {
 	if o == nil || IsNil(o.MessagesUpstream) {
 		return nil, false
 	}
@@ -70,15 +70,15 @@ func (o *GatewayStats) HasMessagesUpstream() bool {
 	return false
 }
 
-// SetMessagesUpstream gets a reference to the given int32 and assigns it to the MessagesUpstream field.
-func (o *GatewayStats) SetMessagesUpstream(v int32) {
+// SetMessagesUpstream gets a reference to the given string and assigns it to the MessagesUpstream field.
+func (o *GatewayStats) SetMessagesUpstream(v string) {
 	o.MessagesUpstream = &v
 }
 
 // GetMessagesDownstream returns the MessagesDownstream field value if set, zero value otherwise.
-func (o *GatewayStats) GetMessagesDownstream() int32 {
+func (o *GatewayStats) GetMessagesDownstream() string {
 	if o == nil || IsNil(o.MessagesDownstream) {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.MessagesDownstream
@@ -86,7 +86,7 @@ func (o *GatewayStats) GetMessagesDownstream() int32 {
 
 // GetMessagesDownstreamOk returns a tuple with the MessagesDownstream field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayStats) GetMessagesDownstreamOk() (*int32, bool) {
+func (o *GatewayStats) GetMessagesDownstreamOk() (*string, bool) {
 	if o == nil || IsNil(o.MessagesDownstream) {
 		return nil, false
 	}
@@ -102,73 +102,73 @@ func (o *GatewayStats) HasMessagesDownstream() bool {
 	return false
 }
 
-// SetMessagesDownstream gets a reference to the given int32 and assigns it to the MessagesDownstream field.
-func (o *GatewayStats) SetMessagesDownstream(v int32) {
+// SetMessagesDownstream gets a reference to the given string and assigns it to the MessagesDownstream field.
+func (o *GatewayStats) SetMessagesDownstream(v string) {
 	o.MessagesDownstream = &v
 }
 
-// GetBytesUpstreamMb returns the BytesUpstreamMb field value if set, zero value otherwise.
-func (o *GatewayStats) GetBytesUpstreamMb() float32 {
-	if o == nil || IsNil(o.BytesUpstreamMb) {
-		var ret float32
+// GetBytesUpstream returns the BytesUpstream field value if set, zero value otherwise.
+func (o *GatewayStats) GetBytesUpstream() string {
+	if o == nil || IsNil(o.BytesUpstream) {
+		var ret string
 		return ret
 	}
-	return *o.BytesUpstreamMb
+	return *o.BytesUpstream
 }
 
-// GetBytesUpstreamMbOk returns a tuple with the BytesUpstreamMb field value if set, nil otherwise
+// GetBytesUpstreamOk returns a tuple with the BytesUpstream field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayStats) GetBytesUpstreamMbOk() (*float32, bool) {
-	if o == nil || IsNil(o.BytesUpstreamMb) {
+func (o *GatewayStats) GetBytesUpstreamOk() (*string, bool) {
+	if o == nil || IsNil(o.BytesUpstream) {
 		return nil, false
 	}
-	return o.BytesUpstreamMb, true
+	return o.BytesUpstream, true
 }
 
-// HasBytesUpstreamMb returns a boolean if a field has been set.
-func (o *GatewayStats) HasBytesUpstreamMb() bool {
-	if o != nil && !IsNil(o.BytesUpstreamMb) {
+// HasBytesUpstream returns a boolean if a field has been set.
+func (o *GatewayStats) HasBytesUpstream() bool {
+	if o != nil && !IsNil(o.BytesUpstream) {
 		return true
 	}
 
 	return false
 }
 
-// SetBytesUpstreamMb gets a reference to the given float32 and assigns it to the BytesUpstreamMb field.
-func (o *GatewayStats) SetBytesUpstreamMb(v float32) {
-	o.BytesUpstreamMb = &v
+// SetBytesUpstream gets a reference to the given string and assigns it to the BytesUpstream field.
+func (o *GatewayStats) SetBytesUpstream(v string) {
+	o.BytesUpstream = &v
 }
 
-// GetBytesDownstreamMb returns the BytesDownstreamMb field value if set, zero value otherwise.
-func (o *GatewayStats) GetBytesDownstreamMb() float32 {
-	if o == nil || IsNil(o.BytesDownstreamMb) {
-		var ret float32
+// GetBytesDownstream returns the BytesDownstream field value if set, zero value otherwise.
+func (o *GatewayStats) GetBytesDownstream() string {
+	if o == nil || IsNil(o.BytesDownstream) {
+		var ret string
 		return ret
 	}
-	return *o.BytesDownstreamMb
+	return *o.BytesDownstream
 }
 
-// GetBytesDownstreamMbOk returns a tuple with the BytesDownstreamMb field value if set, nil otherwise
+// GetBytesDownstreamOk returns a tuple with the BytesDownstream field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayStats) GetBytesDownstreamMbOk() (*float32, bool) {
-	if o == nil || IsNil(o.BytesDownstreamMb) {
+func (o *GatewayStats) GetBytesDownstreamOk() (*string, bool) {
+	if o == nil || IsNil(o.BytesDownstream) {
 		return nil, false
 	}
-	return o.BytesDownstreamMb, true
+	return o.BytesDownstream, true
 }
 
-// HasBytesDownstreamMb returns a boolean if a field has been set.
-func (o *GatewayStats) HasBytesDownstreamMb() bool {
-	if o != nil && !IsNil(o.BytesDownstreamMb) {
+// HasBytesDownstream returns a boolean if a field has been set.
+func (o *GatewayStats) HasBytesDownstream() bool {
+	if o != nil && !IsNil(o.BytesDownstream) {
 		return true
 	}
 
 	return false
 }
 
-// SetBytesDownstreamMb gets a reference to the given float32 and assigns it to the BytesDownstreamMb field.
-func (o *GatewayStats) SetBytesDownstreamMb(v float32) {
-	o.BytesDownstreamMb = &v
+// SetBytesDownstream gets a reference to the given string and assigns it to the BytesDownstream field.
+func (o *GatewayStats) SetBytesDownstream(v string) {
+	o.BytesDownstream = &v
 }
 
 func (o GatewayStats) MarshalJSON() ([]byte, error) {
@@ -187,11 +187,11 @@ func (o GatewayStats) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MessagesDownstream) {
 		toSerialize["messagesDownstream"] = o.MessagesDownstream
 	}
-	if !IsNil(o.BytesUpstreamMb) {
-		toSerialize["bytesUpstreamMb"] = o.BytesUpstreamMb
+	if !IsNil(o.BytesUpstream) {
+		toSerialize["bytesUpstream"] = o.BytesUpstream
 	}
-	if !IsNil(o.BytesDownstreamMb) {
-		toSerialize["bytesDownstreamMb"] = o.BytesDownstreamMb
+	if !IsNil(o.BytesDownstream) {
+		toSerialize["bytesDownstream"] = o.BytesDownstream
 	}
 	return toSerialize, nil
 }
