@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.5 spattered-kelvin
+API version: 4.9.6 authoritarian-betty
 Contact: dev@lab5e.com
 */
 
@@ -42,7 +42,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the The Span API API v4.9.5 spattered-kelvin
+// APIClient manages communication with the The Span API API v4.9.6 authoritarian-betty
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
