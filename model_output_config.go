@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.6 authoritarian-betty
+API version: 5.0.0 convulsive-launa
 Contact: dev@lab5e.com
 */
 

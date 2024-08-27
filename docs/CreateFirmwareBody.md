@@ -1,4 +1,4 @@
-# CreateFirmwareRequest
+# CreateFirmwareBody
 
 ## Properties
 
@@ -11,120 +11,120 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewCreateFirmwareRequest
+### NewCreateFirmwareBody
 
-`func NewCreateFirmwareRequest() *CreateFirmwareRequest`
+`func NewCreateFirmwareBody() *CreateFirmwareBody`
 
-NewCreateFirmwareRequest instantiates a new CreateFirmwareRequest object
+NewCreateFirmwareBody instantiates a new CreateFirmwareBody object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewCreateFirmwareRequestWithDefaults
+### NewCreateFirmwareBodyWithDefaults
 
-`func NewCreateFirmwareRequestWithDefaults() *CreateFirmwareRequest`
+`func NewCreateFirmwareBodyWithDefaults() *CreateFirmwareBody`
 
-NewCreateFirmwareRequestWithDefaults instantiates a new CreateFirmwareRequest object
+NewCreateFirmwareBodyWithDefaults instantiates a new CreateFirmwareBody object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetImage
 
-`func (o *CreateFirmwareRequest) GetImage() string`
+`func (o *CreateFirmwareBody) GetImage() string`
 
 GetImage returns the Image field if non-nil, zero value otherwise.
 
 ### GetImageOk
 
-`func (o *CreateFirmwareRequest) GetImageOk() (*string, bool)`
+`func (o *CreateFirmwareBody) GetImageOk() (*string, bool)`
 
 GetImageOk returns a tuple with the Image field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetImage
 
-`func (o *CreateFirmwareRequest) SetImage(v string)`
+`func (o *CreateFirmwareBody) SetImage(v string)`
 
 SetImage sets Image field to given value.
 
 ### HasImage
 
-`func (o *CreateFirmwareRequest) HasImage() bool`
+`func (o *CreateFirmwareBody) HasImage() bool`
 
 HasImage returns a boolean if a field has been set.
 
 ### GetVersion
 
-`func (o *CreateFirmwareRequest) GetVersion() string`
+`func (o *CreateFirmwareBody) GetVersion() string`
 
 GetVersion returns the Version field if non-nil, zero value otherwise.
 
 ### GetVersionOk
 
-`func (o *CreateFirmwareRequest) GetVersionOk() (*string, bool)`
+`func (o *CreateFirmwareBody) GetVersionOk() (*string, bool)`
 
 GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVersion
 
-`func (o *CreateFirmwareRequest) SetVersion(v string)`
+`func (o *CreateFirmwareBody) SetVersion(v string)`
 
 SetVersion sets Version field to given value.
 
 ### HasVersion
 
-`func (o *CreateFirmwareRequest) HasVersion() bool`
+`func (o *CreateFirmwareBody) HasVersion() bool`
 
 HasVersion returns a boolean if a field has been set.
 
 ### GetFilename
 
-`func (o *CreateFirmwareRequest) GetFilename() string`
+`func (o *CreateFirmwareBody) GetFilename() string`
 
 GetFilename returns the Filename field if non-nil, zero value otherwise.
 
 ### GetFilenameOk
 
-`func (o *CreateFirmwareRequest) GetFilenameOk() (*string, bool)`
+`func (o *CreateFirmwareBody) GetFilenameOk() (*string, bool)`
 
 GetFilenameOk returns a tuple with the Filename field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFilename
 
-`func (o *CreateFirmwareRequest) SetFilename(v string)`
+`func (o *CreateFirmwareBody) SetFilename(v string)`
 
 SetFilename sets Filename field to given value.
 
 ### HasFilename
 
-`func (o *CreateFirmwareRequest) HasFilename() bool`
+`func (o *CreateFirmwareBody) HasFilename() bool`
 
 HasFilename returns a boolean if a field has been set.
 
 ### GetTags
 
-`func (o *CreateFirmwareRequest) GetTags() map[string]string`
+`func (o *CreateFirmwareBody) GetTags() map[string]string`
 
 GetTags returns the Tags field if non-nil, zero value otherwise.
 
 ### GetTagsOk
 
-`func (o *CreateFirmwareRequest) GetTagsOk() (*map[string]string, bool)`
+`func (o *CreateFirmwareBody) GetTagsOk() (*map[string]string, bool)`
 
 GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTags
 
-`func (o *CreateFirmwareRequest) SetTags(v map[string]string)`
+`func (o *CreateFirmwareBody) SetTags(v map[string]string)`
 
 SetTags sets Tags field to given value.
 
 ### HasTags
 
-`func (o *CreateFirmwareRequest) HasTags() bool`
+`func (o *CreateFirmwareBody) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
 

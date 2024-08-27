@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.6 authoritarian-betty
+API version: 5.0.0 convulsive-launa
 Contact: dev@lab5e.com
 */
 
@@ -15,41 +15,42 @@ import (
 	"encoding/json"
 )
 
-// checks if the UpdateGatewayRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UpdateGatewayRequest{}
+// checks if the UpdateGatewayBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdateGatewayBody{}
 
-// UpdateGatewayRequest struct for UpdateGatewayRequest
-type UpdateGatewayRequest struct {
+// UpdateGatewayBody struct for UpdateGatewayBody
+type UpdateGatewayBody struct {
 	Name *string `json:"name,omitempty"`
 	CollectionId *string `json:"collectionId,omitempty"`
 	Type *GatewayType `json:"type,omitempty"`
 	Config *GatewayConfig `json:"config,omitempty"`
 	Tags *map[string]string `json:"tags,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
 }
 
-// NewUpdateGatewayRequest instantiates a new UpdateGatewayRequest object
+// NewUpdateGatewayBody instantiates a new UpdateGatewayBody object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateGatewayRequest() *UpdateGatewayRequest {
-	this := UpdateGatewayRequest{}
+func NewUpdateGatewayBody() *UpdateGatewayBody {
+	this := UpdateGatewayBody{}
 	var type_ GatewayType = GATEWAYTYPE_UNKNOWN
 	this.Type = &type_
 	return &this
 }
 
-// NewUpdateGatewayRequestWithDefaults instantiates a new UpdateGatewayRequest object
+// NewUpdateGatewayBodyWithDefaults instantiates a new UpdateGatewayBody object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewUpdateGatewayRequestWithDefaults() *UpdateGatewayRequest {
-	this := UpdateGatewayRequest{}
+func NewUpdateGatewayBodyWithDefaults() *UpdateGatewayBody {
+	this := UpdateGatewayBody{}
 	var type_ GatewayType = GATEWAYTYPE_UNKNOWN
 	this.Type = &type_
 	return &this
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *UpdateGatewayRequest) GetName() string {
+func (o *UpdateGatewayBody) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
@@ -59,7 +60,7 @@ func (o *UpdateGatewayRequest) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateGatewayRequest) GetNameOk() (*string, bool) {
+func (o *UpdateGatewayBody) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -67,7 +68,7 @@ func (o *UpdateGatewayRequest) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *UpdateGatewayRequest) HasName() bool {
+func (o *UpdateGatewayBody) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -76,12 +77,12 @@ func (o *UpdateGatewayRequest) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *UpdateGatewayRequest) SetName(v string) {
+func (o *UpdateGatewayBody) SetName(v string) {
 	o.Name = &v
 }
 
 // GetCollectionId returns the CollectionId field value if set, zero value otherwise.
-func (o *UpdateGatewayRequest) GetCollectionId() string {
+func (o *UpdateGatewayBody) GetCollectionId() string {
 	if o == nil || IsNil(o.CollectionId) {
 		var ret string
 		return ret
@@ -91,7 +92,7 @@ func (o *UpdateGatewayRequest) GetCollectionId() string {
 
 // GetCollectionIdOk returns a tuple with the CollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateGatewayRequest) GetCollectionIdOk() (*string, bool) {
+func (o *UpdateGatewayBody) GetCollectionIdOk() (*string, bool) {
 	if o == nil || IsNil(o.CollectionId) {
 		return nil, false
 	}
@@ -99,7 +100,7 @@ func (o *UpdateGatewayRequest) GetCollectionIdOk() (*string, bool) {
 }
 
 // HasCollectionId returns a boolean if a field has been set.
-func (o *UpdateGatewayRequest) HasCollectionId() bool {
+func (o *UpdateGatewayBody) HasCollectionId() bool {
 	if o != nil && !IsNil(o.CollectionId) {
 		return true
 	}
@@ -108,12 +109,12 @@ func (o *UpdateGatewayRequest) HasCollectionId() bool {
 }
 
 // SetCollectionId gets a reference to the given string and assigns it to the CollectionId field.
-func (o *UpdateGatewayRequest) SetCollectionId(v string) {
+func (o *UpdateGatewayBody) SetCollectionId(v string) {
 	o.CollectionId = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *UpdateGatewayRequest) GetType() GatewayType {
+func (o *UpdateGatewayBody) GetType() GatewayType {
 	if o == nil || IsNil(o.Type) {
 		var ret GatewayType
 		return ret
@@ -123,7 +124,7 @@ func (o *UpdateGatewayRequest) GetType() GatewayType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateGatewayRequest) GetTypeOk() (*GatewayType, bool) {
+func (o *UpdateGatewayBody) GetTypeOk() (*GatewayType, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -131,7 +132,7 @@ func (o *UpdateGatewayRequest) GetTypeOk() (*GatewayType, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *UpdateGatewayRequest) HasType() bool {
+func (o *UpdateGatewayBody) HasType() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}
@@ -140,12 +141,12 @@ func (o *UpdateGatewayRequest) HasType() bool {
 }
 
 // SetType gets a reference to the given GatewayType and assigns it to the Type field.
-func (o *UpdateGatewayRequest) SetType(v GatewayType) {
+func (o *UpdateGatewayBody) SetType(v GatewayType) {
 	o.Type = &v
 }
 
 // GetConfig returns the Config field value if set, zero value otherwise.
-func (o *UpdateGatewayRequest) GetConfig() GatewayConfig {
+func (o *UpdateGatewayBody) GetConfig() GatewayConfig {
 	if o == nil || IsNil(o.Config) {
 		var ret GatewayConfig
 		return ret
@@ -155,7 +156,7 @@ func (o *UpdateGatewayRequest) GetConfig() GatewayConfig {
 
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateGatewayRequest) GetConfigOk() (*GatewayConfig, bool) {
+func (o *UpdateGatewayBody) GetConfigOk() (*GatewayConfig, bool) {
 	if o == nil || IsNil(o.Config) {
 		return nil, false
 	}
@@ -163,7 +164,7 @@ func (o *UpdateGatewayRequest) GetConfigOk() (*GatewayConfig, bool) {
 }
 
 // HasConfig returns a boolean if a field has been set.
-func (o *UpdateGatewayRequest) HasConfig() bool {
+func (o *UpdateGatewayBody) HasConfig() bool {
 	if o != nil && !IsNil(o.Config) {
 		return true
 	}
@@ -172,12 +173,12 @@ func (o *UpdateGatewayRequest) HasConfig() bool {
 }
 
 // SetConfig gets a reference to the given GatewayConfig and assigns it to the Config field.
-func (o *UpdateGatewayRequest) SetConfig(v GatewayConfig) {
+func (o *UpdateGatewayBody) SetConfig(v GatewayConfig) {
 	o.Config = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
-func (o *UpdateGatewayRequest) GetTags() map[string]string {
+func (o *UpdateGatewayBody) GetTags() map[string]string {
 	if o == nil || IsNil(o.Tags) {
 		var ret map[string]string
 		return ret
@@ -187,7 +188,7 @@ func (o *UpdateGatewayRequest) GetTags() map[string]string {
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateGatewayRequest) GetTagsOk() (*map[string]string, bool) {
+func (o *UpdateGatewayBody) GetTagsOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
@@ -195,7 +196,7 @@ func (o *UpdateGatewayRequest) GetTagsOk() (*map[string]string, bool) {
 }
 
 // HasTags returns a boolean if a field has been set.
-func (o *UpdateGatewayRequest) HasTags() bool {
+func (o *UpdateGatewayBody) HasTags() bool {
 	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
@@ -204,11 +205,43 @@ func (o *UpdateGatewayRequest) HasTags() bool {
 }
 
 // SetTags gets a reference to the given map[string]string and assigns it to the Tags field.
-func (o *UpdateGatewayRequest) SetTags(v map[string]string) {
+func (o *UpdateGatewayBody) SetTags(v map[string]string) {
 	o.Tags = &v
 }
 
-func (o UpdateGatewayRequest) MarshalJSON() ([]byte, error) {
+// GetEnabled returns the Enabled field value if set, zero value otherwise.
+func (o *UpdateGatewayBody) GetEnabled() bool {
+	if o == nil || IsNil(o.Enabled) {
+		var ret bool
+		return ret
+	}
+	return *o.Enabled
+}
+
+// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateGatewayBody) GetEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.Enabled) {
+		return nil, false
+	}
+	return o.Enabled, true
+}
+
+// HasEnabled returns a boolean if a field has been set.
+func (o *UpdateGatewayBody) HasEnabled() bool {
+	if o != nil && !IsNil(o.Enabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+func (o *UpdateGatewayBody) SetEnabled(v bool) {
+	o.Enabled = &v
+}
+
+func (o UpdateGatewayBody) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -216,7 +249,7 @@ func (o UpdateGatewayRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o UpdateGatewayRequest) ToMap() (map[string]interface{}, error) {
+func (o UpdateGatewayBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -233,41 +266,44 @@ func (o UpdateGatewayRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
 	return toSerialize, nil
 }
 
-type NullableUpdateGatewayRequest struct {
-	value *UpdateGatewayRequest
+type NullableUpdateGatewayBody struct {
+	value *UpdateGatewayBody
 	isSet bool
 }
 
-func (v NullableUpdateGatewayRequest) Get() *UpdateGatewayRequest {
+func (v NullableUpdateGatewayBody) Get() *UpdateGatewayBody {
 	return v.value
 }
 
-func (v *NullableUpdateGatewayRequest) Set(val *UpdateGatewayRequest) {
+func (v *NullableUpdateGatewayBody) Set(val *UpdateGatewayBody) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableUpdateGatewayRequest) IsSet() bool {
+func (v NullableUpdateGatewayBody) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableUpdateGatewayRequest) Unset() {
+func (v *NullableUpdateGatewayBody) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableUpdateGatewayRequest(val *UpdateGatewayRequest) *NullableUpdateGatewayRequest {
-	return &NullableUpdateGatewayRequest{value: val, isSet: true}
+func NewNullableUpdateGatewayBody(val *UpdateGatewayBody) *NullableUpdateGatewayBody {
+	return &NullableUpdateGatewayBody{value: val, isSet: true}
 }
 
-func (v NullableUpdateGatewayRequest) MarshalJSON() ([]byte, error) {
+func (v NullableUpdateGatewayBody) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableUpdateGatewayRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableUpdateGatewayBody) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

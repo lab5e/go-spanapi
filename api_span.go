@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.6 authoritarian-betty
+API version: 5.0.0 convulsive-launa
 Contact: dev@lab5e.com
 */
 
@@ -177,7 +177,7 @@ func (a *SpanApiService) GetSystemInfoExecute(r ApiGetSystemInfoRequest) (*Syste
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

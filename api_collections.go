@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.6 authoritarian-betty
+API version: 5.0.0 convulsive-launa
 Contact: dev@lab5e.com
 */
 
@@ -189,7 +189,7 @@ func (a *CollectionsApiService) CreateCollectionExecute(r ApiCreateCollectionReq
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -371,7 +371,7 @@ func (a *CollectionsApiService) DeleteCollectionExecute(r ApiDeleteCollectionReq
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -592,7 +592,7 @@ func (a *CollectionsApiService) ListCollectionDataExecute(r ApiListCollectionDat
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -770,7 +770,7 @@ func (a *CollectionsApiService) ListCollectionsExecute(r ApiListCollectionsReque
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -971,7 +971,7 @@ func (a *CollectionsApiService) RetrieveCollectionExecute(r ApiRetrieveCollectio
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1152,7 +1152,7 @@ func (a *CollectionsApiService) RetrieveCollectionStatsExecute(r ApiRetrieveColl
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1179,10 +1179,10 @@ type ApiUpdateCollectionRequest struct {
 	ctx context.Context
 	ApiService *CollectionsApiService
 	collectionId string
-	body *UpdateCollectionRequest
+	body *UpdateCollectionBody
 }
 
-func (r ApiUpdateCollectionRequest) Body(body UpdateCollectionRequest) ApiUpdateCollectionRequest {
+func (r ApiUpdateCollectionRequest) Body(body UpdateCollectionBody) ApiUpdateCollectionRequest {
 	r.body = &body
 	return r
 }
@@ -1343,7 +1343,7 @@ func (a *CollectionsApiService) UpdateCollectionExecute(r ApiUpdateCollectionReq
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

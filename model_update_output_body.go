@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.6 authoritarian-betty
+API version: 5.0.0 convulsive-launa
 Contact: dev@lab5e.com
 */
 
@@ -15,11 +15,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the UpdateOutputRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UpdateOutputRequest{}
+// checks if the UpdateOutputBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdateOutputBody{}
 
-// UpdateOutputRequest Request type to update outputs
-type UpdateOutputRequest struct {
+// UpdateOutputBody Request type to update outputs
+type UpdateOutputBody struct {
 	CollectionId *string `json:"collectionId,omitempty"`
 	Type *OutputType `json:"type,omitempty"`
 	Config *OutputConfig `json:"config,omitempty"`
@@ -27,29 +27,29 @@ type UpdateOutputRequest struct {
 	Tags *map[string]string `json:"tags,omitempty"`
 }
 
-// NewUpdateOutputRequest instantiates a new UpdateOutputRequest object
+// NewUpdateOutputBody instantiates a new UpdateOutputBody object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateOutputRequest() *UpdateOutputRequest {
-	this := UpdateOutputRequest{}
+func NewUpdateOutputBody() *UpdateOutputBody {
+	this := UpdateOutputBody{}
 	var type_ OutputType = OUTPUTTYPE_UNDEFINED
 	this.Type = &type_
 	return &this
 }
 
-// NewUpdateOutputRequestWithDefaults instantiates a new UpdateOutputRequest object
+// NewUpdateOutputBodyWithDefaults instantiates a new UpdateOutputBody object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewUpdateOutputRequestWithDefaults() *UpdateOutputRequest {
-	this := UpdateOutputRequest{}
+func NewUpdateOutputBodyWithDefaults() *UpdateOutputBody {
+	this := UpdateOutputBody{}
 	var type_ OutputType = OUTPUTTYPE_UNDEFINED
 	this.Type = &type_
 	return &this
 }
 
 // GetCollectionId returns the CollectionId field value if set, zero value otherwise.
-func (o *UpdateOutputRequest) GetCollectionId() string {
+func (o *UpdateOutputBody) GetCollectionId() string {
 	if o == nil || IsNil(o.CollectionId) {
 		var ret string
 		return ret
@@ -59,7 +59,7 @@ func (o *UpdateOutputRequest) GetCollectionId() string {
 
 // GetCollectionIdOk returns a tuple with the CollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateOutputRequest) GetCollectionIdOk() (*string, bool) {
+func (o *UpdateOutputBody) GetCollectionIdOk() (*string, bool) {
 	if o == nil || IsNil(o.CollectionId) {
 		return nil, false
 	}
@@ -67,7 +67,7 @@ func (o *UpdateOutputRequest) GetCollectionIdOk() (*string, bool) {
 }
 
 // HasCollectionId returns a boolean if a field has been set.
-func (o *UpdateOutputRequest) HasCollectionId() bool {
+func (o *UpdateOutputBody) HasCollectionId() bool {
 	if o != nil && !IsNil(o.CollectionId) {
 		return true
 	}
@@ -76,12 +76,12 @@ func (o *UpdateOutputRequest) HasCollectionId() bool {
 }
 
 // SetCollectionId gets a reference to the given string and assigns it to the CollectionId field.
-func (o *UpdateOutputRequest) SetCollectionId(v string) {
+func (o *UpdateOutputBody) SetCollectionId(v string) {
 	o.CollectionId = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *UpdateOutputRequest) GetType() OutputType {
+func (o *UpdateOutputBody) GetType() OutputType {
 	if o == nil || IsNil(o.Type) {
 		var ret OutputType
 		return ret
@@ -91,7 +91,7 @@ func (o *UpdateOutputRequest) GetType() OutputType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateOutputRequest) GetTypeOk() (*OutputType, bool) {
+func (o *UpdateOutputBody) GetTypeOk() (*OutputType, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -99,7 +99,7 @@ func (o *UpdateOutputRequest) GetTypeOk() (*OutputType, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *UpdateOutputRequest) HasType() bool {
+func (o *UpdateOutputBody) HasType() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}
@@ -108,12 +108,12 @@ func (o *UpdateOutputRequest) HasType() bool {
 }
 
 // SetType gets a reference to the given OutputType and assigns it to the Type field.
-func (o *UpdateOutputRequest) SetType(v OutputType) {
+func (o *UpdateOutputBody) SetType(v OutputType) {
 	o.Type = &v
 }
 
 // GetConfig returns the Config field value if set, zero value otherwise.
-func (o *UpdateOutputRequest) GetConfig() OutputConfig {
+func (o *UpdateOutputBody) GetConfig() OutputConfig {
 	if o == nil || IsNil(o.Config) {
 		var ret OutputConfig
 		return ret
@@ -123,7 +123,7 @@ func (o *UpdateOutputRequest) GetConfig() OutputConfig {
 
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateOutputRequest) GetConfigOk() (*OutputConfig, bool) {
+func (o *UpdateOutputBody) GetConfigOk() (*OutputConfig, bool) {
 	if o == nil || IsNil(o.Config) {
 		return nil, false
 	}
@@ -131,7 +131,7 @@ func (o *UpdateOutputRequest) GetConfigOk() (*OutputConfig, bool) {
 }
 
 // HasConfig returns a boolean if a field has been set.
-func (o *UpdateOutputRequest) HasConfig() bool {
+func (o *UpdateOutputBody) HasConfig() bool {
 	if o != nil && !IsNil(o.Config) {
 		return true
 	}
@@ -140,12 +140,12 @@ func (o *UpdateOutputRequest) HasConfig() bool {
 }
 
 // SetConfig gets a reference to the given OutputConfig and assigns it to the Config field.
-func (o *UpdateOutputRequest) SetConfig(v OutputConfig) {
+func (o *UpdateOutputBody) SetConfig(v OutputConfig) {
 	o.Config = &v
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
-func (o *UpdateOutputRequest) GetEnabled() bool {
+func (o *UpdateOutputBody) GetEnabled() bool {
 	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
@@ -155,7 +155,7 @@ func (o *UpdateOutputRequest) GetEnabled() bool {
 
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateOutputRequest) GetEnabledOk() (*bool, bool) {
+func (o *UpdateOutputBody) GetEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
@@ -163,7 +163,7 @@ func (o *UpdateOutputRequest) GetEnabledOk() (*bool, bool) {
 }
 
 // HasEnabled returns a boolean if a field has been set.
-func (o *UpdateOutputRequest) HasEnabled() bool {
+func (o *UpdateOutputBody) HasEnabled() bool {
 	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
@@ -172,12 +172,12 @@ func (o *UpdateOutputRequest) HasEnabled() bool {
 }
 
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
-func (o *UpdateOutputRequest) SetEnabled(v bool) {
+func (o *UpdateOutputBody) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
-func (o *UpdateOutputRequest) GetTags() map[string]string {
+func (o *UpdateOutputBody) GetTags() map[string]string {
 	if o == nil || IsNil(o.Tags) {
 		var ret map[string]string
 		return ret
@@ -187,7 +187,7 @@ func (o *UpdateOutputRequest) GetTags() map[string]string {
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateOutputRequest) GetTagsOk() (*map[string]string, bool) {
+func (o *UpdateOutputBody) GetTagsOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
@@ -195,7 +195,7 @@ func (o *UpdateOutputRequest) GetTagsOk() (*map[string]string, bool) {
 }
 
 // HasTags returns a boolean if a field has been set.
-func (o *UpdateOutputRequest) HasTags() bool {
+func (o *UpdateOutputBody) HasTags() bool {
 	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
@@ -204,11 +204,11 @@ func (o *UpdateOutputRequest) HasTags() bool {
 }
 
 // SetTags gets a reference to the given map[string]string and assigns it to the Tags field.
-func (o *UpdateOutputRequest) SetTags(v map[string]string) {
+func (o *UpdateOutputBody) SetTags(v map[string]string) {
 	o.Tags = &v
 }
 
-func (o UpdateOutputRequest) MarshalJSON() ([]byte, error) {
+func (o UpdateOutputBody) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -216,7 +216,7 @@ func (o UpdateOutputRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o UpdateOutputRequest) ToMap() (map[string]interface{}, error) {
+func (o UpdateOutputBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CollectionId) {
 		toSerialize["collectionId"] = o.CollectionId
@@ -236,38 +236,38 @@ func (o UpdateOutputRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableUpdateOutputRequest struct {
-	value *UpdateOutputRequest
+type NullableUpdateOutputBody struct {
+	value *UpdateOutputBody
 	isSet bool
 }
 
-func (v NullableUpdateOutputRequest) Get() *UpdateOutputRequest {
+func (v NullableUpdateOutputBody) Get() *UpdateOutputBody {
 	return v.value
 }
 
-func (v *NullableUpdateOutputRequest) Set(val *UpdateOutputRequest) {
+func (v *NullableUpdateOutputBody) Set(val *UpdateOutputBody) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableUpdateOutputRequest) IsSet() bool {
+func (v NullableUpdateOutputBody) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableUpdateOutputRequest) Unset() {
+func (v *NullableUpdateOutputBody) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableUpdateOutputRequest(val *UpdateOutputRequest) *NullableUpdateOutputRequest {
-	return &NullableUpdateOutputRequest{value: val, isSet: true}
+func NewNullableUpdateOutputBody(val *UpdateOutputBody) *NullableUpdateOutputBody {
+	return &NullableUpdateOutputBody{value: val, isSet: true}
 }
 
-func (v NullableUpdateOutputRequest) MarshalJSON() ([]byte, error) {
+func (v NullableUpdateOutputBody) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableUpdateOutputRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableUpdateOutputBody) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

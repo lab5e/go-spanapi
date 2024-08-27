@@ -1,4 +1,4 @@
-# UpdateOutputRequest
+# UpdateOutputBody
 
 ## Properties
 
@@ -12,145 +12,145 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewUpdateOutputRequest
+### NewUpdateOutputBody
 
-`func NewUpdateOutputRequest() *UpdateOutputRequest`
+`func NewUpdateOutputBody() *UpdateOutputBody`
 
-NewUpdateOutputRequest instantiates a new UpdateOutputRequest object
+NewUpdateOutputBody instantiates a new UpdateOutputBody object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewUpdateOutputRequestWithDefaults
+### NewUpdateOutputBodyWithDefaults
 
-`func NewUpdateOutputRequestWithDefaults() *UpdateOutputRequest`
+`func NewUpdateOutputBodyWithDefaults() *UpdateOutputBody`
 
-NewUpdateOutputRequestWithDefaults instantiates a new UpdateOutputRequest object
+NewUpdateOutputBodyWithDefaults instantiates a new UpdateOutputBody object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetCollectionId
 
-`func (o *UpdateOutputRequest) GetCollectionId() string`
+`func (o *UpdateOutputBody) GetCollectionId() string`
 
 GetCollectionId returns the CollectionId field if non-nil, zero value otherwise.
 
 ### GetCollectionIdOk
 
-`func (o *UpdateOutputRequest) GetCollectionIdOk() (*string, bool)`
+`func (o *UpdateOutputBody) GetCollectionIdOk() (*string, bool)`
 
 GetCollectionIdOk returns a tuple with the CollectionId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCollectionId
 
-`func (o *UpdateOutputRequest) SetCollectionId(v string)`
+`func (o *UpdateOutputBody) SetCollectionId(v string)`
 
 SetCollectionId sets CollectionId field to given value.
 
 ### HasCollectionId
 
-`func (o *UpdateOutputRequest) HasCollectionId() bool`
+`func (o *UpdateOutputBody) HasCollectionId() bool`
 
 HasCollectionId returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *UpdateOutputRequest) GetType() OutputType`
+`func (o *UpdateOutputBody) GetType() OutputType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *UpdateOutputRequest) GetTypeOk() (*OutputType, bool)`
+`func (o *UpdateOutputBody) GetTypeOk() (*OutputType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *UpdateOutputRequest) SetType(v OutputType)`
+`func (o *UpdateOutputBody) SetType(v OutputType)`
 
 SetType sets Type field to given value.
 
 ### HasType
 
-`func (o *UpdateOutputRequest) HasType() bool`
+`func (o *UpdateOutputBody) HasType() bool`
 
 HasType returns a boolean if a field has been set.
 
 ### GetConfig
 
-`func (o *UpdateOutputRequest) GetConfig() OutputConfig`
+`func (o *UpdateOutputBody) GetConfig() OutputConfig`
 
 GetConfig returns the Config field if non-nil, zero value otherwise.
 
 ### GetConfigOk
 
-`func (o *UpdateOutputRequest) GetConfigOk() (*OutputConfig, bool)`
+`func (o *UpdateOutputBody) GetConfigOk() (*OutputConfig, bool)`
 
 GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfig
 
-`func (o *UpdateOutputRequest) SetConfig(v OutputConfig)`
+`func (o *UpdateOutputBody) SetConfig(v OutputConfig)`
 
 SetConfig sets Config field to given value.
 
 ### HasConfig
 
-`func (o *UpdateOutputRequest) HasConfig() bool`
+`func (o *UpdateOutputBody) HasConfig() bool`
 
 HasConfig returns a boolean if a field has been set.
 
 ### GetEnabled
 
-`func (o *UpdateOutputRequest) GetEnabled() bool`
+`func (o *UpdateOutputBody) GetEnabled() bool`
 
 GetEnabled returns the Enabled field if non-nil, zero value otherwise.
 
 ### GetEnabledOk
 
-`func (o *UpdateOutputRequest) GetEnabledOk() (*bool, bool)`
+`func (o *UpdateOutputBody) GetEnabledOk() (*bool, bool)`
 
 GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnabled
 
-`func (o *UpdateOutputRequest) SetEnabled(v bool)`
+`func (o *UpdateOutputBody) SetEnabled(v bool)`
 
 SetEnabled sets Enabled field to given value.
 
 ### HasEnabled
 
-`func (o *UpdateOutputRequest) HasEnabled() bool`
+`func (o *UpdateOutputBody) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
 
 ### GetTags
 
-`func (o *UpdateOutputRequest) GetTags() map[string]string`
+`func (o *UpdateOutputBody) GetTags() map[string]string`
 
 GetTags returns the Tags field if non-nil, zero value otherwise.
 
 ### GetTagsOk
 
-`func (o *UpdateOutputRequest) GetTagsOk() (*map[string]string, bool)`
+`func (o *UpdateOutputBody) GetTagsOk() (*map[string]string, bool)`
 
 GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTags
 
-`func (o *UpdateOutputRequest) SetTags(v map[string]string)`
+`func (o *UpdateOutputBody) SetTags(v map[string]string)`
 
 SetTags sets Tags field to given value.
 
 ### HasTags
 
-`func (o *UpdateOutputRequest) HasTags() bool`
+`func (o *UpdateOutputBody) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
 

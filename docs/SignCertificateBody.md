@@ -1,4 +1,4 @@
-# VerifyCertificateRequest
+# SignCertificateBody
 
 ## Properties
 
@@ -6,101 +6,101 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GatewayId** | Pointer to **string** |  | [optional] 
 **DeviceId** | Pointer to **string** |  | [optional] 
-**Certificate** | Pointer to **string** |  | [optional] 
+**Csr** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
-### NewVerifyCertificateRequest
+### NewSignCertificateBody
 
-`func NewVerifyCertificateRequest() *VerifyCertificateRequest`
+`func NewSignCertificateBody() *SignCertificateBody`
 
-NewVerifyCertificateRequest instantiates a new VerifyCertificateRequest object
+NewSignCertificateBody instantiates a new SignCertificateBody object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewVerifyCertificateRequestWithDefaults
+### NewSignCertificateBodyWithDefaults
 
-`func NewVerifyCertificateRequestWithDefaults() *VerifyCertificateRequest`
+`func NewSignCertificateBodyWithDefaults() *SignCertificateBody`
 
-NewVerifyCertificateRequestWithDefaults instantiates a new VerifyCertificateRequest object
+NewSignCertificateBodyWithDefaults instantiates a new SignCertificateBody object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetGatewayId
 
-`func (o *VerifyCertificateRequest) GetGatewayId() string`
+`func (o *SignCertificateBody) GetGatewayId() string`
 
 GetGatewayId returns the GatewayId field if non-nil, zero value otherwise.
 
 ### GetGatewayIdOk
 
-`func (o *VerifyCertificateRequest) GetGatewayIdOk() (*string, bool)`
+`func (o *SignCertificateBody) GetGatewayIdOk() (*string, bool)`
 
 GetGatewayIdOk returns a tuple with the GatewayId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGatewayId
 
-`func (o *VerifyCertificateRequest) SetGatewayId(v string)`
+`func (o *SignCertificateBody) SetGatewayId(v string)`
 
 SetGatewayId sets GatewayId field to given value.
 
 ### HasGatewayId
 
-`func (o *VerifyCertificateRequest) HasGatewayId() bool`
+`func (o *SignCertificateBody) HasGatewayId() bool`
 
 HasGatewayId returns a boolean if a field has been set.
 
 ### GetDeviceId
 
-`func (o *VerifyCertificateRequest) GetDeviceId() string`
+`func (o *SignCertificateBody) GetDeviceId() string`
 
 GetDeviceId returns the DeviceId field if non-nil, zero value otherwise.
 
 ### GetDeviceIdOk
 
-`func (o *VerifyCertificateRequest) GetDeviceIdOk() (*string, bool)`
+`func (o *SignCertificateBody) GetDeviceIdOk() (*string, bool)`
 
 GetDeviceIdOk returns a tuple with the DeviceId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeviceId
 
-`func (o *VerifyCertificateRequest) SetDeviceId(v string)`
+`func (o *SignCertificateBody) SetDeviceId(v string)`
 
 SetDeviceId sets DeviceId field to given value.
 
 ### HasDeviceId
 
-`func (o *VerifyCertificateRequest) HasDeviceId() bool`
+`func (o *SignCertificateBody) HasDeviceId() bool`
 
 HasDeviceId returns a boolean if a field has been set.
 
-### GetCertificate
+### GetCsr
 
-`func (o *VerifyCertificateRequest) GetCertificate() string`
+`func (o *SignCertificateBody) GetCsr() string`
 
-GetCertificate returns the Certificate field if non-nil, zero value otherwise.
+GetCsr returns the Csr field if non-nil, zero value otherwise.
 
-### GetCertificateOk
+### GetCsrOk
 
-`func (o *VerifyCertificateRequest) GetCertificateOk() (*string, bool)`
+`func (o *SignCertificateBody) GetCsrOk() (*string, bool)`
 
-GetCertificateOk returns a tuple with the Certificate field if it's non-nil, zero value otherwise
+GetCsrOk returns a tuple with the Csr field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCertificate
+### SetCsr
 
-`func (o *VerifyCertificateRequest) SetCertificate(v string)`
+`func (o *SignCertificateBody) SetCsr(v string)`
 
-SetCertificate sets Certificate field to given value.
+SetCsr sets Csr field to given value.
 
-### HasCertificate
+### HasCsr
 
-`func (o *VerifyCertificateRequest) HasCertificate() bool`
+`func (o *SignCertificateBody) HasCsr() bool`
 
-HasCertificate returns a boolean if a field has been set.
+HasCsr returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

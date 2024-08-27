@@ -36,7 +36,7 @@ import (
 
 func main() {
     collectionId := "collectionId_example" // string | 
-    body := *openapiclient.NewCreateGatewayRequest() // CreateGatewayRequest | 
+    body := *openapiclient.NewCreateGatewayBody() // CreateGatewayBody | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -66,7 +66,7 @@ Other parameters are passed through a pointer to a apiCreateGatewayRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**CreateGatewayRequest**](CreateGatewayRequest.md) |  | 
+ **body** | [**CreateGatewayBody**](CreateGatewayBody.md) |  | 
 
 ### Return type
 
@@ -469,7 +469,7 @@ import (
 func main() {
     existingCollectionId := "existingCollectionId_example" // string | 
     gatewayId := "gatewayId_example" // string | 
-    body := *openapiclient.NewUpdateGatewayRequest() // UpdateGatewayRequest | 
+    body := *openapiclient.NewUpdateGatewayBody() // UpdateGatewayBody | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -501,7 +501,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | [**UpdateGatewayRequest**](UpdateGatewayRequest.md) |  | 
+ **body** | [**UpdateGatewayBody**](UpdateGatewayBody.md) |  | 
 
 ### Return type
 

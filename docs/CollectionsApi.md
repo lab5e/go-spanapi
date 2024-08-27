@@ -455,7 +455,7 @@ import (
 
 func main() {
     collectionId := "collectionId_example" // string | The ID of the collection. This is assigned by the backend.
-    body := *openapiclient.NewUpdateCollectionRequest() // UpdateCollectionRequest | 
+    body := *openapiclient.NewUpdateCollectionBody() // UpdateCollectionBody | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -485,7 +485,7 @@ Other parameters are passed through a pointer to a apiUpdateCollectionRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**UpdateCollectionRequest**](UpdateCollectionRequest.md) |  | 
+ **body** | [**UpdateCollectionBody**](UpdateCollectionBody.md) |  | 
 
 ### Return type
 

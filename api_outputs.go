@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.6 authoritarian-betty
+API version: 5.0.0 convulsive-launa
 Contact: dev@lab5e.com
 */
 
@@ -28,10 +28,10 @@ type ApiCreateOutputRequest struct {
 	ctx context.Context
 	ApiService *OutputsApiService
 	collectionId string
-	body *CreateOutputRequest
+	body *CreateOutputBody
 }
 
-func (r ApiCreateOutputRequest) Body(body CreateOutputRequest) ApiCreateOutputRequest {
+func (r ApiCreateOutputRequest) Body(body CreateOutputBody) ApiCreateOutputRequest {
 	r.body = &body
 	return r
 }
@@ -190,7 +190,7 @@ func (a *OutputsApiService) CreateOutputExecute(r ApiCreateOutputRequest) (*Outp
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -372,7 +372,7 @@ func (a *OutputsApiService) DeleteOutputExecute(r ApiDeleteOutputRequest) (*Outp
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -550,7 +550,7 @@ func (a *OutputsApiService) ListOutputsExecute(r ApiListOutputsRequest) (*ListOu
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -732,7 +732,7 @@ func (a *OutputsApiService) LogsExecute(r ApiLogsRequest) (*OutputLogResponse, *
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -914,7 +914,7 @@ func (a *OutputsApiService) RetrieveOutputExecute(r ApiRetrieveOutputRequest) (*
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1096,7 +1096,7 @@ func (a *OutputsApiService) RetrieveOutputStatsExecute(r ApiRetrieveOutputStatsR
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1278,7 +1278,7 @@ func (a *OutputsApiService) StatusExecute(r ApiStatusRequest) (*OutputStatusResp
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1306,10 +1306,10 @@ type ApiUpdateOutputRequest struct {
 	ApiService *OutputsApiService
 	existingCollectionId string
 	outputId string
-	body *UpdateOutputRequest
+	body *UpdateOutputBody
 }
 
-func (r ApiUpdateOutputRequest) Body(body UpdateOutputRequest) ApiUpdateOutputRequest {
+func (r ApiUpdateOutputRequest) Body(body UpdateOutputBody) ApiUpdateOutputRequest {
 	r.body = &body
 	return r
 }
@@ -1471,7 +1471,7 @@ func (a *OutputsApiService) UpdateOutputExecute(r ApiUpdateOutputRequest) (*Outp
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

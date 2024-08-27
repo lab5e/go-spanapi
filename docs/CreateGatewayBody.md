@@ -1,4 +1,4 @@
-# CreateGatewayRequest
+# CreateGatewayBody
 
 ## Properties
 
@@ -11,120 +11,120 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewCreateGatewayRequest
+### NewCreateGatewayBody
 
-`func NewCreateGatewayRequest() *CreateGatewayRequest`
+`func NewCreateGatewayBody() *CreateGatewayBody`
 
-NewCreateGatewayRequest instantiates a new CreateGatewayRequest object
+NewCreateGatewayBody instantiates a new CreateGatewayBody object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewCreateGatewayRequestWithDefaults
+### NewCreateGatewayBodyWithDefaults
 
-`func NewCreateGatewayRequestWithDefaults() *CreateGatewayRequest`
+`func NewCreateGatewayBodyWithDefaults() *CreateGatewayBody`
 
-NewCreateGatewayRequestWithDefaults instantiates a new CreateGatewayRequest object
+NewCreateGatewayBodyWithDefaults instantiates a new CreateGatewayBody object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetName
 
-`func (o *CreateGatewayRequest) GetName() string`
+`func (o *CreateGatewayBody) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *CreateGatewayRequest) GetNameOk() (*string, bool)`
+`func (o *CreateGatewayBody) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *CreateGatewayRequest) SetName(v string)`
+`func (o *CreateGatewayBody) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *CreateGatewayRequest) HasName() bool`
+`func (o *CreateGatewayBody) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *CreateGatewayRequest) GetType() GatewayType`
+`func (o *CreateGatewayBody) GetType() GatewayType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *CreateGatewayRequest) GetTypeOk() (*GatewayType, bool)`
+`func (o *CreateGatewayBody) GetTypeOk() (*GatewayType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *CreateGatewayRequest) SetType(v GatewayType)`
+`func (o *CreateGatewayBody) SetType(v GatewayType)`
 
 SetType sets Type field to given value.
 
 ### HasType
 
-`func (o *CreateGatewayRequest) HasType() bool`
+`func (o *CreateGatewayBody) HasType() bool`
 
 HasType returns a boolean if a field has been set.
 
 ### GetConfig
 
-`func (o *CreateGatewayRequest) GetConfig() GatewayConfig`
+`func (o *CreateGatewayBody) GetConfig() GatewayConfig`
 
 GetConfig returns the Config field if non-nil, zero value otherwise.
 
 ### GetConfigOk
 
-`func (o *CreateGatewayRequest) GetConfigOk() (*GatewayConfig, bool)`
+`func (o *CreateGatewayBody) GetConfigOk() (*GatewayConfig, bool)`
 
 GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfig
 
-`func (o *CreateGatewayRequest) SetConfig(v GatewayConfig)`
+`func (o *CreateGatewayBody) SetConfig(v GatewayConfig)`
 
 SetConfig sets Config field to given value.
 
 ### HasConfig
 
-`func (o *CreateGatewayRequest) HasConfig() bool`
+`func (o *CreateGatewayBody) HasConfig() bool`
 
 HasConfig returns a boolean if a field has been set.
 
 ### GetTags
 
-`func (o *CreateGatewayRequest) GetTags() map[string]string`
+`func (o *CreateGatewayBody) GetTags() map[string]string`
 
 GetTags returns the Tags field if non-nil, zero value otherwise.
 
 ### GetTagsOk
 
-`func (o *CreateGatewayRequest) GetTagsOk() (*map[string]string, bool)`
+`func (o *CreateGatewayBody) GetTagsOk() (*map[string]string, bool)`
 
 GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTags
 
-`func (o *CreateGatewayRequest) SetTags(v map[string]string)`
+`func (o *CreateGatewayBody) SetTags(v map[string]string)`
 
 SetTags sets Tags field to given value.
 
 ### HasTags
 
-`func (o *CreateGatewayRequest) HasTags() bool`
+`func (o *CreateGatewayBody) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
 

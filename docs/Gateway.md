@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Config** | Pointer to [**GatewayConfig**](GatewayConfig.md) |  | [optional] 
 **Tags** | Pointer to **map[string]string** |  | [optional] 
 **Status** | Pointer to [**GatewayStatus**](GatewayStatus.md) |  | [optional] [default to GATEWAYSTATUS_UNKNOWN]
+**Enabled** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -231,6 +232,31 @@ SetStatus sets Status field to given value.
 `func (o *Gateway) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetEnabled
+
+`func (o *Gateway) GetEnabled() bool`
+
+GetEnabled returns the Enabled field if non-nil, zero value otherwise.
+
+### GetEnabledOk
+
+`func (o *Gateway) GetEnabledOk() (*bool, bool)`
+
+GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnabled
+
+`func (o *Gateway) SetEnabled(v bool)`
+
+SetEnabled sets Enabled field to given value.
+
+### HasEnabled
+
+`func (o *Gateway) HasEnabled() bool`
+
+HasEnabled returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

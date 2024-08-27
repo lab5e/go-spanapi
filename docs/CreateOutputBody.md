@@ -1,4 +1,4 @@
-# CreateOutputRequest
+# CreateOutputBody
 
 ## Properties
 
@@ -11,120 +11,120 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewCreateOutputRequest
+### NewCreateOutputBody
 
-`func NewCreateOutputRequest() *CreateOutputRequest`
+`func NewCreateOutputBody() *CreateOutputBody`
 
-NewCreateOutputRequest instantiates a new CreateOutputRequest object
+NewCreateOutputBody instantiates a new CreateOutputBody object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewCreateOutputRequestWithDefaults
+### NewCreateOutputBodyWithDefaults
 
-`func NewCreateOutputRequestWithDefaults() *CreateOutputRequest`
+`func NewCreateOutputBodyWithDefaults() *CreateOutputBody`
 
-NewCreateOutputRequestWithDefaults instantiates a new CreateOutputRequest object
+NewCreateOutputBodyWithDefaults instantiates a new CreateOutputBody object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *CreateOutputRequest) GetType() OutputType`
+`func (o *CreateOutputBody) GetType() OutputType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *CreateOutputRequest) GetTypeOk() (*OutputType, bool)`
+`func (o *CreateOutputBody) GetTypeOk() (*OutputType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *CreateOutputRequest) SetType(v OutputType)`
+`func (o *CreateOutputBody) SetType(v OutputType)`
 
 SetType sets Type field to given value.
 
 ### HasType
 
-`func (o *CreateOutputRequest) HasType() bool`
+`func (o *CreateOutputBody) HasType() bool`
 
 HasType returns a boolean if a field has been set.
 
 ### GetConfig
 
-`func (o *CreateOutputRequest) GetConfig() OutputConfig`
+`func (o *CreateOutputBody) GetConfig() OutputConfig`
 
 GetConfig returns the Config field if non-nil, zero value otherwise.
 
 ### GetConfigOk
 
-`func (o *CreateOutputRequest) GetConfigOk() (*OutputConfig, bool)`
+`func (o *CreateOutputBody) GetConfigOk() (*OutputConfig, bool)`
 
 GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfig
 
-`func (o *CreateOutputRequest) SetConfig(v OutputConfig)`
+`func (o *CreateOutputBody) SetConfig(v OutputConfig)`
 
 SetConfig sets Config field to given value.
 
 ### HasConfig
 
-`func (o *CreateOutputRequest) HasConfig() bool`
+`func (o *CreateOutputBody) HasConfig() bool`
 
 HasConfig returns a boolean if a field has been set.
 
 ### GetEnabled
 
-`func (o *CreateOutputRequest) GetEnabled() bool`
+`func (o *CreateOutputBody) GetEnabled() bool`
 
 GetEnabled returns the Enabled field if non-nil, zero value otherwise.
 
 ### GetEnabledOk
 
-`func (o *CreateOutputRequest) GetEnabledOk() (*bool, bool)`
+`func (o *CreateOutputBody) GetEnabledOk() (*bool, bool)`
 
 GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnabled
 
-`func (o *CreateOutputRequest) SetEnabled(v bool)`
+`func (o *CreateOutputBody) SetEnabled(v bool)`
 
 SetEnabled sets Enabled field to given value.
 
 ### HasEnabled
 
-`func (o *CreateOutputRequest) HasEnabled() bool`
+`func (o *CreateOutputBody) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
 
 ### GetTags
 
-`func (o *CreateOutputRequest) GetTags() map[string]string`
+`func (o *CreateOutputBody) GetTags() map[string]string`
 
 GetTags returns the Tags field if non-nil, zero value otherwise.
 
 ### GetTagsOk
 
-`func (o *CreateOutputRequest) GetTagsOk() (*map[string]string, bool)`
+`func (o *CreateOutputBody) GetTagsOk() (*map[string]string, bool)`
 
 GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTags
 
-`func (o *CreateOutputRequest) SetTags(v map[string]string)`
+`func (o *CreateOutputBody) SetTags(v map[string]string)`
 
 SetTags sets Tags field to given value.
 
 ### HasTags
 
-`func (o *CreateOutputRequest) HasTags() bool`
+`func (o *CreateOutputBody) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
 

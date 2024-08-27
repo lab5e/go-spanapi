@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.6 authoritarian-betty
+API version: 5.0.0 convulsive-launa
 Contact: dev@lab5e.com
 */
 
@@ -15,35 +15,35 @@ import (
 	"encoding/json"
 )
 
-// checks if the Status type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Status{}
+// checks if the RpcStatus type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RpcStatus{}
 
-// Status struct for Status
-type Status struct {
+// RpcStatus struct for RpcStatus
+type RpcStatus struct {
 	Code *int32 `json:"code,omitempty"`
 	Message *string `json:"message,omitempty"`
 	Details []Any `json:"details,omitempty"`
 }
 
-// NewStatus instantiates a new Status object
+// NewRpcStatus instantiates a new RpcStatus object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStatus() *Status {
-	this := Status{}
+func NewRpcStatus() *RpcStatus {
+	this := RpcStatus{}
 	return &this
 }
 
-// NewStatusWithDefaults instantiates a new Status object
+// NewRpcStatusWithDefaults instantiates a new RpcStatus object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewStatusWithDefaults() *Status {
-	this := Status{}
+func NewRpcStatusWithDefaults() *RpcStatus {
+	this := RpcStatus{}
 	return &this
 }
 
 // GetCode returns the Code field value if set, zero value otherwise.
-func (o *Status) GetCode() int32 {
+func (o *RpcStatus) GetCode() int32 {
 	if o == nil || IsNil(o.Code) {
 		var ret int32
 		return ret
@@ -53,7 +53,7 @@ func (o *Status) GetCode() int32 {
 
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Status) GetCodeOk() (*int32, bool) {
+func (o *RpcStatus) GetCodeOk() (*int32, bool) {
 	if o == nil || IsNil(o.Code) {
 		return nil, false
 	}
@@ -61,7 +61,7 @@ func (o *Status) GetCodeOk() (*int32, bool) {
 }
 
 // HasCode returns a boolean if a field has been set.
-func (o *Status) HasCode() bool {
+func (o *RpcStatus) HasCode() bool {
 	if o != nil && !IsNil(o.Code) {
 		return true
 	}
@@ -70,12 +70,12 @@ func (o *Status) HasCode() bool {
 }
 
 // SetCode gets a reference to the given int32 and assigns it to the Code field.
-func (o *Status) SetCode(v int32) {
+func (o *RpcStatus) SetCode(v int32) {
 	o.Code = &v
 }
 
 // GetMessage returns the Message field value if set, zero value otherwise.
-func (o *Status) GetMessage() string {
+func (o *RpcStatus) GetMessage() string {
 	if o == nil || IsNil(o.Message) {
 		var ret string
 		return ret
@@ -85,7 +85,7 @@ func (o *Status) GetMessage() string {
 
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Status) GetMessageOk() (*string, bool) {
+func (o *RpcStatus) GetMessageOk() (*string, bool) {
 	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *Status) GetMessageOk() (*string, bool) {
 }
 
 // HasMessage returns a boolean if a field has been set.
-func (o *Status) HasMessage() bool {
+func (o *RpcStatus) HasMessage() bool {
 	if o != nil && !IsNil(o.Message) {
 		return true
 	}
@@ -102,12 +102,12 @@ func (o *Status) HasMessage() bool {
 }
 
 // SetMessage gets a reference to the given string and assigns it to the Message field.
-func (o *Status) SetMessage(v string) {
+func (o *RpcStatus) SetMessage(v string) {
 	o.Message = &v
 }
 
 // GetDetails returns the Details field value if set, zero value otherwise.
-func (o *Status) GetDetails() []Any {
+func (o *RpcStatus) GetDetails() []Any {
 	if o == nil || IsNil(o.Details) {
 		var ret []Any
 		return ret
@@ -117,7 +117,7 @@ func (o *Status) GetDetails() []Any {
 
 // GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Status) GetDetailsOk() ([]Any, bool) {
+func (o *RpcStatus) GetDetailsOk() ([]Any, bool) {
 	if o == nil || IsNil(o.Details) {
 		return nil, false
 	}
@@ -125,7 +125,7 @@ func (o *Status) GetDetailsOk() ([]Any, bool) {
 }
 
 // HasDetails returns a boolean if a field has been set.
-func (o *Status) HasDetails() bool {
+func (o *RpcStatus) HasDetails() bool {
 	if o != nil && !IsNil(o.Details) {
 		return true
 	}
@@ -134,11 +134,11 @@ func (o *Status) HasDetails() bool {
 }
 
 // SetDetails gets a reference to the given []Any and assigns it to the Details field.
-func (o *Status) SetDetails(v []Any) {
+func (o *RpcStatus) SetDetails(v []Any) {
 	o.Details = v
 }
 
-func (o Status) MarshalJSON() ([]byte, error) {
+func (o RpcStatus) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -146,7 +146,7 @@ func (o Status) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o Status) ToMap() (map[string]interface{}, error) {
+func (o RpcStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Code) {
 		toSerialize["code"] = o.Code
@@ -160,38 +160,38 @@ func (o Status) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableStatus struct {
-	value *Status
+type NullableRpcStatus struct {
+	value *RpcStatus
 	isSet bool
 }
 
-func (v NullableStatus) Get() *Status {
+func (v NullableRpcStatus) Get() *RpcStatus {
 	return v.value
 }
 
-func (v *NullableStatus) Set(val *Status) {
+func (v *NullableRpcStatus) Set(val *RpcStatus) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableStatus) IsSet() bool {
+func (v NullableRpcStatus) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableStatus) Unset() {
+func (v *NullableRpcStatus) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableStatus(val *Status) *NullableStatus {
-	return &NullableStatus{value: val, isSet: true}
+func NewNullableRpcStatus(val *RpcStatus) *NullableRpcStatus {
+	return &NullableRpcStatus{value: val, isSet: true}
 }
 
-func (v NullableStatus) MarshalJSON() ([]byte, error) {
+func (v NullableRpcStatus) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableStatus) UnmarshalJSON(src []byte) error {
+func (v *NullableRpcStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

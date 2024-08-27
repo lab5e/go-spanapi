@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.6 authoritarian-betty
+API version: 5.0.0 convulsive-launa
 Contact: dev@lab5e.com
 */
 
@@ -15,36 +15,36 @@ import (
 	"encoding/json"
 )
 
-// checks if the CreateFirmwareRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CreateFirmwareRequest{}
+// checks if the CreateFirmwareBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateFirmwareBody{}
 
-// CreateFirmwareRequest Create a new firmware image
-type CreateFirmwareRequest struct {
+// CreateFirmwareBody Create a new firmware image
+type CreateFirmwareBody struct {
 	Image *string `json:"image,omitempty"`
 	Version *string `json:"version,omitempty"`
 	Filename *string `json:"filename,omitempty"`
 	Tags *map[string]string `json:"tags,omitempty"`
 }
 
-// NewCreateFirmwareRequest instantiates a new CreateFirmwareRequest object
+// NewCreateFirmwareBody instantiates a new CreateFirmwareBody object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateFirmwareRequest() *CreateFirmwareRequest {
-	this := CreateFirmwareRequest{}
+func NewCreateFirmwareBody() *CreateFirmwareBody {
+	this := CreateFirmwareBody{}
 	return &this
 }
 
-// NewCreateFirmwareRequestWithDefaults instantiates a new CreateFirmwareRequest object
+// NewCreateFirmwareBodyWithDefaults instantiates a new CreateFirmwareBody object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCreateFirmwareRequestWithDefaults() *CreateFirmwareRequest {
-	this := CreateFirmwareRequest{}
+func NewCreateFirmwareBodyWithDefaults() *CreateFirmwareBody {
+	this := CreateFirmwareBody{}
 	return &this
 }
 
 // GetImage returns the Image field value if set, zero value otherwise.
-func (o *CreateFirmwareRequest) GetImage() string {
+func (o *CreateFirmwareBody) GetImage() string {
 	if o == nil || IsNil(o.Image) {
 		var ret string
 		return ret
@@ -54,7 +54,7 @@ func (o *CreateFirmwareRequest) GetImage() string {
 
 // GetImageOk returns a tuple with the Image field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateFirmwareRequest) GetImageOk() (*string, bool) {
+func (o *CreateFirmwareBody) GetImageOk() (*string, bool) {
 	if o == nil || IsNil(o.Image) {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *CreateFirmwareRequest) GetImageOk() (*string, bool) {
 }
 
 // HasImage returns a boolean if a field has been set.
-func (o *CreateFirmwareRequest) HasImage() bool {
+func (o *CreateFirmwareBody) HasImage() bool {
 	if o != nil && !IsNil(o.Image) {
 		return true
 	}
@@ -71,12 +71,12 @@ func (o *CreateFirmwareRequest) HasImage() bool {
 }
 
 // SetImage gets a reference to the given string and assigns it to the Image field.
-func (o *CreateFirmwareRequest) SetImage(v string) {
+func (o *CreateFirmwareBody) SetImage(v string) {
 	o.Image = &v
 }
 
 // GetVersion returns the Version field value if set, zero value otherwise.
-func (o *CreateFirmwareRequest) GetVersion() string {
+func (o *CreateFirmwareBody) GetVersion() string {
 	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
@@ -86,7 +86,7 @@ func (o *CreateFirmwareRequest) GetVersion() string {
 
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateFirmwareRequest) GetVersionOk() (*string, bool) {
+func (o *CreateFirmwareBody) GetVersionOk() (*string, bool) {
 	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *CreateFirmwareRequest) GetVersionOk() (*string, bool) {
 }
 
 // HasVersion returns a boolean if a field has been set.
-func (o *CreateFirmwareRequest) HasVersion() bool {
+func (o *CreateFirmwareBody) HasVersion() bool {
 	if o != nil && !IsNil(o.Version) {
 		return true
 	}
@@ -103,12 +103,12 @@ func (o *CreateFirmwareRequest) HasVersion() bool {
 }
 
 // SetVersion gets a reference to the given string and assigns it to the Version field.
-func (o *CreateFirmwareRequest) SetVersion(v string) {
+func (o *CreateFirmwareBody) SetVersion(v string) {
 	o.Version = &v
 }
 
 // GetFilename returns the Filename field value if set, zero value otherwise.
-func (o *CreateFirmwareRequest) GetFilename() string {
+func (o *CreateFirmwareBody) GetFilename() string {
 	if o == nil || IsNil(o.Filename) {
 		var ret string
 		return ret
@@ -118,7 +118,7 @@ func (o *CreateFirmwareRequest) GetFilename() string {
 
 // GetFilenameOk returns a tuple with the Filename field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateFirmwareRequest) GetFilenameOk() (*string, bool) {
+func (o *CreateFirmwareBody) GetFilenameOk() (*string, bool) {
 	if o == nil || IsNil(o.Filename) {
 		return nil, false
 	}
@@ -126,7 +126,7 @@ func (o *CreateFirmwareRequest) GetFilenameOk() (*string, bool) {
 }
 
 // HasFilename returns a boolean if a field has been set.
-func (o *CreateFirmwareRequest) HasFilename() bool {
+func (o *CreateFirmwareBody) HasFilename() bool {
 	if o != nil && !IsNil(o.Filename) {
 		return true
 	}
@@ -135,12 +135,12 @@ func (o *CreateFirmwareRequest) HasFilename() bool {
 }
 
 // SetFilename gets a reference to the given string and assigns it to the Filename field.
-func (o *CreateFirmwareRequest) SetFilename(v string) {
+func (o *CreateFirmwareBody) SetFilename(v string) {
 	o.Filename = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
-func (o *CreateFirmwareRequest) GetTags() map[string]string {
+func (o *CreateFirmwareBody) GetTags() map[string]string {
 	if o == nil || IsNil(o.Tags) {
 		var ret map[string]string
 		return ret
@@ -150,7 +150,7 @@ func (o *CreateFirmwareRequest) GetTags() map[string]string {
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateFirmwareRequest) GetTagsOk() (*map[string]string, bool) {
+func (o *CreateFirmwareBody) GetTagsOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
@@ -158,7 +158,7 @@ func (o *CreateFirmwareRequest) GetTagsOk() (*map[string]string, bool) {
 }
 
 // HasTags returns a boolean if a field has been set.
-func (o *CreateFirmwareRequest) HasTags() bool {
+func (o *CreateFirmwareBody) HasTags() bool {
 	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
@@ -167,11 +167,11 @@ func (o *CreateFirmwareRequest) HasTags() bool {
 }
 
 // SetTags gets a reference to the given map[string]string and assigns it to the Tags field.
-func (o *CreateFirmwareRequest) SetTags(v map[string]string) {
+func (o *CreateFirmwareBody) SetTags(v map[string]string) {
 	o.Tags = &v
 }
 
-func (o CreateFirmwareRequest) MarshalJSON() ([]byte, error) {
+func (o CreateFirmwareBody) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -179,7 +179,7 @@ func (o CreateFirmwareRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CreateFirmwareRequest) ToMap() (map[string]interface{}, error) {
+func (o CreateFirmwareBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Image) {
 		toSerialize["image"] = o.Image
@@ -196,38 +196,38 @@ func (o CreateFirmwareRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableCreateFirmwareRequest struct {
-	value *CreateFirmwareRequest
+type NullableCreateFirmwareBody struct {
+	value *CreateFirmwareBody
 	isSet bool
 }
 
-func (v NullableCreateFirmwareRequest) Get() *CreateFirmwareRequest {
+func (v NullableCreateFirmwareBody) Get() *CreateFirmwareBody {
 	return v.value
 }
 
-func (v *NullableCreateFirmwareRequest) Set(val *CreateFirmwareRequest) {
+func (v *NullableCreateFirmwareBody) Set(val *CreateFirmwareBody) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCreateFirmwareRequest) IsSet() bool {
+func (v NullableCreateFirmwareBody) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCreateFirmwareRequest) Unset() {
+func (v *NullableCreateFirmwareBody) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCreateFirmwareRequest(val *CreateFirmwareRequest) *NullableCreateFirmwareRequest {
-	return &NullableCreateFirmwareRequest{value: val, isSet: true}
+func NewNullableCreateFirmwareBody(val *CreateFirmwareBody) *NullableCreateFirmwareBody {
+	return &NullableCreateFirmwareBody{value: val, isSet: true}
 }
 
-func (v NullableCreateFirmwareRequest) MarshalJSON() ([]byte, error) {
+func (v NullableCreateFirmwareBody) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCreateFirmwareRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableCreateFirmwareBody) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

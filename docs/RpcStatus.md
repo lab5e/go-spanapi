@@ -1,4 +1,4 @@
-# Status
+# RpcStatus
 
 ## Properties
 
@@ -10,95 +10,95 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewStatus
+### NewRpcStatus
 
-`func NewStatus() *Status`
+`func NewRpcStatus() *RpcStatus`
 
-NewStatus instantiates a new Status object
+NewRpcStatus instantiates a new RpcStatus object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewStatusWithDefaults
+### NewRpcStatusWithDefaults
 
-`func NewStatusWithDefaults() *Status`
+`func NewRpcStatusWithDefaults() *RpcStatus`
 
-NewStatusWithDefaults instantiates a new Status object
+NewRpcStatusWithDefaults instantiates a new RpcStatus object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetCode
 
-`func (o *Status) GetCode() int32`
+`func (o *RpcStatus) GetCode() int32`
 
 GetCode returns the Code field if non-nil, zero value otherwise.
 
 ### GetCodeOk
 
-`func (o *Status) GetCodeOk() (*int32, bool)`
+`func (o *RpcStatus) GetCodeOk() (*int32, bool)`
 
 GetCodeOk returns a tuple with the Code field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCode
 
-`func (o *Status) SetCode(v int32)`
+`func (o *RpcStatus) SetCode(v int32)`
 
 SetCode sets Code field to given value.
 
 ### HasCode
 
-`func (o *Status) HasCode() bool`
+`func (o *RpcStatus) HasCode() bool`
 
 HasCode returns a boolean if a field has been set.
 
 ### GetMessage
 
-`func (o *Status) GetMessage() string`
+`func (o *RpcStatus) GetMessage() string`
 
 GetMessage returns the Message field if non-nil, zero value otherwise.
 
 ### GetMessageOk
 
-`func (o *Status) GetMessageOk() (*string, bool)`
+`func (o *RpcStatus) GetMessageOk() (*string, bool)`
 
 GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessage
 
-`func (o *Status) SetMessage(v string)`
+`func (o *RpcStatus) SetMessage(v string)`
 
 SetMessage sets Message field to given value.
 
 ### HasMessage
 
-`func (o *Status) HasMessage() bool`
+`func (o *RpcStatus) HasMessage() bool`
 
 HasMessage returns a boolean if a field has been set.
 
 ### GetDetails
 
-`func (o *Status) GetDetails() []Any`
+`func (o *RpcStatus) GetDetails() []Any`
 
 GetDetails returns the Details field if non-nil, zero value otherwise.
 
 ### GetDetailsOk
 
-`func (o *Status) GetDetailsOk() (*[]Any, bool)`
+`func (o *RpcStatus) GetDetailsOk() (*[]Any, bool)`
 
 GetDetailsOk returns a tuple with the Details field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDetails
 
-`func (o *Status) SetDetails(v []Any)`
+`func (o *RpcStatus) SetDetails(v []Any)`
 
 SetDetails sets Details field to given value.
 
 ### HasDetails
 
-`func (o *Status) HasDetails() bool`
+`func (o *RpcStatus) HasDetails() bool`
 
 HasDetails returns a boolean if a field has been set.
 

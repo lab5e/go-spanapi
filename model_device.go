@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.6 authoritarian-betty
+API version: 5.0.0 convulsive-launa
 Contact: dev@lab5e.com
 */
 
@@ -32,6 +32,7 @@ type Device struct {
 	LastTransport *MessageTransport `json:"lastTransport,omitempty"`
 	LastReceived *string `json:"lastReceived,omitempty"`
 	LastPayload *string `json:"lastPayload,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
 }
 
 // NewDevice instantiates a new Device object
@@ -375,6 +376,38 @@ func (o *Device) SetLastPayload(v string) {
 	o.LastPayload = &v
 }
 
+// GetEnabled returns the Enabled field value if set, zero value otherwise.
+func (o *Device) GetEnabled() bool {
+	if o == nil || IsNil(o.Enabled) {
+		var ret bool
+		return ret
+	}
+	return *o.Enabled
+}
+
+// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Device) GetEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.Enabled) {
+		return nil, false
+	}
+	return o.Enabled, true
+}
+
+// HasEnabled returns a boolean if a field has been set.
+func (o *Device) HasEnabled() bool {
+	if o != nil && !IsNil(o.Enabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+func (o *Device) SetEnabled(v bool) {
+	o.Enabled = &v
+}
+
 func (o Device) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -414,6 +447,9 @@ func (o Device) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LastPayload) {
 		toSerialize["lastPayload"] = o.LastPayload
+	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
 	}
 	return toSerialize, nil
 }

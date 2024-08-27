@@ -108,7 +108,7 @@ import (
 
 func main() {
     collectionId := "collectionId_example" // string | 
-    body := *openapiclient.NewCreateFirmwareRequest() // CreateFirmwareRequest | 
+    body := *openapiclient.NewCreateFirmwareBody() // CreateFirmwareBody | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -138,7 +138,7 @@ Other parameters are passed through a pointer to a apiCreateFirmwareRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**CreateFirmwareRequest**](CreateFirmwareRequest.md) |  | 
+ **body** | [**CreateFirmwareBody**](CreateFirmwareBody.md) |  | 
 
 ### Return type
 
@@ -533,7 +533,7 @@ import (
 func main() {
     existingCollectionId := "existingCollectionId_example" // string | 
     imageId := "imageId_example" // string | 
-    body := *openapiclient.NewUpdateFirmwareRequest() // UpdateFirmwareRequest | 
+    body := *openapiclient.NewUpdateFirmwareBody() // UpdateFirmwareBody | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -565,7 +565,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | [**UpdateFirmwareRequest**](UpdateFirmwareRequest.md) |  | 
+ **body** | [**UpdateFirmwareBody**](UpdateFirmwareBody.md) |  | 
 
 ### Return type
 

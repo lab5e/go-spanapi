@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.6 authoritarian-betty
+API version: 5.0.0 convulsive-launa
 Contact: dev@lab5e.com
 */
 
@@ -28,10 +28,10 @@ type ApiCreateCertificateRequest struct {
 	ctx context.Context
 	ApiService *CertificatesApiService
 	collectionId string
-	body *CreateCertificateRequest
+	body *CreateCertificateBody
 }
 
-func (r ApiCreateCertificateRequest) Body(body CreateCertificateRequest) ApiCreateCertificateRequest {
+func (r ApiCreateCertificateRequest) Body(body CreateCertificateBody) ApiCreateCertificateRequest {
 	r.body = &body
 	return r
 }
@@ -199,7 +199,7 @@ func (a *CertificatesApiService) CreateCertificateExecute(r ApiCreateCertificate
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -401,7 +401,7 @@ func (a *CertificatesApiService) RetrieveCertificateChainExecute(r ApiRetrieveCe
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -428,10 +428,10 @@ type ApiSignCertificateRequest struct {
 	ctx context.Context
 	ApiService *CertificatesApiService
 	collectionId string
-	body *SignCertificateRequest
+	body *SignCertificateBody
 }
 
-func (r ApiSignCertificateRequest) Body(body SignCertificateRequest) ApiSignCertificateRequest {
+func (r ApiSignCertificateRequest) Body(body SignCertificateBody) ApiSignCertificateRequest {
 	r.body = &body
 	return r
 }
@@ -594,7 +594,7 @@ func (a *CertificatesApiService) SignCertificateExecute(r ApiSignCertificateRequ
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -621,10 +621,10 @@ type ApiVerifyCertificateRequest struct {
 	ctx context.Context
 	ApiService *CertificatesApiService
 	collectionId string
-	body *VerifyCertificateRequest
+	body *VerifyCertificateBody
 }
 
-func (r ApiVerifyCertificateRequest) Body(body VerifyCertificateRequest) ApiVerifyCertificateRequest {
+func (r ApiVerifyCertificateRequest) Body(body VerifyCertificateBody) ApiVerifyCertificateRequest {
 	r.body = &body
 	return r
 }
@@ -787,7 +787,7 @@ func (a *CertificatesApiService) VerifyCertificateExecute(r ApiVerifyCertificate
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

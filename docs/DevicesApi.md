@@ -42,7 +42,7 @@ import (
 func main() {
     collectionId := "collectionId_example" // string | 
     deviceId := "deviceId_example" // string | 
-    body := *openapiclient.NewAddDownstreamMessageRequest() // AddDownstreamMessageRequest | 
+    body := *openapiclient.NewAddDownstreamMessageBody() // AddDownstreamMessageBody | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | [**AddDownstreamMessageRequest**](AddDownstreamMessageRequest.md) |  | 
+ **body** | [**AddDownstreamMessageBody**](AddDownstreamMessageBody.md) |  | 
 
 ### Return type
 
@@ -114,7 +114,7 @@ import (
 
 func main() {
     collectionId := "collectionId_example" // string | This is the containing collection
-    body := *openapiclient.NewCreateDeviceRequest() // CreateDeviceRequest | 
+    body := *openapiclient.NewCreateDeviceBody() // CreateDeviceBody | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -144,7 +144,7 @@ Other parameters are passed through a pointer to a apiCreateDeviceRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**CreateDeviceRequest**](CreateDeviceRequest.md) |  | 
+ **body** | [**CreateDeviceBody**](CreateDeviceBody.md) |  | 
 
 ### Return type
 
@@ -858,7 +858,7 @@ import (
 func main() {
     existingCollectionId := "existingCollectionId_example" // string | 
     deviceId := "deviceId_example" // string | 
-    body := *openapiclient.NewUpdateDeviceRequest() // UpdateDeviceRequest | 
+    body := *openapiclient.NewUpdateDeviceBody() // UpdateDeviceBody | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -890,7 +890,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | [**UpdateDeviceRequest**](UpdateDeviceRequest.md) |  | 
+ **body** | [**UpdateDeviceBody**](UpdateDeviceBody.md) |  | 
 
 ### Return type
 

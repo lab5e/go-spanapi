@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.6 authoritarian-betty
+API version: 5.0.0 convulsive-launa
 Contact: dev@lab5e.com
 */
 
@@ -33,6 +33,7 @@ type Firmware struct {
 	Created *string `json:"created,omitempty"`
 	// Tags for firmware image.
 	Tags *map[string]string `json:"tags,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
 }
 
 // NewFirmware instantiates a new Firmware object
@@ -308,6 +309,38 @@ func (o *Firmware) SetTags(v map[string]string) {
 	o.Tags = &v
 }
 
+// GetEnabled returns the Enabled field value if set, zero value otherwise.
+func (o *Firmware) GetEnabled() bool {
+	if o == nil || IsNil(o.Enabled) {
+		var ret bool
+		return ret
+	}
+	return *o.Enabled
+}
+
+// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Firmware) GetEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.Enabled) {
+		return nil, false
+	}
+	return o.Enabled, true
+}
+
+// HasEnabled returns a boolean if a field has been set.
+func (o *Firmware) HasEnabled() bool {
+	if o != nil && !IsNil(o.Enabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+func (o *Firmware) SetEnabled(v bool) {
+	o.Enabled = &v
+}
+
 func (o Firmware) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -341,6 +374,9 @@ func (o Firmware) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
+	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
 	}
 	return toSerialize, nil
 }

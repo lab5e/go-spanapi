@@ -35,7 +35,7 @@ import (
 
 func main() {
     collectionId := "collectionId_example" // string | 
-    body := *openapiclient.NewCreateOutputRequest() // CreateOutputRequest | 
+    body := *openapiclient.NewCreateOutputBody() // CreateOutputBody | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -65,7 +65,7 @@ Other parameters are passed through a pointer to a apiCreateOutputRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**CreateOutputRequest**](CreateOutputRequest.md) |  | 
+ **body** | [**CreateOutputBody**](CreateOutputBody.md) |  | 
 
 ### Return type
 
@@ -529,7 +529,7 @@ import (
 func main() {
     existingCollectionId := "existingCollectionId_example" // string | 
     outputId := "outputId_example" // string | 
-    body := *openapiclient.NewUpdateOutputRequest() // UpdateOutputRequest | 
+    body := *openapiclient.NewUpdateOutputBody() // UpdateOutputBody | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -561,7 +561,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | [**UpdateOutputRequest**](UpdateOutputRequest.md) |  | 
+ **body** | [**UpdateOutputBody**](UpdateOutputBody.md) |  | 
 
 ### Return type
 

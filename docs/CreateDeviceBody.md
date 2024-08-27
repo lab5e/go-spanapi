@@ -1,4 +1,4 @@
-# CreateDeviceRequest
+# CreateDeviceBody
 
 ## Properties
 
@@ -11,120 +11,120 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewCreateDeviceRequest
+### NewCreateDeviceBody
 
-`func NewCreateDeviceRequest() *CreateDeviceRequest`
+`func NewCreateDeviceBody() *CreateDeviceBody`
 
-NewCreateDeviceRequest instantiates a new CreateDeviceRequest object
+NewCreateDeviceBody instantiates a new CreateDeviceBody object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewCreateDeviceRequestWithDefaults
+### NewCreateDeviceBodyWithDefaults
 
-`func NewCreateDeviceRequestWithDefaults() *CreateDeviceRequest`
+`func NewCreateDeviceBodyWithDefaults() *CreateDeviceBody`
 
-NewCreateDeviceRequestWithDefaults instantiates a new CreateDeviceRequest object
+NewCreateDeviceBodyWithDefaults instantiates a new CreateDeviceBody object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetTags
 
-`func (o *CreateDeviceRequest) GetTags() map[string]string`
+`func (o *CreateDeviceBody) GetTags() map[string]string`
 
 GetTags returns the Tags field if non-nil, zero value otherwise.
 
 ### GetTagsOk
 
-`func (o *CreateDeviceRequest) GetTagsOk() (*map[string]string, bool)`
+`func (o *CreateDeviceBody) GetTagsOk() (*map[string]string, bool)`
 
 GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTags
 
-`func (o *CreateDeviceRequest) SetTags(v map[string]string)`
+`func (o *CreateDeviceBody) SetTags(v map[string]string)`
 
 SetTags sets Tags field to given value.
 
 ### HasTags
 
-`func (o *CreateDeviceRequest) HasTags() bool`
+`func (o *CreateDeviceBody) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
 
 ### GetFirmware
 
-`func (o *CreateDeviceRequest) GetFirmware() FirmwareMetadata`
+`func (o *CreateDeviceBody) GetFirmware() FirmwareMetadata`
 
 GetFirmware returns the Firmware field if non-nil, zero value otherwise.
 
 ### GetFirmwareOk
 
-`func (o *CreateDeviceRequest) GetFirmwareOk() (*FirmwareMetadata, bool)`
+`func (o *CreateDeviceBody) GetFirmwareOk() (*FirmwareMetadata, bool)`
 
 GetFirmwareOk returns a tuple with the Firmware field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFirmware
 
-`func (o *CreateDeviceRequest) SetFirmware(v FirmwareMetadata)`
+`func (o *CreateDeviceBody) SetFirmware(v FirmwareMetadata)`
 
 SetFirmware sets Firmware field to given value.
 
 ### HasFirmware
 
-`func (o *CreateDeviceRequest) HasFirmware() bool`
+`func (o *CreateDeviceBody) HasFirmware() bool`
 
 HasFirmware returns a boolean if a field has been set.
 
 ### GetConfig
 
-`func (o *CreateDeviceRequest) GetConfig() DeviceConfig`
+`func (o *CreateDeviceBody) GetConfig() DeviceConfig`
 
 GetConfig returns the Config field if non-nil, zero value otherwise.
 
 ### GetConfigOk
 
-`func (o *CreateDeviceRequest) GetConfigOk() (*DeviceConfig, bool)`
+`func (o *CreateDeviceBody) GetConfigOk() (*DeviceConfig, bool)`
 
 GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfig
 
-`func (o *CreateDeviceRequest) SetConfig(v DeviceConfig)`
+`func (o *CreateDeviceBody) SetConfig(v DeviceConfig)`
 
 SetConfig sets Config field to given value.
 
 ### HasConfig
 
-`func (o *CreateDeviceRequest) HasConfig() bool`
+`func (o *CreateDeviceBody) HasConfig() bool`
 
 HasConfig returns a boolean if a field has been set.
 
 ### GetMetadata
 
-`func (o *CreateDeviceRequest) GetMetadata() DeviceMetadata`
+`func (o *CreateDeviceBody) GetMetadata() DeviceMetadata`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *CreateDeviceRequest) GetMetadataOk() (*DeviceMetadata, bool)`
+`func (o *CreateDeviceBody) GetMetadataOk() (*DeviceMetadata, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *CreateDeviceRequest) SetMetadata(v DeviceMetadata)`
+`func (o *CreateDeviceBody) SetMetadata(v DeviceMetadata)`
 
 SetMetadata sets Metadata field to given value.
 
 ### HasMetadata
 
-`func (o *CreateDeviceRequest) HasMetadata() bool`
+`func (o *CreateDeviceBody) HasMetadata() bool`
 
 HasMetadata returns a boolean if a field has been set.
 

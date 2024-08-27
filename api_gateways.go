@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.6 authoritarian-betty
+API version: 5.0.0 convulsive-launa
 Contact: dev@lab5e.com
 */
 
@@ -28,10 +28,10 @@ type ApiCreateGatewayRequest struct {
 	ctx context.Context
 	ApiService *GatewaysApiService
 	collectionId string
-	body *CreateGatewayRequest
+	body *CreateGatewayBody
 }
 
-func (r ApiCreateGatewayRequest) Body(body CreateGatewayRequest) ApiCreateGatewayRequest {
+func (r ApiCreateGatewayRequest) Body(body CreateGatewayBody) ApiCreateGatewayRequest {
 	r.body = &body
 	return r
 }
@@ -192,7 +192,7 @@ func (a *GatewaysApiService) CreateGatewayExecute(r ApiCreateGatewayRequest) (*G
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -376,7 +376,7 @@ func (a *GatewaysApiService) DeleteGatewayExecute(r ApiDeleteGatewayRequest) (*G
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -558,7 +558,7 @@ func (a *GatewaysApiService) GatewayCertificatesExecute(r ApiGatewayCertificates
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -738,7 +738,7 @@ func (a *GatewaysApiService) ListGatewaysExecute(r ApiListGatewaysRequest) (*Lis
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -922,7 +922,7 @@ func (a *GatewaysApiService) RetrieveGatewayExecute(r ApiRetrieveGatewayRequest)
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1106,7 +1106,7 @@ func (a *GatewaysApiService) RetrieveGatewayStatsExecute(r ApiRetrieveGatewaySta
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1134,10 +1134,10 @@ type ApiUpdateGatewayRequest struct {
 	ApiService *GatewaysApiService
 	existingCollectionId string
 	gatewayId string
-	body *UpdateGatewayRequest
+	body *UpdateGatewayBody
 }
 
-func (r ApiUpdateGatewayRequest) Body(body UpdateGatewayRequest) ApiUpdateGatewayRequest {
+func (r ApiUpdateGatewayRequest) Body(body UpdateGatewayBody) ApiUpdateGatewayRequest {
 	r.body = &body
 	return r
 }
@@ -1304,7 +1304,7 @@ func (a *GatewaysApiService) UpdateGatewayExecute(r ApiUpdateGatewayRequest) (*G
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.6 authoritarian-betty
+API version: 5.0.0 convulsive-launa
 Contact: dev@lab5e.com
 */
 
@@ -15,37 +15,39 @@ import (
 	"encoding/json"
 )
 
-// checks if the UpdateCollectionRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UpdateCollectionRequest{}
+// checks if the UpdateCollectionBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdateCollectionBody{}
 
-// UpdateCollectionRequest Request object when updating a collection
-type UpdateCollectionRequest struct {
+// UpdateCollectionBody Request object when updating a collection
+type UpdateCollectionBody struct {
 	// The team ID that owns the collection. This field is required. When you create new collections the default is to use your private team ID.
 	TeamId *string `json:"teamId,omitempty"`
 	Firmware *CollectionFirmware `json:"firmware,omitempty"`
 	// Tags for the collection. Tags are metadata fields that you can assign to the collection.
 	Tags *map[string]string `json:"tags,omitempty"`
+	// Enabled flag for the collection. A collection may be disabled or enabled to save time.
+	Enabled *bool `json:"enabled,omitempty"`
 }
 
-// NewUpdateCollectionRequest instantiates a new UpdateCollectionRequest object
+// NewUpdateCollectionBody instantiates a new UpdateCollectionBody object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateCollectionRequest() *UpdateCollectionRequest {
-	this := UpdateCollectionRequest{}
+func NewUpdateCollectionBody() *UpdateCollectionBody {
+	this := UpdateCollectionBody{}
 	return &this
 }
 
-// NewUpdateCollectionRequestWithDefaults instantiates a new UpdateCollectionRequest object
+// NewUpdateCollectionBodyWithDefaults instantiates a new UpdateCollectionBody object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewUpdateCollectionRequestWithDefaults() *UpdateCollectionRequest {
-	this := UpdateCollectionRequest{}
+func NewUpdateCollectionBodyWithDefaults() *UpdateCollectionBody {
+	this := UpdateCollectionBody{}
 	return &this
 }
 
 // GetTeamId returns the TeamId field value if set, zero value otherwise.
-func (o *UpdateCollectionRequest) GetTeamId() string {
+func (o *UpdateCollectionBody) GetTeamId() string {
 	if o == nil || IsNil(o.TeamId) {
 		var ret string
 		return ret
@@ -55,7 +57,7 @@ func (o *UpdateCollectionRequest) GetTeamId() string {
 
 // GetTeamIdOk returns a tuple with the TeamId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateCollectionRequest) GetTeamIdOk() (*string, bool) {
+func (o *UpdateCollectionBody) GetTeamIdOk() (*string, bool) {
 	if o == nil || IsNil(o.TeamId) {
 		return nil, false
 	}
@@ -63,7 +65,7 @@ func (o *UpdateCollectionRequest) GetTeamIdOk() (*string, bool) {
 }
 
 // HasTeamId returns a boolean if a field has been set.
-func (o *UpdateCollectionRequest) HasTeamId() bool {
+func (o *UpdateCollectionBody) HasTeamId() bool {
 	if o != nil && !IsNil(o.TeamId) {
 		return true
 	}
@@ -72,12 +74,12 @@ func (o *UpdateCollectionRequest) HasTeamId() bool {
 }
 
 // SetTeamId gets a reference to the given string and assigns it to the TeamId field.
-func (o *UpdateCollectionRequest) SetTeamId(v string) {
+func (o *UpdateCollectionBody) SetTeamId(v string) {
 	o.TeamId = &v
 }
 
 // GetFirmware returns the Firmware field value if set, zero value otherwise.
-func (o *UpdateCollectionRequest) GetFirmware() CollectionFirmware {
+func (o *UpdateCollectionBody) GetFirmware() CollectionFirmware {
 	if o == nil || IsNil(o.Firmware) {
 		var ret CollectionFirmware
 		return ret
@@ -87,7 +89,7 @@ func (o *UpdateCollectionRequest) GetFirmware() CollectionFirmware {
 
 // GetFirmwareOk returns a tuple with the Firmware field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateCollectionRequest) GetFirmwareOk() (*CollectionFirmware, bool) {
+func (o *UpdateCollectionBody) GetFirmwareOk() (*CollectionFirmware, bool) {
 	if o == nil || IsNil(o.Firmware) {
 		return nil, false
 	}
@@ -95,7 +97,7 @@ func (o *UpdateCollectionRequest) GetFirmwareOk() (*CollectionFirmware, bool) {
 }
 
 // HasFirmware returns a boolean if a field has been set.
-func (o *UpdateCollectionRequest) HasFirmware() bool {
+func (o *UpdateCollectionBody) HasFirmware() bool {
 	if o != nil && !IsNil(o.Firmware) {
 		return true
 	}
@@ -104,12 +106,12 @@ func (o *UpdateCollectionRequest) HasFirmware() bool {
 }
 
 // SetFirmware gets a reference to the given CollectionFirmware and assigns it to the Firmware field.
-func (o *UpdateCollectionRequest) SetFirmware(v CollectionFirmware) {
+func (o *UpdateCollectionBody) SetFirmware(v CollectionFirmware) {
 	o.Firmware = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
-func (o *UpdateCollectionRequest) GetTags() map[string]string {
+func (o *UpdateCollectionBody) GetTags() map[string]string {
 	if o == nil || IsNil(o.Tags) {
 		var ret map[string]string
 		return ret
@@ -119,7 +121,7 @@ func (o *UpdateCollectionRequest) GetTags() map[string]string {
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateCollectionRequest) GetTagsOk() (*map[string]string, bool) {
+func (o *UpdateCollectionBody) GetTagsOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
@@ -127,7 +129,7 @@ func (o *UpdateCollectionRequest) GetTagsOk() (*map[string]string, bool) {
 }
 
 // HasTags returns a boolean if a field has been set.
-func (o *UpdateCollectionRequest) HasTags() bool {
+func (o *UpdateCollectionBody) HasTags() bool {
 	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
@@ -136,11 +138,43 @@ func (o *UpdateCollectionRequest) HasTags() bool {
 }
 
 // SetTags gets a reference to the given map[string]string and assigns it to the Tags field.
-func (o *UpdateCollectionRequest) SetTags(v map[string]string) {
+func (o *UpdateCollectionBody) SetTags(v map[string]string) {
 	o.Tags = &v
 }
 
-func (o UpdateCollectionRequest) MarshalJSON() ([]byte, error) {
+// GetEnabled returns the Enabled field value if set, zero value otherwise.
+func (o *UpdateCollectionBody) GetEnabled() bool {
+	if o == nil || IsNil(o.Enabled) {
+		var ret bool
+		return ret
+	}
+	return *o.Enabled
+}
+
+// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateCollectionBody) GetEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.Enabled) {
+		return nil, false
+	}
+	return o.Enabled, true
+}
+
+// HasEnabled returns a boolean if a field has been set.
+func (o *UpdateCollectionBody) HasEnabled() bool {
+	if o != nil && !IsNil(o.Enabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+func (o *UpdateCollectionBody) SetEnabled(v bool) {
+	o.Enabled = &v
+}
+
+func (o UpdateCollectionBody) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -148,7 +182,7 @@ func (o UpdateCollectionRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o UpdateCollectionRequest) ToMap() (map[string]interface{}, error) {
+func (o UpdateCollectionBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.TeamId) {
 		toSerialize["teamId"] = o.TeamId
@@ -159,41 +193,44 @@ func (o UpdateCollectionRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
 	return toSerialize, nil
 }
 
-type NullableUpdateCollectionRequest struct {
-	value *UpdateCollectionRequest
+type NullableUpdateCollectionBody struct {
+	value *UpdateCollectionBody
 	isSet bool
 }
 
-func (v NullableUpdateCollectionRequest) Get() *UpdateCollectionRequest {
+func (v NullableUpdateCollectionBody) Get() *UpdateCollectionBody {
 	return v.value
 }
 
-func (v *NullableUpdateCollectionRequest) Set(val *UpdateCollectionRequest) {
+func (v *NullableUpdateCollectionBody) Set(val *UpdateCollectionBody) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableUpdateCollectionRequest) IsSet() bool {
+func (v NullableUpdateCollectionBody) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableUpdateCollectionRequest) Unset() {
+func (v *NullableUpdateCollectionBody) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableUpdateCollectionRequest(val *UpdateCollectionRequest) *NullableUpdateCollectionRequest {
-	return &NullableUpdateCollectionRequest{value: val, isSet: true}
+func NewNullableUpdateCollectionBody(val *UpdateCollectionBody) *NullableUpdateCollectionBody {
+	return &NullableUpdateCollectionBody{value: val, isSet: true}
 }
 
-func (v NullableUpdateCollectionRequest) MarshalJSON() ([]byte, error) {
+func (v NullableUpdateCollectionBody) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableUpdateCollectionRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableUpdateCollectionBody) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

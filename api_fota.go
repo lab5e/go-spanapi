@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.6 authoritarian-betty
+API version: 5.0.0 convulsive-launa
 Contact: dev@lab5e.com
 */
 
@@ -183,7 +183,7 @@ func (a *FotaApiService) ClearFirmwareErrorExecute(r ApiClearFirmwareErrorReques
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -210,10 +210,10 @@ type ApiCreateFirmwareRequest struct {
 	ctx context.Context
 	ApiService *FotaApiService
 	collectionId string
-	body *CreateFirmwareRequest
+	body *CreateFirmwareBody
 }
 
-func (r ApiCreateFirmwareRequest) Body(body CreateFirmwareRequest) ApiCreateFirmwareRequest {
+func (r ApiCreateFirmwareRequest) Body(body CreateFirmwareBody) ApiCreateFirmwareRequest {
 	r.body = &body
 	return r
 }
@@ -375,7 +375,7 @@ func (a *FotaApiService) CreateFirmwareExecute(r ApiCreateFirmwareRequest) (*Fir
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -557,7 +557,7 @@ func (a *FotaApiService) DeleteFirmwareExecute(r ApiDeleteFirmwareRequest) (*Fir
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -739,7 +739,7 @@ func (a *FotaApiService) FirmwareUsageExecute(r ApiFirmwareUsageRequest) (*Firmw
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -917,7 +917,7 @@ func (a *FotaApiService) ListFirmwareExecute(r ApiListFirmwareRequest) (*ListFir
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1099,7 +1099,7 @@ func (a *FotaApiService) RetrieveFirmwareExecute(r ApiRetrieveFirmwareRequest) (
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1281,7 +1281,7 @@ func (a *FotaApiService) RetrieveFirmwareStatsExecute(r ApiRetrieveFirmwareStats
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1309,10 +1309,10 @@ type ApiUpdateFirmwareRequest struct {
 	ApiService *FotaApiService
 	existingCollectionId string
 	imageId string
-	body *UpdateFirmwareRequest
+	body *UpdateFirmwareBody
 }
 
-func (r ApiUpdateFirmwareRequest) Body(body UpdateFirmwareRequest) ApiUpdateFirmwareRequest {
+func (r ApiUpdateFirmwareRequest) Body(body UpdateFirmwareBody) ApiUpdateFirmwareRequest {
 	r.body = &body
 	return r
 }
@@ -1477,7 +1477,7 @@ func (a *FotaApiService) UpdateFirmwareExecute(r ApiUpdateFirmwareRequest) (*Fir
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

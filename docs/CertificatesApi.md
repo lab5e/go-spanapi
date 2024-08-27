@@ -33,7 +33,7 @@ import (
 
 func main() {
     collectionId := "collectionId_example" // string | 
-    body := *openapiclient.NewCreateCertificateRequest() // CreateCertificateRequest | 
+    body := *openapiclient.NewCreateCertificateBody() // CreateCertificateBody | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -63,7 +63,7 @@ Other parameters are passed through a pointer to a apiCreateCertificateRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**CreateCertificateRequest**](CreateCertificateRequest.md) |  | 
+ **body** | [**CreateCertificateBody**](CreateCertificateBody.md) |  | 
 
 ### Return type
 
@@ -179,7 +179,7 @@ import (
 
 func main() {
     collectionId := "collectionId_example" // string | 
-    body := *openapiclient.NewSignCertificateRequest() // SignCertificateRequest | 
+    body := *openapiclient.NewSignCertificateBody() // SignCertificateBody | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -209,7 +209,7 @@ Other parameters are passed through a pointer to a apiSignCertificateRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**SignCertificateRequest**](SignCertificateRequest.md) |  | 
+ **body** | [**SignCertificateBody**](SignCertificateBody.md) |  | 
 
 ### Return type
 
@@ -251,7 +251,7 @@ import (
 
 func main() {
     collectionId := "collectionId_example" // string | 
-    body := *openapiclient.NewVerifyCertificateRequest() // VerifyCertificateRequest | 
+    body := *openapiclient.NewVerifyCertificateBody() // VerifyCertificateBody | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -281,7 +281,7 @@ Other parameters are passed through a pointer to a apiVerifyCertificateRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**VerifyCertificateRequest**](VerifyCertificateRequest.md) |  | 
+ **body** | [**VerifyCertificateBody**](VerifyCertificateBody.md) |  | 
 
 ### Return type
 

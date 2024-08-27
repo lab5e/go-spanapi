@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.6 authoritarian-betty
+API version: 5.0.0 convulsive-launa
 Contact: dev@lab5e.com
 */
 
@@ -15,38 +15,39 @@ import (
 	"encoding/json"
 )
 
-// checks if the UpdateDeviceRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UpdateDeviceRequest{}
+// checks if the UpdateDeviceBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdateDeviceBody{}
 
-// UpdateDeviceRequest Updating the device
-type UpdateDeviceRequest struct {
+// UpdateDeviceBody Updating the device
+type UpdateDeviceBody struct {
 	// The collection id for the device. This field is optional and can be omitted if the collection id isn't changed. When changing to a new collection you must be an owner of the other collection, ie an administrator of the team that owns the new collection.
 	CollectionId *string `json:"collectionId,omitempty"`
 	// Tags are metadata for the device that you can set. These are just strings.
 	Tags *map[string]string `json:"tags,omitempty"`
 	Firmware *FirmwareMetadata `json:"firmware,omitempty"`
 	Config *DeviceConfig `json:"config,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
 }
 
-// NewUpdateDeviceRequest instantiates a new UpdateDeviceRequest object
+// NewUpdateDeviceBody instantiates a new UpdateDeviceBody object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateDeviceRequest() *UpdateDeviceRequest {
-	this := UpdateDeviceRequest{}
+func NewUpdateDeviceBody() *UpdateDeviceBody {
+	this := UpdateDeviceBody{}
 	return &this
 }
 
-// NewUpdateDeviceRequestWithDefaults instantiates a new UpdateDeviceRequest object
+// NewUpdateDeviceBodyWithDefaults instantiates a new UpdateDeviceBody object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewUpdateDeviceRequestWithDefaults() *UpdateDeviceRequest {
-	this := UpdateDeviceRequest{}
+func NewUpdateDeviceBodyWithDefaults() *UpdateDeviceBody {
+	this := UpdateDeviceBody{}
 	return &this
 }
 
 // GetCollectionId returns the CollectionId field value if set, zero value otherwise.
-func (o *UpdateDeviceRequest) GetCollectionId() string {
+func (o *UpdateDeviceBody) GetCollectionId() string {
 	if o == nil || IsNil(o.CollectionId) {
 		var ret string
 		return ret
@@ -56,7 +57,7 @@ func (o *UpdateDeviceRequest) GetCollectionId() string {
 
 // GetCollectionIdOk returns a tuple with the CollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateDeviceRequest) GetCollectionIdOk() (*string, bool) {
+func (o *UpdateDeviceBody) GetCollectionIdOk() (*string, bool) {
 	if o == nil || IsNil(o.CollectionId) {
 		return nil, false
 	}
@@ -64,7 +65,7 @@ func (o *UpdateDeviceRequest) GetCollectionIdOk() (*string, bool) {
 }
 
 // HasCollectionId returns a boolean if a field has been set.
-func (o *UpdateDeviceRequest) HasCollectionId() bool {
+func (o *UpdateDeviceBody) HasCollectionId() bool {
 	if o != nil && !IsNil(o.CollectionId) {
 		return true
 	}
@@ -73,12 +74,12 @@ func (o *UpdateDeviceRequest) HasCollectionId() bool {
 }
 
 // SetCollectionId gets a reference to the given string and assigns it to the CollectionId field.
-func (o *UpdateDeviceRequest) SetCollectionId(v string) {
+func (o *UpdateDeviceBody) SetCollectionId(v string) {
 	o.CollectionId = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
-func (o *UpdateDeviceRequest) GetTags() map[string]string {
+func (o *UpdateDeviceBody) GetTags() map[string]string {
 	if o == nil || IsNil(o.Tags) {
 		var ret map[string]string
 		return ret
@@ -88,7 +89,7 @@ func (o *UpdateDeviceRequest) GetTags() map[string]string {
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateDeviceRequest) GetTagsOk() (*map[string]string, bool) {
+func (o *UpdateDeviceBody) GetTagsOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
@@ -96,7 +97,7 @@ func (o *UpdateDeviceRequest) GetTagsOk() (*map[string]string, bool) {
 }
 
 // HasTags returns a boolean if a field has been set.
-func (o *UpdateDeviceRequest) HasTags() bool {
+func (o *UpdateDeviceBody) HasTags() bool {
 	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
@@ -105,12 +106,12 @@ func (o *UpdateDeviceRequest) HasTags() bool {
 }
 
 // SetTags gets a reference to the given map[string]string and assigns it to the Tags field.
-func (o *UpdateDeviceRequest) SetTags(v map[string]string) {
+func (o *UpdateDeviceBody) SetTags(v map[string]string) {
 	o.Tags = &v
 }
 
 // GetFirmware returns the Firmware field value if set, zero value otherwise.
-func (o *UpdateDeviceRequest) GetFirmware() FirmwareMetadata {
+func (o *UpdateDeviceBody) GetFirmware() FirmwareMetadata {
 	if o == nil || IsNil(o.Firmware) {
 		var ret FirmwareMetadata
 		return ret
@@ -120,7 +121,7 @@ func (o *UpdateDeviceRequest) GetFirmware() FirmwareMetadata {
 
 // GetFirmwareOk returns a tuple with the Firmware field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateDeviceRequest) GetFirmwareOk() (*FirmwareMetadata, bool) {
+func (o *UpdateDeviceBody) GetFirmwareOk() (*FirmwareMetadata, bool) {
 	if o == nil || IsNil(o.Firmware) {
 		return nil, false
 	}
@@ -128,7 +129,7 @@ func (o *UpdateDeviceRequest) GetFirmwareOk() (*FirmwareMetadata, bool) {
 }
 
 // HasFirmware returns a boolean if a field has been set.
-func (o *UpdateDeviceRequest) HasFirmware() bool {
+func (o *UpdateDeviceBody) HasFirmware() bool {
 	if o != nil && !IsNil(o.Firmware) {
 		return true
 	}
@@ -137,12 +138,12 @@ func (o *UpdateDeviceRequest) HasFirmware() bool {
 }
 
 // SetFirmware gets a reference to the given FirmwareMetadata and assigns it to the Firmware field.
-func (o *UpdateDeviceRequest) SetFirmware(v FirmwareMetadata) {
+func (o *UpdateDeviceBody) SetFirmware(v FirmwareMetadata) {
 	o.Firmware = &v
 }
 
 // GetConfig returns the Config field value if set, zero value otherwise.
-func (o *UpdateDeviceRequest) GetConfig() DeviceConfig {
+func (o *UpdateDeviceBody) GetConfig() DeviceConfig {
 	if o == nil || IsNil(o.Config) {
 		var ret DeviceConfig
 		return ret
@@ -152,7 +153,7 @@ func (o *UpdateDeviceRequest) GetConfig() DeviceConfig {
 
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateDeviceRequest) GetConfigOk() (*DeviceConfig, bool) {
+func (o *UpdateDeviceBody) GetConfigOk() (*DeviceConfig, bool) {
 	if o == nil || IsNil(o.Config) {
 		return nil, false
 	}
@@ -160,7 +161,7 @@ func (o *UpdateDeviceRequest) GetConfigOk() (*DeviceConfig, bool) {
 }
 
 // HasConfig returns a boolean if a field has been set.
-func (o *UpdateDeviceRequest) HasConfig() bool {
+func (o *UpdateDeviceBody) HasConfig() bool {
 	if o != nil && !IsNil(o.Config) {
 		return true
 	}
@@ -169,11 +170,43 @@ func (o *UpdateDeviceRequest) HasConfig() bool {
 }
 
 // SetConfig gets a reference to the given DeviceConfig and assigns it to the Config field.
-func (o *UpdateDeviceRequest) SetConfig(v DeviceConfig) {
+func (o *UpdateDeviceBody) SetConfig(v DeviceConfig) {
 	o.Config = &v
 }
 
-func (o UpdateDeviceRequest) MarshalJSON() ([]byte, error) {
+// GetEnabled returns the Enabled field value if set, zero value otherwise.
+func (o *UpdateDeviceBody) GetEnabled() bool {
+	if o == nil || IsNil(o.Enabled) {
+		var ret bool
+		return ret
+	}
+	return *o.Enabled
+}
+
+// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDeviceBody) GetEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.Enabled) {
+		return nil, false
+	}
+	return o.Enabled, true
+}
+
+// HasEnabled returns a boolean if a field has been set.
+func (o *UpdateDeviceBody) HasEnabled() bool {
+	if o != nil && !IsNil(o.Enabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+func (o *UpdateDeviceBody) SetEnabled(v bool) {
+	o.Enabled = &v
+}
+
+func (o UpdateDeviceBody) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -181,7 +214,7 @@ func (o UpdateDeviceRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o UpdateDeviceRequest) ToMap() (map[string]interface{}, error) {
+func (o UpdateDeviceBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CollectionId) {
 		toSerialize["collectionId"] = o.CollectionId
@@ -195,41 +228,44 @@ func (o UpdateDeviceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Config) {
 		toSerialize["config"] = o.Config
 	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
 	return toSerialize, nil
 }
 
-type NullableUpdateDeviceRequest struct {
-	value *UpdateDeviceRequest
+type NullableUpdateDeviceBody struct {
+	value *UpdateDeviceBody
 	isSet bool
 }
 
-func (v NullableUpdateDeviceRequest) Get() *UpdateDeviceRequest {
+func (v NullableUpdateDeviceBody) Get() *UpdateDeviceBody {
 	return v.value
 }
 
-func (v *NullableUpdateDeviceRequest) Set(val *UpdateDeviceRequest) {
+func (v *NullableUpdateDeviceBody) Set(val *UpdateDeviceBody) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableUpdateDeviceRequest) IsSet() bool {
+func (v NullableUpdateDeviceBody) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableUpdateDeviceRequest) Unset() {
+func (v *NullableUpdateDeviceBody) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableUpdateDeviceRequest(val *UpdateDeviceRequest) *NullableUpdateDeviceRequest {
-	return &NullableUpdateDeviceRequest{value: val, isSet: true}
+func NewNullableUpdateDeviceBody(val *UpdateDeviceBody) *NullableUpdateDeviceBody {
+	return &NullableUpdateDeviceBody{value: val, isSet: true}
 }
 
-func (v NullableUpdateDeviceRequest) MarshalJSON() ([]byte, error) {
+func (v NullableUpdateDeviceBody) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableUpdateDeviceRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableUpdateDeviceBody) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

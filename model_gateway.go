@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.6 authoritarian-betty
+API version: 5.0.0 convulsive-launa
 Contact: dev@lab5e.com
 */
 
@@ -28,6 +28,7 @@ type Gateway struct {
 	Config *GatewayConfig `json:"config,omitempty"`
 	Tags *map[string]string `json:"tags,omitempty"`
 	Status *GatewayStatus `json:"status,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
 }
 
 // NewGateway instantiates a new Gateway object
@@ -311,6 +312,38 @@ func (o *Gateway) SetStatus(v GatewayStatus) {
 	o.Status = &v
 }
 
+// GetEnabled returns the Enabled field value if set, zero value otherwise.
+func (o *Gateway) GetEnabled() bool {
+	if o == nil || IsNil(o.Enabled) {
+		var ret bool
+		return ret
+	}
+	return *o.Enabled
+}
+
+// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Gateway) GetEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.Enabled) {
+		return nil, false
+	}
+	return o.Enabled, true
+}
+
+// HasEnabled returns a boolean if a field has been set.
+func (o *Gateway) HasEnabled() bool {
+	if o != nil && !IsNil(o.Enabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+func (o *Gateway) SetEnabled(v bool) {
+	o.Enabled = &v
+}
+
 func (o Gateway) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -344,6 +377,9 @@ func (o Gateway) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
 	}
 	return toSerialize, nil
 }

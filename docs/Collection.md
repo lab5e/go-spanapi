@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Tags** | Pointer to **map[string]string** | Tags for the collection. Tags are metadata fields that you can assign to the collection. | [optional] 
 **UpstreamTimestamps** | Pointer to **[]string** |  | [optional] 
 **DownstreamTimestamps** | Pointer to **[]string** |  | [optional] 
+**Enabled** | Pointer to **bool** | Disabled flag for collection. If the collection is disabled it is in effect read only and inactive. You can&#39;t update a disabled collection. | [optional] 
 
 ## Methods
 
@@ -179,6 +180,31 @@ SetDownstreamTimestamps sets DownstreamTimestamps field to given value.
 `func (o *Collection) HasDownstreamTimestamps() bool`
 
 HasDownstreamTimestamps returns a boolean if a field has been set.
+
+### GetEnabled
+
+`func (o *Collection) GetEnabled() bool`
+
+GetEnabled returns the Enabled field if non-nil, zero value otherwise.
+
+### GetEnabledOk
+
+`func (o *Collection) GetEnabledOk() (*bool, bool)`
+
+GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnabled
+
+`func (o *Collection) SetEnabled(v bool)`
+
+SetEnabled sets Enabled field to given value.
+
+### HasEnabled
+
+`func (o *Collection) HasEnabled() bool`
+
+HasEnabled returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.6 authoritarian-betty
+API version: 5.0.0 convulsive-launa
 Contact: dev@lab5e.com
 */
 
@@ -15,35 +15,35 @@ import (
 	"encoding/json"
 )
 
-// checks if the VerifyCertificateRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &VerifyCertificateRequest{}
+// checks if the VerifyCertificateBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VerifyCertificateBody{}
 
-// VerifyCertificateRequest Verify a certificate
-type VerifyCertificateRequest struct {
+// VerifyCertificateBody Verify a certificate
+type VerifyCertificateBody struct {
 	GatewayId *string `json:"gatewayId,omitempty"`
 	DeviceId *string `json:"deviceId,omitempty"`
 	Certificate *string `json:"certificate,omitempty"`
 }
 
-// NewVerifyCertificateRequest instantiates a new VerifyCertificateRequest object
+// NewVerifyCertificateBody instantiates a new VerifyCertificateBody object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVerifyCertificateRequest() *VerifyCertificateRequest {
-	this := VerifyCertificateRequest{}
+func NewVerifyCertificateBody() *VerifyCertificateBody {
+	this := VerifyCertificateBody{}
 	return &this
 }
 
-// NewVerifyCertificateRequestWithDefaults instantiates a new VerifyCertificateRequest object
+// NewVerifyCertificateBodyWithDefaults instantiates a new VerifyCertificateBody object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewVerifyCertificateRequestWithDefaults() *VerifyCertificateRequest {
-	this := VerifyCertificateRequest{}
+func NewVerifyCertificateBodyWithDefaults() *VerifyCertificateBody {
+	this := VerifyCertificateBody{}
 	return &this
 }
 
 // GetGatewayId returns the GatewayId field value if set, zero value otherwise.
-func (o *VerifyCertificateRequest) GetGatewayId() string {
+func (o *VerifyCertificateBody) GetGatewayId() string {
 	if o == nil || IsNil(o.GatewayId) {
 		var ret string
 		return ret
@@ -53,7 +53,7 @@ func (o *VerifyCertificateRequest) GetGatewayId() string {
 
 // GetGatewayIdOk returns a tuple with the GatewayId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VerifyCertificateRequest) GetGatewayIdOk() (*string, bool) {
+func (o *VerifyCertificateBody) GetGatewayIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GatewayId) {
 		return nil, false
 	}
@@ -61,7 +61,7 @@ func (o *VerifyCertificateRequest) GetGatewayIdOk() (*string, bool) {
 }
 
 // HasGatewayId returns a boolean if a field has been set.
-func (o *VerifyCertificateRequest) HasGatewayId() bool {
+func (o *VerifyCertificateBody) HasGatewayId() bool {
 	if o != nil && !IsNil(o.GatewayId) {
 		return true
 	}
@@ -70,12 +70,12 @@ func (o *VerifyCertificateRequest) HasGatewayId() bool {
 }
 
 // SetGatewayId gets a reference to the given string and assigns it to the GatewayId field.
-func (o *VerifyCertificateRequest) SetGatewayId(v string) {
+func (o *VerifyCertificateBody) SetGatewayId(v string) {
 	o.GatewayId = &v
 }
 
 // GetDeviceId returns the DeviceId field value if set, zero value otherwise.
-func (o *VerifyCertificateRequest) GetDeviceId() string {
+func (o *VerifyCertificateBody) GetDeviceId() string {
 	if o == nil || IsNil(o.DeviceId) {
 		var ret string
 		return ret
@@ -85,7 +85,7 @@ func (o *VerifyCertificateRequest) GetDeviceId() string {
 
 // GetDeviceIdOk returns a tuple with the DeviceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VerifyCertificateRequest) GetDeviceIdOk() (*string, bool) {
+func (o *VerifyCertificateBody) GetDeviceIdOk() (*string, bool) {
 	if o == nil || IsNil(o.DeviceId) {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *VerifyCertificateRequest) GetDeviceIdOk() (*string, bool) {
 }
 
 // HasDeviceId returns a boolean if a field has been set.
-func (o *VerifyCertificateRequest) HasDeviceId() bool {
+func (o *VerifyCertificateBody) HasDeviceId() bool {
 	if o != nil && !IsNil(o.DeviceId) {
 		return true
 	}
@@ -102,12 +102,12 @@ func (o *VerifyCertificateRequest) HasDeviceId() bool {
 }
 
 // SetDeviceId gets a reference to the given string and assigns it to the DeviceId field.
-func (o *VerifyCertificateRequest) SetDeviceId(v string) {
+func (o *VerifyCertificateBody) SetDeviceId(v string) {
 	o.DeviceId = &v
 }
 
 // GetCertificate returns the Certificate field value if set, zero value otherwise.
-func (o *VerifyCertificateRequest) GetCertificate() string {
+func (o *VerifyCertificateBody) GetCertificate() string {
 	if o == nil || IsNil(o.Certificate) {
 		var ret string
 		return ret
@@ -117,7 +117,7 @@ func (o *VerifyCertificateRequest) GetCertificate() string {
 
 // GetCertificateOk returns a tuple with the Certificate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VerifyCertificateRequest) GetCertificateOk() (*string, bool) {
+func (o *VerifyCertificateBody) GetCertificateOk() (*string, bool) {
 	if o == nil || IsNil(o.Certificate) {
 		return nil, false
 	}
@@ -125,7 +125,7 @@ func (o *VerifyCertificateRequest) GetCertificateOk() (*string, bool) {
 }
 
 // HasCertificate returns a boolean if a field has been set.
-func (o *VerifyCertificateRequest) HasCertificate() bool {
+func (o *VerifyCertificateBody) HasCertificate() bool {
 	if o != nil && !IsNil(o.Certificate) {
 		return true
 	}
@@ -134,11 +134,11 @@ func (o *VerifyCertificateRequest) HasCertificate() bool {
 }
 
 // SetCertificate gets a reference to the given string and assigns it to the Certificate field.
-func (o *VerifyCertificateRequest) SetCertificate(v string) {
+func (o *VerifyCertificateBody) SetCertificate(v string) {
 	o.Certificate = &v
 }
 
-func (o VerifyCertificateRequest) MarshalJSON() ([]byte, error) {
+func (o VerifyCertificateBody) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -146,7 +146,7 @@ func (o VerifyCertificateRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o VerifyCertificateRequest) ToMap() (map[string]interface{}, error) {
+func (o VerifyCertificateBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.GatewayId) {
 		toSerialize["gatewayId"] = o.GatewayId
@@ -160,38 +160,38 @@ func (o VerifyCertificateRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableVerifyCertificateRequest struct {
-	value *VerifyCertificateRequest
+type NullableVerifyCertificateBody struct {
+	value *VerifyCertificateBody
 	isSet bool
 }
 
-func (v NullableVerifyCertificateRequest) Get() *VerifyCertificateRequest {
+func (v NullableVerifyCertificateBody) Get() *VerifyCertificateBody {
 	return v.value
 }
 
-func (v *NullableVerifyCertificateRequest) Set(val *VerifyCertificateRequest) {
+func (v *NullableVerifyCertificateBody) Set(val *VerifyCertificateBody) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableVerifyCertificateRequest) IsSet() bool {
+func (v NullableVerifyCertificateBody) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableVerifyCertificateRequest) Unset() {
+func (v *NullableVerifyCertificateBody) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableVerifyCertificateRequest(val *VerifyCertificateRequest) *NullableVerifyCertificateRequest {
-	return &NullableVerifyCertificateRequest{value: val, isSet: true}
+func NewNullableVerifyCertificateBody(val *VerifyCertificateBody) *NullableVerifyCertificateBody {
+	return &NullableVerifyCertificateBody{value: val, isSet: true}
 }
 
-func (v NullableVerifyCertificateRequest) MarshalJSON() ([]byte, error) {
+func (v NullableVerifyCertificateBody) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableVerifyCertificateRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableVerifyCertificateBody) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

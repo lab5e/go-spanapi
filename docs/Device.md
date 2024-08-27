@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **LastTransport** | Pointer to [**MessageTransport**](MessageTransport.md) |  | [optional] [default to MESSAGETRANSPORT_UNSPECIFIED]
 **LastReceived** | Pointer to **string** |  | [optional] 
 **LastPayload** | Pointer to **string** |  | [optional] 
+**Enabled** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -283,6 +284,31 @@ SetLastPayload sets LastPayload field to given value.
 `func (o *Device) HasLastPayload() bool`
 
 HasLastPayload returns a boolean if a field has been set.
+
+### GetEnabled
+
+`func (o *Device) GetEnabled() bool`
+
+GetEnabled returns the Enabled field if non-nil, zero value otherwise.
+
+### GetEnabledOk
+
+`func (o *Device) GetEnabledOk() (*bool, bool)`
+
+GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnabled
+
+`func (o *Device) SetEnabled(v bool)`
+
+SetEnabled sets Enabled field to given value.
+
+### HasEnabled
+
+`func (o *Device) HasEnabled() bool`
+
+HasEnabled returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

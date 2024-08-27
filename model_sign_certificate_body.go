@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.6 authoritarian-betty
+API version: 5.0.0 convulsive-launa
 Contact: dev@lab5e.com
 */
 
@@ -15,35 +15,35 @@ import (
 	"encoding/json"
 )
 
-// checks if the SignCertificateRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SignCertificateRequest{}
+// checks if the SignCertificateBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignCertificateBody{}
 
-// SignCertificateRequest Request certificate signing
-type SignCertificateRequest struct {
+// SignCertificateBody Request certificate signing
+type SignCertificateBody struct {
 	GatewayId *string `json:"gatewayId,omitempty"`
 	DeviceId *string `json:"deviceId,omitempty"`
 	Csr *string `json:"csr,omitempty"`
 }
 
-// NewSignCertificateRequest instantiates a new SignCertificateRequest object
+// NewSignCertificateBody instantiates a new SignCertificateBody object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSignCertificateRequest() *SignCertificateRequest {
-	this := SignCertificateRequest{}
+func NewSignCertificateBody() *SignCertificateBody {
+	this := SignCertificateBody{}
 	return &this
 }
 
-// NewSignCertificateRequestWithDefaults instantiates a new SignCertificateRequest object
+// NewSignCertificateBodyWithDefaults instantiates a new SignCertificateBody object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSignCertificateRequestWithDefaults() *SignCertificateRequest {
-	this := SignCertificateRequest{}
+func NewSignCertificateBodyWithDefaults() *SignCertificateBody {
+	this := SignCertificateBody{}
 	return &this
 }
 
 // GetGatewayId returns the GatewayId field value if set, zero value otherwise.
-func (o *SignCertificateRequest) GetGatewayId() string {
+func (o *SignCertificateBody) GetGatewayId() string {
 	if o == nil || IsNil(o.GatewayId) {
 		var ret string
 		return ret
@@ -53,7 +53,7 @@ func (o *SignCertificateRequest) GetGatewayId() string {
 
 // GetGatewayIdOk returns a tuple with the GatewayId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignCertificateRequest) GetGatewayIdOk() (*string, bool) {
+func (o *SignCertificateBody) GetGatewayIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GatewayId) {
 		return nil, false
 	}
@@ -61,7 +61,7 @@ func (o *SignCertificateRequest) GetGatewayIdOk() (*string, bool) {
 }
 
 // HasGatewayId returns a boolean if a field has been set.
-func (o *SignCertificateRequest) HasGatewayId() bool {
+func (o *SignCertificateBody) HasGatewayId() bool {
 	if o != nil && !IsNil(o.GatewayId) {
 		return true
 	}
@@ -70,12 +70,12 @@ func (o *SignCertificateRequest) HasGatewayId() bool {
 }
 
 // SetGatewayId gets a reference to the given string and assigns it to the GatewayId field.
-func (o *SignCertificateRequest) SetGatewayId(v string) {
+func (o *SignCertificateBody) SetGatewayId(v string) {
 	o.GatewayId = &v
 }
 
 // GetDeviceId returns the DeviceId field value if set, zero value otherwise.
-func (o *SignCertificateRequest) GetDeviceId() string {
+func (o *SignCertificateBody) GetDeviceId() string {
 	if o == nil || IsNil(o.DeviceId) {
 		var ret string
 		return ret
@@ -85,7 +85,7 @@ func (o *SignCertificateRequest) GetDeviceId() string {
 
 // GetDeviceIdOk returns a tuple with the DeviceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignCertificateRequest) GetDeviceIdOk() (*string, bool) {
+func (o *SignCertificateBody) GetDeviceIdOk() (*string, bool) {
 	if o == nil || IsNil(o.DeviceId) {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *SignCertificateRequest) GetDeviceIdOk() (*string, bool) {
 }
 
 // HasDeviceId returns a boolean if a field has been set.
-func (o *SignCertificateRequest) HasDeviceId() bool {
+func (o *SignCertificateBody) HasDeviceId() bool {
 	if o != nil && !IsNil(o.DeviceId) {
 		return true
 	}
@@ -102,12 +102,12 @@ func (o *SignCertificateRequest) HasDeviceId() bool {
 }
 
 // SetDeviceId gets a reference to the given string and assigns it to the DeviceId field.
-func (o *SignCertificateRequest) SetDeviceId(v string) {
+func (o *SignCertificateBody) SetDeviceId(v string) {
 	o.DeviceId = &v
 }
 
 // GetCsr returns the Csr field value if set, zero value otherwise.
-func (o *SignCertificateRequest) GetCsr() string {
+func (o *SignCertificateBody) GetCsr() string {
 	if o == nil || IsNil(o.Csr) {
 		var ret string
 		return ret
@@ -117,7 +117,7 @@ func (o *SignCertificateRequest) GetCsr() string {
 
 // GetCsrOk returns a tuple with the Csr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignCertificateRequest) GetCsrOk() (*string, bool) {
+func (o *SignCertificateBody) GetCsrOk() (*string, bool) {
 	if o == nil || IsNil(o.Csr) {
 		return nil, false
 	}
@@ -125,7 +125,7 @@ func (o *SignCertificateRequest) GetCsrOk() (*string, bool) {
 }
 
 // HasCsr returns a boolean if a field has been set.
-func (o *SignCertificateRequest) HasCsr() bool {
+func (o *SignCertificateBody) HasCsr() bool {
 	if o != nil && !IsNil(o.Csr) {
 		return true
 	}
@@ -134,11 +134,11 @@ func (o *SignCertificateRequest) HasCsr() bool {
 }
 
 // SetCsr gets a reference to the given string and assigns it to the Csr field.
-func (o *SignCertificateRequest) SetCsr(v string) {
+func (o *SignCertificateBody) SetCsr(v string) {
 	o.Csr = &v
 }
 
-func (o SignCertificateRequest) MarshalJSON() ([]byte, error) {
+func (o SignCertificateBody) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -146,7 +146,7 @@ func (o SignCertificateRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SignCertificateRequest) ToMap() (map[string]interface{}, error) {
+func (o SignCertificateBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.GatewayId) {
 		toSerialize["gatewayId"] = o.GatewayId
@@ -160,38 +160,38 @@ func (o SignCertificateRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableSignCertificateRequest struct {
-	value *SignCertificateRequest
+type NullableSignCertificateBody struct {
+	value *SignCertificateBody
 	isSet bool
 }
 
-func (v NullableSignCertificateRequest) Get() *SignCertificateRequest {
+func (v NullableSignCertificateBody) Get() *SignCertificateBody {
 	return v.value
 }
 
-func (v *NullableSignCertificateRequest) Set(val *SignCertificateRequest) {
+func (v *NullableSignCertificateBody) Set(val *SignCertificateBody) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSignCertificateRequest) IsSet() bool {
+func (v NullableSignCertificateBody) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSignCertificateRequest) Unset() {
+func (v *NullableSignCertificateBody) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSignCertificateRequest(val *SignCertificateRequest) *NullableSignCertificateRequest {
-	return &NullableSignCertificateRequest{value: val, isSet: true}
+func NewNullableSignCertificateBody(val *SignCertificateBody) *NullableSignCertificateBody {
+	return &NullableSignCertificateBody{value: val, isSet: true}
 }
 
-func (v NullableSignCertificateRequest) MarshalJSON() ([]byte, error) {
+func (v NullableSignCertificateBody) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSignCertificateRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableSignCertificateBody) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

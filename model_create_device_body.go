@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.6 authoritarian-betty
+API version: 5.0.0 convulsive-launa
 Contact: dev@lab5e.com
 */
 
@@ -15,11 +15,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the CreateDeviceRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CreateDeviceRequest{}
+// checks if the CreateDeviceBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateDeviceBody{}
 
-// CreateDeviceRequest Request object to create new devices
-type CreateDeviceRequest struct {
+// CreateDeviceBody Request object to create new devices
+type CreateDeviceBody struct {
 	// Tags are metadata for the device that you can set. These are just strings.
 	Tags *map[string]string `json:"tags,omitempty"`
 	Firmware *FirmwareMetadata `json:"firmware,omitempty"`
@@ -27,25 +27,25 @@ type CreateDeviceRequest struct {
 	Metadata *DeviceMetadata `json:"metadata,omitempty"`
 }
 
-// NewCreateDeviceRequest instantiates a new CreateDeviceRequest object
+// NewCreateDeviceBody instantiates a new CreateDeviceBody object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateDeviceRequest() *CreateDeviceRequest {
-	this := CreateDeviceRequest{}
+func NewCreateDeviceBody() *CreateDeviceBody {
+	this := CreateDeviceBody{}
 	return &this
 }
 
-// NewCreateDeviceRequestWithDefaults instantiates a new CreateDeviceRequest object
+// NewCreateDeviceBodyWithDefaults instantiates a new CreateDeviceBody object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCreateDeviceRequestWithDefaults() *CreateDeviceRequest {
-	this := CreateDeviceRequest{}
+func NewCreateDeviceBodyWithDefaults() *CreateDeviceBody {
+	this := CreateDeviceBody{}
 	return &this
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
-func (o *CreateDeviceRequest) GetTags() map[string]string {
+func (o *CreateDeviceBody) GetTags() map[string]string {
 	if o == nil || IsNil(o.Tags) {
 		var ret map[string]string
 		return ret
@@ -55,7 +55,7 @@ func (o *CreateDeviceRequest) GetTags() map[string]string {
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateDeviceRequest) GetTagsOk() (*map[string]string, bool) {
+func (o *CreateDeviceBody) GetTagsOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *CreateDeviceRequest) GetTagsOk() (*map[string]string, bool) {
 }
 
 // HasTags returns a boolean if a field has been set.
-func (o *CreateDeviceRequest) HasTags() bool {
+func (o *CreateDeviceBody) HasTags() bool {
 	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
@@ -72,12 +72,12 @@ func (o *CreateDeviceRequest) HasTags() bool {
 }
 
 // SetTags gets a reference to the given map[string]string and assigns it to the Tags field.
-func (o *CreateDeviceRequest) SetTags(v map[string]string) {
+func (o *CreateDeviceBody) SetTags(v map[string]string) {
 	o.Tags = &v
 }
 
 // GetFirmware returns the Firmware field value if set, zero value otherwise.
-func (o *CreateDeviceRequest) GetFirmware() FirmwareMetadata {
+func (o *CreateDeviceBody) GetFirmware() FirmwareMetadata {
 	if o == nil || IsNil(o.Firmware) {
 		var ret FirmwareMetadata
 		return ret
@@ -87,7 +87,7 @@ func (o *CreateDeviceRequest) GetFirmware() FirmwareMetadata {
 
 // GetFirmwareOk returns a tuple with the Firmware field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateDeviceRequest) GetFirmwareOk() (*FirmwareMetadata, bool) {
+func (o *CreateDeviceBody) GetFirmwareOk() (*FirmwareMetadata, bool) {
 	if o == nil || IsNil(o.Firmware) {
 		return nil, false
 	}
@@ -95,7 +95,7 @@ func (o *CreateDeviceRequest) GetFirmwareOk() (*FirmwareMetadata, bool) {
 }
 
 // HasFirmware returns a boolean if a field has been set.
-func (o *CreateDeviceRequest) HasFirmware() bool {
+func (o *CreateDeviceBody) HasFirmware() bool {
 	if o != nil && !IsNil(o.Firmware) {
 		return true
 	}
@@ -104,12 +104,12 @@ func (o *CreateDeviceRequest) HasFirmware() bool {
 }
 
 // SetFirmware gets a reference to the given FirmwareMetadata and assigns it to the Firmware field.
-func (o *CreateDeviceRequest) SetFirmware(v FirmwareMetadata) {
+func (o *CreateDeviceBody) SetFirmware(v FirmwareMetadata) {
 	o.Firmware = &v
 }
 
 // GetConfig returns the Config field value if set, zero value otherwise.
-func (o *CreateDeviceRequest) GetConfig() DeviceConfig {
+func (o *CreateDeviceBody) GetConfig() DeviceConfig {
 	if o == nil || IsNil(o.Config) {
 		var ret DeviceConfig
 		return ret
@@ -119,7 +119,7 @@ func (o *CreateDeviceRequest) GetConfig() DeviceConfig {
 
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateDeviceRequest) GetConfigOk() (*DeviceConfig, bool) {
+func (o *CreateDeviceBody) GetConfigOk() (*DeviceConfig, bool) {
 	if o == nil || IsNil(o.Config) {
 		return nil, false
 	}
@@ -127,7 +127,7 @@ func (o *CreateDeviceRequest) GetConfigOk() (*DeviceConfig, bool) {
 }
 
 // HasConfig returns a boolean if a field has been set.
-func (o *CreateDeviceRequest) HasConfig() bool {
+func (o *CreateDeviceBody) HasConfig() bool {
 	if o != nil && !IsNil(o.Config) {
 		return true
 	}
@@ -136,12 +136,12 @@ func (o *CreateDeviceRequest) HasConfig() bool {
 }
 
 // SetConfig gets a reference to the given DeviceConfig and assigns it to the Config field.
-func (o *CreateDeviceRequest) SetConfig(v DeviceConfig) {
+func (o *CreateDeviceBody) SetConfig(v DeviceConfig) {
 	o.Config = &v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *CreateDeviceRequest) GetMetadata() DeviceMetadata {
+func (o *CreateDeviceBody) GetMetadata() DeviceMetadata {
 	if o == nil || IsNil(o.Metadata) {
 		var ret DeviceMetadata
 		return ret
@@ -151,7 +151,7 @@ func (o *CreateDeviceRequest) GetMetadata() DeviceMetadata {
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateDeviceRequest) GetMetadataOk() (*DeviceMetadata, bool) {
+func (o *CreateDeviceBody) GetMetadataOk() (*DeviceMetadata, bool) {
 	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
@@ -159,7 +159,7 @@ func (o *CreateDeviceRequest) GetMetadataOk() (*DeviceMetadata, bool) {
 }
 
 // HasMetadata returns a boolean if a field has been set.
-func (o *CreateDeviceRequest) HasMetadata() bool {
+func (o *CreateDeviceBody) HasMetadata() bool {
 	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
@@ -168,11 +168,11 @@ func (o *CreateDeviceRequest) HasMetadata() bool {
 }
 
 // SetMetadata gets a reference to the given DeviceMetadata and assigns it to the Metadata field.
-func (o *CreateDeviceRequest) SetMetadata(v DeviceMetadata) {
+func (o *CreateDeviceBody) SetMetadata(v DeviceMetadata) {
 	o.Metadata = &v
 }
 
-func (o CreateDeviceRequest) MarshalJSON() ([]byte, error) {
+func (o CreateDeviceBody) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -180,7 +180,7 @@ func (o CreateDeviceRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CreateDeviceRequest) ToMap() (map[string]interface{}, error) {
+func (o CreateDeviceBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
@@ -197,38 +197,38 @@ func (o CreateDeviceRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableCreateDeviceRequest struct {
-	value *CreateDeviceRequest
+type NullableCreateDeviceBody struct {
+	value *CreateDeviceBody
 	isSet bool
 }
 
-func (v NullableCreateDeviceRequest) Get() *CreateDeviceRequest {
+func (v NullableCreateDeviceBody) Get() *CreateDeviceBody {
 	return v.value
 }
 
-func (v *NullableCreateDeviceRequest) Set(val *CreateDeviceRequest) {
+func (v *NullableCreateDeviceBody) Set(val *CreateDeviceBody) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCreateDeviceRequest) IsSet() bool {
+func (v NullableCreateDeviceBody) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCreateDeviceRequest) Unset() {
+func (v *NullableCreateDeviceBody) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCreateDeviceRequest(val *CreateDeviceRequest) *NullableCreateDeviceRequest {
-	return &NullableCreateDeviceRequest{value: val, isSet: true}
+func NewNullableCreateDeviceBody(val *CreateDeviceBody) *NullableCreateDeviceBody {
+	return &NullableCreateDeviceBody{value: val, isSet: true}
 }
 
-func (v NullableCreateDeviceRequest) MarshalJSON() ([]byte, error) {
+func (v NullableCreateDeviceBody) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCreateDeviceRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableCreateDeviceBody) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 4.9.6 authoritarian-betty
+API version: 5.0.0 convulsive-launa
 Contact: dev@lab5e.com
 */
 
@@ -29,10 +29,10 @@ type ApiAddDownstreamMessageRequest struct {
 	ApiService *DevicesApiService
 	collectionId string
 	deviceId string
-	body *AddDownstreamMessageRequest
+	body *AddDownstreamMessageBody
 }
 
-func (r ApiAddDownstreamMessageRequest) Body(body AddDownstreamMessageRequest) ApiAddDownstreamMessageRequest {
+func (r ApiAddDownstreamMessageRequest) Body(body AddDownstreamMessageBody) ApiAddDownstreamMessageRequest {
 	r.body = &body
 	return r
 }
@@ -197,7 +197,7 @@ func (a *DevicesApiService) AddDownstreamMessageExecute(r ApiAddDownstreamMessag
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -224,10 +224,10 @@ type ApiCreateDeviceRequest struct {
 	ctx context.Context
 	ApiService *DevicesApiService
 	collectionId string
-	body *CreateDeviceRequest
+	body *CreateDeviceBody
 }
 
-func (r ApiCreateDeviceRequest) Body(body CreateDeviceRequest) ApiCreateDeviceRequest {
+func (r ApiCreateDeviceRequest) Body(body CreateDeviceBody) ApiCreateDeviceRequest {
 	r.body = &body
 	return r
 }
@@ -386,7 +386,7 @@ func (a *DevicesApiService) CreateDeviceExecute(r ApiCreateDeviceRequest) (*Devi
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -568,7 +568,7 @@ func (a *DevicesApiService) DeleteDeviceExecute(r ApiDeleteDeviceRequest) (*Devi
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -756,7 +756,7 @@ func (a *DevicesApiService) DeleteDownstreamMessageExecute(r ApiDeleteDownstream
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -938,7 +938,7 @@ func (a *DevicesApiService) DeviceCertificateExecute(r ApiDeviceCertificateReque
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1163,7 +1163,7 @@ func (a *DevicesApiService) ListDeviceDataExecute(r ApiListDeviceDataRequest) (*
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1341,7 +1341,7 @@ func (a *DevicesApiService) ListDevicesExecute(r ApiListDevicesRequest) (*ListDe
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1567,7 +1567,7 @@ func (a *DevicesApiService) ListDownstreamMessagesExecute(r ApiListDownstreamMes
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1795,7 +1795,7 @@ func (a *DevicesApiService) ListUpstreamMessagesExecute(r ApiListUpstreamMessage
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1977,7 +1977,7 @@ func (a *DevicesApiService) RetrieveDeviceExecute(r ApiRetrieveDeviceRequest) (*
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2159,7 +2159,7 @@ func (a *DevicesApiService) RetrieveDeviceStatsExecute(r ApiRetrieveDeviceStatsR
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2187,10 +2187,10 @@ type ApiUpdateDeviceRequest struct {
 	ApiService *DevicesApiService
 	existingCollectionId string
 	deviceId string
-	body *UpdateDeviceRequest
+	body *UpdateDeviceBody
 }
 
-func (r ApiUpdateDeviceRequest) Body(body UpdateDeviceRequest) ApiUpdateDeviceRequest {
+func (r ApiUpdateDeviceRequest) Body(body UpdateDeviceBody) ApiUpdateDeviceRequest {
 	r.body = &body
 	return r
 }
@@ -2363,7 +2363,7 @@ func (a *DevicesApiService) UpdateDeviceExecute(r ApiUpdateDeviceRequest) (*Devi
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-			var v Status
+			var v RpcStatus
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -6,7 +6,7 @@ info:
     url: https://lab5e.com
   description: "API for device, collection, output and firmware management"
   title: The Span API
-  version: 4.9.6 authoritarian-betty
+  version: 5.0.0 convulsive-launa
 servers:
 - url: https://api.lab5e.com/
 security:
@@ -68,7 +68,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: List collections
       tags:
@@ -132,7 +132,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Create collection
       tags:
@@ -199,7 +199,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Delete collection
       tags:
@@ -273,7 +273,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Retrieve collection
       tags:
@@ -292,7 +292,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateCollectionRequest'
+              $ref: '#/components/schemas/UpdateCollectionBody'
         required: true
       responses:
         "200":
@@ -341,7 +341,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Update collection
       tags:
@@ -411,7 +411,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: List the blobs for a collection
       tags:
@@ -478,7 +478,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Remove a blob stored on a collection
       tags:
@@ -553,7 +553,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Get certificate chain
       tags:
@@ -580,7 +580,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateCertificateRequest'
+              $ref: '#/components/schemas/CreateCertificateBody'
         required: true
       responses:
         "200":
@@ -629,7 +629,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Create certificate
       tags:
@@ -652,7 +652,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SignCertificateRequest'
+              $ref: '#/components/schemas/SignCertificateBody'
         required: true
       responses:
         "200":
@@ -701,7 +701,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Sign certificate
       tags:
@@ -724,7 +724,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VerifyCertificateRequest'
+              $ref: '#/components/schemas/VerifyCertificateBody'
         required: true
       responses:
         "200":
@@ -773,7 +773,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Verify certificate
       tags:
@@ -872,7 +872,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Retrieve data from devices
       tags:
@@ -933,7 +933,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: List devices in collection.
       tags:
@@ -951,7 +951,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateDeviceRequest'
+              $ref: '#/components/schemas/CreateDeviceBody'
         required: true
       responses:
         "200":
@@ -1000,7 +1000,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Create device
       tags:
@@ -1069,7 +1069,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Remove device.
       tags:
@@ -1136,7 +1136,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Retrieve device
       tags:
@@ -1202,7 +1202,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Get issued certificate(s) for device
       tags:
@@ -1305,7 +1305,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Retrieve data from device
       tags:
@@ -1371,7 +1371,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Clear FOTA error
       tags:
@@ -1475,7 +1475,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: List incoming messages
       tags:
@@ -1577,7 +1577,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: List the messages in the outbox
       tags:
@@ -1602,7 +1602,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AddDownstreamMessageRequest'
+              $ref: '#/components/schemas/AddDownstreamMessageBody'
         required: true
       responses:
         "200":
@@ -1651,7 +1651,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Add message to oubox
       tags:
@@ -1724,7 +1724,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Delete outgoing message
       tags:
@@ -1792,7 +1792,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Retrieve device statistics
       tags:
@@ -1853,7 +1853,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: List firmware
       tags:
@@ -1873,7 +1873,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateFirmwareRequest'
+              $ref: '#/components/schemas/CreateFirmwareBody'
         required: true
       responses:
         "200":
@@ -1922,7 +1922,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Create firmware
       tags:
@@ -1989,7 +1989,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Delete firmware
       tags:
@@ -2054,7 +2054,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Retrieve firmware
       tags:
@@ -2120,7 +2120,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Retrieve firmware statistics
       tags:
@@ -2186,7 +2186,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Firmware usage
       tags:
@@ -2248,7 +2248,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: List gateways
       tags:
@@ -2266,7 +2266,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateGateway_request'
+              $ref: '#/components/schemas/CreateGatewayBody'
         required: true
       responses:
         "200":
@@ -2315,7 +2315,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Create gateway
       tags:
@@ -2383,7 +2383,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Delete gateway
       tags:
@@ -2449,7 +2449,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Retrieve gateway
       tags:
@@ -2515,7 +2515,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Get issued certificate(s) for gateway
       tags:
@@ -2582,7 +2582,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Retrieve gateway statistics
       tags:
@@ -2643,7 +2643,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: List outputs
       tags:
@@ -2660,7 +2660,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateOutputRequest'
+              $ref: '#/components/schemas/CreateOutputBody'
         required: true
       responses:
         "200":
@@ -2709,7 +2709,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Create output
       tags:
@@ -2776,7 +2776,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Delete output
       tags:
@@ -2841,7 +2841,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Retrieve output
       tags:
@@ -2907,7 +2907,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Output logs
       tags:
@@ -2973,7 +2973,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Retrieve output statistics
       tags:
@@ -3039,7 +3039,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Output status
       tags:
@@ -3104,7 +3104,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Retrieve collection statistics
       tags:
@@ -3138,7 +3138,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateDeviceRequest'
+              $ref: '#/components/schemas/UpdateDeviceBody'
         required: true
       responses:
         "200":
@@ -3187,7 +3187,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Update device
       tags:
@@ -3214,7 +3214,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateFirmwareRequest'
+              $ref: '#/components/schemas/UpdateFirmwareBody'
         required: true
       responses:
         "200":
@@ -3263,7 +3263,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Update firmware
       tags:
@@ -3292,7 +3292,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateGateway_request'
+              $ref: '#/components/schemas/UpdateGatewayBody'
         required: true
       responses:
         "200":
@@ -3341,7 +3341,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Update gateway
       tags:
@@ -3365,7 +3365,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateOutputRequest'
+              $ref: '#/components/schemas/UpdateOutputBody'
         required: true
       responses:
         "200":
@@ -3414,7 +3414,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: Update output
       tags:
@@ -3473,7 +3473,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/rpc.Status'
           description: An unexpected error response.
       summary: System information
       tags:
@@ -3496,6 +3496,17 @@ components:
           additionalProperties:
             type: string
           type: object
+      type: object
+    AddDownstreamMessageBody:
+      description: This is the request object to send messages out to the devices
+      example:
+        payload: payload
+      properties:
+        payload:
+          format: byte
+          pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+          type: string
+      title: AddDownstreamMessageRequest
       type: object
     Any:
       additionalProperties:
@@ -3699,6 +3710,7 @@ components:
           currentFirmwareId: currentFirmwareId
           management: null
           targetFirmwareId: targetFirmwareId
+        enabled: true
         tags:
           key: tags
       properties:
@@ -3737,6 +3749,11 @@ components:
             to devices in the collection. This list is only populated when you retrieve
             a single collection
           type: array
+        enabled:
+          description: |-
+            Disabled flag for collection. If the collection is disabled it is in effect
+            read only and inactive. You can't update a disabled collection.
+          type: boolean
       title: Collection
       type: object
     CollectionFirmware:
@@ -3815,6 +3832,18 @@ components:
           $ref: '#/components/schemas/GatewayStats'
       title: CollectionStats
       type: object
+    CreateCertificateBody:
+      description: Request object to create a new certificate.
+      example:
+        deviceId: deviceId
+        gatewayId: gatewayId
+      properties:
+        gatewayId:
+          type: string
+        deviceId:
+          type: string
+      title: CreateCertificateRequest
+      type: object
     CreateCertificateResponse:
       description: Response when creating a new certificate
       example:
@@ -3864,6 +3893,163 @@ components:
             the collection.
           type: object
       title: CreateCollectionRequest
+      type: object
+    CreateDeviceBody:
+      description: Request object to create new devices
+      example:
+        metadata:
+          ciot:
+            lastImei: lastImei
+            country: country
+            mnc: 6
+            countryCode: countryCode
+            lastUpdate: lastUpdate
+            allocatedIp: allocatedIp
+            cellId: cellId
+            mcc: 0
+            gatewayId: gatewayId
+            lastImsi: lastImsi
+            allocatedAt: allocatedAt
+            network: network
+          inet:
+            certificateSerial: certificateSerial
+            lastUpdate: lastUpdate
+            gatewayId: gatewayId
+            remoteAddress: remoteAddress
+          gateway:
+            lastUpdate: lastUpdate
+            params:
+              key: params
+            gatewayId: gatewayId
+        firmware:
+          currentFirmwareId: currentFirmwareId
+          serialNumber: serialNumber
+          targetFirmwareId: targetFirmwareId
+          stateMessage: stateMessage
+          modelNumber: modelNumber
+          state: state
+          firmwareVersion: firmwareVersion
+          manufacturer: manufacturer
+        config:
+          ciot:
+            imei: imei
+            imsi: imsi
+          inet: "{}"
+          gateway:
+            key:
+              params:
+                key: params
+              gatewayId: gatewayId
+        tags:
+          key: tags
+      properties:
+        tags:
+          additionalProperties:
+            type: string
+          description: |-
+            Tags are metadata for the device that you can set. These are just
+            strings.
+          type: object
+        firmware:
+          $ref: '#/components/schemas/FirmwareMetadata'
+        config:
+          $ref: '#/components/schemas/DeviceConfig'
+        metadata:
+          $ref: '#/components/schemas/DeviceMetadata'
+      title: CreateDeviceRequest
+      type: object
+    CreateFirmwareBody:
+      description: Create a new firmware image
+      example:
+        image: image
+        filename: filename
+        version: version
+        tags:
+          key: tags
+      properties:
+        image:
+          format: byte
+          pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+          type: string
+        version:
+          type: string
+        filename:
+          type: string
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+      title: CreateFirmwareRequest
+      type: object
+    CreateGatewayBody:
+      example:
+        name: name
+        type: null
+        config:
+          ciot:
+            udpEndpoint: udpEndpoint
+            coapEndpoint: coapEndpoint
+            apn: apn
+          inet:
+            coapEndpoint: coapEndpoint
+            mqttEndpoint: mqttEndpoint
+            dtlsEndpoint: dtlsEndpoint
+          user:
+            params:
+              key: params
+        tags:
+          key: tags
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/GatewayType'
+        config:
+          $ref: '#/components/schemas/GatewayConfig'
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    CreateOutputBody:
+      description: Request type when creating new outputs
+      example:
+        type: null
+        config:
+          clientId: clientId
+          basicAuthUser: basicAuthUser
+          basicAuthPass: basicAuthPass
+          customHeaderValue: customHeaderValue
+          customHeaderName: customHeaderName
+          payloadFormat: payloadFormat
+          url: url
+          endpoint: endpoint
+          password: password
+          disableCertCheck: true
+          port: 0
+          asIsPayload: true
+          topicTemplate: topicTemplate
+          host: host
+          eventName: eventName
+          topicName: topicName
+          payloadTemplate: payloadTemplate
+          key: key
+          username: username
+        enabled: true
+        tags:
+          key: tags
+      properties:
+        type:
+          $ref: '#/components/schemas/OutputType'
+        config:
+          $ref: '#/components/schemas/OutputConfig'
+        enabled:
+          type: boolean
+        tags:
+          additionalProperties:
+            type: string
+          type: object
+      title: CreateOutputRequest
       type: object
     DeleteBlobResponse:
       description: The response when removing a blob.
@@ -3930,6 +4116,7 @@ components:
               params:
                 key: params
               gatewayId: gatewayId
+        enabled: true
         tags:
           key: tags
       properties:
@@ -3963,6 +4150,8 @@ components:
           format: byte
           pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
           type: string
+        enabled:
+          type: boolean
       title: Device
       type: object
     DeviceCertificateResponse:
@@ -4084,6 +4273,7 @@ components:
         length: 0
         version: version
         collectionId: collectionId
+        enabled: true
         tags:
           key: tags
       properties:
@@ -4126,6 +4316,11 @@ components:
             type: string
           description: Tags for firmware image.
           type: object
+        enabled:
+          title: |-
+            Enabled flag for firmware. Disabled firmware images won't be used in FOTA
+            operations
+          type: boolean
       title: Firmware
       type: object
     FirmwareManagement:
@@ -4233,6 +4428,7 @@ components:
             params:
               key: params
         gatewayId: gatewayId
+        enabled: true
         tags:
           key: tags
         status: null
@@ -4255,6 +4451,8 @@ components:
           type: object
         status:
           $ref: '#/components/schemas/GatewayStatus'
+        enabled:
+          type: boolean
       title: Gateway
       type: object
     GatewayCIoTConfig:
@@ -4502,6 +4700,7 @@ components:
             currentFirmwareId: currentFirmwareId
             management: null
             targetFirmwareId: targetFirmwareId
+          enabled: true
           tags:
             key: tags
         - downstreamTimestamps:
@@ -4516,6 +4715,7 @@ components:
             currentFirmwareId: currentFirmwareId
             management: null
             targetFirmwareId: targetFirmwareId
+          enabled: true
           tags:
             key: tags
       properties:
@@ -4592,6 +4792,7 @@ components:
                   params:
                     key: params
                   gatewayId: gatewayId
+            enabled: true
             tags:
               key: tags
           gatewayId: gatewayId
@@ -4661,6 +4862,7 @@ components:
                   params:
                     key: params
                   gatewayId: gatewayId
+            enabled: true
             tags:
               key: tags
           gatewayId: gatewayId
@@ -4727,6 +4929,7 @@ components:
                 params:
                   key: params
                 gatewayId: gatewayId
+          enabled: true
           tags:
             key: tags
         - lastPayload: lastPayload
@@ -4778,6 +4981,7 @@ components:
                 params:
                   key: params
                 gatewayId: gatewayId
+          enabled: true
           tags:
             key: tags
       properties:
@@ -4827,6 +5031,7 @@ components:
           length: 0
           version: version
           collectionId: collectionId
+          enabled: true
           tags:
             key: tags
         - imageId: imageId
@@ -4836,6 +5041,7 @@ components:
           length: 0
           version: version
           collectionId: collectionId
+          enabled: true
           tags:
             key: tags
       properties:
@@ -4866,6 +5072,7 @@ components:
               params:
                 key: params
           gatewayId: gatewayId
+          enabled: true
           tags:
             key: tags
           status: null
@@ -4886,6 +5093,7 @@ components:
               params:
                 key: params
           gatewayId: gatewayId
+          enabled: true
           tags:
             key: tags
           status: null
@@ -5296,6 +5504,7 @@ components:
                 params:
                   key: params
                 gatewayId: gatewayId
+          enabled: true
           tags:
             key: tags
         gatewayId: gatewayId
@@ -5460,6 +5669,23 @@ components:
       type: object
     SendActivityResponse:
       type: object
+    SignCertificateBody:
+      description: Request certificate signing
+      example:
+        csr: csr
+        deviceId: deviceId
+        gatewayId: gatewayId
+      properties:
+        gatewayId:
+          type: string
+        deviceId:
+          type: string
+        csr:
+          format: byte
+          pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+          type: string
+      title: SignCertificateRequest
+      type: object
     SignCertificateResponse:
       description: Response when signing a certificate
       example:
@@ -5475,18 +5701,6 @@ components:
           pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
           type: string
       title: SignCertificateResponse
-      type: object
-    Status:
-      properties:
-        code:
-          format: int32
-          type: integer
-        message:
-          type: string
-        details:
-          items:
-            $ref: '#/components/schemas/Any'
-          type: array
       type: object
     SystemInfoResponse:
       description: |-
@@ -5527,25 +5741,7 @@ components:
           type: integer
       title: UDPMetadata
       type: object
-    VerifyCertificateResponse:
-      description: |-
-        Response when verifying a certificate. The valid flag is set to true when the
-        certificate is valid. Any errors will be added to the errors array.
-      example:
-        valid: true
-        errors:
-        - errors
-        - errors
-      properties:
-        valid:
-          type: boolean
-        errors:
-          items:
-            type: string
-          type: array
-      title: VerifyCertificateResponse
-      type: object
-    UpdateCollectionRequest:
+    UpdateCollectionBody:
       description: Request object when updating a collection
       example:
         teamId: teamId
@@ -5553,6 +5749,7 @@ components:
           currentFirmwareId: currentFirmwareId
           management: null
           targetFirmwareId: targetFirmwareId
+        enabled: true
         tags:
           key: tags
       properties:
@@ -5570,206 +5767,14 @@ components:
             Tags for the collection. Tags are metadata fields that you can assign to
             the collection.
           type: object
+        enabled:
+          description: |-
+            Enabled flag for the collection. A collection may be disabled or enabled
+            to save time.
+          type: boolean
       title: UpdateCollectionRequest
       type: object
-    CreateCertificateRequest:
-      description: Request object to create a new certificate.
-      example:
-        deviceId: deviceId
-        gatewayId: gatewayId
-      properties:
-        gatewayId:
-          type: string
-        deviceId:
-          type: string
-      title: CreateCertificateRequest
-      type: object
-    SignCertificateRequest:
-      description: Request certificate signing
-      example:
-        csr: csr
-        deviceId: deviceId
-        gatewayId: gatewayId
-      properties:
-        gatewayId:
-          type: string
-        deviceId:
-          type: string
-        csr:
-          format: byte
-          pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
-          type: string
-      title: SignCertificateRequest
-      type: object
-    VerifyCertificateRequest:
-      description: Verify a certificate
-      example:
-        certificate: certificate
-        deviceId: deviceId
-        gatewayId: gatewayId
-      properties:
-        gatewayId:
-          type: string
-        deviceId:
-          type: string
-        certificate:
-          format: byte
-          pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
-          type: string
-      title: VerifyCertificateRequest
-      type: object
-    CreateDeviceRequest:
-      description: Request object to create new devices
-      example:
-        metadata:
-          ciot:
-            lastImei: lastImei
-            country: country
-            mnc: 6
-            countryCode: countryCode
-            lastUpdate: lastUpdate
-            allocatedIp: allocatedIp
-            cellId: cellId
-            mcc: 0
-            gatewayId: gatewayId
-            lastImsi: lastImsi
-            allocatedAt: allocatedAt
-            network: network
-          inet:
-            certificateSerial: certificateSerial
-            lastUpdate: lastUpdate
-            gatewayId: gatewayId
-            remoteAddress: remoteAddress
-          gateway:
-            lastUpdate: lastUpdate
-            params:
-              key: params
-            gatewayId: gatewayId
-        firmware:
-          currentFirmwareId: currentFirmwareId
-          serialNumber: serialNumber
-          targetFirmwareId: targetFirmwareId
-          stateMessage: stateMessage
-          modelNumber: modelNumber
-          state: state
-          firmwareVersion: firmwareVersion
-          manufacturer: manufacturer
-        config:
-          ciot:
-            imei: imei
-            imsi: imsi
-          inet: "{}"
-          gateway:
-            key:
-              params:
-                key: params
-              gatewayId: gatewayId
-        tags:
-          key: tags
-      properties:
-        tags:
-          additionalProperties:
-            type: string
-          description: |-
-            Tags are metadata for the device that you can set. These are just
-            strings.
-          type: object
-        firmware:
-          $ref: '#/components/schemas/FirmwareMetadata'
-        config:
-          $ref: '#/components/schemas/DeviceConfig'
-        metadata:
-          $ref: '#/components/schemas/DeviceMetadata'
-      title: CreateDeviceRequest
-      type: object
-    AddDownstreamMessageRequest:
-      description: This is the request object to send messages out to the devices
-      example:
-        payload: payload
-      properties:
-        payload:
-          format: byte
-          pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
-          type: string
-      title: AddDownstreamMessageRequest
-      type: object
-    CreateFirmwareRequest:
-      description: Create a new firmware image
-      example:
-        image: image
-        filename: filename
-        version: version
-        tags:
-          key: tags
-      properties:
-        image:
-          format: byte
-          pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
-          type: string
-        version:
-          type: string
-        filename:
-          type: string
-        tags:
-          additionalProperties:
-            type: string
-          type: object
-      title: CreateFirmwareRequest
-      type: object
-    CreateGateway_request:
-      properties:
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/GatewayType'
-        config:
-          $ref: '#/components/schemas/GatewayConfig'
-        tags:
-          additionalProperties:
-            type: string
-          type: object
-      type: object
-    CreateOutputRequest:
-      description: Request type when creating new outputs
-      example:
-        type: null
-        config:
-          clientId: clientId
-          basicAuthUser: basicAuthUser
-          basicAuthPass: basicAuthPass
-          customHeaderValue: customHeaderValue
-          customHeaderName: customHeaderName
-          payloadFormat: payloadFormat
-          url: url
-          endpoint: endpoint
-          password: password
-          disableCertCheck: true
-          port: 0
-          asIsPayload: true
-          topicTemplate: topicTemplate
-          host: host
-          eventName: eventName
-          topicName: topicName
-          payloadTemplate: payloadTemplate
-          key: key
-          username: username
-        enabled: true
-        tags:
-          key: tags
-      properties:
-        type:
-          $ref: '#/components/schemas/OutputType'
-        config:
-          $ref: '#/components/schemas/OutputConfig'
-        enabled:
-          type: boolean
-        tags:
-          additionalProperties:
-            type: string
-          type: object
-      title: CreateOutputRequest
-      type: object
-    UpdateDeviceRequest:
+    UpdateDeviceBody:
       description: Updating the device
       example:
         collectionId: collectionId
@@ -5792,6 +5797,7 @@ components:
               params:
                 key: params
               gatewayId: gatewayId
+        enabled: true
         tags:
           key: tags
       properties:
@@ -5813,13 +5819,16 @@ components:
           $ref: '#/components/schemas/FirmwareMetadata'
         config:
           $ref: '#/components/schemas/DeviceConfig'
+        enabled:
+          type: boolean
       title: UpdateDeviceRequest
       type: object
-    UpdateFirmwareRequest:
+    UpdateFirmwareBody:
       description: This is the request object when updating the firmware image
       example:
         collectionId: collectionId
         version: version
+        enabled: true
         tags:
           key: tags
       properties:
@@ -5831,9 +5840,30 @@ components:
           additionalProperties:
             type: string
           type: object
+        enabled:
+          type: boolean
       title: UpdateFirmwareRequest
       type: object
-    UpdateGateway_request:
+    UpdateGatewayBody:
+      example:
+        name: name
+        type: null
+        collectionId: collectionId
+        config:
+          ciot:
+            udpEndpoint: udpEndpoint
+            coapEndpoint: coapEndpoint
+            apn: apn
+          inet:
+            coapEndpoint: coapEndpoint
+            mqttEndpoint: mqttEndpoint
+            dtlsEndpoint: dtlsEndpoint
+          user:
+            params:
+              key: params
+        enabled: true
+        tags:
+          key: tags
       properties:
         name:
           type: string
@@ -5847,8 +5877,10 @@ components:
           additionalProperties:
             type: string
           type: object
+        enabled:
+          type: boolean
       type: object
-    UpdateOutputRequest:
+    UpdateOutputBody:
       description: Request type to update outputs
       example:
         type: null
@@ -5890,6 +5922,53 @@ components:
             type: string
           type: object
       title: UpdateOutputRequest
+      type: object
+    VerifyCertificateBody:
+      description: Verify a certificate
+      example:
+        certificate: certificate
+        deviceId: deviceId
+        gatewayId: gatewayId
+      properties:
+        gatewayId:
+          type: string
+        deviceId:
+          type: string
+        certificate:
+          format: byte
+          pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+          type: string
+      title: VerifyCertificateRequest
+      type: object
+    VerifyCertificateResponse:
+      description: |-
+        Response when verifying a certificate. The valid flag is set to true when the
+        certificate is valid. Any errors will be added to the errors array.
+      example:
+        valid: true
+        errors:
+        - errors
+        - errors
+      properties:
+        valid:
+          type: boolean
+        errors:
+          items:
+            type: string
+          type: array
+      title: VerifyCertificateResponse
+      type: object
+    rpc.Status:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/Any'
+          type: array
       type: object
   securitySchemes:
     APIToken:
