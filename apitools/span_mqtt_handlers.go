@@ -33,8 +33,8 @@ func (m *mqttStream) handleOnConnectionUp(mgr *autopaho.ConnectionManager, ca *p
 	_, err := mgr.Subscribe(
 		context.Background(),
 		&paho.Subscribe{
-			Subscriptions: map[string]paho.SubscribeOptions{
-				topic: {QoS: collectionTopicQoS},
+			Subscriptions: []paho.SubscribeOptions{
+				{Topic: topic, QoS: collectionTopicQoS},
 			},
 		})
 	if err != nil {
