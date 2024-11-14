@@ -8,8 +8,8 @@ import (
 	"text/tabwriter"
 	"time"
 
-	"github.com/lab5e/go-spanapi/v4"
-	"github.com/lab5e/go-spanapi/v4/apitools"
+	"github.com/lab5e/go-spanapi/v5"
+	"github.com/lab5e/go-spanapi/v5/apitools"
 )
 
 // This example shows you how to retrieve payloads in a time interval. It's

@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/lab5e/go-spanapi/v4"
+	"github.com/lab5e/go-spanapi/v5"
 )
 
 func main() {

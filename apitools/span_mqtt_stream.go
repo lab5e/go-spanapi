@@ -11,7 +11,7 @@ import (
 
 	"github.com/eclipse/paho.golang/autopaho"
 	"github.com/eclipse/paho.golang/paho"
-	"github.com/lab5e/go-spanapi/v4"
+	"github.com/lab5e/go-spanapi/v5"
 )
 
 type mqttStream struct {

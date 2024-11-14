@@ -7,13 +7,12 @@ import (
 	"text/tabwriter"
 	"time"
 
-	"github.com/lab5e/go-spanapi/v4"
-	"github.com/lab5e/go-spanapi/v4/apitools"
+	"github.com/lab5e/go-spanapi/v5"
+	"github.com/lab5e/go-spanapi/v5/apitools"
 )
 
 // This example demonstrates how to page through the data/payloads from devices.
 // The paging uses the "offset" parameter to page through the data.
-//
 func main() {
 
 	// It's always a good idea to leave authentication tokens out of the source

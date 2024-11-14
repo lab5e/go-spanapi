@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/gorilla/websocket"
-	"github.com/lab5e/go-spanapi/v4"
+	"github.com/lab5e/go-spanapi/v5"
 )
 
 // DataStream is a stream of data from the Span service. The data stream uses

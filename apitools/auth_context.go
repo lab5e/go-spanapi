@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/lab5e/go-spanapi/v4"
+	"github.com/lab5e/go-spanapi/v5"
 )
 
 // ContextWithAuth returns a context with the API token set

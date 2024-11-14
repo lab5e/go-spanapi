@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/lab5e/go-spanapi/v4/apitools"
+	"github.com/lab5e/go-spanapi/v5/apitools"
 )
 
 var (
