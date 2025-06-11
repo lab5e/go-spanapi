@@ -3,7 +3,7 @@ The Span API
 
 API for device, collection, output and firmware management
 
-API version: 5.0.3 pitch-dark-elza
+API version: 5.0.5 contented-jamila
 Contact: dev@lab5e.com
 */
 
@@ -42,7 +42,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the The Span API API v5.0.3 pitch-dark-elza
+// APIClient manages communication with the The Span API API v5.0.5 contented-jamila
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration

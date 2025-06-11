@@ -6,7 +6,7 @@ info:
     url: https://lab5e.com
   description: "API for device, collection, output and firmware management"
   title: The Span API
-  version: 5.0.3 pitch-dark-elza
+  version: 5.0.5 contented-jamila
 servers:
 - url: https://api.lab5e.com/
 security:
@@ -1310,6 +1310,138 @@ paths:
       summary: Retrieve data from device
       tags:
       - devices
+  /span/collections/{collectionId}/devices/{deviceId}/fotalog:
+    patch:
+      operationId: ListImageVersionHistory
+      parameters:
+      - in: path
+        name: collectionId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: deviceId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListImageVersionHistoryResponse'
+          description: A successful response.
+        "201":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: It's created.
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: The request has an error.
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: You can't touch this
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Couldn't find the resource.
+        "409":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: There's a resource conflict here.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: I'm sorry. We are broken
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+          description: An unexpected error response.
+      summary: "BETA: List version history for a single device"
+      tags:
+      - fota
+  /span/collections/{collectionId}/devices/{deviceId}/fotastate:
+    patch:
+      operationId: GetImageState
+      parameters:
+      - in: path
+        name: collectionId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: deviceId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetImageStateResponse'
+          description: A successful response.
+        "201":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: It's created.
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: The request has an error.
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: You can't touch this
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Couldn't find the resource.
+        "409":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: There's a resource conflict here.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: I'm sorry. We are broken
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+          description: An unexpected error response.
+      summary: "BETA: Get state for a single device"
+      tags:
+      - fota
   /span/collections/{collectionId}/devices/{deviceId}/fwerror:
     delete:
       operationId: ClearFirmwareError
@@ -1928,6 +2060,349 @@ paths:
       tags:
       - fota
       x-codegen-request-body-name: body
+  /span/collections/{collectionId}/firmware/labeled:
+    get:
+      operationId: ListLabeledFirmware
+      parameters:
+      - in: path
+        name: collectionId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListLabeledFirmwareResponse'
+          description: A successful response.
+        "201":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: It's created.
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: The request has an error.
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: You can't touch this
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Couldn't find the resource.
+        "409":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: There's a resource conflict here.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: I'm sorry. We are broken
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+          description: An unexpected error response.
+      summary: "BETA: List the labeled firmware images for a collection"
+      tags:
+      - fota
+    post:
+      description: "Devices might need several different firmware images, depending\
+        \ on their\nconfiguration. Low-power devices usually have just a single firmware\
+        \ image\nbut more complex devices might need several firmware images for their\
+        \ \nsubsystems. The firmware image must be uploaded prior to the call and\
+        \ the \nreturned data structure is included in the request."
+      operationId: CreateLabeledFirmware
+      parameters:
+      - in: path
+        name: collectionId
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: version
+        schema:
+          type: string
+      - in: query
+        name: label
+        schema:
+          type: string
+      - in: query
+        name: imageRef
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateLabeledFirmwareResponse'
+          description: A successful response.
+        "201":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: It's created.
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: The request has an error.
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: You can't touch this
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Couldn't find the resource.
+        "409":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: There's a resource conflict here.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: I'm sorry. We are broken
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+          description: An unexpected error response.
+      summary: "BETA: Create a labeled firmware image"
+      tags:
+      - fota
+  /span/collections/{collectionId}/firmware/labeled/states:
+    get:
+      description: List the status for the labeled firmware images in the collection
+      operationId: ListImageStates
+      parameters:
+      - in: path
+        name: collectionId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListImageStatesResponse'
+          description: A successful response.
+        "201":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: It's created.
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: The request has an error.
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: You can't touch this
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Couldn't find the resource.
+        "409":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: There's a resource conflict here.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: I'm sorry. We are broken
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+          description: An unexpected error response.
+      summary: "BETA: List image assignments plus states"
+      tags:
+      - fota
+  /span/collections/{collectionId}/firmware/labeled/{imageId}:
+    delete:
+      description: Remove a tagged firmware image from the backing store and it's
+        metadata
+      operationId: DeleteLabeledImage
+      parameters:
+      - in: path
+        name: collectionId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: imageId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteLabeledImageResponse'
+          description: A successful response.
+        "201":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: It's created.
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: The request has an error.
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: You can't touch this
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Couldn't find the resource.
+        "409":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: There's a resource conflict here.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: I'm sorry. We are broken
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+          description: An unexpected error response.
+      summary: "BETA: Remove a tagged firmware image"
+      tags:
+      - fota
+  /span/collections/{collectionId}/firmware/labeled/{imageId}/assign:
+    patch:
+      description: Assign a particular labeled image to a device or a collection
+      operationId: AssignTargetImage
+      parameters:
+      - in: path
+        name: collectionId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: imageId
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: label
+        schema:
+          type: string
+      - in: query
+        name: deviceId
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssignTargetImageResponse'
+          description: A successful response.
+        "201":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: It's created.
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: The request has an error.
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: You can't touch this
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Couldn't find the resource.
+        "409":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: There's a resource conflict here.
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: I'm sorry. We are broken
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+          description: An unexpected error response.
+      summary: "BETA: Assign a target image"
+      tags:
+      - fota
   /span/collections/{collectionId}/firmware/{imageId}:
     delete:
       operationId: DeleteFirmware
@@ -3515,6 +3990,21 @@ components:
         '@type':
           type: string
       type: object
+    AssignTargetImageResponse:
+      description: Response object when assigning an image to a collection or collection/device
+      example:
+        imageId: imageId
+        collectionId: collectionId
+        deviceId: deviceId
+      properties:
+        collectionId:
+          type: string
+        imageId:
+          type: string
+        deviceId:
+          type: string
+      title: AssignTargetImageResponse
+      type: object
     Blob:
       description: |-
         This is a blob (binary large object) that the devices might upload to the
@@ -4011,6 +4501,24 @@ components:
             type: string
           type: object
       type: object
+    CreateLabeledFirmwareResponse:
+      description: Response object when creating a labeled firmware image
+      example:
+        image:
+          createdAt: createdAt
+          fileName: fileName
+          imageId: imageId
+          sha256: sha256
+          length: length
+          imageRef: imageRef
+          label: label
+          collectionId: collectionId
+          version: version
+      properties:
+        image:
+          $ref: '#/components/schemas/LabeledFirmware'
+      title: CreateLabeledFirmwareResponse
+      type: object
     CreateOutputBody:
       description: Request type when creating new outputs
       example:
@@ -4063,6 +4571,10 @@ components:
         messageId:
           type: string
       title: DeleteDownstreamMessageResponse
+      type: object
+    DeleteLabeledImageResponse:
+      description: Response object when deleting labeled firmware images
+      title: DeleteLabeledImageResponse
       type: object
     Device:
       description: This a device
@@ -4200,6 +4712,29 @@ components:
           title: Configuration for customer managed gateways
           type: object
       title: DeviceConfig
+      type: object
+    DeviceImageState:
+      description: Image state for a single device
+      example:
+        state:
+        - imageId: imageId
+          state: state
+          message: message
+          collectionId: collectionId
+          deviceId: deviceId
+          updated: updated
+        - imageId: imageId
+          state: state
+          message: message
+          collectionId: collectionId
+          deviceId: deviceId
+          updated: updated
+      properties:
+        state:
+          items:
+            $ref: '#/components/schemas/ImageState'
+          type: array
+      title: DeviceImageState
       type: object
     DeviceMetadata:
       description: This is the metadata for devices.
@@ -4620,6 +5155,78 @@ components:
       - matter
       - custom
       type: string
+    GetImageStateResponse:
+      description: Response object when retrieving image state for a single device
+      example:
+        state:
+          state:
+          - imageId: imageId
+            state: state
+            message: message
+            collectionId: collectionId
+            deviceId: deviceId
+            updated: updated
+          - imageId: imageId
+            state: state
+            message: message
+            collectionId: collectionId
+            deviceId: deviceId
+            updated: updated
+      properties:
+        state:
+          $ref: '#/components/schemas/DeviceImageState'
+      title: GetImageStateResponse
+      type: object
+    ImageState:
+      description: State for a single image on a device
+      example:
+        imageId: imageId
+        state: state
+        message: message
+        collectionId: collectionId
+        deviceId: deviceId
+        updated: updated
+      properties:
+        collectionId:
+          type: string
+        deviceId:
+          type: string
+        imageId:
+          type: string
+        updated:
+          format: int64
+          type: string
+        state:
+          type: string
+        message:
+          type: string
+      title: ImageState
+      type: object
+    ImageVersionEntry:
+      description: "The image version log contains all reported versions and firmware\
+        \ images \nby a device. The entries in the version log is independent of the\
+        \ image list;\n if an image is removed the entry will remain in the version\
+        \ log."
+      example:
+        imageVersion: imageVersion
+        imageId: imageId
+        imageLabel: imageLabel
+        reported: reported
+        deviceId: deviceId
+      properties:
+        deviceId:
+          type: string
+        imageId:
+          type: string
+        imageVersion:
+          type: string
+        imageLabel:
+          type: string
+        reported:
+          format: int64
+          type: string
+      title: ImageVersionEntry
+      type: object
     InetConfig:
       description: |-
         This is the configuration for an internet-connected device. There are
@@ -4651,6 +5258,50 @@ components:
           format: int64
           type: string
       title: InetMetadata
+      type: object
+    LabeledFirmware:
+      description: A firmware image that is tagged with a label.
+      example:
+        createdAt: createdAt
+        fileName: fileName
+        imageId: imageId
+        sha256: sha256
+        length: length
+        imageRef: imageRef
+        label: label
+        collectionId: collectionId
+        version: version
+      properties:
+        collectionId:
+          title: Containing collection
+          type: string
+        imageId:
+          title: Identifier
+          type: string
+        imageRef:
+          title: Reference to image
+          type: string
+        version:
+          title: Assigned version string
+          type: string
+        label:
+          title: Label for image
+          type: string
+        fileName:
+          title: "File name (from upload, information only)"
+          type: string
+        length:
+          format: int64
+          title: Length (in bytes) of image
+          type: string
+        sha256:
+          title: SHA-256 checksum of file
+          type: string
+        createdAt:
+          format: int64
+          title: "Time stamp when created, ns since epoch"
+          type: string
+      title: LabeledFirmware
       type: object
     ListBlobResponse:
       description: Response object when listing blobs for a collection
@@ -5103,6 +5754,96 @@ components:
             $ref: '#/components/schemas/Gateway'
           type: array
       title: ListGatewayResponse
+      type: object
+    ListImageStatesResponse:
+      description: Response object when retrieving image states for a collection
+      example:
+        states:
+        - state:
+          - imageId: imageId
+            state: state
+            message: message
+            collectionId: collectionId
+            deviceId: deviceId
+            updated: updated
+          - imageId: imageId
+            state: state
+            message: message
+            collectionId: collectionId
+            deviceId: deviceId
+            updated: updated
+        - state:
+          - imageId: imageId
+            state: state
+            message: message
+            collectionId: collectionId
+            deviceId: deviceId
+            updated: updated
+          - imageId: imageId
+            state: state
+            message: message
+            collectionId: collectionId
+            deviceId: deviceId
+            updated: updated
+      properties:
+        states:
+          items:
+            $ref: '#/components/schemas/DeviceImageState'
+          type: array
+      title: ListImageStatesResponse
+      type: object
+    ListImageVersionHistoryResponse:
+      description: Response obejct when listing image version log for a device
+      example:
+        log:
+        - imageVersion: imageVersion
+          imageId: imageId
+          imageLabel: imageLabel
+          reported: reported
+          deviceId: deviceId
+        - imageVersion: imageVersion
+          imageId: imageId
+          imageLabel: imageLabel
+          reported: reported
+          deviceId: deviceId
+        collectionId: collectionId
+      properties:
+        collectionId:
+          type: string
+        log:
+          items:
+            $ref: '#/components/schemas/ImageVersionEntry'
+          type: array
+      title: ListImageVersionHistoryResponse
+      type: object
+    ListLabeledFirmwareResponse:
+      description: Response object for listing firmware images
+      example:
+        images:
+        - createdAt: createdAt
+          fileName: fileName
+          imageId: imageId
+          sha256: sha256
+          length: length
+          imageRef: imageRef
+          label: label
+          collectionId: collectionId
+          version: version
+        - createdAt: createdAt
+          fileName: fileName
+          imageId: imageId
+          sha256: sha256
+          length: length
+          imageRef: imageRef
+          label: label
+          collectionId: collectionId
+          version: version
+      properties:
+        images:
+          items:
+            $ref: '#/components/schemas/LabeledFirmware'
+          type: array
+      title: ListLabeledFirmwareResponse
       type: object
     ListOutputResponse:
       description: List outputs
